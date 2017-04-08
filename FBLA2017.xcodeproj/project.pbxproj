@@ -17,6 +17,7 @@
 		481DD8D41E98354E005765AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D21E98354E005765AF /* Main.storyboard */; };
 		481DD8D61E98354E005765AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D51E98354E005765AF /* Assets.xcassets */; };
 		481DD8D91E98354E005765AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D71E98354E005765AF /* LaunchScreen.storyboard */; };
+		48D356451E99A2E400FBF6B3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D356441E99A2E400FBF6B3 /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		481DD8D51E98354E005765AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		481DD8D81E98354E005765AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		481DD8DA1E98354E005765AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48D356441E99A2E400FBF6B3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				481DD8D71E98354E005765AF /* LaunchScreen.storyboard */,
 				481DD8DA1E98354E005765AF /* Info.plist */,
 				4815FF4E1E99549B0018FA30 /* ImageCollectionViewController.swift */,
+				48D356441E99A2E400FBF6B3 /* CameraViewController.swift */,
 			);
 			path = FBLA2017;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				4815FF561E9958240018FA30 /* FlickrSearchResults.swift in Sources */,
 				481DD8D11E98354E005765AF /* SecondViewController.swift in Sources */,
 				4815FF541E9958240018FA30 /* Flickr.swift in Sources */,
+				48D356451E99A2E400FBF6B3 /* CameraViewController.swift in Sources */,
 				4815FF551E9958240018FA30 /* FlickrPhoto.swift in Sources */,
 				481DD8CD1E98354E005765AF /* AppDelegate.swift in Sources */,
 			);
