@@ -20,14 +20,16 @@ class SelectPhotosToUploadCollectionViewController:UICollectionViewController{
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     //2
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
+    
+    
     
     
 }
