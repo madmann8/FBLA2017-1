@@ -15,6 +15,8 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var imgOverlay: UIImageView!
     @IBOutlet weak var btnCapture: UIButton!
     
+    
+    
     let captureSession = AVCaptureSession()
     let stillImageOutput = AVCaptureStillImageOutput()
     var previewLayer : AVCaptureVideoPreviewLayer?

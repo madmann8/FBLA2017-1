@@ -27,7 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ukj-aw-ha0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-1065"/>
+            <point key="canvasLocation" x="1510" y="-1059"/>
         </scene>
         <!--My Profile-->
         <scene sceneID="gpT-Sk-XBE">
@@ -51,7 +51,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -60,33 +60,14 @@
                     </tabBar>
                     <connections>
                         <segue destination="WrY-Gw-eKo" kind="relationship" relationship="viewControllers" id="pKT-59-Qca"/>
-                        <segue destination="cNJ-pg-j0E" kind="relationship" relationship="viewControllers" id="07N-H2-48r"/>
                         <segue destination="ctu-Jy-O6u" kind="relationship" relationship="viewControllers" id="aio-ca-R8q"/>
                         <segue destination="RNN-6b-Uoe" kind="relationship" relationship="viewControllers" id="OTB-Oh-EHm"/>
+                        <segue destination="4ym-l6-gC1" kind="relationship" relationship="viewControllers" id="YYY-db-EVh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
-        </scene>
-        <!--Upload-->
-        <scene sceneID="8Dh-R5-sBh">
-            <objects>
-                <viewController id="cNJ-pg-j0E" customClass="CameraViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bW0-qH-iqi"/>
-                        <viewControllerLayoutGuide type="bottom" id="czO-1p-lMk"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OLZ-pM-ly6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Upload" id="ttD-qS-7kS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tch-j3-gxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1180" y="427"/>
         </scene>
         <!--Image Collection View Controller-->
         <scene sceneID="ioN-8i-ABw">
@@ -134,7 +115,7 @@
                     <navigationItem key="navigationItem" id="BsI-gI-CoR">
                         <nil key="title"/>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" id="fyc-jG-J0Q">
-                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <rect key="frame" x="113" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -168,5 +149,99 @@
             </objects>
             <point key="canvasLocation" x="2485.5999999999999" y="-457.42128935532236"/>
         </scene>
+        <!--Upload-->
+        <scene sceneID="fo9-ND-a66">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="4ym-l6-gC1" customClass="CameraViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K2v-aT-I9R"/>
+                        <viewControllerLayoutGuide type="bottom" id="glv-Yz-juT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u1B-tV-mpb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="79C-hR-R0j">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9da-xz-J99"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Custom Camera" id="CdG-GF-aEX"/>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDl-qB-16N">
+                                <rect key="frame" x="134" y="509" width="102" height="102"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="102" id="Bn3-E6-381"/>
+                                    <constraint firstAttribute="width" constant="102" id="KN3-KN-vzB"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="ImgCameraCaptureBtn"/>
+                                <connections>
+                                    <action selector="actionCameraCapture:" destination="4ym-l6-gC1" eventType="touchUpInside" id="nvA-tL-00i"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraFrameBigger" translatesAutoresizingMaskIntoConstraints="NO" id="Her-5c-rqO">
+                                <rect key="frame" x="23" y="84" width="328" height="335"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="79C-hR-R0j" firstAttribute="centerX" secondItem="Her-5c-rqO" secondAttribute="centerX" id="3yU-dj-N6f"/>
+                            <constraint firstItem="79C-hR-R0j" firstAttribute="top" secondItem="u1B-tV-mpb" secondAttribute="top" id="5AD-L3-6da"/>
+                            <constraint firstItem="Her-5c-rqO" firstAttribute="leading" secondItem="u1B-tV-mpb" secondAttribute="leadingMargin" constant="7" id="DHy-5C-6wh"/>
+                            <constraint firstItem="glv-Yz-juT" firstAttribute="top" secondItem="vDl-qB-16N" secondAttribute="bottom" constant="7" id="KFL-Gq-FKJ"/>
+                            <constraint firstAttribute="trailing" secondItem="79C-hR-R0j" secondAttribute="trailing" id="UKW-vX-JdC"/>
+                            <constraint firstItem="vDl-qB-16N" firstAttribute="top" secondItem="Her-5c-rqO" secondAttribute="bottom" constant="90" id="asp-jQ-bty"/>
+                            <constraint firstItem="vDl-qB-16N" firstAttribute="leading" secondItem="u1B-tV-mpb" secondAttribute="leading" constant="134" id="srA-Mf-eHb"/>
+                            <constraint firstItem="Her-5c-rqO" firstAttribute="top" secondItem="79C-hR-R0j" secondAttribute="bottom" constant="40" id="y9c-2Q-PtQ"/>
+                            <constraint firstItem="79C-hR-R0j" firstAttribute="leading" secondItem="u1B-tV-mpb" secondAttribute="leading" id="zyS-Ch-Plr"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Upload" id="ANH-Sd-JgX"/>
+                    <connections>
+                        <outlet property="btnCapture" destination="vDl-qB-16N" id="w2s-Es-ATe"/>
+                        <outlet property="imgOverlay" destination="Her-5c-rqO" id="eNI-Gu-70W"/>
+                        <outlet property="navigationBar" destination="79C-hR-R0j" id="xPM-w5-Kna"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DRi-11-wPz" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1161" y="278"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eGk-PZ-8xd">
+            <objects>
+                <viewController id="vv6-O7-CX8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a6Y-1h-WA1"/>
+                        <viewControllerLayoutGuide type="bottom" id="0ai-zl-Gdh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U8A-g5-9zv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vec-S2-wGb">
+                                <rect key="frame" x="36" y="140" width="303" height="386"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uq6-bw-bp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2589.5999999999999" y="425.93703148425789"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="CameraFrameBigger" width="1024" height="1024"/>
+        <image name="ImgCameraCaptureBtn" width="102" height="102"/>
+    </resources>
 </document>
