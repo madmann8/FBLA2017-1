@@ -63,6 +63,7 @@
                         <segue destination="ctu-Jy-O6u" kind="relationship" relationship="viewControllers" id="aio-ca-R8q"/>
                         <segue destination="RNN-6b-Uoe" kind="relationship" relationship="viewControllers" id="OTB-Oh-EHm"/>
                         <segue destination="4ym-l6-gC1" kind="relationship" relationship="viewControllers" id="YYY-db-EVh"/>
+                        <segue destination="vv6-O7-CX8" kind="relationship" relationship="viewControllers" id="jUE-CE-JKi"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -85,10 +86,10 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="e4v-qk-BWi" customClass="PhotoCell" customModule="FBLA2017" customModuleProvider="target">
-                                <rect key="frame" x="88" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="201" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zod-4F-G7c">
@@ -115,7 +116,7 @@
                     <navigationItem key="navigationItem" id="BsI-gI-CoR">
                         <nil key="title"/>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" id="fyc-jG-J0Q">
-                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -209,10 +210,10 @@
             </objects>
             <point key="canvasLocation" x="1161" y="278"/>
         </scene>
-        <!--View Controller-->
+        <!--Item-->
         <scene sceneID="eGk-PZ-8xd">
             <objects>
-                <viewController id="vv6-O7-CX8" sceneMemberID="viewController">
+                <viewController id="vv6-O7-CX8" customClass="UploadItemFormViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a6Y-1h-WA1"/>
                         <viewControllerLayoutGuide type="bottom" id="0ai-zl-Gdh"/>
@@ -221,27 +222,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vec-S2-wGb">
-                                <rect key="frame" x="36" y="140" width="303" height="386"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BQV-KN-jkg">
+                                <rect key="frame" x="16" y="0.0" width="343" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oqD-CZ-WoZ">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UploadCell" id="aHy-Ro-Zd4" customClass="UploadItemFormPhotoCellCollectionViewCell" customModule="FBLA2017" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="first" translatesAutoresizingMaskIntoConstraints="NO" id="vgM-oY-6zq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="vgM-oY-6zq" secondAttribute="trailing" id="83r-Af-CXp"/>
+                                            <constraint firstItem="vgM-oY-6zq" firstAttribute="top" secondItem="aHy-Ro-Zd4" secondAttribute="top" id="9Kq-tl-JSu"/>
+                                            <constraint firstItem="vgM-oY-6zq" firstAttribute="leading" secondItem="aHy-Ro-Zd4" secondAttribute="leading" id="Zqx-bQ-6XC"/>
+                                            <constraint firstAttribute="bottom" secondItem="vgM-oY-6zq" secondAttribute="bottom" id="v0a-ep-Fb8"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="PCz-Z6-xQE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uq6-bw-bp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2589.5999999999999" y="425.93703148425789"/>
+            <point key="canvasLocation" x="2188" y="277.51124437781112"/>
         </scene>
     </scenes>
     <resources>
         <image name="CameraFrameBigger" width="1024" height="1024"/>
         <image name="ImgCameraCaptureBtn" width="102" height="102"/>
+        <image name="first" width="30" height="30"/>
     </resources>
 </document>
