@@ -14,6 +14,7 @@ import Foundation
 import UIKit
 import ImagePicker
 import ChameleonFramework
+import Presentr
 
 class UploadItemFormViewController:UIViewController{
     
@@ -29,8 +30,11 @@ class UploadItemFormViewController:UIViewController{
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var priceButton: UIButton!
     
+
     
+
     
     
     
@@ -69,6 +73,34 @@ extension UploadItemFormViewController:ImagePickerDelegate{
         
     }
 }
+
+
+
+
+
+
+//Price Stuff
+
+extension UploadItemFormViewController{
+    @IBAction func priceButtonPressed(_ sender: UIButton) {
+        let screenSize: CGRect = UIScreen.main.bounds
+        let width = ModalSize.fluid(percentage: 0.7)
+        let height = ModalSize.fluid(percentage: 0.3)
+        let center = ModalCenterPosition.center
+        
+        let presentationType = PresentationType.custom(width: width, height: height, center: center
+        )
+        let dynamicSizePresenter = Presentr(presentationType: presentationType)
+        let dynamicVC = storyboard!.instantiateViewController(withIdentifier: "DynamicViewController")
+//        rdynamicSizePresenter.presentationType = .popup
+        customPresentViewController(dynamicSizePresenter, viewController: dynamicVC, animated: true, completion: nil)
+
+    }
+
+    
+}
+
+
 
 
 

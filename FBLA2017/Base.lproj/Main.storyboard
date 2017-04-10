@@ -74,7 +74,7 @@
         <scene sceneID="ioN-8i-ABw">
             <objects>
                 <collectionViewController id="Hei-X5-zUt" customClass="ImageCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tlf-oa-1iS">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="tlf-oa-1iS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -137,7 +137,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrY-Gw-eKo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Browse" id="DNw-Mh-nZ5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQ1-gj-fih">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dQ1-gj-fih">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -241,6 +241,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTI-qV-5BM">
                                         <rect key="frame" x="296" y="46" width="32" height="30"/>
                                         <state key="normal" title="Cost"/>
+                                        <connections>
+                                            <action selector="priceButtonPressed:" destination="vv6-O7-CX8" eventType="touchUpInside" id="F8R-aZ-Oj0"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sq6-zp-Lr4">
                                         <rect key="frame" x="8" y="234" width="103" height="28"/>
@@ -347,12 +350,43 @@
                         <outlet property="conditionSlider" destination="3ai-kc-Mhd" id="jqC-jc-8lD"/>
                         <outlet property="descriptionTextView" destination="VRj-Wj-nHS" id="Y8F-9h-uB9"/>
                         <outlet property="locationButton" destination="h8O-iw-6IF" id="5ip-R0-M1M"/>
+                        <outlet property="priceButton" destination="gTI-qV-5BM" id="aIV-7b-hhX"/>
                         <outlet property="titleTextField" destination="2Ld-fi-t6u" id="Ey3-PW-9j5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uq6-bw-bp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2124" y="246.9265367316342"/>
+        </scene>
+        <!--Enter Price Popover View Controller-->
+        <scene sceneID="5aR-oj-A9D">
+            <objects>
+                <viewController storyboardIdentifier="DynamicViewController" id="0Pf-hj-cNA" customClass="EnterPricePopoverViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eSR-eC-ioF"/>
+                        <viewControllerLayoutGuide type="bottom" id="h3K-U4-1f3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EAz-Pf-i2S">
+                        <rect key="frame" x="0.0" y="0.0" width="230" height="150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBq-rl-OhI">
+                                <rect key="frame" x="41" y="20" width="149" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99955970049999998" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="230" height="150"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="loM-Db-Zh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2835.1999999999998" y="293.25337331334333"/>
         </scene>
     </scenes>
     <resources>

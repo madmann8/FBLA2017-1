@@ -18,6 +18,7 @@
 		481DD8D41E98354E005765AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D21E98354E005765AF /* Main.storyboard */; };
 		481DD8D61E98354E005765AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D51E98354E005765AF /* Assets.xcassets */; };
 		481DD8D91E98354E005765AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D71E98354E005765AF /* LaunchScreen.storyboard */; };
+		485A02201E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */; };
 		48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */; };
 		48AE1C7C1E99D784007B8AC6 /* SelectPhotosToUploadCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE1C7B1E99D784007B8AC6 /* SelectPhotosToUploadCollectionViewController.swift */; };
 		48AE1C7F1E99D7F6007B8AC6 /* UploadItemFormPhotoCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE1C7D1E99D7F6007B8AC6 /* UploadItemFormPhotoCellCollectionViewCell.swift */; };
@@ -40,6 +41,7 @@
 		481DD8D51E98354E005765AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		481DD8D81E98354E005765AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		481DD8DA1E98354E005765AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPricePopoverViewController.swift; sourceTree = "<group>"; };
 		48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UploadItemFormViewController.swift; path = ../UploadItemFormViewController.swift; sourceTree = "<group>"; };
 		48AE1C7B1E99D784007B8AC6 /* SelectPhotosToUploadCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPhotosToUploadCollectionViewController.swift; sourceTree = "<group>"; };
 		48AE1C7D1E99D7F6007B8AC6 /* UploadItemFormPhotoCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadItemFormPhotoCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -93,7 +95,6 @@
 		481DD8CB1E98354E005765AF /* FBLA2017 */ = {
 			isa = PBXGroup;
 			children = (
-				48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */,
 				4815FF501E9958110018FA30 /* Flickr */,
 				481DD8CC1E98354E005765AF /* AppDelegate.swift */,
 				481DD8D01E98354E005765AF /* SecondViewController.swift */,
@@ -108,6 +109,8 @@
 				48AE1C7B1E99D784007B8AC6 /* SelectPhotosToUploadCollectionViewController.swift */,
 				48AE1C7D1E99D7F6007B8AC6 /* UploadItemFormPhotoCellCollectionViewCell.swift */,
 				4808B9BA1E9B0D2400BF1181 /* FontLoader.swift */,
+				485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */,
+				48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */,
 			);
 			path = FBLA2017;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				481DD8D11E98354E005765AF /* SecondViewController.swift in Sources */,
 				4815FF541E9958240018FA30 /* Flickr.swift in Sources */,
 				48D356451E99A2E400FBF6B3 /* CameraViewController.swift in Sources */,
+				485A02201E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift in Sources */,
 				4815FF551E9958240018FA30 /* FlickrPhoto.swift in Sources */,
 				481DD8CD1E98354E005765AF /* AppDelegate.swift in Sources */,
 			);
