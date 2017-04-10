@@ -18,7 +18,14 @@ import Presentr
 
 class UploadItemFormViewController:UIViewController{
     
-    var images:[UIImage] = []
+    var images:[UIImage]? = nil
+    var cents:Int?=nil
+    var descrption:String?=nil
+    var condition:Int?=nil
+    
+    
+    
+    
     var imagePickerController = ImagePickerController()
     var hasSetupImagePicker=false
     
@@ -31,12 +38,10 @@ class UploadItemFormViewController:UIViewController{
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var priceButton: UIButton!
+    @IBOutlet weak var conditionLabel: UILabel!
+    
     
 
-    
-
-    
-    
     
 }
 
@@ -81,7 +86,7 @@ extension UploadItemFormViewController:ImagePickerDelegate{
 
 //Price Stuff
 
-extension UploadItemFormViewController{
+extension UploadItemFormViewController:EnterPriceDelegate{
     @IBAction func priceButtonPressed(_ sender: UIButton) {
         let screenSize: CGRect = UIScreen.main.bounds
         let width = ModalSize.fluid(percentage: 0.7)
@@ -91,14 +96,60 @@ extension UploadItemFormViewController{
         let presentationType = PresentationType.custom(width: width, height: height, center: center
         )
         let dynamicSizePresenter = Presentr(presentationType: presentationType)
-        let dynamicVC = storyboard!.instantiateViewController(withIdentifier: "DynamicViewController")
+        let dynamicVC = storyboard!.instantiateViewController(withIdentifier: "DynamicViewController") as! EnterPricePopoverViewController
 //        rdynamicSizePresenter.presentationType = .popup
+        dynamicVC.delegate=self
         customPresentViewController(dynamicSizePresenter, viewController: dynamicVC, animated: true, completion: nil)
 
+    }
+    
+    func retrievePrice(price: Int) {
+        self.cents=price
     }
 
     
 }
+
+
+
+
+//Description Stuff
+extension UploadItemFormViewController:UITextViewDelegate{
+    func textViewDidEndEditing(_ textView: UITextView) {
+        descrption=textView.text
+    }
+}
+
+
+//Condition Stuff
+
+
+extension UploadItemFormViewController{
+    @IBAction func conditionSliderDidChange(_ sender: UISlider) {
+        let step:Float=1
+        let roundedValue = round(sender.value / step) * step
+        sender.value = roundedValue
+        conditionLabel.text=String(Int(roundedValue))
+        self.condition=Int(roundedValue)
+    }
+    
+}
+
+
+extension
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -40,6 +40,31 @@ class EnterPricePopoverViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func okButtonPressed(_ sender: Any) {
+        let textView=self.moneyTextBox
+        if let text=textView?.text{
+            if !text.isEmpty{
+                print(text)
+                let components = text.components(separatedBy: NSCharacterSet.decimalDigits.inverted)
+                var part = components.joined(separator: "")
+                part=part.trimmingCharacters(in: .whitespacesAndNewlines)
+                print(part.characters.endIndex)
+                var cents:String=String(part.remove(at: part.index(part.endIndex, offsetBy: -1)))
+                cents+=String(part.remove(at: part.index(part.endIndex, offsetBy: -1)))
+                cents=String(cents.characters.reversed())
+                if let dollarVal = Int(part) {
+                    if let centVal=Int(cents){
+                        self.delegate?.retrievePrice(price: centVal+(dollarVal*100))
+                    }
+                }
+            }
+        }
+        dismiss(animated: true, completion: nil)
+
+    }
     
 }
 
@@ -48,19 +73,7 @@ extension EnterPricePopoverViewController: UITextViewDelegate{
         if let amountString = textView.text?.currencyInputFormatting() {
             textView.text = amountString
         }
-//        let exludedSymbols=[",","$","."]
-        let charSet=CharacterSet(charactersIn: "$")
-        let result=textView.text.trimmingCharacters(in: charSet)
-        print(result)
-//        if let text=textView.text{
-//            for  i in 0...text.characters.count{
-//                let str = Array(text.characters).flatMap { $0 as? String }
-//                if exludedSymbols.contains(str[0]){
-//                   textView.text.characters.remove(at: i)
-//                }
-//        }
-//        }
-    }
+            }
 }
 
 
