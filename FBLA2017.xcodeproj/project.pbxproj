@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4808B9BB1E9B0D2400BF1181 /* FontLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808B9BA1E9B0D2400BF1181 /* FontLoader.swift */; };
 		4815FF4F1E99549B0018FA30 /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815FF4E1E99549B0018FA30 /* ImageCollectionViewController.swift */; };
 		4815FF541E9958240018FA30 /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815FF511E9958240018FA30 /* Flickr.swift */; };
 		4815FF551E9958240018FA30 /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815FF521E9958240018FA30 /* FlickrPhoto.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4808B9BA1E9B0D2400BF1181 /* FontLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontLoader.swift; sourceTree = "<group>"; };
 		4815FF4E1E99549B0018FA30 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 		4815FF511E9958240018FA30 /* Flickr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
 		4815FF521E9958240018FA30 /* FlickrPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrPhoto.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				48D356461E99B3D100FBF6B3 /* TabBarController.swift */,
 				48AE1C7B1E99D784007B8AC6 /* SelectPhotosToUploadCollectionViewController.swift */,
 				48AE1C7D1E99D7F6007B8AC6 /* UploadItemFormPhotoCellCollectionViewCell.swift */,
+				4808B9BA1E9B0D2400BF1181 /* FontLoader.swift */,
 			);
 			path = FBLA2017;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			files = (
 				48AE1C7C1E99D784007B8AC6 /* SelectPhotosToUploadCollectionViewController.swift in Sources */,
 				4815FF581E99649B0018FA30 /* PhotoCell.swift in Sources */,
+				4808B9BB1E9B0D2400BF1181 /* FontLoader.swift in Sources */,
 				4815FF4F1E99549B0018FA30 /* ImageCollectionViewController.swift in Sources */,
 				48AE1C7F1E99D7F6007B8AC6 /* UploadItemFormPhotoCellCollectionViewCell.swift in Sources */,
 				48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */,

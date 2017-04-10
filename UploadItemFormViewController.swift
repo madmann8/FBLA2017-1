@@ -13,60 +13,60 @@
 import Foundation
 import UIKit
 import ImagePicker
+import ChameleonFramework
 
 class UploadItemFormViewController:UIViewController{
     
     var images:[UIImage] = []
-    let imagePickerController = ImagePickerController()
+    var imagePickerController = ImagePickerController()
+    var hasSetupImagePicker=false
     
     
-    @IBOutlet weak var addPhoto1: UIImageView!
-    @IBOutlet weak var addPhoto2: UIImageView!
-    @IBOutlet weak var addPhoto3: UIImageView!
-    @IBOutlet weak var addButton1: UIButton!
-    @IBOutlet weak var addButton2: UIButton!
-    @IBOutlet weak var addButton3: UIButton!
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var conditionSlider: UISlider!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var addPhotoButton: UIButton!
     
-    override func viewDidLoad() {
-        addPhoto1.roundCornersForAspectFit(radius: 6)
-        addPhoto2.roundCornersForAspectFit(radius: 6)
-        addPhoto3.roundCornersForAspectFit(radius: 6)
-    }
     
-
+    
+    
+    
 }
 
 //IMAGE STUFF
 extension UploadItemFormViewController:ImagePickerDelegate{
-
-    @IBAction func addButton1Pressed(_ sender: UIButton) {
-        print(sender.titleLabel)
-        self.imagePickerController.delegate = self
+    
+    
+    
+    @IBAction func addPhotoButtonPressed(_ sender: UIButton) {
+        if !hasSetupImagePicker{
+            var configuration = Configuration()
+            configuration.backgroundColor=UIColor.flatBlue
+            configuration.recordLocation = false
+//            configuration.
+            self.imagePickerController = ImagePickerController(configuration: configuration)
+            self.imagePickerController.delegate = self
+            hasSetupImagePicker=true
+        }
         self.present(self.imagePickerController, animated: true, completion: nil)
-
     }
-    
-    @IBAction func addButton2Pressed(_ sender: UIButton) {
-    }
-    
-    @IBAction func addButton3Pressed(_ sender: UIButton) {
-    }
+    //
     
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         //
     }
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        print("Here")
         imagePicker.dismiss(animated: true, completion: nil)
+        self.images=images
         //
     }
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-                imagePicker.dismiss(animated: true, completion: nil)
-
+        imagePicker.dismiss(animated: true, completion: nil)
+        
     }
 }
 
