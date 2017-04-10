@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Money
+import Format
 
 protocol EnterPriceDelegate {
     func retrievePrice(price: Int)
@@ -45,9 +45,10 @@ class EnterPricePopoverViewController: UIViewController {
 extension EnterPricePopoverViewController: UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         let charlessString=textView.text.trimmingCharacters(in: CharacterSet(charactersIn: "01234567890.").inverted)
-        let charlessInt=Int(charlessString)!
-        let money:Money=Money(charlessInt)
+        if let charlessInt=Int(charlessString){
         delegate?.retrievePrice(price: charlessInt)
-        textView.text=money.formatted(withStyle: .currency)
+            print(charlessInt)
+        textView.text=charlessInt.format(Currency.USD)
+        }
     }
 }
