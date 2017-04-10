@@ -25,4 +25,4 @@
 // provided that it has both the GoogleMaps SDK for iOS and the Places API for iOS enabled in the
 // developer console. If you do have separate keys for the two APIs you can provide these here.
 internal let kPlacesAPIKey = "AIzaSyCz9-_-huWNRo8Wmep-KWn8QF0ET0fRCxQ"
-internal let kMapsAPIKey = "AIzaSyCz9-_-huWNRo8Wmep-KWn8QF0ET0fRCxQ"
+internal let kMapsAPIKey = "AIzaSyD3kQqtm68CAOmSqQaCQvBVt5x80yX4zBQ"

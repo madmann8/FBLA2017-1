@@ -28,7 +28,7 @@ class UploadItemFormViewController:UIViewController{
     var condition:Int?=nil
     
     
-    
+     var placePicker: GMSPlacePicker?
     var placesClient: GMSPlacesClient!
     var imagePickerController = ImagePickerController()
     var hasSetupImagePicker=false
@@ -146,28 +146,38 @@ extension UploadItemFormViewController{
 extension UploadItemFormViewController{
     
     @IBAction func selectLocationButtonPressed(_ sender: UIButton) {
-        let center = CLLocationCoordinate2D(latitude: 37.788204, longitude: -122.411937)
-        let northEast = CLLocationCoordinate2D(latitude: center.latitude + 0.001, longitude: center.longitude + 0.001)
-        let southWest = CLLocationCoordinate2D(latitude: center.latitude - 0.001, longitude: center.longitude - 0.001)
-        let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
-        let config = GMSPlacePickerConfig(viewport: viewport)
+        // Create a place picker.
+        let config = GMSPlacePickerConfig(viewport: nil)
         let placePicker = GMSPlacePicker(config: config)
         
-        placePicker.pickPlace(callback: {(place, error) -> Void in
-            if let error = error {
-                print("Pick Place error: \(error.localizedDescription)")
-                return
+        // Present it fullscreen.
+        placePicker.pickPlace { (place, error) in
+            
+            // Handle the selection if it was successful.
+            if let place = place {
+                // Create the next view controller we are going to display and present it.
+//                let nextScreen = PlaceDetailViewController(place: place)
+//                self.splitPaneViewController?.push(viewController: nextScreen, animated: false)
+//                self.mapViewController?.coordinate = place.coordinate
+            } else if error != nil {
+                // In your own app you should handle this better, but for the demo we are just going to log
+                // a message.
+                for ac:GMSAddressComponent in (place?.addressComponents)!{
+                    print(ac.name)
+                }
+                NSLog("An error occurred while picking a place: \(error)")
+            } else {
+                NSLog("Looks like the place picker was canceled by the user")
             }
             
-            if let place = place {
-//                self.nameLabel.text = place.name
-//                self.addressLabel.text = place.formattedAddress?.components(separatedBy: ", ")
-//                    .joined(separator: "\n")
-            } else {
-//                self.nameLabel.text = "No place selected"
-//                self.addressLabel.text = ""
-8            }
-        })
+            // Release the reference to the place picker, we don't need it anymore and it can be freed.
+            self.placePicker = nil
+        }
+        
+        // Store a reference to the place picker until it's finished picking. As specified in the docs
+        // we have to hold onto it otherwise it will be deallocated before it can return us a result.
+        self.placePicker = placePicker
+
     }
 }
 
