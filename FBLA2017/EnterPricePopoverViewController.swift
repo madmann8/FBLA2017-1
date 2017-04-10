@@ -6,13 +6,8 @@
 //  Copyright © 2017 Luke Mann. All rights reserved.
 //
 
-
-
-
 import UIKit
-
-
-
+import Money
 
 protocol EnterPriceDelegate {
     func retrievePrice(price: Int)
@@ -20,17 +15,11 @@ protocol EnterPriceDelegate {
 
 class EnterPricePopoverViewController: UIViewController {
 
-    var amount: Int { return moneyTextBox.string.digits.integer }
-
     @IBOutlet weak var moneyTextBox: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.blue
         moneyTextBox.delegate=self
-        moneyTextBox.textAlignment = .right
-        moneyTextBox.keyboardType = .numberPad
-        moneyTextBox.text=Formatter.decimal.string(from: amount as NSNumber)
-        
         // Do any additional setup after loading the view.
     }
 
@@ -55,35 +44,10 @@ class EnterPricePopoverViewController: UIViewController {
 
 extension EnterPricePopoverViewController: UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
-        textView.text=Formatter.decimal.string(from: amount as NSNumber)
+        let charlessString=textView.text.trimmingCharacters(in: CharacterSet(charactersIn: "01234567890.").inverted)
+        let charlessInt=Int(charlessString)!
+        let money:Money=Money(charlessInt)
+        delegate?.retrievePrice(price: charlessInt)
+        textView.text=money.formatted(withStyle: .currency)
     }
-}
-
-
-
-extension UITextView {
-    var string: String { return text ?? "" }
-}
-
-extension NumberFormatter {
-    convenience init(numberStyle: NumberFormatter.Style) {
-        self.init()
-        self.numberStyle = numberStyle
-    }
-}
-struct Formatter {
-    static let decimal = NumberFormatter(numberStyle: .decimal)
-}
-
-
-extension String {
-    private static var digitsPattern = UnicodeScalar("0")..."9"
-    var digits: String {
-        return unicodeScalars.filter { String.digitsPattern ~= $0 }.string
-    }
-    var integer: Int { return Int(self) ?? 0 }
-}
-
-extension Sequence where Iterator.Element == UnicodeScalar {
-    var string: String { return String(String.UnicodeScalarView(self)) }
 }
