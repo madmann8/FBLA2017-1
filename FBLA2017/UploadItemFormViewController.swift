@@ -153,26 +153,23 @@ extension UploadItemFormViewController{
         let config = GMSPlacePickerConfig(viewport: viewport)
         let placePicker = GMSPlacePicker(config: config)
         
-        placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
-            if let error = error{
-                print("Google Places Closure Error: \(error)")
+        placePicker.pickPlace(callback: {(place, error) -> Void in
+            if let error = error {
+                print("Pick Place error: \(error.localizedDescription)")
+                return
             }
             
-            self.locationButton.titleLabel?.text="No current place"
-            
-        
-            if let placeLikelihoodList = placeLikelihoodList {
-                    let place=placeLikelihoodList.likelihoods.first?.place
-                if let place = place {
-                    self.locationButton.titleLabel?.text=place.name
-                }
-            }
+            if let place = place {
+//                self.nameLabel.text = place.name
+//                self.addressLabel.text = place.formattedAddress?.components(separatedBy: ", ")
+//                    .joined(separator: "\n")
+            } else {
+//                self.nameLabel.text = "No place selected"
+//                self.addressLabel.text = ""
+8            }
         })
     }
 }
-
-
-
 
 
 
