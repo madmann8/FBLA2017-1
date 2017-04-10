@@ -46,6 +46,7 @@ extension EnterPricePopoverViewController: UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         let charlessString=textView.text.trimmingCharacters(in: CharacterSet(charactersIn: "01234567890.").inverted)
         if let charlessInt=Int(charlessString){
+            //APP NOT GOING INTO HERE
         delegate?.retrievePrice(price: charlessInt)
             print(charlessInt)
         textView.text=charlessInt.format(Currency.USD)
