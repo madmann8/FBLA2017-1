@@ -10,6 +10,7 @@ pod 'ImagePicker'
 pod 'Presentr'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 pod ‘Format’
+pod 'NVActivityIndicatorView'
 
 pod 'Firebase/Core'
 pod 'Firebase/Database'

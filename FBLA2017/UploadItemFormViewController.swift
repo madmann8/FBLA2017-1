@@ -17,7 +17,9 @@ import Presentr
 import CoreLocation
 import DropDown
 import GSMessages
+import NVActivityIndicatorView
 import Firebase
+import FirebaseStorage
 
 
 
@@ -26,7 +28,7 @@ import Firebase
 class UploadItemFormViewController:UIViewController{
     let pickerView:DropDown=DropDown()
     var hasSetup=false
-
+    
     
     let categories = ["test1", "test2", "test3", "test4", "test5"]
     
@@ -38,11 +40,11 @@ class UploadItemFormViewController:UIViewController{
     var locationString:String?=nil
     var locationLatitude:String?=nil
     var locationLongitude:String?=nil
-
+    
     var category:String?=nil
     
     var ref: FIRDatabaseReference!
-
+    
     
     
     var imagePickerController = ImagePickerController()
@@ -65,7 +67,7 @@ class UploadItemFormViewController:UIViewController{
         descriptionTextView.delegate=self
         titleTextField.delegate=self
         ref = FIRDatabase.database().reference()
-
+        
     }
     
     
@@ -173,7 +175,7 @@ extension UploadItemFormViewController:SelectLocationProtocol{
         self.locationLongitude=longitude
         self.locationString=addressString
     }
-
+    
     
     @IBAction func locationButtonPressed(_ sender: UIButton) {
         let vc = storyboard!.instantiateViewController(withIdentifier: "SelectLocationViewController") as! SelectLocationViewController
@@ -181,7 +183,7 @@ extension UploadItemFormViewController:SelectLocationProtocol{
         present(vc, animated: true, completion: nil)
         
     }
-
+    
 }
 
 
@@ -190,7 +192,7 @@ extension UploadItemFormViewController:SelectLocationProtocol{
 
 // Category Stuff
 extension UploadItemFormViewController {
-
+    
     @IBAction func categoryButtonPressed(_ sender: UIButton) {
         print("HERE")
         if (!hasSetup){
@@ -213,7 +215,9 @@ extension UploadItemFormViewController {
 //Upload Stuff
 extension UploadItemFormViewController{
     @IBAction func uploadButtonPressed(_ sender: UIButton) {
+        var missingData=false
         if (images==nil || name==nil || cents==nil || about==nil || condition==nil || locationString==nil || category==nil) {
+            missingData=true
             if images==nil {
                 self.showMessage("Missing images", type: .error)
             }
@@ -236,27 +240,64 @@ extension UploadItemFormViewController{
                 self.showMessage("Missing category", type: .error)
             }
         }
-        let itemRef=self.ref.child("items").childByAutoId()
-    
-        itemRef.child("title").setValue(self.name)
-        itemRef.child("cents").setValue(self.cents)
-        itemRef.child("about").setValue(self.about)
-        itemRef.child("condition").setValue(self.condition)
-        itemRef.child("locationString").setValue(self.locationString)
-        itemRef.child("locationLatitude").setValue(self.locationLatitude)
-        itemRef.child("locationLongitude").setValue(self.locationLongitude)
-        itemRef.child("category").setValue(category)
         
-        let autoID=itemRef.key
+        if !missingData{
+            let itemRef=self.ref.child("items").childByAutoId()
+            
+            itemRef.child("title").setValue(self.name)
+            itemRef.child("cents").setValue(self.cents)
+            itemRef.child("about").setValue(self.about)
+            itemRef.child("condition").setValue(self.condition)
+            itemRef.child("locationString").setValue(self.locationString)
+            itemRef.child("locationLatitude").setValue(self.locationLatitude)
+            itemRef.child("locationLongitude").setValue(self.locationLongitude)
+            itemRef.child("category").setValue(category)
+            
+            let autoID=itemRef.key
+            
+            let storage = FIRStorage.storage()
+            let storageRef = storage.reference()
+            let uniqueItemImageRef = storageRef.child("itemImages/\(autoID)")
+            var i = 0
+            
 
-        let storage = FIRStorage.storage()
-        let storageRef = storage.reference()
-        let imagesRef = storageRef.child("itemImages")
-        let uniqueItemImageRef = storageRef.child("itemImages/\(key).jpg")
-
+        let cellWidth = Int(self.view.frame.width / CGFloat(4))
+        let cellHeight = Int(self.view.frame.height / CGFloat(8))
+        let x=Int(self.view.frame.width/2)-cellWidth/2
+        let y=Int(self.view.frame.height/2)-cellWidth/2
+        let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
+        let activityIndicator=NVActivityIndicatorView(frame: frame, type: .pacman, color: UIColor.red, padding: nil)
+        activityIndicator.startAnimating()
+        
+        
+        
+        self.view.addSubview(activityIndicator)
+            for image in self.images!{
+                let imageNumberRef=uniqueItemImageRef.child("\(i).jpg")
+                print(activityIndicator.isAnimating)
+                i+=1
+                let imageData=UIImagePNGRepresentation(image)
+                let uploadTask = imageNumberRef.put(imageData!, metadata: nil) { (metadata, error) in
+                    guard let metadata = metadata else {
+                        // Uh-oh, an error occurred!
+                        return
+                    }
+                    if i==self.images?.count{
+                        activityIndicator.stopAnimating()
+                    }
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    let downloadURL = metadata.downloadURL
+                    print("Download URLLL: \(downloadURL)")
+                }
+                
+            }
+        
+        itemRef.child("imagesString").setValue("\(uniqueItemImageRef)")
+            
+            
+        }
 
         
-
     }
 }
 
