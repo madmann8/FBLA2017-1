@@ -7,8 +7,7 @@
 //
 
 
-//On the next episode: We'll make the image buttons into one and connect ImagePicker to the rest of the app
-
+//On the next episode: We'll shoot everything throught the interwebs into Google's servers
 
 import Foundation
 import UIKit
