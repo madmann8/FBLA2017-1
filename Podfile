@@ -12,5 +12,7 @@ pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chamel
 pod ‘Format’
 
 pod 'Firebase/Core'
+pod 'Firebase/Database'
+pod 'Firebase/Storage'
 
 end

@@ -12,7 +12,8 @@ import CoreLocation
 
 
 protocol SelectLocationProtocol {
-    func recieveLocation(location: CLLocation,addressString: String)
+    func recieveLocation(latitude: String, longitude:String, addressString: String)
+
 }
 
 
@@ -109,8 +110,10 @@ extension SelectLocationViewController:MKMapViewDelegate{
     }
     
     @IBAction func setLocationButtonPressed(_ sender: UIButton) {
-        let location = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        self.delgate?.recieveLocation(location: location, addressString: self.address.text!)
+//        let location = CLLocation(latitude: mapView.centerCoordinate.latitude., longitude: mapView.centerCoordinate.longitude)
+        var latitudeText:String = "\(mapView.centerCoordinate.latitude)"
+        var longitudeText:String = "\(mapView.centerCoordinate.longitude)"
+        self.delgate?.recieveLocation(latitude: latitudeText, longitude:longitudeText, addressString: self.address.text!)
         dismiss(animated: true, completion: nil)
     }
 }

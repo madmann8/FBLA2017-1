@@ -17,6 +17,7 @@ import Presentr
 import CoreLocation
 import DropDown
 import GSMessages
+import Firebase
 
 
 
@@ -25,6 +26,7 @@ import GSMessages
 class UploadItemFormViewController:UIViewController{
     let pickerView:DropDown=DropDown()
     var hasSetup=false
+
     
     let categories = ["test1", "test2", "test3", "test4", "test5"]
     
@@ -33,8 +35,14 @@ class UploadItemFormViewController:UIViewController{
     var cents:Int?=nil
     var about:String?=nil
     var condition:Int?=nil
-    var location:CLLocation?=nil
+    var locationString:String?=nil
+    var locationLatitude:String?=nil
+    var locationLongitude:String?=nil
+
     var category:String?=nil
+    
+    var ref: FIRDatabaseReference!
+
     
     
     var imagePickerController = ImagePickerController()
@@ -56,6 +64,8 @@ class UploadItemFormViewController:UIViewController{
     override func viewDidLoad() {
         descriptionTextView.delegate=self
         titleTextField.delegate=self
+        ref = FIRDatabase.database().reference()
+
     }
     
     
@@ -157,6 +167,13 @@ extension UploadItemFormViewController{
 
 //Location Stuff
 extension UploadItemFormViewController:SelectLocationProtocol{
+    func recieveLocation(latitude: String, longitude: String, addressString: String) {
+        self.locationButton.setTitle(addressString, for: .normal)
+        self.locationLatitude=latitude
+        self.locationLongitude=longitude
+        self.locationString=addressString
+    }
+
     
     @IBAction func locationButtonPressed(_ sender: UIButton) {
         let vc = storyboard!.instantiateViewController(withIdentifier: "SelectLocationViewController") as! SelectLocationViewController
@@ -164,18 +181,7 @@ extension UploadItemFormViewController:SelectLocationProtocol{
         present(vc, animated: true, completion: nil)
         
     }
-    
-    
-    
-    
-    func recieveLocation(location: CLLocation,addressString:String) {
-        
-        print(addressString)
-        
-        self.locationButton.setTitle(addressString, for: .normal)
-        
-        self.location=location
-    }
+
 }
 
 
@@ -184,9 +190,7 @@ extension UploadItemFormViewController:SelectLocationProtocol{
 
 // Category Stuff
 extension UploadItemFormViewController {
-    
-    
-    
+
     @IBAction func categoryButtonPressed(_ sender: UIButton) {
         print("HERE")
         if (!hasSetup){
@@ -209,7 +213,7 @@ extension UploadItemFormViewController {
 //Upload Stuff
 extension UploadItemFormViewController{
     @IBAction func uploadButtonPressed(_ sender: UIButton) {
-        if (images==nil || name==nil || cents==nil || about==nil || condition==nil || location==nil || category==nil) {
+        if (images==nil || name==nil || cents==nil || about==nil || condition==nil || locationString==nil || category==nil) {
             if images==nil {
                 self.showMessage("Missing images", type: .error)
             }
@@ -225,13 +229,34 @@ extension UploadItemFormViewController{
             if condition==nil{
                 self.showMessage("Missing condition", type: .error)
             }
-            if location==nil{
+            if locationString==nil{
                 self.showMessage("Missing location", type: .error)
             }
             if category==nil{
                 self.showMessage("Missing category", type: .error)
             }
         }
+        let itemRef=self.ref.child("items").childByAutoId()
+    
+        itemRef.child("title").setValue(self.name)
+        itemRef.child("cents").setValue(self.cents)
+        itemRef.child("about").setValue(self.about)
+        itemRef.child("condition").setValue(self.condition)
+        itemRef.child("locationString").setValue(self.locationString)
+        itemRef.child("locationLatitude").setValue(self.locationLatitude)
+        itemRef.child("locationLongitude").setValue(self.locationLongitude)
+        itemRef.child("category").setValue(category)
+        
+        let autoID=itemRef.key
+
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference()
+        let imagesRef = storageRef.child("itemImages")
+        let uniqueItemImageRef = storageRef.child("itemImages/\(key).jpg")
+
+
+        
+
     }
 }
 
