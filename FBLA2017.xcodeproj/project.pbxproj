@@ -12,7 +12,6 @@
 		4815FF541E9958240018FA30 /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815FF511E9958240018FA30 /* Flickr.swift */; };
 		4815FF551E9958240018FA30 /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815FF521E9958240018FA30 /* FlickrPhoto.swift */; };
 		4815FF561E9958240018FA30 /* FlickrSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815FF531E9958240018FA30 /* FlickrSearchResults.swift */; };
-		4815FF581E99649B0018FA30 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815FF571E99649A0018FA30 /* PhotoCell.swift */; };
 		481DD8CD1E98354E005765AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DD8CC1E98354E005765AF /* AppDelegate.swift */; };
 		481DD8D11E98354E005765AF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DD8D01E98354E005765AF /* SecondViewController.swift */; };
 		481DD8D41E98354E005765AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D21E98354E005765AF /* Main.storyboard */; };
@@ -22,10 +21,10 @@
 		483D9D3B1E9C5A9500BFA619 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483D9D3A1E9C5A9500BFA619 /* MapKit.framework */; };
 		485A02201E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */; };
 		486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */; };
+		486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */; };
+		486D22301E9CA7F900EA2BDC /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 486D222F1E9CA7F900EA2BDC /* GoogleService-Info-2.plist */; };
 		489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */; };
 		48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */; };
-		48AE1C7C1E99D784007B8AC6 /* SelectPhotosToUploadCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE1C7B1E99D784007B8AC6 /* SelectPhotosToUploadCollectionViewController.swift */; };
-		48AE1C7F1E99D7F6007B8AC6 /* UploadItemFormPhotoCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE1C7D1E99D7F6007B8AC6 /* UploadItemFormPhotoCellCollectionViewCell.swift */; };
 		48D356451E99A2E400FBF6B3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D356441E99A2E400FBF6B3 /* CameraViewController.swift */; };
 		48D356471E99B3D100FBF6B3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D356461E99B3D100FBF6B3 /* TabBarController.swift */; };
 		99569F140133A95F709CE436 /* Pods_FBLA2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40F4BFEA70DF778ECC2C0DA /* Pods_FBLA2017.framework */; };
@@ -37,7 +36,6 @@
 		4815FF511E9958240018FA30 /* Flickr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
 		4815FF521E9958240018FA30 /* FlickrPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrPhoto.swift; sourceTree = "<group>"; };
 		4815FF531E9958240018FA30 /* FlickrSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearchResults.swift; sourceTree = "<group>"; };
-		4815FF571E99649A0018FA30 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		481DD8C91E98354E005765AF /* FBLA2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBLA2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		481DD8CC1E98354E005765AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		481DD8D01E98354E005765AF /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -49,10 +47,10 @@
 		483D9D3A1E9C5A9500BFA619 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPricePopoverViewController.swift; sourceTree = "<group>"; };
 		486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
+		486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		486D222F1E9CA7F900EA2BDC /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
 		489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKAPIKey.swift; sourceTree = "<group>"; };
 		48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadItemFormViewController.swift; sourceTree = "<group>"; };
-		48AE1C7B1E99D784007B8AC6 /* SelectPhotosToUploadCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPhotosToUploadCollectionViewController.swift; sourceTree = "<group>"; };
-		48AE1C7D1E99D7F6007B8AC6 /* UploadItemFormPhotoCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadItemFormPhotoCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		48D356441E99A2E400FBF6B3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		48D356461E99B3D100FBF6B3 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7301597ADAFE4597967BF48A /* Pods-FBLA2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLA2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FBLA2017/Pods-FBLA2017.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +75,8 @@
 		4815FF501E9958110018FA30 /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
+				486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */,
+				4815FF4E1E99549B0018FA30 /* ImageCollectionViewController.swift */,
 				4815FF511E9958240018FA30 /* Flickr.swift */,
 				4815FF521E9958240018FA30 /* FlickrPhoto.swift */,
 				4815FF531E9958240018FA30 /* FlickrSearchResults.swift */,
@@ -105,26 +105,39 @@
 		481DD8CB1E98354E005765AF /* FBLA2017 */ = {
 			isa = PBXGroup;
 			children = (
+				486D222E1E9CA7E400EA2BDC /* Support Files */,
+				486D222B1E9CA74500EA2BDC /* Upload Form */,
 				4815FF501E9958110018FA30 /* Flickr */,
 				481DD8CC1E98354E005765AF /* AppDelegate.swift */,
 				481DD8D01E98354E005765AF /* SecondViewController.swift */,
-				481DD8D21E98354E005765AF /* Main.storyboard */,
-				4815FF571E99649A0018FA30 /* PhotoCell.swift */,
-				481DD8D51E98354E005765AF /* Assets.xcassets */,
-				481DD8D71E98354E005765AF /* LaunchScreen.storyboard */,
-				481DD8DA1E98354E005765AF /* Info.plist */,
-				4815FF4E1E99549B0018FA30 /* ImageCollectionViewController.swift */,
-				489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */,
-				48D356441E99A2E400FBF6B3 /* CameraViewController.swift */,
 				48D356461E99B3D100FBF6B3 /* TabBarController.swift */,
-				48AE1C7B1E99D784007B8AC6 /* SelectPhotosToUploadCollectionViewController.swift */,
-				48AE1C7D1E99D7F6007B8AC6 /* UploadItemFormPhotoCellCollectionViewCell.swift */,
 				4808B9BA1E9B0D2400BF1181 /* FontLoader.swift */,
+				481DD8D71E98354E005765AF /* LaunchScreen.storyboard */,
+				481DD8D21E98354E005765AF /* Main.storyboard */,
+				481DD8D51E98354E005765AF /* Assets.xcassets */,
+			);
+			path = FBLA2017;
+			sourceTree = "<group>";
+		};
+		486D222B1E9CA74500EA2BDC /* Upload Form */ = {
+			isa = PBXGroup;
+			children = (
 				485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */,
 				48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */,
 				486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */,
+				489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */,
+				48D356441E99A2E400FBF6B3 /* CameraViewController.swift */,
 			);
-			path = FBLA2017;
+			name = "Upload Form";
+			sourceTree = "<group>";
+		};
+		486D222E1E9CA7E400EA2BDC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				481DD8DA1E98354E005765AF /* Info.plist */,
+				486D222F1E9CA7F900EA2BDC /* GoogleService-Info-2.plist */,
+			);
+			name = "Support Files";
 			sourceTree = "<group>";
 		};
 		796A81E1C0759985372685B6 /* Pods */ = {
@@ -211,6 +224,7 @@
 			files = (
 				481DD8D91E98354E005765AF /* LaunchScreen.storyboard in Resources */,
 				481DD8D61E98354E005765AF /* Assets.xcassets in Resources */,
+				486D22301E9CA7F900EA2BDC /* GoogleService-Info-2.plist in Resources */,
 				481DD8D41E98354E005765AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,11 +284,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48AE1C7C1E99D784007B8AC6 /* SelectPhotosToUploadCollectionViewController.swift in Sources */,
-				4815FF581E99649B0018FA30 /* PhotoCell.swift in Sources */,
+				486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */,
 				4808B9BB1E9B0D2400BF1181 /* FontLoader.swift in Sources */,
 				4815FF4F1E99549B0018FA30 /* ImageCollectionViewController.swift in Sources */,
-				48AE1C7F1E99D7F6007B8AC6 /* UploadItemFormPhotoCellCollectionViewCell.swift in Sources */,
 				48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */,
 				4815FF561E9958240018FA30 /* FlickrSearchResults.swift in Sources */,
 				489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */,
