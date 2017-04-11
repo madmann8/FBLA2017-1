@@ -91,22 +91,18 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ChameleonFramework/ChameleonFramework.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DropDown/DropDown.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Font-Awesome-Swift/Font_Awesome_Swift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Format/Format.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GSMessages/GSMessages.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ImagePicker/ImagePicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Presentr/Presentr.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/STLocationRequest/STLocationRequest.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ChameleonFramework/ChameleonFramework.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DropDown/DropDown.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Font-Awesome-Swift/Font_Awesome_Swift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Format/Format.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GSMessages/GSMessages.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ImagePicker/ImagePicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Presentr/Presentr.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/STLocationRequest/STLocationRequest.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

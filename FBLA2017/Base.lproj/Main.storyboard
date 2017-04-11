@@ -331,7 +331,7 @@
                                 <rect key="frame" x="166" y="547" width="50" height="30"/>
                                 <state key="normal" title="Upload"/>
                                 <connections>
-                                    <action selector="uploadButtonPressed:" destination="vv6-O7-CX8" eventType="touchUpInside" id="vKl-Nf-SYb"/>
+                                    <action selector="uploadButtonPressed:" destination="vv6-O7-CX8" eventType="touchUpInside" id="jnx-LA-uGp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yas-XQ-Scg">

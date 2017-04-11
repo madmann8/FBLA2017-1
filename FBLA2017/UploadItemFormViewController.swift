@@ -22,16 +22,17 @@ import GSMessages
 
 
 
+
 class UploadItemFormViewController:UIViewController{
     let pickerView:DropDown=DropDown()
     var hasSetup=false
-
-    let categories = ["test1", "test2", "test3", "test4", "test5"]
-
     
+    let categories = ["test1", "test2", "test3", "test4", "test5"]
+    
+    var name:String?=nil
     var images:[UIImage]? = nil
     var cents:Int?=nil
-    var descrption:String?=nil
+    var about:String?=nil
     var condition:Int?=nil
     var location:CLLocation?=nil
     var category:String?=nil
@@ -51,9 +52,13 @@ class UploadItemFormViewController:UIViewController{
     @IBOutlet weak var priceButton: UIButton!
     @IBOutlet weak var conditionLabel: UILabel!
     
-   
-
-
+    
+    
+    override func viewDidLoad() {
+        descriptionTextView.delegate=self
+        titleTextField.delegate=self
+    }
+    
     
 }
 
@@ -72,6 +77,7 @@ extension UploadItemFormViewController:ImagePickerDelegate{
             self.imagePickerController.delegate = self
             hasSetupImagePicker=true
         }
+        present(imagePickerController, animated: true, completion: nil)
     }
     //
     
@@ -90,7 +96,12 @@ extension UploadItemFormViewController:ImagePickerDelegate{
 }
 
 
-
+//Title Stuff
+extension UploadItemFormViewController:UITextFieldDelegate{
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.name=textField.text
+    }
+}
 
 
 
@@ -126,7 +137,7 @@ extension UploadItemFormViewController:EnterPriceDelegate{
 //Description Stuff
 extension UploadItemFormViewController:UITextViewDelegate{
     func textViewDidEndEditing(_ textView: UITextView) {
-        descrption=textView.text
+        about=textView.text
     }
 }
 
@@ -161,7 +172,7 @@ extension UploadItemFormViewController:SelectLocationProtocol{
     func recieveLocation(location: CLLocation,addressString:String) {
         
         print(addressString)
-
+        
         self.locationButton.setTitle(addressString, for: .normal)
         
         self.location=location
@@ -189,7 +200,7 @@ extension UploadItemFormViewController {
             hasSetup=true
         }
         pickerView.show()
-    
+        
     }
 }
 
@@ -198,8 +209,30 @@ extension UploadItemFormViewController {
 
 //Upload Stuff
 extension UploadItemFormViewController{
-    if self.images==nil{
-    print("foo")
+    @IBAction func uploadButtonPressed(_ sender: UIButton) {
+        if (images==nil || name==nil || cents==nil || about==nil || condition==nil || location==nil || category==nil) {
+            if images==nil {
+                self.showMessage("Missing images", type: .error)
+            }
+            if name==nil{
+                self.showMessage("Missing name", type: .error)
+            }
+            if cents==nil{
+                self.showMessage("Missing cents", type: .error)
+            }
+            if about==nil{
+                self.showMessage("Missing about", type: .error)
+            }
+            if condition==nil{
+                self.showMessage("Missing condition", type: .error)
+            }
+            if location==nil{
+                self.showMessage("Missing location", type: .error)
+            }
+            if category==nil{
+                self.showMessage("Missing category", type: .error)
+            }
+        }
     }
 }
 
