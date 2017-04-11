@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DropDown.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Font-Awesome-Swift-Font-Awesome-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -20,6 +25,11 @@
 			<false/>
 		</dict>
 		<key>Format.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GSMessages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,7 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>175501C5003A5DBDAF86EE23F31F1712</key>
+		<key>162C249F26B9F800E66A75AAC1777DD4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +82,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5168099F2EBFC99A707C03C9EADE01A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>76BD4592010354D6C23D6ECCA20D83A8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>80A1AAD476BC6D0D87976DE91984E49D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>91FF6405F485461DD19FA8BD922241F2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,22 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>987FFFCC65D1F95A497C2AFBC697EE57</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B56990E0BF0B53F9FA9B8D63D95613AA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>BA453546C51032641C49CACBC22725EE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F7866AE5BD6D221C1E138553FD5B1C94</key>
+		<key>BC1A3F87A5C7F568C69398D1B55D522E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D0D1780C67A87BB5C4319A4418FFC372</key>
 		<dict>
 			<key>primary</key>
 			<true/>

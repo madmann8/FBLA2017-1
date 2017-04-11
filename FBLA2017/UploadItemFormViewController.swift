@@ -16,19 +16,28 @@ import ImagePicker
 import ChameleonFramework
 import Presentr
 import CoreLocation
+import DropDown
+import GSMessages
+
 
 
 
 class UploadItemFormViewController:UIViewController{
+    let pickerView:DropDown=DropDown()
+    var hasSetup=false
+
+    let categories = ["test1", "test2", "test3", "test4", "test5"]
+
     
     var images:[UIImage]? = nil
     var cents:Int?=nil
     var descrption:String?=nil
     var condition:Int?=nil
     var location:CLLocation?=nil
+    var category:String?=nil
     
     
-       var imagePickerController = ImagePickerController()
+    var imagePickerController = ImagePickerController()
     var hasSetupImagePicker=false
     
     
@@ -42,8 +51,7 @@ class UploadItemFormViewController:UIViewController{
     @IBOutlet weak var priceButton: UIButton!
     @IBOutlet weak var conditionLabel: UILabel!
     
-    override func viewDidLoad() {
-    }
+   
 
 
     
@@ -59,12 +67,11 @@ extension UploadItemFormViewController:ImagePickerDelegate{
             var configuration = Configuration()
             configuration.backgroundColor=UIColor.flatBlue
             configuration.recordLocation = false
-//            configuration.
+            //            configuration.
             self.imagePickerController = ImagePickerController(configuration: configuration)
             self.imagePickerController.delegate = self
             hasSetupImagePicker=true
         }
-        self.present(self.imagePickerController, animated: true, completion: nil)
     }
     //
     
@@ -72,7 +79,6 @@ extension UploadItemFormViewController:ImagePickerDelegate{
         //
     }
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        print("Here")
         imagePicker.dismiss(animated: true, completion: nil)
         self.images=images
         //
@@ -101,16 +107,16 @@ extension UploadItemFormViewController:EnterPriceDelegate{
         )
         let dynamicSizePresenter = Presentr(presentationType: presentationType)
         let dynamicVC = storyboard!.instantiateViewController(withIdentifier: "DynamicViewController") as! EnterPricePopoverViewController
-//        rdynamicSizePresenter.presentationType = .popup
+        //        rdynamicSizePresenter.presentationType = .popup
         dynamicVC.delegate=self
         customPresentViewController(dynamicSizePresenter, viewController: dynamicVC, animated: true, completion: nil)
-
+        
     }
     
     func retrievePrice(price: Int) {
         self.cents=price
     }
-
+    
     
 }
 
@@ -149,37 +155,15 @@ extension UploadItemFormViewController:SelectLocationProtocol{
         
     }
     
-
     
     
-    func recieveLocation(location: CLLocation) {
-        print("HERE2")
-        let geoCoder=CLGeocoder()
-        geoCoder.reverseGeocodeLocation(location, completionHandler: { (data, error) -> Void in
-            guard let placeMarks = data as [CLPlacemark]! else {
-                return
-            }
-            let loc: CLPlacemark = placeMarks[0]
-            let addressDict : [NSString:NSObject] = loc.addressDictionary as! [NSString: NSObject]
-            let addrList = addressDict["FormattedAddressLines"] as! [String]
-            if addrList.count>1{
-                let address:String? = addrList[1]
-                print("Addressss: \(address)")
-                self.locationButton.titleLabel?.text = "\(address)"
-            }
-            else {
-                if !addrList.isEmpty{
-                    let address:String? = addrList[0]
-                    self.locationButton.titleLabel?.text = address
-                }
-                else {
-                    let address="Unknown Location"
-                    self.locationButton.titleLabel?.text = address
-                }
-                
-            }
-        })
+    
+    func recieveLocation(location: CLLocation,addressString:String) {
+        
+        print(addressString)
 
+        self.locationButton.setTitle(addressString, for: .normal)
+        
         self.location=location
     }
 }
@@ -188,8 +172,36 @@ extension UploadItemFormViewController:SelectLocationProtocol{
 
 
 
+// Category Stuff
+extension UploadItemFormViewController {
+    
+    
+    
+    @IBAction func categoryButtonPressed(_ sender: UIButton) {
+        print("HERE")
+        if (!hasSetup){
+            self.pickerView.anchorView = self.categoryButton
+            self.pickerView.dataSource = ["Electronics", "Cars and Motors", "Sports and Games", "Home and Garden", "Fashion and Accessories", "Movies, Books and Music", "Other"]
+            self.pickerView.selectionAction = { [unowned self] (index: Int, item: String) in
+                self.category=item
+                self.categoryButton.setTitle(item, for: .normal)
+            }
+            hasSetup=true
+        }
+        pickerView.show()
+    
+    }
+}
 
 
+
+
+//Upload Stuff
+extension UploadItemFormViewController{
+    if self.images==nil{
+    print("foo")
+    }
+}
 
 
 
