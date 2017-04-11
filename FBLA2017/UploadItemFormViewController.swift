@@ -15,9 +15,8 @@ import UIKit
 import ImagePicker
 import ChameleonFramework
 import Presentr
-import GooglePlaces
-import GoogleMaps
-import GooglePlacePicker
+import CoreLocation
+
 
 
 class UploadItemFormViewController:UIViewController{
@@ -26,11 +25,10 @@ class UploadItemFormViewController:UIViewController{
     var cents:Int?=nil
     var descrption:String?=nil
     var condition:Int?=nil
+    var location:CLLocation?=nil
     
     
-     var placePicker: GMSPlacePicker?
-    var placesClient: GMSPlacesClient!
-    var imagePickerController = ImagePickerController()
+       var imagePickerController = ImagePickerController()
     var hasSetupImagePicker=false
     
     
@@ -45,7 +43,6 @@ class UploadItemFormViewController:UIViewController{
     @IBOutlet weak var conditionLabel: UILabel!
     
     override func viewDidLoad() {
-        placesClient = GMSPlacesClient.shared()
     }
 
 
@@ -143,41 +140,47 @@ extension UploadItemFormViewController{
 }
 
 //Location Stuff
-extension UploadItemFormViewController{
+extension UploadItemFormViewController:SelectLocationProtocol{
     
-    @IBAction func selectLocationButtonPressed(_ sender: UIButton) {
-        // Create a place picker.
-        let config = GMSPlacePickerConfig(viewport: nil)
-        let placePicker = GMSPlacePicker(config: config)
+    @IBAction func locationButtonPressed(_ sender: UIButton) {
+        let vc = storyboard!.instantiateViewController(withIdentifier: "SelectLocationViewController") as! SelectLocationViewController
+        vc.delgate=self
+        present(vc, animated: true, completion: nil)
         
-        // Present it fullscreen.
-        placePicker.pickPlace { (place, error) in
-            
-            // Handle the selection if it was successful.
-            if let place = place {
-                // Create the next view controller we are going to display and present it.
-//                let nextScreen = PlaceDetailViewController(place: place)
-//                self.splitPaneViewController?.push(viewController: nextScreen, animated: false)
-//                self.mapViewController?.coordinate = place.coordinate
-            } else if error != nil {
-                // In your own app you should handle this better, but for the demo we are just going to log
-                // a message.
-                for ac:GMSAddressComponent in (place?.addressComponents)!{
-                    print(ac.name)
-                }
-                NSLog("An error occurred while picking a place: \(error)")
-            } else {
-                NSLog("Looks like the place picker was canceled by the user")
-            }
-            
-            // Release the reference to the place picker, we don't need it anymore and it can be freed.
-            self.placePicker = nil
-        }
-        
-        // Store a reference to the place picker until it's finished picking. As specified in the docs
-        // we have to hold onto it otherwise it will be deallocated before it can return us a result.
-        self.placePicker = placePicker
+    }
+    
 
+    
+    
+    func recieveLocation(location: CLLocation) {
+        print("HERE2")
+        let geoCoder=CLGeocoder()
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (data, error) -> Void in
+            guard let placeMarks = data as [CLPlacemark]! else {
+                return
+            }
+            let loc: CLPlacemark = placeMarks[0]
+            let addressDict : [NSString:NSObject] = loc.addressDictionary as! [NSString: NSObject]
+            let addrList = addressDict["FormattedAddressLines"] as! [String]
+            if addrList.count>1{
+                let address:String? = addrList[1]
+                print("Addressss: \(address)")
+                self.locationButton.titleLabel?.text = "\(address)"
+            }
+            else {
+                if !addrList.isEmpty{
+                    let address:String? = addrList[0]
+                    self.locationButton.titleLabel?.text = address
+                }
+                else {
+                    let address="Unknown Location"
+                    self.locationButton.titleLabel?.text = address
+                }
+                
+            }
+        })
+
+        self.location=location
     }
 }
 
@@ -201,7 +204,6 @@ extension UIImageView
     {
         if let image = self.image {
             
-            //calculate drawingRect
             let boundsScale = self.bounds.size.width / self.bounds.size.height
             let imageScale = image.size.width / image.size.height
             

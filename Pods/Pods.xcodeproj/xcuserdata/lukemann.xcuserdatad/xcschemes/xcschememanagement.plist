@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Font-Awesome-Swift-Font-Awesome-Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Font-Awesome-Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Format.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,6 +44,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>STLocationRequest-STLocationRequest.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>STLocationRequest.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -42,12 +62,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3BFF9F651824EF6D7159B996DAA71D25</key>
+		<key>175501C5003A5DBDAF86EE23F31F1712</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>60D2C0DB9859F7EE0B92EDE14D37C6CF</key>
+		<key>3BFF9F651824EF6D7159B996DAA71D25</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +82,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ADA3C7B0BAF3D0D8F2387870030D064E</key>
+		<key>9735AA72928D41DB06EA697E23930C72</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>987FFFCC65D1F95A497C2AFBC697EE57</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B56990E0BF0B53F9FA9B8D63D95613AA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BA453546C51032641C49CACBC22725EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F7866AE5BD6D221C1E138553FD5B1C94</key>
 		<dict>
 			<key>primary</key>
 			<true/>

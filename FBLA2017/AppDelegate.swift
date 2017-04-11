@@ -7,10 +7,7 @@
 //
 
 import UIKit
-import GooglePlaces
-import GooglePlacePicker
-import GoogleMapsCore
-import GoogleMaps
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,9 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window?.tintColor=themeColor
         
-        GMSPlacesClient.provideAPIKey(kPlacesAPIKey)
-        GMSServices.provideAPIKey(kMapsAPIKey)
-
 
         
         
