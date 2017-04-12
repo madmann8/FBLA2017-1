@@ -157,7 +157,6 @@
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="zod-4F-G7c" firstAttribute="top" secondItem="e4v-qk-BWi" secondAttribute="topMargin" id="8hL-xK-Kdd"/>
                                     <constraint firstItem="zod-4F-G7c" firstAttribute="leading" secondItem="e4v-qk-BWi" secondAttribute="leadingMargin" id="fGL-V4-83A"/>
