@@ -27,19 +27,19 @@ final class ImageCollectionViewController: UICollectionViewController {
 
 extension ImageCollectionViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-
         
-//                      self.collectionView?.reloadData()
- 
-//        textField.text = nil
-//        textField.resignFirstResponder()
+        
+        //                      self.collectionView?.reloadData()
+        
+        //        textField.text = nil
+        //        textField.resignFirstResponder()
         return true
     }
 }
 
 // MARK: - UICollectionViewDataSource
 extension ImageCollectionViewController {
-
+    
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
@@ -90,14 +90,7 @@ extension ImageCollectionViewController : UICollectionViewDelegateFlowLayout {
 
 extension ImageCollectionViewController {
     func loadCoverImages(){
-        let cellWidth = Int(self.view.frame.width / CGFloat(4))
-        let cellHeight = Int(self.view.frame.height / CGFloat(8))
-        let x=Int(self.view.frame.width/2)-cellWidth/2
-        let y=Int(self.view.frame.height/2)-cellWidth/2
-        let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
-        let activityIndicator=NVActivityIndicatorView(frame: frame, type: .pacman, color: UIColor.red, padding: nil)
-        activityIndicator.startAnimating()
-        self.view.addSubview(activityIndicator)
+        let activityIndicator=startActivityIndicator()
         
         
         
@@ -119,7 +112,7 @@ extension ImageCollectionViewController {
                                 if let extractedKey:String?=path.substring(start: 44, end: 63){
                                     self.itemKeys.append(extractedKey!)
                                 }
-
+                                print(i)
                                 i+=1
                                 if i==snapshots.count{
                                     activityIndicator.stopAnimating()
@@ -127,20 +120,63 @@ extension ImageCollectionViewController {
                                 }
                             }
                         }
-
+                        
                     }
                 }
             }
-          
+            
         })
     }
-
 }
 
 
 extension ImageCollectionViewController: PhotoCellDelegate {
     func buttonPressed(keyString: String) {
-        print(keyString)
+        generateImages(keyString: keyString)
+        
+        
+    }
+    
+    func generateImages(keyString: String){
+        let activityIndicator=startActivityIndicator()
+        var results=[UIImage]()
+        let storage = FIRStorage.storage()
+        var i=0
+        while i<5 {
+
+            let gsReference = storage.reference(forURL: "gs://fbla2017-223f9.appspot.com/itemImages/-\(keyString)/\(i).png")
+            gsReference.data(withMaxSize:  1 * 6000 * 6000) { data, error in
+                if let error = error {
+                    // Uh-oh, an error occurred!
+                } else {
+                    // Data for "images/island.jpg" is returned
+                    let image = UIImage(data: data!)
+                    results.append(image!)
+                    if (i==4){
+                        activityIndicator.stopAnimating()
+                        print("here")
+                        
+                    }
+
+                }
+            }
+            i+=1
+                    }
+    }
+}
+
+
+extension ImageCollectionViewController{
+    func startActivityIndicator()-> NVActivityIndicatorView{
+        let cellWidth = Int(self.view.frame.width / CGFloat(4))
+        let cellHeight = Int(self.view.frame.height / CGFloat(8))
+        let x=Int(self.view.frame.width/2)-cellWidth/2
+        let y=Int(self.view.frame.height/2)-cellWidth/2
+        let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
+        let activityIndicator=NVActivityIndicatorView(frame: frame, type: .semiCircleSpin, color: UIColor.red, padding: nil)
+        activityIndicator.startAnimating()
+        self.view.addSubview(activityIndicator)
+        return activityIndicator
     }
 }
 
@@ -163,5 +199,5 @@ extension String
         let range = startIndex..<endIndex
         
         return self.substring(with: range)
-}
+    }
 }

@@ -114,7 +114,7 @@
         <scene sceneID="ioN-8i-ABw">
             <objects>
                 <collectionViewController id="Hei-X5-zUt" customClass="ImageCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="tlf-oa-1iS">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tlf-oa-1iS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,7 +139,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <connections>
                                                 <action selector="buttonIsPressed:" destination="e4v-qk-BWi" eventType="touchUpInside" id="Ge8-pa-KQ0"/>
-                                                <segue destination="GKc-6K-nPA" kind="show" id="wo7-gj-XB3"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -180,12 +179,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wT8-RU-faH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3921" y="-502"/>
+            <point key="canvasLocation" x="3660" y="-502"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cbx-XE-sz0">
             <objects>
-                <viewController storyboardIdentifier="sbBlue" id="y0u-Bh-ch7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sbImageMain" id="y0u-Bh-ch7" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v63-FX-1jS"/>
                         <viewControllerLayoutGuide type="bottom" id="rYB-i5-9cm"/>
@@ -215,12 +214,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYM-9r-ONk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6022" y="-537"/>
+            <point key="canvasLocation" x="5753" y="-535"/>
         </scene>
-        <!--View Controller-->
+        <!--Image View Controller-->
         <scene sceneID="Rcm-qd-AxO">
             <objects>
-                <viewController storyboardIdentifier="sbRed" id="Dct-V4-nwa" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sbImage" id="Dct-V4-nwa" customClass="ImageViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UxQ-zr-553"/>
                         <viewControllerLayoutGuide type="bottom" id="8b2-Q8-1cn"/>
@@ -228,20 +227,33 @@
                     <view key="view" contentMode="scaleToFill" id="VrW-HZ-Ko9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.99955970049999998" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lK1-VQ-8Br">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="lK1-VQ-8Br" firstAttribute="leading" secondItem="VrW-HZ-Ko9" secondAttribute="leading" id="9ha-qT-LjO"/>
+                            <constraint firstItem="8b2-Q8-1cn" firstAttribute="top" secondItem="lK1-VQ-8Br" secondAttribute="bottom" id="G1m-Bj-tjb"/>
+                            <constraint firstAttribute="trailing" secondItem="lK1-VQ-8Br" secondAttribute="trailing" id="QLX-ih-pQN"/>
+                            <constraint firstItem="lK1-VQ-8Br" firstAttribute="top" secondItem="UxQ-zr-553" secondAttribute="bottom" id="lPl-o9-5uW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="lK1-VQ-8Br" id="gy6-52-qKV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ied-3M-QQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6009" y="161"/>
+            <point key="canvasLocation" x="6593" y="-536"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="5fx-JZ-gc6">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="vertical" spineLocation="none" id="GKc-6K-nPA" customClass="PageViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="mainPVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="GKc-6K-nPA" customClass="PageViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h50-1W-1I2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4815" y="-502"/>
+            <point key="canvasLocation" x="4844" y="-535"/>
         </scene>
         <!--Browse-->
         <scene sceneID="6Bn-JD-wuq">
@@ -249,7 +261,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrY-Gw-eKo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Browse" id="DNw-Mh-nZ5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dQ1-gj-fih">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQ1-gj-fih">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -638,7 +650,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="pIp-dV-5Wz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="PCz-Z6-xQE"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BKR-FV-t1O">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKR-FV-t1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

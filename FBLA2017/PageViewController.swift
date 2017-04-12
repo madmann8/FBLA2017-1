@@ -11,14 +11,11 @@ import UIKit
 class PageViewController: UIPageViewController {
 
     lazy var orderedViewControllers:[UIViewController] = {
-        return [self.newVC(vc: "sbBlue"),
-                self.newVC(vc: "sbRed")
+        return [SBMaker.newVC(vc: "sbImageMain"),
+                SBMaker.newVC(vc: "sbImage")
         ]}()
     
-    
-    func newVC(vc: String)-> UIViewController{
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: vc)
-    }
+
     
     override func viewDidLoad() {
         self.dataSource=self
@@ -76,3 +73,5 @@ extension PageViewController: UIPageViewControllerDataSource{
         return orderedViewControllers[nextIndex]
     }
 }
+
+
