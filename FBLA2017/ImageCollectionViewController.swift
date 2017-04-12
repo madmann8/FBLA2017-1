@@ -55,7 +55,7 @@ extension ImageCollectionViewController {
                                                       for: indexPath) as! PhotoCell
         //2
 //        let flickrPhoto = self.photoForIndexPath(indexPath)
-        cell.backgroundColor = UIColor.white
+//        cell.backgroundColor = UIColor.white
         //3
         cell.imageView.image = coverImages[indexPath.row]
         
@@ -113,6 +113,7 @@ extension ImageCollectionViewController {
         let storageRef = storage.reference()
         ref.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                var i=0
                 for snapshot in snapshots {
                     if let path = snapshot.value as? String {
                         let coverImagePath = storage.reference(forURL: path)
@@ -123,15 +124,18 @@ extension ImageCollectionViewController {
                                 // Data for "images/island.jpg" is returned
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
+                                i+=1
+                                if i==snapshots.count{
+                                    activityIndicator.stopAnimating()
+                                    self.collectionView?.reloadData()
+                                }
                             }
                         }
 
                     }
                 }
             }
-            activityIndicator.stopAnimating()
-            self.collectionView?.reloadData()
-
+          
         })
     }
 
