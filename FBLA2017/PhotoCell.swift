@@ -21,7 +21,7 @@ class PhotoCell: UICollectionViewCell {
     
     @IBAction func buttonIsPressed(_ sender: Any) {
         if let keyString=keyString{
-        delegate?.buttonPressed(coverPath: keyString)
+        delegate?.buttonPressed(keyString: keyString)
         }
     }
     @IBOutlet weak var imageView: UIImageView!

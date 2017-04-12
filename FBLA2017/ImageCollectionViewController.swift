@@ -13,10 +13,8 @@ final class ImageCollectionViewController: UICollectionViewController {
     fileprivate let reuseIdentifier = "ItemCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     
-    fileprivate var searches = [FlickrSearchResults]()
     var coverImages = [UIImage]()
     var itemKeys=[String]()
-    fileprivate let flickr = Flickr()
     fileprivate let itemsPerRow: CGFloat = 3
     
     override func viewDidLoad() {
@@ -48,16 +46,10 @@ extension ImageCollectionViewController {
         return coverImages.count
     }
     
-    //3
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //1
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! PhotoCell
-        //2
-//        let flickrPhoto = self.photoForIndexPath(indexPath)
-//        cell.backgroundColor = UIColor.white
-        //3
         cell.imageView.image = coverImages[indexPath.row]
         
         cell.delegate=self
@@ -70,11 +62,9 @@ extension ImageCollectionViewController {
 }
 
 extension ImageCollectionViewController : UICollectionViewDelegateFlowLayout {
-    //1
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //2
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
@@ -86,14 +76,12 @@ extension ImageCollectionViewController : UICollectionViewDelegateFlowLayout {
         return CGSize(width: widthPerItem, height: widthPerItem*dynamicHeightRatio)
     }
     
-    //3
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
     
-    // 4
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
@@ -151,8 +139,8 @@ extension ImageCollectionViewController {
 
 
 extension ImageCollectionViewController: PhotoCellDelegate {
-    func buttonPressed(coverPath: String) {
-        print(coverPath)
+    func buttonPressed(keyString: String) {
+        print(keyString)
     }
 }
 
