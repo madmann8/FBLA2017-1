@@ -1,4 +1,9 @@
 import UIKit
+import NVActivityIndicatorView
+import Firebase
+import FirebaseDatabase
+import FirebaseStorage
+
 
 final class ImageCollectionViewController: UICollectionViewController {
     
@@ -7,8 +12,13 @@ final class ImageCollectionViewController: UICollectionViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     
     fileprivate var searches = [FlickrSearchResults]()
+    var coverImages = [UIImage]()
     fileprivate let flickr = Flickr()
     fileprivate let itemsPerRow: CGFloat = 3
+    
+    override func viewDidLoad() {
+        loadCoverImages()
+    }
 }
 
 // MARK: - Private
@@ -112,4 +122,47 @@ extension ImageCollectionViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
+}
+
+
+extension ImageCollectionViewController {
+    func loadCoverImages(){
+        let cellWidth = Int(self.view.frame.width / CGFloat(4))
+        let cellHeight = Int(self.view.frame.height / CGFloat(8))
+        let x=Int(self.view.frame.width/2)-cellWidth/2
+        let y=Int(self.view.frame.height/2)-cellWidth/2
+        let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
+        let activityIndicator=NVActivityIndicatorView(frame: frame, type: .pacman, color: UIColor.red, padding: nil)
+        activityIndicator.startAnimating()
+        self.view.addSubview(activityIndicator)
+        
+        
+        
+        
+        var ref = FIRDatabase.database().reference().child("coverImagePaths")
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference()
+        ref.observe(.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snapshot in snapshots {
+                    if let path = snapshot.value as? String {
+                        let coverImagePath = storage.reference(forURL: path)
+                        coverImagePath.data(withMaxSize: 1 * 1024 * 1024) { data, error in
+                            if let error = error {
+                                // Uh-oh, an error occurred!
+                            } else {
+                                // Data for "images/island.jpg" is returned
+                                let image = UIImage(data: data!)
+                                self.coverImages.append(image!)
+                            }
+                        }
+
+                    }
+                }
+            }
+            activityIndicator.stopAnimating()
+            
+        })
+    }
+
 }

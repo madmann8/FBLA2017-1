@@ -120,7 +120,6 @@ extension UploadItemFormViewController:UITextFieldDelegate{
 
 extension UploadItemFormViewController:EnterPriceDelegate{
     @IBAction func priceButtonPressed(_ sender: UIButton) {
-        let screenSize: CGRect = UIScreen.main.bounds
         let width = ModalSize.fluid(percentage: 0.7)
         let height = ModalSize.fluid(percentage: 0.3)
         let center = ModalCenterPosition.center
@@ -241,7 +240,7 @@ extension UploadItemFormViewController{
             }
         }
         
-        if !missingData{
+//        if !missing?Data{
             let itemRef=self.ref.child("items").childByAutoId()
             
             itemRef.child("title").setValue(self.name)
@@ -260,7 +259,7 @@ extension UploadItemFormViewController{
             let uniqueItemImageRef = storageRef.child("itemImages/\(autoID)")
             var i = 0
             
-
+            
         let cellWidth = Int(self.view.frame.width / CGFloat(4))
         let cellHeight = Int(self.view.frame.height / CGFloat(8))
         let x=Int(self.view.frame.width/2)-cellWidth/2
@@ -270,35 +269,35 @@ extension UploadItemFormViewController{
         activityIndicator.startAnimating()
         
         
-        
         self.view.addSubview(activityIndicator)
+            let coverImageRef=ref.child("coverImagePaths")
+            let coverImage=images?[0].jpeg(.low)
+            let imageNumberRef=uniqueItemImageRef.child("cover.jpeg")
+            _=imageNumberRef.put(coverImage!)
             for image in self.images!{
-                let imageNumberRef=uniqueItemImageRef.child("\(i).jpg")
+                let imageNumberRef=uniqueItemImageRef.child("\(i).png")
                 print(activityIndicator.isAnimating)
                 i+=1
                 let imageData=UIImagePNGRepresentation(image)
-                let uploadTask = imageNumberRef.put(imageData!, metadata: nil) { (metadata, error) in
+                _ = imageNumberRef.put(imageData!, metadata: nil) { (metadata, error) in
                     guard let metadata = metadata else {
-                        // Uh-oh, an error occurred!
+                        
                         return
                     }
                     if i==self.images?.count{
                         activityIndicator.stopAnimating()
                     }
-                    // Metadata contains file metadata such as size, content-type, and download URL.
-                    let downloadURL = metadata.downloadURL
-                    print("Download URLLL: \(downloadURL)")
                 }
                 
             }
-        
-        itemRef.child("imagesString").setValue("\(uniqueItemImageRef)")
             
+            itemRef.child("imagesString").setValue("\(uniqueItemImageRef)")
+            coverImageRef.childByAutoId().setValue("\(imageNumberRef)")
             
         }
-
         
-    }
+        //UNcomment to prevent missing information uploads
+//    }
 }
 
 
@@ -334,3 +333,24 @@ extension UIImageView
     }
 }
 
+extension UIImage {
+    enum JPEGQuality: CGFloat {
+        case lowest  = 0
+        case low     = 0.25
+        case medium  = 0.5
+        case high    = 0.75
+        case highest = 1
+    }
+    
+    /// Returns the data for the specified image in PNG format
+    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
+    /// - returns: A data object containing the PNG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
+    var png: Data? { return UIImagePNGRepresentation(self) }
+    
+    /// Returns the data for the specified image in JPEG format.
+    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
+    /// - returns: A data object containing the JPEG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
+    func jpeg(_ quality: JPEGQuality) -> Data? {
+        return UIImageJPEGRepresentation(self, quality.rawValue)
+    }
+}
