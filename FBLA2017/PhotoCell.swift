@@ -8,8 +8,22 @@
 
 import UIKit
 
+
+protocol PhotoCellDelegate {
+    func buttonPressed(keyString:String)
+}
+
 class PhotoCell: UICollectionViewCell {
     
+    var keyString:String?=nil
+    
+    var delegate: PhotoCellDelegate?=nil
+    
+    @IBAction func buttonIsPressed(_ sender: Any) {
+        if let keyString=keyString{
+        delegate?.buttonPressed(coverPath: keyString)
+        }
+    }
     @IBOutlet weak var imageView: UIImageView!
     
 }

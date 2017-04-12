@@ -155,11 +155,21 @@
                                         <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zod-4F-G7c">
                                             <rect key="frame" x="8" y="8" width="184" height="184"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faz-vL-h3B">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <connections>
+                                                <action selector="buttonIsPressed:" destination="e4v-qk-BWi" eventType="touchUpInside" id="Ge8-pa-KQ0"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="zod-4F-G7c" firstAttribute="top" secondItem="e4v-qk-BWi" secondAttribute="topMargin" id="8hL-xK-Kdd"/>
+                                    <constraint firstAttribute="bottom" secondItem="faz-vL-h3B" secondAttribute="bottom" id="Qrm-HC-Xah"/>
+                                    <constraint firstItem="faz-vL-h3B" firstAttribute="leading" secondItem="e4v-qk-BWi" secondAttribute="leading" id="brf-LQ-BoC"/>
                                     <constraint firstItem="zod-4F-G7c" firstAttribute="leading" secondItem="e4v-qk-BWi" secondAttribute="leadingMargin" id="fGL-V4-83A"/>
+                                    <constraint firstItem="faz-vL-h3B" firstAttribute="top" secondItem="e4v-qk-BWi" secondAttribute="top" id="i5Z-5C-C0s"/>
+                                    <constraint firstAttribute="trailing" secondItem="faz-vL-h3B" secondAttribute="trailing" id="rNL-am-1iF"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="zod-4F-G7c" secondAttribute="trailing" id="wIw-ML-8u7"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="zod-4F-G7c" secondAttribute="bottom" id="wna-PX-eBK"/>
                                 </constraints>

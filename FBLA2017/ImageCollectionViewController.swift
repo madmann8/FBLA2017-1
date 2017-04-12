@@ -15,6 +15,7 @@ final class ImageCollectionViewController: UICollectionViewController {
     
     fileprivate var searches = [FlickrSearchResults]()
     var coverImages = [UIImage]()
+    var itemKeys=[String]()
     fileprivate let flickr = Flickr()
     fileprivate let itemsPerRow: CGFloat = 3
     
@@ -59,8 +60,13 @@ extension ImageCollectionViewController {
         //3
         cell.imageView.image = coverImages[indexPath.row]
         
+        cell.delegate=self
+        
+        cell.keyString=itemKeys[indexPath.row]
+        
         return cell
     }
+    
 }
 
 extension ImageCollectionViewController : UICollectionViewDelegateFlowLayout {
@@ -108,9 +114,8 @@ extension ImageCollectionViewController {
         
         
         
-        var ref = FIRDatabase.database().reference().child("coverImagePaths")
+        let ref = FIRDatabase.database().reference().child("coverImagePaths")
         let storage = FIRStorage.storage()
-        let storageRef = storage.reference()
         ref.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 var i=0
@@ -121,9 +126,12 @@ extension ImageCollectionViewController {
                             if let error = error {
                                 // Uh-oh, an error occurred!
                             } else {
-                                // Data for "images/island.jpg" is returned
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
+                                if let extractedKey:String?=path.substring(start: 44, end: 63){
+                                    self.itemKeys.append(extractedKey!)
+                                }
+
                                 i+=1
                                 if i==snapshots.count{
                                     activityIndicator.stopAnimating()
@@ -139,4 +147,33 @@ extension ImageCollectionViewController {
         })
     }
 
+}
+
+
+extension ImageCollectionViewController: PhotoCellDelegate {
+    func buttonPressed(coverPath: String) {
+        print(coverPath)
+    }
+}
+
+extension String
+{
+    func substring(start: Int, end: Int) -> String
+    {
+        if (start < 0 || start > self.characters.count)
+        {
+            print("start index \(start) out of bounds")
+            return ""
+        }
+        else if end < 0 || end > self.characters.count
+        {
+            print("end index \(end) out of bounds")
+            return ""
+        }
+        let startIndex = self.characters.index(self.startIndex, offsetBy: start)
+        let endIndex = self.characters.index(self.startIndex, offsetBy: end)
+        let range = startIndex..<endIndex
+        
+        return self.substring(with: range)
+}
 }
