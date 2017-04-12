@@ -4,6 +4,8 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 
+//On the next episode: well fugure out how to  reload view without using the text bar
+
 
 final class ImageCollectionViewController: UICollectionViewController {
     
@@ -22,60 +24,27 @@ final class ImageCollectionViewController: UICollectionViewController {
 }
 
 // MARK: - Private
-private extension ImageCollectionViewController {
-    func photoForIndexPath(_ indexPath: IndexPath) -> FlickrPhoto {
-        return searches[(indexPath as NSIndexPath).section].searchResults[(indexPath as NSIndexPath).row]
-    }
-}
+
 
 extension ImageCollectionViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // 1
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        textField.addSubview(activityIndicator)
-        activityIndicator.frame = textField.bounds
-        activityIndicator.startAnimating()
+
         
-        flickr.searchFlickrForTerm(textField.text!) {
-            results, error in
-            
-            
-            activityIndicator.removeFromSuperview()
-            
-            
-            if let error = error {
-                // 2
-                print("Error searching : \(error)")
-                return
-            }
-            
-            if let results = results {
-                // 3
-                print("Found \(results.searchResults.count) matching \(results.searchTerm)")
-                self.searches.insert(results, at: 0)
-                
-                // 4
-                self.collectionView?.reloadData()
-            }
-        }
-        
-        textField.text = nil
-        textField.resignFirstResponder()
+//                      self.collectionView?.reloadData()
+ 
+//        textField.text = nil
+//        textField.resignFirstResponder()
         return true
     }
 }
 
 // MARK: - UICollectionViewDataSource
 extension ImageCollectionViewController {
-    //1
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return searches.count
-    }
+
     
-    //2
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return searches[section].searchResults.count
+        return coverImages.count
     }
     
     //3
@@ -85,10 +54,10 @@ extension ImageCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! PhotoCell
         //2
-        let flickrPhoto = self.photoForIndexPath(indexPath)
+//        let flickrPhoto = self.photoForIndexPath(indexPath)
         cell.backgroundColor = UIColor.white
         //3
-        cell.imageView.image = flickrPhoto.thumbnail
+        cell.imageView.image = coverImages[indexPath.row]
         
         return cell
     }
@@ -103,10 +72,10 @@ extension ImageCollectionViewController : UICollectionViewDelegateFlowLayout {
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
-        let flickrPhoto = self.photoForIndexPath(indexPath)
-        let height=flickrPhoto.thumbnail?.size.height
-        let width=flickrPhoto.thumbnail?.size.width
-        let dynamicHeightRatio=height!/width!
+        let photo = coverImages[indexPath.row]
+        let height=photo.size.height
+        let width=photo.size.width
+        let dynamicHeightRatio=height/width
         
         return CGSize(width: widthPerItem, height: widthPerItem*dynamicHeightRatio)
     }
@@ -161,7 +130,8 @@ extension ImageCollectionViewController {
                 }
             }
             activityIndicator.stopAnimating()
-            
+            self.collectionView?.reloadData()
+
         })
     }
 
