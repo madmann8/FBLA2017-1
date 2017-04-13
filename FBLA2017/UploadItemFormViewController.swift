@@ -302,7 +302,8 @@ extension UploadItemFormViewController{
             e+=1
         }
         
-        itemRef.child("image")
+        coverImageRef.childByAutoId().setValue("\(imageNumberRef)")
+
         
     }
     

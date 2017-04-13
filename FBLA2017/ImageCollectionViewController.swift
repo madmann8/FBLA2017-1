@@ -138,30 +138,36 @@ extension ImageCollectionViewController: PhotoCellDelegate {
     }
     
     func generateImages(keyString: String){
-        let activityIndicator=startActivityIndicator()
-        var results=[UIImage]()
+        var activityIndicator=startActivityIndicator()
+        
+        var images=[UIImage]()
+        let ref = FIRDatabase.database().reference().child("items").child(keyString).child("imagePaths")
         let storage = FIRStorage.storage()
-        var i=0
-        while i<5 {
-
-            let gsReference = storage.reference(forURL: "gs://fbla2017-223f9.appspot.com/itemImages/-\(keyString)/\(i).png")
-            gsReference.data(withMaxSize:  1 * 6000 * 6000) { data, error in
-                if let error = error {
-                    // Uh-oh, an error occurred!
-                } else {
-                    // Data for "images/island.jpg" is returned
-                    let image = UIImage(data: data!)
-                    results.append(image!)
-                    if (i==4){
-                        activityIndicator.stopAnimating()
-                        print("here")
+        ref.observe(.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                var i=0
+                for snapshot in snapshots {
+                    if let path = snapshot.value as? String {
+                        let coverImagePath = storage.reference(forURL: path)
+                        coverImagePath.data(withMaxSize: 1 * 1024 * 1024) { data, error in
+                            if let error = error {
+                                // Uh-oh, an error occurred!
+                            } else {
+                                let image = UIImage(data: data!)
+                                images.append(image!)
+                                print(i)
+                                i+=1
+                                if i==snapshots.count{
+                                    activityIndicator.stopAnimating()
+                                }
+                            }
+                        }
                         
                     }
-
                 }
             }
-            i+=1
-                    }
+            
+        })
     }
 }
 
