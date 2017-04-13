@@ -20,7 +20,6 @@
 		485A02201E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */; };
 		486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */; };
 		486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */; };
-		486D22301E9CA7F900EA2BDC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 486D222F1E9CA7F900EA2BDC /* GoogleService-Info.plist */; };
 		489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */; };
 		48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */; };
 		48D356451E99A2E400FBF6B3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D356441E99A2E400FBF6B3 /* CameraViewController.swift */; };
@@ -28,6 +27,7 @@
 		48DE95101E9ED21400583327 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE950F1E9ED21400583327 /* PageViewController.swift */; };
 		48DE95121E9EE62600583327 /* SBMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE95111E9EE62600583327 /* SBMaker.swift */; };
 		48DE95151E9EE7AF00583327 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE95141E9EE7AF00583327 /* ImageViewController.swift */; };
+		48DE95191E9F0D5800583327 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48DE95181E9F0D5800583327 /* GoogleService-Info.plist */; };
 		99569F140133A95F709CE436 /* Pods_FBLA2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40F4BFEA70DF778ECC2C0DA /* Pods_FBLA2017.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,6 @@
 		485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPricePopoverViewController.swift; sourceTree = "<group>"; };
 		486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
-		486D222F1E9CA7F900EA2BDC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKAPIKey.swift; sourceTree = "<group>"; };
 		48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadItemFormViewController.swift; sourceTree = "<group>"; };
 		48D356441E99A2E400FBF6B3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		48DE950F1E9ED21400583327 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		48DE95111E9EE62600583327 /* SBMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBMaker.swift; sourceTree = "<group>"; };
 		48DE95141E9EE7AF00583327 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		48DE95181E9F0D5800583327 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7301597ADAFE4597967BF48A /* Pods-FBLA2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLA2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FBLA2017/Pods-FBLA2017.debug.xcconfig"; sourceTree = "<group>"; };
 		E40F4BFEA70DF778ECC2C0DA /* Pods_FBLA2017.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FBLA2017.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECB9E8B2282AE1B4EC0484B /* Pods-FBLA2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLA2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-FBLA2017/Pods-FBLA2017.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				481DD8DA1E98354E005765AF /* Info.plist */,
-				486D222F1E9CA7F900EA2BDC /* GoogleService-Info.plist */,
+				48DE95181E9F0D5800583327 /* GoogleService-Info.plist */,
 			);
 			name = "Support Files";
 			sourceTree = "<group>";
@@ -234,8 +234,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				481DD8D91E98354E005765AF /* LaunchScreen.storyboard in Resources */,
+				48DE95191E9F0D5800583327 /* GoogleService-Info.plist in Resources */,
 				481DD8D61E98354E005765AF /* Assets.xcassets in Resources */,
-				486D22301E9CA7F900EA2BDC /* GoogleService-Info.plist in Resources */,
 				481DD8D41E98354E005765AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -214,6 +214,14 @@ extension UploadItemFormViewController {
 //Upload Stuff
 extension UploadItemFormViewController{
     @IBAction func uploadButtonPressed(_ sender: UIButton) {
+        let cellWidth = Int(self.view.frame.width / CGFloat(4))
+        let cellHeight = Int(self.view.frame.height / CGFloat(8))
+        let x=Int(self.view.frame.width/2)-cellWidth/2
+        let y=Int(self.view.frame.height/2)-cellWidth/2
+        let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
+        let activityIndicator=NVActivityIndicatorView(frame: frame, type: .pacman, color: UIColor.red, padding: nil)
+        activityIndicator.startAnimating()
+        
         var missingData=false
         if (images==nil || name==nil || cents==nil || about==nil || condition==nil || locationString==nil || category==nil) {
             missingData=true
@@ -240,64 +248,67 @@ extension UploadItemFormViewController{
             }
         }
         
-//        if !missing?Data{
-            let itemRef=self.ref.child("items").childByAutoId()
-            
-            itemRef.child("title").setValue(self.name)
-            itemRef.child("cents").setValue(self.cents)
-            itemRef.child("about").setValue(self.about)
-            itemRef.child("condition").setValue(self.condition)
-            itemRef.child("locationString").setValue(self.locationString)
-            itemRef.child("locationLatitude").setValue(self.locationLatitude)
-            itemRef.child("locationLongitude").setValue(self.locationLongitude)
-            itemRef.child("category").setValue(category)
-            
-            let autoID=itemRef.key
-            
-            let storage = FIRStorage.storage()
-            let storageRef = storage.reference()
-            let uniqueItemImageRef = storageRef.child("itemImages/\(autoID)")
-            var i = 0
-            
-            
-        let cellWidth = Int(self.view.frame.width / CGFloat(4))
-        let cellHeight = Int(self.view.frame.height / CGFloat(8))
-        let x=Int(self.view.frame.width/2)-cellWidth/2
-        let y=Int(self.view.frame.height/2)-cellWidth/2
-        let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
-        let activityIndicator=NVActivityIndicatorView(frame: frame, type: .pacman, color: UIColor.red, padding: nil)
-        activityIndicator.startAnimating()
+        //        if !missing?Data{
+        let itemRef=self.ref.child("items").childByAutoId()
+        
+        itemRef.child("title").setValue(self.name)
+        itemRef.child("cents").setValue(self.cents)
+        itemRef.child("about").setValue(self.about)
+        itemRef.child("condition").setValue(self.condition)
+        itemRef.child("locationString").setValue(self.locationString)
+        itemRef.child("locationLatitude").setValue(self.locationLatitude)
+        itemRef.child("locationLongitude").setValue(self.locationLongitude)
+        itemRef.child("category").setValue(category)
+        
+        let autoID=itemRef.key
+        
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference()
+        let uniqueItemImageRef = storageRef.child("itemImages/\(autoID)")
+        var i = 0
+        
+        
+        
         
         
         self.view.addSubview(activityIndicator)
-            let coverImageRef=ref.child("coverImagePaths")
-            let coverImage=images?[0].jpeg(.low)
-            let imageNumberRef=uniqueItemImageRef.child("cover.jpeg")
-            _=imageNumberRef.put(coverImage!)
-            for image in self.images!{
-                let imageNumberRef=uniqueItemImageRef.child("\(i).png")
-                print(activityIndicator.isAnimating)
-                i+=1
-                let imageData=UIImagePNGRepresentation(image)
-                _ = imageNumberRef.put(imageData!, metadata: nil) { (metadata, error) in
-                    guard let metadata = metadata else {
-                        
-                        return
-                    }
-                    if i==self.images?.count{
-                        activityIndicator.stopAnimating()
-                    }
+        
+        var mainImagePaths=[String]()
+        
+        let coverImageRef=ref.child("coverImagePaths")
+        let coverImage=images?[0].jpeg(.low)
+        let imageNumberRef=uniqueItemImageRef.child("cover.jpeg")
+        _=imageNumberRef.put(coverImage!)
+        for image in self.images!{
+            let imageNumberRef=uniqueItemImageRef.child("\(i).png")
+            print(activityIndicator.isAnimating)
+            mainImagePaths.append("\(imageNumberRef)")
+            i+=1
+            let imageData=UIImagePNGRepresentation(image)
+            _ = imageNumberRef.put(imageData!, metadata: nil) { (metadata, error) in
+                guard let metadata = metadata else {
+                    
+                    return
                 }
-                
+                if i==self.images?.count{
+                    activityIndicator.stopAnimating()
+                }
             }
             
-            itemRef.child("imagesString").setValue("\(uniqueItemImageRef)")
-            coverImageRef.childByAutoId().setValue("\(imageNumberRef)")
-            
+        }
+        var e = 0
+        for s in mainImagePaths{
+            itemRef.child("imagePaths").child("\(e)").setValue(s)
+            e+=1
         }
         
-        //UNcomment to prevent missing information uploads
-//    }
+        coverImageRef.childByAutoId().setValue("\(imageNumberRef)")
+
+        
+    }
+    
+    //UNcomment to prevent missing information uploads
+    //    }
 }
 
 
