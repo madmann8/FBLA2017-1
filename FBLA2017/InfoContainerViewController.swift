@@ -14,6 +14,8 @@ class InfoContainerViewController: UIViewController {
     var name:String?=nil
     var about:String?=nil
     var rating:Int?=nil
+    var cents:Int?=nil
+
     
     var keyString:String?=nil
     
@@ -32,7 +34,14 @@ class InfoContainerViewController: UIViewController {
         if segue.identifier=="showPageVC" {
             let pageDesitnation=segue.destination as! PageViewController
             pageDesitnation.images=self.images
-        }
+            titleLabel.text=name
+            if let cents=cents,let rating=rating {
+                    costLabel.text=String(describing: cents)
+                    ratingLabel.text=String(describing: rating)
+
+                }
+            }
+                    
     }
     
 

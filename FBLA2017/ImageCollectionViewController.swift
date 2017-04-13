@@ -145,17 +145,33 @@ extension ImageCollectionViewController: PhotoCellDelegate {
         var images=[UIImage]()
         var name:String?=nil
         var about:String?=nil
-        var rating:Int?=nil
+        var categorey:String?=nil
+        var latitudeString:String?=nil
+        var longitudeString:String?=nil
+        var addressString:String?=nil
+        var cents:Int?=nil
+        var condition:Int?=nil
     
 
         
         
-        let ref = FIRDatabase.database().reference().child("items").child(keyString).child("imagePaths")
+        let ref = FIRDatabase.database().reference().child("items").child(keyString)
+        
+        ref.observe(.value, with: {(snapshot) in
+            let value = snapshot.value as? NSDictionary
+            name = value?["title"] as? String ?? ""
+            about = value?["about"] as? String ?? ""
+            categorey = value?["category"] as? String ?? ""
+            latitudeString = value?["latitudeString"] as? String ?? ""
+            longitudeString = value?["longitudeString"] as? String ?? ""
+            addressString = value?["locationString"] as? String ?? ""
+            condition = value?["condition"] as? Int ?? 0
+            cents = value?["cents"] as? Int ?? 0
 
-        
-        
-        
-        
+
+
+
+
         })
 //        print("\(ref)")
         let storage = FIRStorage.storage()
@@ -185,8 +201,14 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     let middle=storyboard.instantiateViewController(withIdentifier: "detailMiddle") as! InfoContainerViewController
                                     middle.images=images
                                     middle.keyString=keyString
+                                    middle.name=name
+                                    middle.about=about
+                                    middle.rating=condition
+                                    middle.cents=cents
                                     
-                                    let top = storyboard.instantiateViewController(withIdentifier: "detailTop")
+                                    let top = storyboard.instantiateViewController(withIdentifier: "detailTop") as! MoreDetailsViewController
+                                    top.
+                                    
                                     let bottom = storyboard.instantiateViewController(withIdentifier: "detailBottom")
 
                                     
