@@ -159,8 +159,23 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                 print(i)
                                 i+=1
                                 if i==snapshots.count{
+                                    
+                                    
+                                    
+                                
                                     activityIndicator.stopAnimating()
-                                    self.makePageVC(images: images, keyString: keyString)
+                                    let middle=self.makePageVC(images: images, keyString: keyString)
+                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let top = storyboard.instantiateViewController(withIdentifier: "detailTop")
+                                    let bottom = storyboard.instantiateViewController(withIdentifier: "detailBottom")
+
+                                    
+                                    let verticalVC=VerticalScrollViewController.verticalScrollVcWith(middleVc: middle, topVc: top, bottomVc: bottom)
+                                    self.present(verticalVC, animated: true, completion: nil)
+                                    
+                                    
+                                    
+                                    
                                 }
                             }
                         }
@@ -191,12 +206,12 @@ extension ImageCollectionViewController{
 
 
 extension ImageCollectionViewController{
-    func makePageVC(images:[UIImage], keyString: String){
+    func makePageVC(images:[UIImage], keyString: String)->InfoContainerViewController{
         var pageStoryboard:UIStoryboard=UIStoryboard(name: "Main", bundle: nil)
-        var VC:InfoContainerViewController=pageStoryboard.instantiateViewController(withIdentifier: "sbImageMain") as! InfoContainerViewController
+        var VC:InfoContainerViewController=pageStoryboard.instantiateViewController(withIdentifier: "detailMiddle") as! InfoContainerViewController
         VC.images=images
         VC.keyString=keyString
-        present(VC, animated: true, completion: nil)
+        return VC
         
     }
 }
