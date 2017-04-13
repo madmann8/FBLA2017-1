@@ -21,6 +21,7 @@
 		486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */; };
 		486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */; };
 		4875274F1EA00E0F0047E083 /* VerticalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875274E1EA00E0F0047E083 /* VerticalScrollViewController.swift */; };
+		487527531EA01BDD0047E083 /* MoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */; };
 		489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */; };
 		48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */; };
 		48BD2F291E9FFAD400FDA557 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD2F281E9FFAD400FDA557 /* ImageViewController.swift */; };
@@ -50,6 +51,7 @@
 		486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		4875274E1EA00E0F0047E083 /* VerticalScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalScrollViewController.swift; sourceTree = "<group>"; };
+		487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreDetailsViewController.swift; sourceTree = "<group>"; };
 		489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKAPIKey.swift; sourceTree = "<group>"; };
 		48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadItemFormViewController.swift; sourceTree = "<group>"; };
 		48BD2F281E9FFAD400FDA557 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				48BD2F281E9FFAD400FDA557 /* ImageViewController.swift */,
 				48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */,
 				4875274E1EA00E0F0047E083 /* VerticalScrollViewController.swift */,
+				487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */,
 			);
 			name = DetailView;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				48DE95101E9ED21400583327 /* PageViewController.swift in Sources */,
 				485A02201E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift in Sources */,
 				481DD8CD1E98354E005765AF /* AppDelegate.swift in Sources */,
+				487527531EA01BDD0047E083 /* MoreDetailsViewController.swift in Sources */,
 				48DE95121E9EE62600583327 /* SBMaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

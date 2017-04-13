@@ -11,6 +11,9 @@ import UIKit
 class InfoContainerViewController: UIViewController {
 
     var images:[UIImage]?=nil
+    var name:String?=nil
+    var about:String?=nil
+    var rating:Int?=nil
     
     var keyString:String?=nil
     
@@ -29,7 +32,6 @@ class InfoContainerViewController: UIViewController {
         if segue.identifier=="showPageVC" {
             let pageDesitnation=segue.destination as! PageViewController
             pageDesitnation.images=self.images
-            pageDesitnation.keyString=self.keyString
         }
     }
     
@@ -37,7 +39,12 @@ class InfoContainerViewController: UIViewController {
     @IBAction func exitButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var costLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
     /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -140,11 +140,26 @@ extension ImageCollectionViewController: PhotoCellDelegate {
     func generateImages(keyString: String){
         var activityIndicator=startActivityIndicator()
         
+        
+        
         var images=[UIImage]()
+        var name:String?=nil
+        var about:String?=nil
+        var rating:Int?=nil
+    
+
+        
+        
         let ref = FIRDatabase.database().reference().child("items").child(keyString).child("imagePaths")
+
+        
+        
+        
+        
+        })
 //        print("\(ref)")
         let storage = FIRStorage.storage()
-        ref.observe(.value, with: { (snapshot) in
+        ref.child("imagePaths").observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 var i=0
                 for snapshot in snapshots {
@@ -164,8 +179,13 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     
                                 
                                     activityIndicator.stopAnimating()
-                                    let middle=self.makePageVC(images: images, keyString: keyString)
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    
+                                    
+                                    let middle=storyboard.instantiateViewController(withIdentifier: "detailMiddle") as! InfoContainerViewController
+                                    middle.images=images
+                                    middle.keyString=keyString
+                                    
                                     let top = storyboard.instantiateViewController(withIdentifier: "detailTop")
                                     let bottom = storyboard.instantiateViewController(withIdentifier: "detailBottom")
 

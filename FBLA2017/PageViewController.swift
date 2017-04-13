@@ -12,7 +12,6 @@ class PageViewController: UIPageViewController {
     
     var images:[UIImage]?=nil
     
-    var keyString:String?=nil
     
     lazy var orderedViewControllers:[UIViewController] = []
     
