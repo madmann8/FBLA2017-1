@@ -22,6 +22,7 @@
 		486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */; };
 		489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */; };
 		48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */; };
+		48BD2F271E9FEF4500FDA557 /* ImageAndButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD2F261E9FEF4500FDA557 /* ImageAndButtonsViewController.swift */; };
 		48D356451E99A2E400FBF6B3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D356441E99A2E400FBF6B3 /* CameraViewController.swift */; };
 		48D356471E99B3D100FBF6B3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D356461E99B3D100FBF6B3 /* TabBarController.swift */; };
 		48DE95101E9ED21400583327 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE950F1E9ED21400583327 /* PageViewController.swift */; };
@@ -49,6 +50,7 @@
 		486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKAPIKey.swift; sourceTree = "<group>"; };
 		48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadItemFormViewController.swift; sourceTree = "<group>"; };
+		48BD2F261E9FEF4500FDA557 /* ImageAndButtonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAndButtonsViewController.swift; sourceTree = "<group>"; };
 		48D356441E99A2E400FBF6B3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		48D356461E99B3D100FBF6B3 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		48DE950F1E9ED21400583327 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				48DE950F1E9ED21400583327 /* PageViewController.swift */,
 				48DE95141E9EE7AF00583327 /* ImageViewController.swift */,
+				48BD2F261E9FEF4500FDA557 /* ImageAndButtonsViewController.swift */,
 			);
 			name = DetailView;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			files = (
 				486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */,
 				4808B9BB1E9B0D2400BF1181 /* FontLoader.swift in Sources */,
+				48BD2F271E9FEF4500FDA557 /* ImageAndButtonsViewController.swift in Sources */,
 				4815FF4F1E99549B0018FA30 /* ImageCollectionViewController.swift in Sources */,
 				480A3D121E9DA8BD002862BF /* LoginViewController.swift in Sources */,
 				48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */,

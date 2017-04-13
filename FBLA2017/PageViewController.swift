@@ -9,19 +9,37 @@
 import UIKit
 
 class PageViewController: UIPageViewController {
-
-    lazy var orderedViewControllers:[UIViewController] = {
-        return [SBMaker.newVC(vc: "sbImageMain"),
-                SBMaker.newVC(vc: "sbImage")
-        ]}()
     
-
+    var images:[UIImage]?=nil
+    
+    var keyString:String?=nil
+    
+    lazy var orderedViewControllers:[UIViewController] = []
+    
+    
     
     override func viewDidLoad() {
         self.dataSource=self
-        if let firstVC=orderedViewControllers.first{
-            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+        var pageStoryboard:UIStoryboard=UIStoryboard(name: "Main", bundle: nil)
+        var VC:ImageAndButtonsViewController=pageStoryboard.instantiateViewController(withIdentifier: "sbImageMain") as! ImageAndButtonsViewController
+        if let image=images?[0]{
+            VC.image=image
+            self.images?.remove(at: 0)
+            orderedViewControllers.append(VC)
         }
+        if !(images?.isEmpty)!{
+        for image in images!{
+            makeAndAppeadVC(image: image)
+        }
+        }
+        setViewControllers([VC], direction: .forward, animated: true, completion: nil)
+    }
+    
+    func makeAndAppeadVC(image:UIImage){
+        var pageStoryboard:UIStoryboard=UIStoryboard(name: "Main", bundle: nil)
+        var VC:ImageViewController=pageStoryboard.instantiateViewController(withIdentifier: "sbImage") as! ImageViewController
+        VC.image=image
+        orderedViewControllers.append(VC)
     }
     
     
@@ -30,7 +48,7 @@ class PageViewController: UIPageViewController {
 extension PageViewController: UIPageViewControllerDataSource{
     
     
-
+    
     // MARK: Data source functions.
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
@@ -42,7 +60,7 @@ extension PageViewController: UIPageViewControllerDataSource{
         // User is on the first view controller and swiped left to loop to
         // the last view controller.
         guard previousIndex >= 0 else {
-          return nil
+            return nil
         }
         
         guard orderedViewControllers.count > previousIndex else {

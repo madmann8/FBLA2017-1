@@ -160,6 +160,7 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                 i+=1
                                 if i==snapshots.count{
                                     activityIndicator.stopAnimating()
+                                    self.makePageVC(images: images, keyString: keyString)
                                 }
                             }
                         }
@@ -186,6 +187,21 @@ extension ImageCollectionViewController{
         return activityIndicator
     }
 }
+
+
+
+extension ImageCollectionViewController{
+    func makePageVC(images:[UIImage], keyString: String){
+        var pageStoryboard:UIStoryboard=UIStoryboard(name: "Main", bundle: nil)
+        var VC:PageViewController=pageStoryboard.instantiateViewController(withIdentifier: "mainPVC") as! PageViewController
+        VC.images=images
+        VC.keyString=keyString
+        present(VC, animated: true, completion: nil)
+        
+    }
+}
+
+
 
 extension String
 {

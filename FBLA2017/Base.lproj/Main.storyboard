@@ -114,7 +114,7 @@
         <scene sceneID="ioN-8i-ABw">
             <objects>
                 <collectionViewController id="Hei-X5-zUt" customClass="ImageCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tlf-oa-1iS">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="tlf-oa-1iS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -181,10 +181,10 @@
             </objects>
             <point key="canvasLocation" x="3660" y="-502"/>
         </scene>
-        <!--View Controller-->
+        <!--Image And Buttons View Controller-->
         <scene sceneID="cbx-XE-sz0">
             <objects>
-                <viewController storyboardIdentifier="sbImageMain" id="y0u-Bh-ch7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sbImageMain" id="y0u-Bh-ch7" customClass="ImageAndButtonsViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v63-FX-1jS"/>
                         <viewControllerLayoutGuide type="bottom" id="rYB-i5-9cm"/>
@@ -193,28 +193,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKy-mk-hdU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Z8-IA-5bR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKy-mk-hdU">
                                 <rect key="frame" x="155" y="28" width="65" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="More Info"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQq-wj-1X0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQq-wj-1X0">
                                 <rect key="frame" x="322" y="28" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Like"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hny-D5-Iod">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hny-D5-Iod">
                                 <rect key="frame" x="24" y="28" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Exit"/>
+                                <connections>
+                                    <action selector="exitButtonPressed:" destination="y0u-Bh-ch7" eventType="touchUpInside" id="dkM-zU-sru"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2Z8-IA-5bR" secondAttribute="trailing" id="2lA-mc-Hx7"/>
+                            <constraint firstItem="Hny-D5-Iod" firstAttribute="top" secondItem="v63-FX-1jS" secondAttribute="bottom" constant="8" symbolic="YES" id="3ng-UK-toF"/>
+                            <constraint firstItem="2Z8-IA-5bR" firstAttribute="bottom" secondItem="rYB-i5-9cm" secondAttribute="top" id="86T-X6-LLC"/>
+                            <constraint firstItem="Hny-D5-Iod" firstAttribute="leading" secondItem="mVk-Qb-7tu" secondAttribute="leadingMargin" constant="8" id="Cai-oX-dXg"/>
+                            <constraint firstItem="2Z8-IA-5bR" firstAttribute="leading" secondItem="mVk-Qb-7tu" secondAttribute="leading" id="FY4-qh-MId"/>
+                            <constraint firstItem="EKy-mk-hdU" firstAttribute="baseline" secondItem="KQq-wj-1X0" secondAttribute="baseline" id="Hi4-FL-4D5"/>
+                            <constraint firstItem="Hny-D5-Iod" firstAttribute="baseline" secondItem="EKy-mk-hdU" secondAttribute="baseline" id="Z6L-Zr-g6s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KQq-wj-1X0" secondAttribute="trailing" constant="7" id="cuE-Vq-QkT"/>
+                            <constraint firstItem="EKy-mk-hdU" firstAttribute="centerX" secondItem="2Z8-IA-5bR" secondAttribute="centerX" id="eXs-b5-Ew5"/>
+                            <constraint firstItem="2Z8-IA-5bR" firstAttribute="top" secondItem="mVk-Qb-7tu" secondAttribute="top" id="gsM-mn-Q8f"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="2Z8-IA-5bR" id="4jf-Iu-GvM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYM-9r-ONk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5753" y="-535"/>
+            <point key="canvasLocation" x="5812" y="-535.68215892053979"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="Rcm-qd-AxO">
@@ -229,14 +246,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lK1-VQ-8Br">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="lK1-VQ-8Br" firstAttribute="leading" secondItem="VrW-HZ-Ko9" secondAttribute="leading" id="9ha-qT-LjO"/>
-                            <constraint firstItem="8b2-Q8-1cn" firstAttribute="top" secondItem="lK1-VQ-8Br" secondAttribute="bottom" id="G1m-Bj-tjb"/>
-                            <constraint firstAttribute="trailing" secondItem="lK1-VQ-8Br" secondAttribute="trailing" id="QLX-ih-pQN"/>
-                            <constraint firstItem="lK1-VQ-8Br" firstAttribute="top" secondItem="UxQ-zr-553" secondAttribute="bottom" id="lPl-o9-5uW"/>
+                            <constraint firstItem="lK1-VQ-8Br" firstAttribute="top" secondItem="VrW-HZ-Ko9" secondAttribute="top" id="IBj-Mb-HrA"/>
+                            <constraint firstAttribute="trailing" secondItem="lK1-VQ-8Br" secondAttribute="trailing" id="MSz-EV-8LH"/>
+                            <constraint firstItem="lK1-VQ-8Br" firstAttribute="bottom" secondItem="8b2-Q8-1cn" secondAttribute="top" id="Tsm-Om-Okk"/>
+                            <constraint firstItem="lK1-VQ-8Br" firstAttribute="leading" secondItem="VrW-HZ-Ko9" secondAttribute="leading" id="kVW-Pq-gu0"/>
                         </constraints>
                     </view>
                     <connections>
@@ -245,12 +262,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ied-3M-QQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6593" y="-536"/>
+            <point key="canvasLocation" x="6592.8000000000002" y="-536.58170914542734"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="5fx-JZ-gc6">
             <objects>
-                <pageViewController storyboardIdentifier="mainPVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="GKc-6K-nPA" customClass="PageViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="mainPVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="mid" doubleSided="YES" id="GKc-6K-nPA" customClass="PageViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h50-1W-1I2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4844" y="-535"/>
@@ -261,7 +278,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrY-Gw-eKo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Browse" id="DNw-Mh-nZ5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQ1-gj-fih">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dQ1-gj-fih">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -650,7 +667,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="pIp-dV-5Wz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="PCz-Z6-xQE"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKR-FV-t1O">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BKR-FV-t1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
