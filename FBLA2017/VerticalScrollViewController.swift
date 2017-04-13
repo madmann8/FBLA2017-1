@@ -8,6 +8,11 @@ class VerticalScrollViewController: UIViewController {
     var bottomVc: UIViewController!
     var scrollView: UIScrollView!
     
+    var tempTopVC:UIViewController!=nil
+    var tempBottomVC:UIViewController!=nil
+
+    
+    
     class func verticalScrollVcWith(middleVc: UIViewController,
                                     topVc: UIViewController?=nil,
                                     bottomVc: UIViewController?=nil) -> VerticalScrollViewController {
@@ -16,6 +21,8 @@ class VerticalScrollViewController: UIViewController {
         middleScrollVc.topVc = topVc
         middleScrollVc.middleVc = middleVc
         middleScrollVc.bottomVc = bottomVc
+        middleScrollVc.tempTopVC=middleScrollVc.topVc
+        middleScrollVc.tempBottomVC=middleScrollVc.bottomVc
         
         return middleScrollVc
     }
@@ -24,6 +31,23 @@ class VerticalScrollViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view:
         setupScrollView()
+    }
+    
+    func setTopEnabled(enabled:Bool){
+        if enabled{
+            topVc=tempTopVC
+        }
+        else {
+            topVc=nil
+        }
+    }
+    func setBottomEnabled(enabled:Bool){
+        if enabled{
+            bottomVc=tempBottomVC
+        }
+        else {
+            bottomVc=nil
+        }
     }
     
     func setupScrollView() {

@@ -162,8 +162,8 @@ extension ImageCollectionViewController: PhotoCellDelegate {
             name = value?["title"] as? String ?? ""
             about = value?["about"] as? String ?? ""
             categorey = value?["category"] as? String ?? ""
-            latitudeString = value?["latitudeString"] as? String ?? ""
-            longitudeString = value?["longitudeString"] as? String ?? ""
+            latitudeString = value?["locationLatitude"] as? String ?? ""
+            longitudeString = value?["locationLongitude"] as? String ?? ""
             addressString = value?["locationString"] as? String ?? ""
             condition = value?["condition"] as? Int ?? 0
             cents = value?["cents"] as? Int ?? 0
@@ -217,11 +217,9 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     top.condition=condition
 
                                     
-                                    let bottom = storyboard.instantiateViewController(withIdentifier: "detailBottom")
-
+                                
                                     
-                                    let verticalVC=VerticalScrollViewController.verticalScrollVcWith(middleVc: middle, topVc: top, bottomVc: bottom)
-                                    self.present(verticalVC, animated: true, completion: nil)
+                                    self.present(middle, animated: true, completion: nil)
                                     
                                     
                                     

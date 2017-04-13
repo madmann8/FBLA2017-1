@@ -54,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Popover.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Presentr.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -72,7 +77,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1DA8E4D98D6A1C0513BAFF1EF029E866</key>
+		<key>3AA4DDDF39120DE5F4D26D12A0889DA2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,6 +97,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6BB45EF46925BF1175981CD6FAD81F56</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>76BD4592010354D6C23D6ECCA20D83A8</key>
 		<dict>
 			<key>primary</key>
@@ -107,7 +117,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A931D81352AFDD11B7CF32782E1B23AB</key>
+		<key>A0B1B7FFECAC7401D43D3DD996AAC2E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

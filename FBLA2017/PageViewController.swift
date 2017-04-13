@@ -8,10 +8,15 @@
 
 import UIKit
 
+
+
 class PageViewController: UIPageViewController {
     
     var images:[UIImage]?=nil
     
+    var lastPendingViewControllerIndex=0
+    var currentPageIndex=0
+    var index=0
     
     lazy var orderedViewControllers:[UIViewController] = []
     
@@ -19,17 +24,10 @@ class PageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         self.dataSource=self
-//        var pageStoryboard:UIStoryboard=UIStoryboard(name: "Main", bundle: nil)
-//        var VC:ImageAndButtonsViewController=pageStoryboard.instantiateViewController(withIdentifier: "sbImageMain") as! ImageAndButtonsViewController
-//        if let image=images?[0]{
-//            VC.image=image
-//            self.images?.remove(at: 0)
-//            orderedViewControllers.append(VC)
-//        }
-        if !(images?.isEmpty)!{
-        for image in images!{
-            makeAndAppeadVC(image: image)
-        }
+              if !(images?.isEmpty)!{
+            for image in images!{
+                makeAndAppeadVC(image: image)
+            }
         }
         setViewControllers([orderedViewControllers.first!], direction: .forward, animated: true, completion: nil)
     }
@@ -45,7 +43,6 @@ class PageViewController: UIPageViewController {
 }
 
 extension PageViewController: UIPageViewControllerDataSource{
-    
     
     
     // MARK: Data source functions.
@@ -90,5 +87,4 @@ extension PageViewController: UIPageViewControllerDataSource{
         return orderedViewControllers[nextIndex]
     }
 }
-
 
