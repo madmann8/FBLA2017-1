@@ -9,6 +9,14 @@
 import UIKit
 
 class MoreDetailsViewController: UIViewController {
+    var categorey:String?=nil
+    var name:String?=nil
+    var about:String?=nil
+    var latitudeString:String?=nil
+    var longitudeString:String?=nil
+    var addressString:String?=nil
+    var cents:Int?=nil
+    var condition:Int?=nil
 
   
 

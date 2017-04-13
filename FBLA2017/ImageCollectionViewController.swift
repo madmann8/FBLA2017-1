@@ -206,8 +206,16 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     middle.rating=condition
                                     middle.cents=cents
                                     
-                                    let top = storyboard.instantiateViewController(withIdentifier: "detailTop") as! MoreDetailsViewController
-                                    top.
+                                    let top=storyboard.instantiateViewController(withIdentifier: "detailTop") as! MoreDetailsViewController
+                                    top.categorey=categorey
+                                    top.name=name
+                                    top.about=about
+                                    top.latitudeString=latitudeString
+                                    top.longitudeString=longitudeString
+                                    top.addressString=addressString
+                                    top.cents=cents
+                                    top.condition=condition
+
                                     
                                     let bottom = storyboard.instantiateViewController(withIdentifier: "detailBottom")
 
