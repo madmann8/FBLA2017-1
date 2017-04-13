@@ -109,12 +109,12 @@ extension ImageCollectionViewController {
                             } else {
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
-                                if let extractedKey:String?=path.substring(start: 44, end: 63){
+                                if let extractedKey:String?=path.substring(start: 40, end: 60){
                                     self.itemKeys.append(extractedKey!)
                                 }
                                 print(i)
                                 i+=1
-                                if i==snapshots.count{
+                                if i==snapshots.count-1{
                                     activityIndicator.stopAnimating()
                                     self.collectionView?.reloadData()
                                 }
@@ -142,14 +142,15 @@ extension ImageCollectionViewController: PhotoCellDelegate {
         
         var images=[UIImage]()
         let ref = FIRDatabase.database().reference().child("items").child(keyString).child("imagePaths")
+//        print("\(ref)")
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 var i=0
                 for snapshot in snapshots {
                     if let path = snapshot.value as? String {
-                        let coverImagePath = storage.reference(forURL: path)
-                        coverImagePath.data(withMaxSize: 1 * 1024 * 1024) { data, error in
+                        let imagePath = storage.reference(forURL: path)
+                        imagePath.data(withMaxSize: 1 * 6000 * 6000) { data, error in
                             if let error = error {
                                 // Uh-oh, an error occurred!
                             } else {
