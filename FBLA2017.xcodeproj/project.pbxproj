@@ -27,7 +27,6 @@
 		48D356471E99B3D100FBF6B3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D356461E99B3D100FBF6B3 /* TabBarController.swift */; };
 		48DE95101E9ED21400583327 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE950F1E9ED21400583327 /* PageViewController.swift */; };
 		48DE95121E9EE62600583327 /* SBMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE95111E9EE62600583327 /* SBMaker.swift */; };
-		48DE95151E9EE7AF00583327 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE95141E9EE7AF00583327 /* ImageViewController.swift */; };
 		48DE95191E9F0D5800583327 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48DE95181E9F0D5800583327 /* GoogleService-Info.plist */; };
 		99569F140133A95F709CE436 /* Pods_FBLA2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40F4BFEA70DF778ECC2C0DA /* Pods_FBLA2017.framework */; };
 /* End PBXBuildFile section */
@@ -55,7 +54,6 @@
 		48D356461E99B3D100FBF6B3 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		48DE950F1E9ED21400583327 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		48DE95111E9EE62600583327 /* SBMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBMaker.swift; sourceTree = "<group>"; };
-		48DE95141E9EE7AF00583327 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		48DE95181E9F0D5800583327 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7301597ADAFE4597967BF48A /* Pods-FBLA2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLA2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FBLA2017/Pods-FBLA2017.debug.xcconfig"; sourceTree = "<group>"; };
 		E40F4BFEA70DF778ECC2C0DA /* Pods_FBLA2017.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FBLA2017.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				48DE950F1E9ED21400583327 /* PageViewController.swift */,
-				48DE95141E9EE7AF00583327 /* ImageViewController.swift */,
 				48BD2F261E9FEF4500FDA557 /* ImageAndButtonsViewController.swift */,
 			);
 			name = DetailView;
@@ -306,7 +303,6 @@
 				48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */,
 				489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */,
 				48D356471E99B3D100FBF6B3 /* TabBarController.swift in Sources */,
-				48DE95151E9EE7AF00583327 /* ImageViewController.swift in Sources */,
 				486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */,
 				481DD8D11E98354E005765AF /* SecondViewController.swift in Sources */,
 				48D356451E99A2E400FBF6B3 /* CameraViewController.swift in Sources */,

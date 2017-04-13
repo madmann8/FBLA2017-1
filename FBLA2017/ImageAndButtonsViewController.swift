@@ -19,5 +19,6 @@ class ImageAndButtonsViewController: UIViewController {
     }
 
     @IBAction func exitButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

@@ -20,24 +20,24 @@ class PageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         self.dataSource=self
-        var pageStoryboard:UIStoryboard=UIStoryboard(name: "Main", bundle: nil)
-        var VC:ImageAndButtonsViewController=pageStoryboard.instantiateViewController(withIdentifier: "sbImageMain") as! ImageAndButtonsViewController
-        if let image=images?[0]{
-            VC.image=image
-            self.images?.remove(at: 0)
-            orderedViewControllers.append(VC)
-        }
+//        var pageStoryboard:UIStoryboard=UIStoryboard(name: "Main", bundle: nil)
+//        var VC:ImageAndButtonsViewController=pageStoryboard.instantiateViewController(withIdentifier: "sbImageMain") as! ImageAndButtonsViewController
+//        if let image=images?[0]{
+//            VC.image=image
+//            self.images?.remove(at: 0)
+//            orderedViewControllers.append(VC)
+//        }
         if !(images?.isEmpty)!{
         for image in images!{
             makeAndAppeadVC(image: image)
         }
         }
-        setViewControllers([VC], direction: .forward, animated: true, completion: nil)
+        setViewControllers([orderedViewControllers.first!], direction: .forward, animated: true, completion: nil)
     }
     
     func makeAndAppeadVC(image:UIImage){
         var pageStoryboard:UIStoryboard=UIStoryboard(name: "Main", bundle: nil)
-        var VC:ImageViewController=pageStoryboard.instantiateViewController(withIdentifier: "sbImage") as! ImageViewController
+        var VC:ImageAndButtonsViewController=pageStoryboard.instantiateViewController(withIdentifier: "sbImageMain") as! ImageAndButtonsViewController
         VC.image=image
         orderedViewControllers.append(VC)
     }
