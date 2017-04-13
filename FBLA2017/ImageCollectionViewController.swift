@@ -193,7 +193,7 @@ extension ImageCollectionViewController{
 extension ImageCollectionViewController{
     func makePageVC(images:[UIImage], keyString: String){
         var pageStoryboard:UIStoryboard=UIStoryboard(name: "Main", bundle: nil)
-        var VC:PageViewController=pageStoryboard.instantiateViewController(withIdentifier: "mainPVC") as! PageViewController
+        var VC:InfoContainerViewController=pageStoryboard.instantiateViewController(withIdentifier: "sbImageMain") as! InfoContainerViewController
         VC.images=images
         VC.keyString=keyString
         present(VC, animated: true, completion: nil)
