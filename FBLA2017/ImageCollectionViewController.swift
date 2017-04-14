@@ -199,12 +199,14 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     
                                     
                                     let middle=storyboard.instantiateViewController(withIdentifier: "detailMiddle") as! InfoContainerViewController
-                                    middle.images=images
-                                    middle.keyString=keyString
+                                    middle.categorey=categorey
                                     middle.name=name
                                     middle.about=about
-                                    middle.rating=condition
+                                    middle.latitudeString=latitudeString
+                                    middle.longitudeString=longitudeString
+                                    middle.addressString=addressString
                                     middle.cents=cents
+                                    middle.condition=condition
                                     
                                     let top=storyboard.instantiateViewController(withIdentifier: "detailTop") as! MoreDetailsViewController
                                     top.categorey=categorey
