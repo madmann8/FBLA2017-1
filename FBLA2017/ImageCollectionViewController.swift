@@ -207,6 +207,7 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     middle.addressString=addressString
                                     middle.cents=cents
                                     middle.condition=condition
+                                    middle.images=images
                                     
                                     let top=storyboard.instantiateViewController(withIdentifier: "detailTop") as! MoreDetailsViewController
                                     top.categorey=categorey

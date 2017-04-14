@@ -41,9 +41,20 @@ class MoreDetailsViewController: UIViewController {
             categoryLabel.text=category
             descriptionLabel.text=about
             ratingLabel.text=String(condition)
+
+        
         }
         
     }
   
+    @IBAction func mapViewButtonPressed(_ sender: UIButton) {
+        let view=self.mapView
+        print("Here")
+        let frame=CGRect(x: (view?.frame.minX)!, y: (view?.frame.minY)!, width: (view?.frame.width)!, height: (view?.frame.height)!*2)
+        view?.frame=frame
+
+    }
 
 }
+
+

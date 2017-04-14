@@ -62,11 +62,11 @@ class InfoContainerViewController: UIViewController {
         vc.condition=self.condition
         
         
-        print(vc.view.frame.height)
         let sizeToSubtract=moreInfoButtonToTopConstraint.constant*(-1.4)
         let newFrame=CGRect(x: vc.view.frame.minX, y: vc.view.frame.minY, width: vc.view.frame.width-10, height: vc.view.frame.height-sizeToSubtract)
         vc.view.frame=newFrame
-        print(vc.view.frame.height)
+        print(newFrame.height)
+        print(newFrame.width)
         let point=CGPoint(x: moreInfoButton.center.x, y: moreInfoButton.center.y-(-1.0)*moreInfoButton.frame.height/2)
         let popover = Popover()
         popover.show(vc.view!, point: point)
