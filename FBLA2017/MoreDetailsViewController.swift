@@ -6,6 +6,8 @@
 //  Copyright © 2017 Luke Mann. All rights reserved.
 //
 
+//On the next episode: We Chat!
+
 import UIKit
 import MapKit
 import CoreLocation
@@ -41,20 +43,27 @@ class MoreDetailsViewController: UIViewController {
             categoryLabel.text=category
             descriptionLabel.text=about
             ratingLabel.text=String(condition)
-
-        
+            let latDouble=Double(latitude)
+            let longDouble=Double(longitude)
+            let location = CLLocation(latitude: latDouble!, longitude: longDouble!)
+            let regionRadius: CLLocationDistance = 1000
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                      regionRadius * 2.0, regionRadius * 2.0)
+            mapView.setRegion(coordinateRegion, animated: true)
+            var information = MKPointAnnotation()
+            information.coordinate = location.coordinate
+            information.title = "Test Title!"
+            information.subtitle = "Subtitle"
+            
+            mapView.addAnnotation(information)
+            
+            
         }
         
     }
-  
-    @IBAction func mapViewButtonPressed(_ sender: UIButton) {
-        let view=self.mapView
-        print("Here")
-        let frame=CGRect(x: (view?.frame.minX)!, y: (view?.frame.minY)!, width: (view?.frame.width)!, height: (view?.frame.height)!*2)
-        view?.frame=frame
 
-    }
 
 }
+
 
 

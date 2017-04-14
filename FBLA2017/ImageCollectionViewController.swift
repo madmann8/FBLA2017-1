@@ -112,7 +112,6 @@ extension ImageCollectionViewController {
                                 if let extractedKey:String?=path.substring(start: 40, end: 60){
                                     self.itemKeys.append(extractedKey!)
                                 }
-                                print(i)
                                 i+=1
                                 if i==snapshots.count-1{
                                     activityIndicator.stopAnimating()
