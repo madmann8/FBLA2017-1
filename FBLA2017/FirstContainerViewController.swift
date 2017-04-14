@@ -60,6 +60,14 @@ class FirstContainerViewController:PulleyViewController {
             if let vc:ItemChatViewController=segue.destination as! ItemChatViewController{
                 vc.senderId=FIRAuth.auth()?.currentUser?.uid
                 vc.senderDisplayName=vc.senderId
+                print(vc.view.frame.height)
+                let frame=self.view.frame
+                let newHeight=frame.height*0.8
+                print(newHeight)
+                let newFrame=CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height-self.topInset)
+                vc.frame=newFrame
+            
+
             }
         
 

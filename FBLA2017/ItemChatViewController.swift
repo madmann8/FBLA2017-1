@@ -13,12 +13,14 @@ import JSQMessagesViewController
 
 class ItemChatViewController: JSQMessagesViewController {
     
+    var frame:CGRect?=nil
+    
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     
-    final var keyString="-Khe2xui2PTqk4Ri9hfE"
+    final var keyString="-Kh_2eLDZzSzZfBVXdck"
     
      lazy var messageRef: FIRDatabaseReference = FIRDatabase.database().reference().child("items").child("-Khe2xui2PTqk4Ri9hfE").child("messages")
     private var newMessageRefHandle: FIRDatabaseHandle?
@@ -33,6 +35,10 @@ class ItemChatViewController: JSQMessagesViewController {
     }
     
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.view.frame=self.frame ?? self.view.frame
+    }
     
 
     private func addMessage(withId id: String, name: String, text: String) {
