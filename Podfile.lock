@@ -34,6 +34,7 @@ PODS:
   - NVActivityIndicatorView (3.6.0)
   - Popover (1.0.5)
   - Presentr (1.2.3)
+  - Pulley (1.3.1)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - Popover
   - Presentr
+  - Pulley
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -74,7 +76,8 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: c7c1c4300b418bd9ed06459e78d4df859ddbe31f
   Popover: f31b0ef6f43192256e6fcf13a0ce10f01c803159
   Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
+  Pulley: 99a45ad8aba14dafb2c6f4f16cb9667eb41c0919
 
-PODFILE CHECKSUM: c699d342ed076b3ee5d0d213821cbb27a9b85016
+PODFILE CHECKSUM: 6c759049f9c802b8705f5c8dae81f17bc98ad6f2
 
 COCOAPODS: 1.2.0

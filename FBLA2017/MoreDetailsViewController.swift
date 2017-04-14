@@ -6,7 +6,6 @@
 //  Copyright © 2017 Luke Mann. All rights reserved.
 //
 
-//On the next episode: We Chat!
 
 import UIKit
 import MapKit

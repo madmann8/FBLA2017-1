@@ -197,7 +197,7 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                     
                                     
-                                    let middle=storyboard.instantiateViewController(withIdentifier: "detailMiddle") as! InfoContainerViewController
+                                    let middle=storyboard.instantiateViewController(withIdentifier: "pulley") as! FirstContainerViewController
                                     middle.categorey=categorey
                                     middle.name=name
                                     middle.about=about
@@ -208,17 +208,7 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     middle.condition=condition
                                     middle.images=images
                                     
-                                    let top=storyboard.instantiateViewController(withIdentifier: "detailTop") as! MoreDetailsViewController
-                                    top.categorey=categorey
-                                    top.name=name
-                                    top.about=about
-                                    top.latitudeString=latitudeString
-                                    top.longitudeString=longitudeString
-                                    top.addressString=addressString
-                                    top.cents=cents
-                                    top.condition=condition
 
-                                    
                                 
                                     
                                     self.present(middle, animated: true, completion: nil)

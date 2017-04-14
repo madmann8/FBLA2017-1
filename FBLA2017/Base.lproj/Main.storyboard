@@ -126,7 +126,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="e4v-qk-BWi" customClass="PhotoCell" customModule="FBLA2017" customModuleProvider="target">
-                                <rect key="frame" x="88" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -232,13 +232,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UXf-nN-qJM">
-                                <rect key="frame" x="123" y="197" width="118" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="slidderChanged:" destination="o6H-h6-tHi" eventType="valueChanged" id="3A2-cM-7Oj"/>
-                                </connections>
-                            </slider>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -258,6 +251,62 @@
             </objects>
             <point key="canvasLocation" x="6152.8000000000002" y="-1544.0779610194904"/>
         </scene>
+        <!--First Container View Controller-->
+        <scene sceneID="Dkr-H2-jCm">
+            <objects>
+                <viewController restorationIdentifier="pulley" storyboardIdentifier="pulley" id="sMT-iR-9eI" customClass="FirstContainerViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xAZ-tz-CH9"/>
+                        <viewControllerLayoutGuide type="bottom" id="chy-Yi-Rgi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bQN-c8-Mdh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ni9-Gi-eXv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="y0u-Bh-ch7" kind="embed" identifier="toSecondContainer" id="4Gw-48-Gay"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vmD-j6-6VS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="6oi-yG-fPs" kind="embed" id="ORa-sI-Pdp"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="primaryView" destination="Ni9-Gi-eXv" id="cbJ-py-itg"/>
+                        <outlet property="secondaryView" destination="vmD-j6-6VS" id="ntO-4j-Odg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h6v-zg-8Mw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5074.3999999999996" y="-863.1184407796103"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aDm-lF-agQ">
+            <objects>
+                <viewController id="6oi-yG-fPs" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SdT-vW-Jqi"/>
+                        <viewControllerLayoutGuide type="bottom" id="r4U-Zi-OWc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KoL-IX-VrI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.99955970049999998" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TnZ-DF-zxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5559" y="-93"/>
+        </scene>
         <!--Info Container View Controller-->
         <scene sceneID="cbx-XE-sz0">
             <objects>
@@ -276,14 +325,14 @@
                                     <segue destination="GKc-6K-nPA" kind="embed" identifier="showPageVC" id="MJx-s8-ZY0"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKy-mk-hdU">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKy-mk-hdU">
                                 <rect key="frame" x="155" y="28" width="65" height="30"/>
                                 <state key="normal" title="More Info"/>
                                 <connections>
                                     <action selector="moreInfoButtonPressed:" destination="y0u-Bh-ch7" eventType="touchUpInside" id="RIj-vo-E6X"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hny-D5-Iod">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hny-D5-Iod">
                                 <rect key="frame" x="24" y="28" width="30" height="30"/>
                                 <state key="normal" title="Exit"/>
                                 <connections>
@@ -339,25 +388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYM-9r-ONk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6018" y="-873"/>
-        </scene>
-        <!--detailBottom-->
-        <scene sceneID="GJ1-B7-2KE">
-            <objects>
-                <viewController storyboardIdentifier="detailBottom" title="detailBottom" id="0Ei-77-6dI" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aUe-uj-cGP"/>
-                        <viewControllerLayoutGuide type="bottom" id="1Gp-EJ-Hun"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KWT-T0-AJw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.98216801881790161" green="0.016992654651403427" blue="0.98545569181442261" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Of-3H-oVH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5166" y="-115"/>
+            <point key="canvasLocation" x="6009" y="-863"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="Rcm-qd-AxO">

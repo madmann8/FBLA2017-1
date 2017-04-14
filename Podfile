@@ -12,7 +12,7 @@ pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chamel
 pod ‘Format’
 pod 'NVActivityIndicatorView'
 pod "Popover"
-
+pod 'Pulley'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'

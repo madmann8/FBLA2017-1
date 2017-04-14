@@ -20,12 +20,12 @@
 		485A02201E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */; };
 		486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */; };
 		486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */; };
-		4875274F1EA00E0F0047E083 /* VerticalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875274E1EA00E0F0047E083 /* VerticalScrollViewController.swift */; };
 		487527531EA01BDD0047E083 /* MoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */; };
 		489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */; };
 		48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */; };
 		48BD2F291E9FFAD400FDA557 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD2F281E9FFAD400FDA557 /* ImageViewController.swift */; };
 		48BD2F2D1E9FFC7300FDA557 /* InfoContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */; };
+		48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C535CC1EA07941007062FE /* FirstContainerViewController.swift */; };
 		48D356451E99A2E400FBF6B3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D356441E99A2E400FBF6B3 /* CameraViewController.swift */; };
 		48D356471E99B3D100FBF6B3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D356461E99B3D100FBF6B3 /* TabBarController.swift */; };
 		48DE95101E9ED21400583327 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE950F1E9ED21400583327 /* PageViewController.swift */; };
@@ -50,12 +50,12 @@
 		485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPricePopoverViewController.swift; sourceTree = "<group>"; };
 		486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
-		4875274E1EA00E0F0047E083 /* VerticalScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalScrollViewController.swift; sourceTree = "<group>"; };
 		487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreDetailsViewController.swift; sourceTree = "<group>"; };
 		489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKAPIKey.swift; sourceTree = "<group>"; };
 		48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadItemFormViewController.swift; sourceTree = "<group>"; };
 		48BD2F281E9FFAD400FDA557 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoContainerViewController.swift; sourceTree = "<group>"; };
+		48C535CC1EA07941007062FE /* FirstContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstContainerViewController.swift; sourceTree = "<group>"; };
 		48D356441E99A2E400FBF6B3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		48D356461E99B3D100FBF6B3 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		48DE950F1E9ED21400583327 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -154,8 +154,8 @@
 				48DE950F1E9ED21400583327 /* PageViewController.swift */,
 				48BD2F281E9FFAD400FDA557 /* ImageViewController.swift */,
 				48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */,
-				4875274E1EA00E0F0047E083 /* VerticalScrollViewController.swift */,
 				487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */,
+				48C535CC1EA07941007062FE /* FirstContainerViewController.swift */,
 			);
 			name = DetailView;
 			sourceTree = "<group>";
@@ -310,8 +310,8 @@
 				480A3D121E9DA8BD002862BF /* LoginViewController.swift in Sources */,
 				48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */,
 				48BD2F291E9FFAD400FDA557 /* ImageViewController.swift in Sources */,
-				4875274F1EA00E0F0047E083 /* VerticalScrollViewController.swift in Sources */,
 				489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */,
+				48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */,
 				48BD2F2D1E9FFC7300FDA557 /* InfoContainerViewController.swift in Sources */,
 				48D356471E99B3D100FBF6B3 /* TabBarController.swift in Sources */,
 				486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */,

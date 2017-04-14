@@ -11,6 +11,9 @@ import Firebase
 import ChameleonFramework
 
 
+//On the next episode: We Chat!
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
