@@ -289,10 +289,10 @@
             </objects>
             <point key="canvasLocation" x="5074.3999999999996" y="-863.1184407796103"/>
         </scene>
-        <!--View Controller-->
+        <!--Item Chat View Controller-->
         <scene sceneID="aDm-lF-agQ">
             <objects>
-                <viewController id="6oi-yG-fPs" sceneMemberID="viewController">
+                <viewController id="6oi-yG-fPs" customClass="ItemChatViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SdT-vW-Jqi"/>
                         <viewControllerLayoutGuide type="bottom" id="r4U-Zi-OWc"/>

@@ -17,6 +17,7 @@
 		481DD8D91E98354E005765AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D71E98354E005765AF /* LaunchScreen.storyboard */; };
 		483D9D391E9C5A8F00BFA619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483D9D381E9C5A8F00BFA619 /* CoreLocation.framework */; };
 		483D9D3B1E9C5A9500BFA619 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483D9D3A1E9C5A9500BFA619 /* MapKit.framework */; };
+		483F1F8F1EA08210000C5788 /* ItemChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */; };
 		485A02201E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */; };
 		486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */; };
 		486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */; };
@@ -47,6 +48,7 @@
 		481DD8DA1E98354E005765AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		483D9D381E9C5A8F00BFA619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		483D9D3A1E9C5A9500BFA619 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemChatViewController.swift; sourceTree = "<group>"; };
 		485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPricePopoverViewController.swift; sourceTree = "<group>"; };
 		486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */,
 				487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */,
 				48C535CC1EA07941007062FE /* FirstContainerViewController.swift */,
+				483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */,
 			);
 			name = DetailView;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */,
 				48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */,
 				48BD2F2D1E9FFC7300FDA557 /* InfoContainerViewController.swift in Sources */,
+				483F1F8F1EA08210000C5788 /* ItemChatViewController.swift in Sources */,
 				48D356471E99B3D100FBF6B3 /* TabBarController.swift in Sources */,
 				486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */,
 				481DD8D11E98354E005765AF /* SecondViewController.swift in Sources */,
