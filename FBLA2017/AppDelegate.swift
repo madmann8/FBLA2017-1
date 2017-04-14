@@ -11,7 +11,7 @@ import Firebase
 import ChameleonFramework
 
 
-//On the next episode: We Chat!
+//On the next episode: We make the chat!
 
 
 @UIApplicationMain

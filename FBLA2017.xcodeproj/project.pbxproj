@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4808B9BB1E9B0D2400BF1181 /* FontLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808B9BA1E9B0D2400BF1181 /* FontLoader.swift */; };
-		480A3D121E9DA8BD002862BF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A3D111E9DA8BD002862BF /* LoginViewController.swift */; };
 		4815FF4F1E99549B0018FA30 /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815FF4E1E99549B0018FA30 /* ImageCollectionViewController.swift */; };
 		481DD8CD1E98354E005765AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DD8CC1E98354E005765AF /* AppDelegate.swift */; };
 		481DD8D11E98354E005765AF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DD8D01E98354E005765AF /* SecondViewController.swift */; };
@@ -24,6 +23,8 @@
 		487527531EA01BDD0047E083 /* MoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */; };
 		489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */; };
 		48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */; };
+		48B07F0E1EA151FE0068709A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B07F0D1EA151FE0068709A /* LoginViewController.swift */; };
+		48B07F101EA1574B0068709A /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B07F0F1EA1574B0068709A /* Channel.swift */; };
 		48BD2F291E9FFAD400FDA557 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD2F281E9FFAD400FDA557 /* ImageViewController.swift */; };
 		48BD2F2D1E9FFC7300FDA557 /* InfoContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */; };
 		48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C535CC1EA07941007062FE /* FirstContainerViewController.swift */; };
@@ -37,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		4808B9BA1E9B0D2400BF1181 /* FontLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontLoader.swift; sourceTree = "<group>"; };
-		480A3D111E9DA8BD002862BF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4815FF4E1E99549B0018FA30 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 		481DD8C91E98354E005765AF /* FBLA2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBLA2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		481DD8CC1E98354E005765AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +55,8 @@
 		487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreDetailsViewController.swift; sourceTree = "<group>"; };
 		489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKAPIKey.swift; sourceTree = "<group>"; };
 		48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadItemFormViewController.swift; sourceTree = "<group>"; };
+		48B07F0D1EA151FE0068709A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		48B07F0F1EA1574B0068709A /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		48BD2F281E9FFAD400FDA557 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoContainerViewController.swift; sourceTree = "<group>"; };
 		48C535CC1EA07941007062FE /* FirstContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstContainerViewController.swift; sourceTree = "<group>"; };
@@ -114,7 +116,9 @@
 		481DD8CB1E98354E005765AF /* FBLA2017 */ = {
 			isa = PBXGroup;
 			children = (
+				48B07F0C1EA151A70068709A /* Login/Chat Temp */,
 				486D222E1E9CA7E400EA2BDC /* Support Files */,
+				48B07F0F1EA1574B0068709A /* Channel.swift */,
 				486D222B1E9CA74500EA2BDC /* Upload Form */,
 				4815FF501E9958110018FA30 /* Browse */,
 				481DD8CC1E98354E005765AF /* AppDelegate.swift */,
@@ -124,7 +128,6 @@
 				481DD8D71E98354E005765AF /* LaunchScreen.storyboard */,
 				481DD8D21E98354E005765AF /* Main.storyboard */,
 				481DD8D51E98354E005765AF /* Assets.xcassets */,
-				480A3D111E9DA8BD002862BF /* LoginViewController.swift */,
 			);
 			path = FBLA2017;
 			sourceTree = "<group>";
@@ -150,6 +153,15 @@
 			name = "Support Files";
 			sourceTree = "<group>";
 		};
+		48B07F0C1EA151A70068709A /* Login/Chat Temp */ = {
+			isa = PBXGroup;
+			children = (
+				483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */,
+				48B07F0D1EA151FE0068709A /* LoginViewController.swift */,
+			);
+			name = "Login/Chat Temp";
+			sourceTree = "<group>";
+		};
 		48DE95131E9EE78200583327 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +170,6 @@
 				48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */,
 				487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */,
 				48C535CC1EA07941007062FE /* FirstContainerViewController.swift */,
-				483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */,
 			);
 			name = DetailView;
 			sourceTree = "<group>";
@@ -308,13 +319,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */,
+				48B07F101EA1574B0068709A /* Channel.swift in Sources */,
 				4808B9BB1E9B0D2400BF1181 /* FontLoader.swift in Sources */,
 				4815FF4F1E99549B0018FA30 /* ImageCollectionViewController.swift in Sources */,
-				480A3D121E9DA8BD002862BF /* LoginViewController.swift in Sources */,
 				48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */,
 				48BD2F291E9FFAD400FDA557 /* ImageViewController.swift in Sources */,
 				489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */,
 				48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */,
+				48B07F0E1EA151FE0068709A /* LoginViewController.swift in Sources */,
 				48BD2F2D1E9FFC7300FDA557 /* InfoContainerViewController.swift in Sources */,
 				483F1F8F1EA08210000C5788 /* ItemChatViewController.swift in Sources */,
 				48D356471E99B3D100FBF6B3 /* TabBarController.swift in Sources */,

@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>595340468920-ac9mj8t7banogmg2j88tkb0sjm0r53fi.apps.googleusercontent.com</string>
+	<string>3807913493-p7n7m1c1q74iskjvbmh767knc1g677js.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.595340468920-ac9mj8t7banogmg2j88tkb0sjm0r53fi</string>
+	<string>com.googleusercontent.apps.3807913493-p7n7m1c1q74iskjvbmh767knc1g677js</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCLh3BTA342xg-n4WpTYOWfsM-tN3iTD54</string>
+	<string>AIzaSyAh-I7_r8ji3RAkTfP3nieAnXQsWQPfoDQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>595340468920</string>
+	<string>3807913493</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.lukejmann.FBLA2017</string>
 	<key>PROJECT_ID</key>
-	<string>yard-sale-3</string>
+	<string>yard-sale-2</string>
 	<key>STORAGE_BUCKET</key>
-	<string>yard-sale-3.appspot.com</string>
+	<string>yard-sale-2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:595340468920:ios:aff728c09fd4e79c</string>
+	<string>1:3807913493:ios:aff728c09fd4e79c</string>
 	<key>DATABASE_URL</key>
-	<string>https://yard-sale-3.firebaseio.com</string>
+	<string>https://yard-sale-2.firebaseio.com</string>
 </dict>
 </plist>

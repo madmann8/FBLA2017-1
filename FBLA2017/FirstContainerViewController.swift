@@ -8,6 +8,7 @@
 
 import UIKit
 import Pulley
+import FirebaseAuth
 
 
 class FirstContainerViewController:PulleyViewController {
@@ -53,8 +54,14 @@ class FirstContainerViewController:PulleyViewController {
                 middle.condition=condition
                 middle.images=images
             }
-            
-    }
+        
+        }
+        if segue.identifier=="containerToChat"{
+            if let vc:ItemChatViewController=segue.destination as! ItemChatViewController{
+                vc.senderId=FIRAuth.auth()?.currentUser?.uid
+                vc.senderDisplayName=vc.senderId
+            }
+        
 
     /*
     // MARK: - Navigation
@@ -67,4 +74,5 @@ class FirstContainerViewController:PulleyViewController {
     */
 
     }
+}
 }
