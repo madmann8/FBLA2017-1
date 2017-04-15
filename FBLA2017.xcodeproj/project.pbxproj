@@ -116,7 +116,7 @@
 		481DD8CB1E98354E005765AF /* FBLA2017 */ = {
 			isa = PBXGroup;
 			children = (
-				48B07F0C1EA151A70068709A /* Login/Chat Temp */,
+				48B07F0D1EA151FE0068709A /* LoginViewController.swift */,
 				486D222E1E9CA7E400EA2BDC /* Support Files */,
 				48B07F0F1EA1574B0068709A /* Channel.swift */,
 				486D222B1E9CA74500EA2BDC /* Upload Form */,
@@ -153,19 +153,11 @@
 			name = "Support Files";
 			sourceTree = "<group>";
 		};
-		48B07F0C1EA151A70068709A /* Login/Chat Temp */ = {
-			isa = PBXGroup;
-			children = (
-				483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */,
-				48B07F0D1EA151FE0068709A /* LoginViewController.swift */,
-			);
-			name = "Login/Chat Temp";
-			sourceTree = "<group>";
-		};
 		48DE95131E9EE78200583327 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
 				48DE950F1E9ED21400583327 /* PageViewController.swift */,
+				483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */,
 				48BD2F281E9FFAD400FDA557 /* ImageViewController.swift */,
 				48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */,
 				487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */,
