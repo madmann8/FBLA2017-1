@@ -6,8 +6,7 @@ import FirebaseStorage
 
 //On the next episode: well fugure out how to  reload view without using the text bar
 
-
-final class ImageCollectionViewController: UICollectionViewController {
+class ImageCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
     fileprivate let reuseIdentifier = "ItemCell"
@@ -17,9 +16,15 @@ final class ImageCollectionViewController: UICollectionViewController {
     var itemKeys=[String]()
     fileprivate let itemsPerRow: CGFloat = 3
     
+    var nextItemDelegate:NextItemDelegate?=nil
+    
     override func viewDidLoad() {
         loadCoverImages()
     }
+    
+    var itemIndex = 0
+    
+    var currentVC:UIViewController?=nil
 }
 
 // MARK: - Private
@@ -132,8 +137,8 @@ extension ImageCollectionViewController {
 extension ImageCollectionViewController: PhotoCellDelegate {
     func buttonPressed(keyString: String) {
         generateImages(keyString: keyString)
-        
-        
+        let index=itemKeys.index(of: keyString)
+        itemIndex=index!
     }
     
     func generateImages(keyString: String){
@@ -172,7 +177,6 @@ extension ImageCollectionViewController: PhotoCellDelegate {
 
 
         })
-//        print("\(ref)")
         let storage = FIRStorage.storage()
         ref.child("imagePaths").observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -208,11 +212,15 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     middle.condition=condition
                                     middle.images=images
                                     middle.keyString=keyString
+                                    middle.nextItemDelegate=self
                                     
 
                                 
-                                    
-                                    self.present(middle, animated: true, completion: nil)
+                                    if let vc=self.currentVC{
+                                        vc.dismiss(animated: false, completion: nil)
+                                    }
+                                    self.currentVC=middle
+                                    self.present(middle, animated: false, completion: nil)
                                     
                                     
                                     
@@ -245,17 +253,18 @@ extension ImageCollectionViewController{
 }
 
 
-
-extension ImageCollectionViewController{
-    func makePageVC(images:[UIImage], keyString: String)->InfoContainerViewController{
-        var pageStoryboard:UIStoryboard=UIStoryboard(name: "Main", bundle: nil)
-        var VC:InfoContainerViewController=pageStoryboard.instantiateViewController(withIdentifier: "detailMiddle") as! InfoContainerViewController
-        VC.images=images
-        VC.keyString=keyString
-        return VC
-        
+ extension ImageCollectionViewController:NextItemDelegate{
+    func goToNextItem() {
+        if itemIndex+1<itemKeys.count{
+            itemIndex+=1
+        generateImages(keyString: itemKeys[itemIndex])
+        }
+        else {
+            itemIndex=0
+            generateImages(keyString: itemKeys[itemIndex])
+        }
     }
-}
+ }
 
 
 

@@ -9,6 +9,10 @@
 import UIKit
 import Popover
 
+protocol NextItemDelegate {
+    func goToNextItem()
+}
+
 class InfoContainerViewController: UIViewController {
 
     var images:[UIImage]?=nil
@@ -23,6 +27,8 @@ class InfoContainerViewController: UIViewController {
 
     
     var keyString:String?=nil
+    
+    var nextItemDelegate: NextItemDelegate?=nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +52,6 @@ class InfoContainerViewController: UIViewController {
 
                 }
             }
-                    
     }
     
     @IBAction func moreInfoButtonPressed(_ sender: UIButton) {
@@ -84,5 +89,8 @@ class InfoContainerViewController: UIViewController {
      @IBOutlet var moreInfoButtonToTopConstraint: NSLayoutConstraint!
 
     
+    @IBAction func nextViewButtonPressed(_ sender: Any) {
+        self.nextItemDelegate?.goToNextItem()
+    }
     
 }

@@ -24,6 +24,7 @@ class FirstContainerViewController:PulleyViewController {
     var condition:Int?=nil
     var keyString:String?=nil
     
+    var nextItemDelegate:NextItemDelegate?=nil
  
     @IBOutlet weak var primaryView: UIView!
     @IBOutlet weak var secondaryView: UIView!
@@ -55,6 +56,7 @@ class FirstContainerViewController:PulleyViewController {
                 middle.cents=cents
                 middle.condition=condition
                 middle.images=images
+                middle.nextItemDelegate=self
             }
         
         }
@@ -69,21 +71,13 @@ class FirstContainerViewController:PulleyViewController {
                 print(newHeight)
                 let newFrame=CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height-self.topInset)
                 vc.frame=newFrame
+            
 
             
 
             }
         
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     }
 }
@@ -106,4 +100,10 @@ extension FirstContainerViewController:PulleyDrawerViewControllerDelegate{
         ]
     }
 
+}
+
+extension FirstContainerViewController:NextItemDelegate{
+    func goToNextItem() {
+        nextItemDelegate?.goToNextItem()
+    }
 }

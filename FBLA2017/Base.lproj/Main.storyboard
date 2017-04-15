@@ -355,6 +355,9 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="601"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="nextViewButtonPressed:" destination="y0u-Bh-ch7" eventType="touchUpInside" id="t1E-Lx-4an"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
