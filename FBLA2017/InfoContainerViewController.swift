@@ -52,6 +52,7 @@ class InfoContainerViewController: UIViewController {
             let pageDesitnation=segue.destination as! PageViewController
             pageDesitnation.images=self.images
             titleLabel.text=name
+            pageDesitnation.nextItemDelegate=self
             if let cents=cents,let rating=condition {
                     costLabel.text=String(describing: cents)
                     ratingLabel.text=String(describing: rating)
@@ -96,8 +97,13 @@ class InfoContainerViewController: UIViewController {
      @IBOutlet var moreInfoButtonToTopConstraint: NSLayoutConstraint!
 
     
-    @IBAction func nextViewButtonPressed(_ sender: Any) {
-        self.nextItemDelegate?.goToNextItem()
-    }
+
     
+}
+
+extension InfoContainerViewController:NextItemDelegate{
+    func goToNextItem() {
+        self.nextItemDelegate?.goToNextItem()
+
+    }
 }

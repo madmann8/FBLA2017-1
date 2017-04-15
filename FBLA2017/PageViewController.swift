@@ -16,15 +16,19 @@ class PageViewController: UIPageViewController {
     
     var images:[UIImage]?=nil
     
+    
+    
     var lastPendingViewControllerIndex=0
     var currentPageIndex=0
     var index=0
     
     lazy var orderedViewControllers:[UIViewController] = []
     
+    var nextItemDelegate:NextItemDelegate? = nil
     
     
     override func viewDidLoad() {
+        self.gestureRecognizers.first?.cancelsTouchesInView=true
         self.dataSource=self
               if !(images?.isEmpty)!{
             for image in images!{
@@ -38,6 +42,7 @@ class PageViewController: UIPageViewController {
         var pageStoryboard:UIStoryboard=UIStoryboard(name: "Main", bundle: nil)
         var VC:ImageViewController=pageStoryboard.instantiateViewController(withIdentifier: "sbImage") as! ImageViewController
         VC.image=image
+        VC.nextItemDelegate=self
         orderedViewControllers.append(VC)
     }
     
@@ -87,6 +92,12 @@ extension PageViewController: UIPageViewControllerDataSource{
         }
         
         return orderedViewControllers[nextIndex]
+    }
+}
+
+extension PageViewController:NextItemDelegate{
+    func goToNextItem() {
+        self.nextItemDelegate?.goToNextItem()
     }
 }
 

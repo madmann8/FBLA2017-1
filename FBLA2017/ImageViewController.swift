@@ -13,11 +13,15 @@ class ImageViewController: UIViewController {
     var image:UIImage?=nil
 
     @IBOutlet weak var imageView: UIImageView!
+    var nextItemDelegate:NextItemDelegate?=nil
  
     override func viewDidLoad() {
         self.imageView.image=self.image
     }
     
+    @IBAction func nextItemButtonPressed(_ sender: Any) {
+        self.nextItemDelegate?.goToNextItem()
+    }
     
 
 }
