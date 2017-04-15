@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import ChameleonFramework
+import FBSDKCoreKit
+import GoogleSignIn
 
 
 //On the next episode: We make the chat!
@@ -27,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.tintColor=themeColor
         
       FIRApp.configure()
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         
         return true
@@ -52,6 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        
+        return handled
     }
 
 

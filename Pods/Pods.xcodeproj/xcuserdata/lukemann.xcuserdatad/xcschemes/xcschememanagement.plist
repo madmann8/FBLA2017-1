@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -14,12 +19,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FBSDKCoreKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Format.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>GSMessages.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GTMOAuth2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -92,12 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>158E57F93E949573B013B21B01169894</key>
+		<key>15AC460A719B2A3A9F99EFB2FD04D462</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>24E780C2163B82C04E71A82FEDFED2BE</key>
+		<key>30351A265311A15F012C6F6F60B1C817</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>346F3060C8A1DD4DC25A62FECA4E7D8D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,7 +137,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>44CAD6CE523055ED339E87154473A254</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5168099F2EBFC99A707C03C9EADE01A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,22 +162,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8EDE9AC97791A215D0C9ECE34E22B6EC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>9419259E5586C510495CC1461979875C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BF030F7CCDE42C352FCC98912D7F6B76</key>
+		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<key>BC5000D645EEAF961C85907CDC796FE1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BEF7E6E85DB5CDE5D7A18F4F2EB8494B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -153,6 +188,11 @@
 			<true/>
 		</dict>
 		<key>D0581AF7BF4A6DA140D280B19ECC7BFF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F866826E24068DCF7D643D3792B14B88</key>
 		<dict>
 			<key>primary</key>
 			<true/>
