@@ -73,7 +73,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="e4v-qk-BWi" customClass="PhotoCell" customModule="FBLA2017" customModuleProvider="target">
-                                <rect key="frame" x="88" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -263,15 +263,15 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="25"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                                <integer key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="loginButtonPressed:" destination="BhZ-Ui-QSb" eventType="touchUpInside" id="3j4-82-hAW"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGI-8m-AH4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGI-8m-AH4" customClass="GIDSignInButton">
                                         <rect key="frame" x="0.0" y="57" width="343" height="50"/>
                                         <color key="backgroundColor" red="0.82745098039999998" green="0.28235294119999998" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -282,11 +282,9 @@
                                         <state key="normal" title="SIGN IN WITH GOOGLE">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="25"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="googleLoginButtonPressed:" destination="BhZ-Ui-QSb" eventType="touchUpInside" id="4tM-z1-2NI"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -305,10 +303,31 @@
                             <constraint firstItem="ddL-hu-L56" firstAttribute="leading" secondItem="ZX3-cL-UbP" secondAttribute="leadingMargin" id="Orr-nH-CAs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="th7-4E-dDl" kind="show" identifier="loginToGoogle" id="SVY-Ci-5X6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqL-Pz-HZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-967.20000000000005" y="-0.44977511244377816"/>
+        </scene>
+        <!--Google Sign In View Controller-->
+        <scene sceneID="6t8-7K-8SD">
+            <objects>
+                <viewController storyboardIdentifier="googleLogin" id="th7-4E-dDl" customClass="GoogleSignInViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rzl-eO-NpV"/>
+                        <viewControllerLayoutGuide type="bottom" id="ENK-ky-bEx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bmy-Rd-jiG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ilW-ne-gR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1103" y="791"/>
         </scene>
         <!--Item Chat View Controller-->
         <scene sceneID="aDm-lF-agQ">

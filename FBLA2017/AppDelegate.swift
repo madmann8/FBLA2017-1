@@ -17,7 +17,7 @@ import GoogleSignIn
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
       FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
         
         
         return true
@@ -58,11 +60,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        let FBhandled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        let googleHandled = GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                              annotation: [:])
+    
+        return FBhandled || googleHandled
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
+        if let error = error {
+            // ...
+            return
+        }
         
-        return handled
+        guard let authentication = user.authentication else { return }
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                          accessToken: authentication.accessToken)
+        
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            // ...
+            if let error = error {
+                // ...
+                return
+            }
+            else {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+                let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
+                UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                
+            }
+        // ...
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
     }
 
 
+}
 }
 

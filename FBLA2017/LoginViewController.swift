@@ -14,6 +14,31 @@ import GoogleSignIn
 
 class LoginViewController: UIViewController {
     
+    
+    var googleViewController:GoogleLoginViewController=GoogleLoginViewController()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            GIDSignIn.sharedInstance().uiDelegate = googleViewController 
+        GIDSignIn.sharedInstance().signIn()
+        
+        // TODO(developer) Configure the sign-in button look/feel
+        // ...
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier=="loginToGoogle" {
+        GIDSignIn.sharedInstance().uiDelegate = segue.destination as! GIDSignInUIDelegate
+        }
+    }
+    
+    @IBAction func googleLoginButtonPressed(_ sender: GIDSignInButton) {
+        performSegue(withIdentifier: "loginToGoogle", sender: nil)
+    }
+    
+    
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         let loginManager=FBSDKLoginManager()
         loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
