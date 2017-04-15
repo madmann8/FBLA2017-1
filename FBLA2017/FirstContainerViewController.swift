@@ -11,6 +11,8 @@ import Pulley
 import FirebaseAuth
 
 
+
+
 class FirstContainerViewController:PulleyViewController {
 
     var images:[UIImage]?=nil
@@ -25,6 +27,7 @@ class FirstContainerViewController:PulleyViewController {
     var keyString:String?=nil
     
     var nextItemDelegate:NextItemDelegate?=nil
+    var dismissDelegate:DismissDelgate?=nil
  
     @IBOutlet weak var primaryView: UIView!
     @IBOutlet weak var secondaryView: UIView!
@@ -57,6 +60,7 @@ class FirstContainerViewController:PulleyViewController {
                 middle.condition=condition
                 middle.images=images
                 middle.nextItemDelegate=self
+                middle.dismissDelegate=self
             }
         
         }
@@ -102,8 +106,11 @@ extension FirstContainerViewController:PulleyDrawerViewControllerDelegate{
 
 }
 
-extension FirstContainerViewController:NextItemDelegate{
+extension FirstContainerViewController:NextItemDelegate,DismissDelgate{
     func goToNextItem() {
         nextItemDelegate?.goToNextItem()
+    }
+    func switchCurrentVC() {
+        dismissDelegate?.switchCurrentVC()
     }
 }

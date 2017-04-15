@@ -6,7 +6,7 @@ import FirebaseStorage
 
 //On the next episode: well fugure out how to  reload view without using the text bar
 
-class ImageCollectionViewController: UICollectionViewController {
+final class ImageCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
     fileprivate let reuseIdentifier = "ItemCell"
@@ -20,11 +20,15 @@ class ImageCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         loadCoverImages()
+        currentView=self.view
     }
     
     var itemIndex = 0
     
-    var currentVC:UIViewController?=nil
+    var currentView:UIView? = nil
+    var currentVC:UIViewController? = nil
+    
+    
 }
 
 // MARK: - Private
@@ -213,12 +217,14 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     middle.images=images
                                     middle.keyString=keyString
                                     middle.nextItemDelegate=self
+                                    middle.dismissDelegate=self
                                     
 
                                 
                                     if let vc=self.currentVC{
                                         vc.dismiss(animated: false, completion: nil)
                                     }
+                                    self.currentView = middle.view
                                     self.currentVC=middle
                                     self.present(middle, animated: false, completion: nil)
                                     
@@ -247,13 +253,13 @@ extension ImageCollectionViewController{
         let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
         let activityIndicator=NVActivityIndicatorView(frame: frame, type: .semiCircleSpin, color: UIColor.red, padding: nil)
         activityIndicator.startAnimating()
-        self.view.addSubview(activityIndicator)
+        currentView?.addSubview(activityIndicator)
         return activityIndicator
     }
 }
 
 
- extension ImageCollectionViewController:NextItemDelegate{
+ extension ImageCollectionViewController:NextItemDelegate,DismissDelgate{
     func goToNextItem() {
         if itemIndex+1<itemKeys.count{
             itemIndex+=1
@@ -262,7 +268,13 @@ extension ImageCollectionViewController{
         else {
             itemIndex=0
             generateImages(keyString: itemKeys[itemIndex])
+            itemIndex+=1
         }
+    }
+    
+    func switchCurrentVC() {
+        currentVC=nil
+        currentView=self.view
     }
  }
 

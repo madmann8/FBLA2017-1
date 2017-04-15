@@ -13,6 +13,11 @@ protocol NextItemDelegate {
     func goToNextItem()
 }
 
+protocol DismissDelgate{
+    func switchCurrentVC()
+}
+
+
 class InfoContainerViewController: UIViewController {
 
     var images:[UIImage]?=nil
@@ -29,6 +34,7 @@ class InfoContainerViewController: UIViewController {
     var keyString:String?=nil
     
     var nextItemDelegate: NextItemDelegate?=nil
+    var dismissDelegate:DismissDelgate?=nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +85,7 @@ class InfoContainerViewController: UIViewController {
     }
 
     @IBAction func exitButtonPressed(_ sender: UIButton) {
+        dismissDelegate?.switchCurrentVC()
         dismiss(animated: true, completion: nil)
     }
     @IBOutlet var moreInfoButton: UIButton!
