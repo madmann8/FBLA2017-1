@@ -22,6 +22,7 @@ class FirstContainerViewController:PulleyViewController {
     var addressString:String?=nil
     var cents:Int?=nil
     var condition:Int?=nil
+    var keyString:String?=nil
     
  
     @IBOutlet weak var primaryView: UIView!
@@ -30,7 +31,8 @@ class FirstContainerViewController:PulleyViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.delegate=self
+        setNeedsSupportedDrawerPositionsUpdate()
         // Do any additional setup after loading the view.
     }
 
@@ -58,6 +60,7 @@ class FirstContainerViewController:PulleyViewController {
         }
         if segue.identifier=="containerToChat"{
             if let vc:ItemChatViewController=segue.destination as! ItemChatViewController{
+                vc.keyString=keyString
                 vc.senderId=FIRAuth.auth()?.currentUser?.uid
                 vc.senderDisplayName=vc.senderId
                 print(vc.view.frame.height)
@@ -66,6 +69,7 @@ class FirstContainerViewController:PulleyViewController {
                 print(newHeight)
                 let newFrame=CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height-self.topInset)
                 vc.frame=newFrame
+
             
 
             }
@@ -83,4 +87,23 @@ class FirstContainerViewController:PulleyViewController {
 
     }
 }
+}
+
+
+extension FirstContainerViewController:PulleyDrawerViewControllerDelegate{
+    func partialRevealDrawerHeight() -> CGFloat {
+        //
+        return 20.0
+    }
+
+    func collapsedDrawerHeight() -> CGFloat {
+        //
+        return 20.0
+    }
+
+    func supportedDrawerPositions() -> [PulleyPosition]{
+        return [.collapsed,.open,.closed
+        ]
+    }
+
 }

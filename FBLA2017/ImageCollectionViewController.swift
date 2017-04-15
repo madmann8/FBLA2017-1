@@ -207,6 +207,7 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     middle.cents=cents
                                     middle.condition=condition
                                     middle.images=images
+                                    middle.keyString=keyString
                                     
 
                                 

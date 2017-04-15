@@ -351,6 +351,11 @@
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lib-xo-ky5">
+                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Hny-D5-Iod" firstAttribute="top" secondItem="v63-FX-1jS" secondAttribute="bottom" constant="8" symbolic="YES" id="3ng-UK-toF"/>
@@ -375,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYM-9r-ONk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6009" y="-863"/>
+            <point key="canvasLocation" x="6008.8000000000002" y="-863.1184407796103"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="Rcm-qd-AxO">
