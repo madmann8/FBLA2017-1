@@ -79,6 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                                           accessToken: authentication.accessToken)
         
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            print("YoYo Ma")
             // ...
             if let error = error {
                 // ...
@@ -86,13 +87,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             else {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
+                
                 let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
                 UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
-
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                
+                UIApplication.shared.keyWindow?.rootViewController = viewController
                 
             }
+            
         // ...
     }
     

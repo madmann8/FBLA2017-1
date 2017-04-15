@@ -12,33 +12,58 @@ import FirebaseAuth
 import GoogleSignIn
 
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,GIDSignInUIDelegate {
     
-    
-    var googleViewController:GoogleLoginViewController=GoogleLoginViewController()
-    
+    var handle: FIRAuthStateDidChangeListenerHandle?
+
+    var stackVC:EmailStackViewController?=nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            GIDSignIn.sharedInstance().uiDelegate = googleViewController 
-        GIDSignIn.sharedInstance().signIn()
         
+        GIDSignIn.sharedInstance().uiDelegate = self
+//        GIDSignIn.sharedInstance().signIn()
+
         // TODO(developer) Configure the sign-in button look/feel
         // ...
+//        handle = FIRAuth.auth()?.addStateDidChangeListener() { (auth, user) in
+//            if user != nil {
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
+//                UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+//                
+//                UIApplication.shared.keyWindow?.rootViewController = viewController
+//                
+//
+//            }
+//        }
+        
     }
+    
+    @IBAction func emailSwitchChanged(_ sender: UISegmentedControl) {
+        stackVC?.updateVisible(signUp: sender.selectedSegmentIndex==1)
+    }
+    
+    
+    @IBAction func submitButtonPressed() {
+        stackVC?.upload()
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier=="loginToGoogle" {
-        GIDSignIn.sharedInstance().uiDelegate = segue.destination as! GIDSignInUIDelegate
+        if segue.identifier=="toEmailContainer"{
+            self.stackVC=segue.destination as! EmailStackViewController
         }
     }
-    
-    @IBAction func googleLoginButtonPressed(_ sender: GIDSignInButton) {
-        performSegue(withIdentifier: "loginToGoogle", sender: nil)
+    @IBAction func googleSignInButtonPressed() {
+//        GIDSignIn.sharedInstance().signIn()
+
+        print(UIApplication.shared.keyWindow?.rootViewController)
     }
     
-    
+    @IBOutlet weak var signInButton: GIDSignInButton!
+       
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         let loginManager=FBSDKLoginManager()
         loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
