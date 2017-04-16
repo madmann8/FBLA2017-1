@@ -21,6 +21,7 @@ final class ImageCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         currentView=self.view
+        currentUser.setupCurrentUser()
         loadCoverImages()
  
     }
@@ -280,6 +281,14 @@ extension ImageCollectionViewController{
         currentView=self.view
     }
  }
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
 
 
  extension String

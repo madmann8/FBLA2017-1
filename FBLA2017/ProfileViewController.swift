@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
         getProfilePic()
         geoCoder=CLGeocoder()
         locationManager=CLLocationManager()
-                setNameLabel()
+        setNameLabel()
         setCityLabel()
     }
     
@@ -115,82 +115,5 @@ extension ProfileViewController:CLLocationManagerDelegate{
 
 
 extension ProfileViewController{
-    func getProfilePic() {
-        if let providerData = FIRAuth.auth()?.currentUser?.providerData {
-            for userInfo in providerData {
-                switch userInfo.providerID {
-                case "facebook.com":
-                    
-
-                    print("user is signed in with facebook")
-                    profileImageView.downloadedFrom(link: (FIRAuth.auth()?.currentUser?.photoURL?.absoluteString)!)
-
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                case "google.com":
-                    print("user is signed in with google")
-                    profileImageView.downloadedFrom(link: (FIRAuth.auth()?.currentUser?.photoURL?.absoluteString)!)
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                case "passwork":
-                    print("Email sing ed via")
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                default:
-                    print("user is signed in with \(userInfo.providerID)")
-                }
-            }}
     }
-}
 
-extension UIImageView {
-    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
-        guard let url = NSURL(string: link) else { return }
-        contentMode = mode
-        URLSession.shared.dataTask(with: url as URL) { (data, response, error) in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.sync() {
-                self.image = image
-            }
-            }.resume()
-    }
-}
