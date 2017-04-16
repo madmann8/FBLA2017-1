@@ -19,6 +19,7 @@
     var nextItemDelegate:NextItemDelegate?=nil
     
     override func viewDidLoad() {
+        self.view.backgroundColor=UIColor.blue
         currentView=self.view
 
         loadCoverImages()
@@ -106,13 +107,16 @@
         
         
         let ref = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
+        print(ref)
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 var i=0
                 for snapshot in snapshots {
-                    if let path = snapshot.value as? String {
-                        let coverImagePath = storage.reference(forURL: path)
+                    if let path = snapshot.key as? String {
+                        print(path)
+                        let coverImagePath = storage.reference(forURL: "gs://yard-sale-4.appspot.com/itemImages/\(path)/cover.jpeg")
+                        print(coverImagePath)
                         coverImagePath.data(withMaxSize: 1 * 1024 * 1024) { data, error in
                             if let error = error {
                                 // Uh-oh, an error occurred!
