@@ -27,7 +27,7 @@ import FirebaseStorage
 
 
 class UploadItemFormViewController:UIViewController{
-    let pickerView:DropDown=DropDown()
+//    let pickerView:DropDown=DropDown()
     var hasSetup=false
     
     
@@ -194,17 +194,17 @@ extension UploadItemFormViewController {
     
     @IBAction func categoryButtonPressed(_ sender: UIButton) {
         print("HERE")
-        if (!hasSetup){
-            self.pickerView.anchorView = self.categoryButton
-            self.pickerView.dataSource = ["Electronics", "Cars and Motors", "Sports and Games", "Home and Garden", "Fashion and Accessories", "Movies, Books and Music", "Other"]
-            self.pickerView.selectionAction = { [unowned self] (index: Int, item: String) in
-                self.category=item
-                self.categoryButton.setTitle(item, for: .normal)
-            }
-            hasSetup=true
-        }
-        pickerView.show()
-        
+//        if (!hasSetup){
+//            self.pickerView.anchorView = self.categoryButton
+//            self.pickerView.dataSource = ["Electronics", "Cars and Motors", "Sports and Games", "Home and Garden", "Fashion and Accessories", "Movies, Books and Music", "Other"]
+//            self.pickerView.selectionAction = { [unowned self] (index: Int, item: String) in
+//                self.category=item
+//                self.categoryButton.setTitle(item, for: .normal)
+//            }
+//            hasSetup=true
+//        }
+//        pickerView.show()
+//        
     }
 }
 

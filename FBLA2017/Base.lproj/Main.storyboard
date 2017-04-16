@@ -109,6 +109,7 @@
                         <segue destination="WrY-Gw-eKo" kind="relationship" relationship="viewControllers" id="pKT-59-Qca"/>
                         <segue destination="pIp-dV-5Wz" kind="relationship" relationship="viewControllers" id="jUE-CE-JKi"/>
                         <segue destination="RNN-6b-Uoe" kind="relationship" relationship="viewControllers" id="OTB-Oh-EHm"/>
+                        <segue destination="zqQ-ay-xG1" kind="relationship" relationship="viewControllers" id="fw4-P4-Lms"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -119,7 +120,7 @@
         <scene sceneID="ioN-8i-ABw">
             <objects>
                 <collectionViewController id="Hei-X5-zUt" customClass="ImageCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="tlf-oa-1iS">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tlf-oa-1iS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,7 +132,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="e4v-qk-BWi" customClass="PhotoCell" customModule="FBLA2017" customModuleProvider="target">
-                                <rect key="frame" x="88" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -297,7 +298,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ddL-hu-L56">
-                                <rect key="frame" x="16" y="64" width="343" height="107"/>
+                                <rect key="frame" x="16" y="63.5" width="343" height="107.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAh-gk-tW0">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -320,7 +321,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGI-8m-AH4" customClass="GIDSignInButton">
-                                        <rect key="frame" x="0.0" y="57" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="57" width="343" height="50.5"/>
                                         <color key="backgroundColor" red="0.82745098039999998" green="0.28235294119999998" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="17"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -334,7 +335,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Yard Sale!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZK-cn-QBq">
-                                <rect key="frame" x="16" y="21" width="172" height="21"/>
+                                <rect key="frame" x="16" y="21" width="171.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -550,10 +551,10 @@
         <!--Browse-->
         <scene sceneID="6Bn-JD-wuq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrY-Gw-eKo" customClass="MainNavigationViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrY-Gw-eKo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Browse" id="DNw-Mh-nZ5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dQ1-gj-fih">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQ1-gj-fih">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -882,7 +883,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="pIp-dV-5Wz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="PCz-Z6-xQE"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BKR-FV-t1O">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKR-FV-t1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -979,7 +980,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="udX-Sq-A27" customClass="PhotoCell" customModule="FBLA2017" customModuleProvider="target">
-                                <rect key="frame" x="72" y="0.0" width="232" height="191"/>
+                                <rect key="frame" x="71.5" y="0.0" width="232" height="191"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="232" height="191"/>
@@ -1017,6 +1018,32 @@
             </objects>
             <point key="canvasLocation" x="742" y="1314"/>
         </scene>
+        <!--LO-->
+        <scene sceneID="ac8-B0-4bY">
+            <objects>
+                <viewController id="zqQ-ay-xG1" customClass="LogOutViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cS1-44-jrg"/>
+                        <viewControllerLayoutGuide type="bottom" id="XdY-i9-nPH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VyK-OQ-emr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdk-Fd-RnF">
+                                <rect key="frame" x="96" y="211" width="182" height="244"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log out"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="LO" id="ujh-eX-6bv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P5l-j7-wkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="639.20000000000005" y="1959.6701649175413"/>
+        </scene>
         <!--Favorites Collection View Controller-->
         <scene sceneID="haS-zN-wTF">
             <objects>
@@ -1033,7 +1060,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="1yk-w0-PEb" customClass="PhotoCell" customModule="FBLA2017" customModuleProvider="target">
-                                <rect key="frame" x="72" y="0.0" width="232" height="191"/>
+                                <rect key="frame" x="71.5" y="0.0" width="232" height="191"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="232" height="191"/>
