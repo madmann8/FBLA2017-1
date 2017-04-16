@@ -138,6 +138,14 @@ class InfoContainerViewController: UIViewController {
      @IBOutlet var moreInfoButtonToTopConstraint: NSLayoutConstraint!
 
     
+    @IBAction func profileButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+        viewController.user=self.user
+        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+        UIApplication.shared.keyWindow?.rootViewController = viewController
+    }
 
     
 }
