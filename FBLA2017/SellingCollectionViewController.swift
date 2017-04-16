@@ -219,6 +219,8 @@
                                     middle.keyString=keyString
                                     middle.nextItemDelegate=self
                                     middle.dismissDelegate=self
+                                    middle.coverImagePath=path
+
                                     
                                     
                                     

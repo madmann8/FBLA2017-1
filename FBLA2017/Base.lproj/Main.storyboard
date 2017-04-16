@@ -20,7 +20,7 @@
         <!--Profile-->
         <scene sceneID="mWM-yW-Xw7">
             <objects>
-                <viewController id="RNN-6b-Uoe" sceneMemberID="viewController">
+                <viewController id="RNN-6b-Uoe" customClass="ProfileViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JML-OH-fni"/>
                         <viewControllerLayoutGuide type="bottom" id="dGE-Mc-Bue"/>
@@ -48,15 +48,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="a67-1t-bx0">
-                                <rect key="frame" x="118" y="198" width="139" height="29"/>
+                                <rect key="frame" x="119" y="190" width="139" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Selling"/>
                                     <segment title="Favorites"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sellingOrFavoritesToggle:" destination="RNN-6b-Uoe" eventType="valueChanged" id="dYF-Ec-VNd"/>
+                                </connections>
                             </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q84-FF-9bt" userLabel="Favorites Container View">
-                                <rect key="frame" x="0.0" y="234" width="375" height="266"/>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9qD-LH-bLo" userLabel="Selling Container View">
+                                <rect key="frame" x="1" y="226" width="375" height="384"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="9fv-Sw-R17" kind="embed" id="Cbb-yr-Evc"/>
+                                </connections>
+                            </containerView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q84-FF-9bt" userLabel="Favorites Container View">
+                                <rect key="frame" x="1" y="226" width="375" height="384"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="cLw-gN-Vbq" kind="embed" id="BWZ-ea-6a7"/>
@@ -66,6 +76,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="ofp-2H-Wdm"/>
+                    <connections>
+                        <outlet property="cityLabel" destination="svs-fC-XiD" id="lLU-MJ-9pu"/>
+                        <outlet property="favoritesContainerView" destination="q84-FF-9bt" id="uUx-v5-LGA"/>
+                        <outlet property="nameLabel" destination="s7w-R9-CjK" id="z31-bn-aEl"/>
+                        <outlet property="sellingContainerView" destination="9qD-LH-bLo" id="BAF-iJ-hPW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ukj-aw-ha0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -954,7 +970,7 @@
             <objects>
                 <viewController id="9fv-Sw-R17" customClass="SellingCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="AR0-4K-ISK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Yb9-ly-vix">
@@ -1001,14 +1017,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1HZ-6q-fic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="689" y="1481"/>
+            <point key="canvasLocation" x="742" y="1314"/>
         </scene>
         <!--Favorites Collection View Controller-->
         <scene sceneID="haS-zN-wTF">
             <objects>
                 <viewController id="cLw-gN-Vbq" customClass="FavoritesCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="54x-4q-UYy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="266"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tlW-NN-IUo">
@@ -1055,7 +1071,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJ6-jH-3LP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1620" y="1227"/>
+            <point key="canvasLocation" x="1425" y="1313"/>
         </scene>
     </scenes>
     <resources>

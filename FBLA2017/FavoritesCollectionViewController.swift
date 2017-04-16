@@ -123,7 +123,7 @@
                             } else {
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
-                                if let extractedKey:String?=path.substring(start: 40, end: 60){
+                                if let extractedKey:String?=path{
                                     self.itemKeys.append(extractedKey!)
                                 }
                                 i+=1
@@ -223,6 +223,7 @@
                                     middle.keyString=keyString
                                     middle.nextItemDelegate=self
                                     middle.dismissDelegate=self
+                                    middle.coverImagePath=path
                                     
                                     
                                     

@@ -43,6 +43,9 @@ class InfoContainerViewController: UIViewController {
     var ref:FIRDatabaseReference?=nil
     
     override func viewDidLoad() {
+        print("FOOOO")
+        print(coverImagePath)
+        print("BAAAR")
         super.viewDidLoad()
         ref=FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
         ref?.observe(.value, with: { (snapshot) in

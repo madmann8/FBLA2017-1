@@ -454,11 +454,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992562.999712"
+            timestampString = "513995179.207447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -502,7 +502,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992562.999712"
+            timestampString = "513995179.207447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "moreInfoButtonPressed(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/InfoContainerViewController.swift"
+            timestampString = "513995179.207447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -518,11 +534,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992562.999712"
+            timestampString = "513995179.207447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "moreInfoButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -534,27 +550,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992562.999712"
+            timestampString = "513995179.207447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "moreInfoButtonPressed(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992562.999712"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "moreInfoButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -994,7 +994,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.380715"
+                  timestampString = "513996600.993653"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "93"
@@ -1009,7 +1009,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.384092"
+                  timestampString = "513996600.997557"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "93"
@@ -1074,7 +1074,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.41039"
+                  timestampString = "513996601.076265"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
@@ -1089,7 +1089,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.413325"
+                  timestampString = "513996601.078649"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "83"
@@ -1202,7 +1202,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.449706"
+                  timestampString = "513996601.207267"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
@@ -1217,7 +1217,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.45318"
+                  timestampString = "513996601.209814"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "70"
@@ -1298,7 +1298,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.484773"
+                  timestampString = "513996601.271978"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "99"
@@ -1313,7 +1313,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.488077"
+                  timestampString = "513996601.274845"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "99"
@@ -1346,7 +1346,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.495539"
+                  timestampString = "513996601.283879"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "98"
@@ -1361,7 +1361,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.498634"
+                  timestampString = "513996601.287725"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "98"
@@ -1394,7 +1394,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.50623"
+                  timestampString = "513996601.334773"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "98"
@@ -1409,7 +1409,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.509169"
+                  timestampString = "513996601.337038"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "98"
@@ -1458,7 +1458,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.522973"
+                  timestampString = "513996601.352655"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "93"
@@ -1473,7 +1473,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/LoginViewController.swift"
-                  timestampString = "513994649.526283"
+                  timestampString = "513996601.356512"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "93"
@@ -1650,7 +1650,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/AppDelegate.swift"
-                  timestampString = "513994649.587424"
+                  timestampString = "513996601.512811"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "81"
@@ -1665,7 +1665,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/AppDelegate.swift"
-                  timestampString = "513994649.590085"
+                  timestampString = "513996601.514931"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
@@ -1698,7 +1698,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/AppDelegate.swift"
-                  timestampString = "513994649.596544"
+                  timestampString = "513996601.522509"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "81"
@@ -1713,7 +1713,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/AppDelegate.swift"
-                  timestampString = "513994649.599536"
+                  timestampString = "513996601.52494"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
@@ -1858,7 +1858,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/AppDelegate.swift"
-                  timestampString = "513994649.717747"
+                  timestampString = "513996601.585746"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -1873,7 +1873,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/AppDelegate.swift"
-                  timestampString = "513994649.721739"
+                  timestampString = "513996601.587951"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -2034,7 +2034,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/FavoritesCollectionViewController.swift"
-            timestampString = "513994452.437599"
+            timestampString = "513994957.960307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -2050,7 +2050,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/FavoritesCollectionViewController.swift"
-            timestampString = "513994243.375302"
+            timestampString = "513994957.960307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -2094,7 +2094,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/FavoritesCollectionViewController.swift"
@@ -2242,11 +2242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992562.999712"
+            timestampString = "513995179.207447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "likeButtonPressed()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2258,11 +2258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992562.999712"
+            timestampString = "513995179.207447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "likeButtonPressed()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2274,7 +2274,87 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992562.999712"
+            timestampString = "513995179.207447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/InfoContainerViewController.swift"
+            timestampString = "513995179.207447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/InfoContainerViewController.swift"
+            timestampString = "513995179.207447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/InfoContainerViewController.swift"
+            timestampString = "513995179.207447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/InfoContainerViewController.swift"
+            timestampString = "513995179.207447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/InfoContainerViewController.swift"
+            timestampString = "513995179.207447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
@@ -2287,86 +2367,6 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992562.999712"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992456.955359"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992458.193977"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992591.114462"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FBLA2017/InfoContainerViewController.swift"
-            timestampString = "513992591.868334"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/FavoritesCollectionViewController.swift"
@@ -2382,7 +2382,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/FavoritesCollectionViewController.swift"
@@ -2395,14 +2395,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "FBLA2017.FavoritesCollectionViewController.loadCoverImages () -&gt; ()"
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/FavoritesCollectionViewController.swift"
-                  timestampString = "513994649.759469"
+                  timestampString = "513995280.907145"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
@@ -2410,14 +2410,14 @@
                   offsetFromSymbolStart = "860">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "FBLA2017.FavoritesCollectionViewController.(loadCoverImages () -&gt; ()).(closure #1)"
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/FavoritesCollectionViewController.swift"
-                  timestampString = "513994649.761315"
+                  timestampString = "513995280.910715"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "113"
@@ -2425,6 +2425,228 @@
                   offsetFromSymbolStart = "40">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/ImageCollectionViewController.swift"
+            timestampString = "513995255.876424"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "generateImages(keyString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/FavoritesCollectionViewController.swift"
+            timestampString = "513995309.516024"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "loadCoverImages()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FBLA2017.FavoritesCollectionViewController.loadCoverImages () -&gt; ()"
+                  moduleName = "FBLA2017"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/FavoritesCollectionViewController.swift"
+                  timestampString = "513995369.505535"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "860">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FBLA2017.FavoritesCollectionViewController.(loadCoverImages () -&gt; ()).(closure #1)"
+                  moduleName = "FBLA2017"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/FavoritesCollectionViewController.swift"
+                  timestampString = "513995369.508961"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/FavoritesCollectionViewController.swift"
+            timestampString = "513995307.344309"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "loadCoverImages()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/FavoritesCollectionViewController.swift"
+            timestampString = "513995307.705224"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "loadCoverImages()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/ImageCollectionViewController.swift"
+            timestampString = "513995332.287153"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "generateImages(keyString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/ImageCollectionViewController.swift"
+            timestampString = "513995338.800833"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "generateImages(keyString:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FBLA2017.ImageCollectionViewController.generateImages (keyString : Swift.String) -&gt; ()"
+                  moduleName = "FBLA2017"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/ImageCollectionViewController.swift"
+                  timestampString = "513996601.642127"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "328">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FBLA2017.ImageCollectionViewController.(generateImages (keyString : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "FBLA2017"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/ImageCollectionViewController.swift"
+                  timestampString = "513996601.643928"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FBLA2017.ImageCollectionViewController.(generateImages (keyString : Swift.String) -&gt; ()).(closure #2)"
+                  moduleName = "FBLA2017"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/ImageCollectionViewController.swift"
+                  timestampString = "513996601.645972"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FBLA2017.ImageCollectionViewController.(generateImages (keyString : Swift.String) -&gt; ()).(closure #2).(closure #1)"
+                  moduleName = "FBLA2017"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/ImageCollectionViewController.swift"
+                  timestampString = "513996601.648782"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "156">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/ImageCollectionViewController.swift"
+            timestampString = "513995344.369338"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "generateImages(keyString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/SelectLocationViewController.swift"
+            timestampString = "513996395.91981"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
