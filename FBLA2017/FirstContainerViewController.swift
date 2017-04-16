@@ -25,6 +25,7 @@ class FirstContainerViewController:PulleyViewController {
     var cents:Int?=nil
     var condition:Int?=nil
     var keyString:String?=nil
+    var coverImagePath:String?=nil
     
     var nextItemDelegate:NextItemDelegate?=nil
     var dismissDelegate:DismissDelgate?=nil
@@ -61,6 +62,9 @@ class FirstContainerViewController:PulleyViewController {
                 middle.images=images
                 middle.nextItemDelegate=self
                 middle.dismissDelegate=self
+                middle.coverImagePath=coverImagePath
+                middle.keyString=keyString
+                
             }
         
         }

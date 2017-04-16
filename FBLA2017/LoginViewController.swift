@@ -26,18 +26,18 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
 
         // TODO(developer) Configure the sign-in button look/feel
         // ...
-//        handle = FIRAuth.auth()?.addStateDidChangeListener() { (auth, user) in
-//            if user != nil {
-//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
-//                UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
-//                
-//                UIApplication.shared.keyWindow?.rootViewController = viewController
-//                
-//
-//            }
-//        }
+        handle = FIRAuth.auth()?.addStateDidChangeListener() { (auth, user) in
+            if user != nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
+                UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+                
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                
+
+            }
+        }
         
     }
     

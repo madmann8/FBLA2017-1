@@ -8,6 +8,8 @@
 
 import UIKit
 import Popover
+import FirebaseDatabase
+import FirebaseAuth
 
 protocol NextItemDelegate {
     func goToNextItem()
@@ -29,15 +31,36 @@ class InfoContainerViewController: UIViewController {
     var addressString:String?=nil
     var cents:Int?=nil
     var condition:Int?=nil
+    var coverImagePath:String?=nil
 
+    var hasLiked=false
     
     var keyString:String?=nil
     
     var nextItemDelegate: NextItemDelegate?=nil
     var dismissDelegate:DismissDelgate?=nil
     
+    var ref:FIRDatabaseReference?=nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref=FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
+        ref?.observe(.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                var i=0
+                for snapshot in snapshots {
+                    if let path = snapshot.key as? String {
+                        print("Local path\(self.keyString!)")
+                        print(path)
+                        if path==self.keyString{
+                            self.hasLiked=true
+                        }
+                        
+                    }
+                }
+            }
+            
+        })
         
         // Do any additional setup after loading the view.
     }
@@ -84,7 +107,20 @@ class InfoContainerViewController: UIViewController {
         popover.show(vc.view!, point: point)
 
     }
+    @IBAction func likeButtonPressed() {
 
+        if hasLiked{
+            ref?.child("\(keyString!)").removeValue()
+            hasLiked=false
+        }
+        else {
+            ref?.child("\(keyString!)").setValue("\(coverImagePath!)")
+            hasLiked=true
+        }
+        
+        
+    }
+ 
     @IBAction func exitButtonPressed(_ sender: UIButton) {
         dismissDelegate?.switchCurrentVC()
         dismiss(animated: true, completion: nil)

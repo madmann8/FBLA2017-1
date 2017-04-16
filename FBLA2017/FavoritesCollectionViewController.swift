@@ -1,12 +1,12 @@
  import UIKit
-import NVActivityIndicatorView
-import Firebase
-import FirebaseDatabase
-import FirebaseStorage
-
-//On the next episode: well fugure out how to  reload view without using the text bar
-
-final class ImageCollectionViewController: UICollectionViewController {
+ import NVActivityIndicatorView
+ import Firebase
+ import FirebaseDatabase
+ import FirebaseStorage
+ 
+ //On the next episode: well fugure out how to  reload view without using the text bar
+ 
+ final class FavoritesCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
     fileprivate let reuseIdentifier = "ItemCell"
@@ -20,6 +20,7 @@ final class ImageCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         currentView=self.view
+
         loadCoverImages()
     }
     
@@ -29,12 +30,12 @@ final class ImageCollectionViewController: UICollectionViewController {
     var currentVC:UIViewController? = nil
     
     
-}
-
-// MARK: - Private
-
-
-extension ImageCollectionViewController : UITextFieldDelegate {
+ }
+ 
+ // MARK: - Private
+ 
+ 
+ extension FavoritesCollectionViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         
@@ -44,10 +45,10 @@ extension ImageCollectionViewController : UITextFieldDelegate {
         //        textField.resignFirstResponder()
         return true
     }
-}
-
-// MARK: - UICollectionViewDataSource
-extension ImageCollectionViewController {
+ }
+ 
+ // MARK: - UICollectionViewDataSource
+ extension FavoritesCollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView,
@@ -68,9 +69,9 @@ extension ImageCollectionViewController {
         return cell
     }
     
-}
-
-extension ImageCollectionViewController : UICollectionViewDelegateFlowLayout {
+ }
+ 
+ extension FavoritesCollectionViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -94,17 +95,17 @@ extension ImageCollectionViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-}
-
-
-extension ImageCollectionViewController {
+ }
+ 
+ 
+ extension FavoritesCollectionViewController {
     func loadCoverImages(){
         let activityIndicator=startActivityIndicator()
         
         
         
         
-        let ref = FIRDatabase.database().reference().child("coverImagePaths")
+        let ref = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -135,10 +136,10 @@ extension ImageCollectionViewController {
             
         })
     }
-}
-
-
-extension ImageCollectionViewController: PhotoCellDelegate {
+ }
+ 
+ 
+ extension FavoritesCollectionViewController: PhotoCellDelegate {
     func buttonPressed(keyString: String) {
         generateImages(keyString: keyString)
         let index=itemKeys.index(of: keyString)
@@ -159,8 +160,8 @@ extension ImageCollectionViewController: PhotoCellDelegate {
         var addressString:String?=nil
         var cents:Int?=nil
         var condition:Int?=nil
-    
-
+        
+        
         
         
         let ref = FIRDatabase.database().reference().child("items").child(keyString)
@@ -175,11 +176,11 @@ extension ImageCollectionViewController: PhotoCellDelegate {
             addressString = value?["locationString"] as? String ?? ""
             condition = value?["condition"] as? Int ?? 0
             cents = value?["cents"] as? Int ?? 0
-
-
-
-
-
+            
+            
+            
+            
+            
         })
         let storage = FIRStorage.storage()
         ref.child("imagePaths").observe(.value, with: { (snapshot) in
@@ -200,7 +201,7 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     
                                     
                                     
-                                
+                                    
                                     activityIndicator.stopAnimating()
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                     
@@ -218,10 +219,9 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     middle.keyString=keyString
                                     middle.nextItemDelegate=self
                                     middle.dismissDelegate=self
-                                    middle.coverImagePath=path
                                     
-
-                                
+                                    
+                                    
                                     if let vc=self.currentVC{
                                         vc.dismiss(animated: false, completion: nil)
                                     }
@@ -242,10 +242,10 @@ extension ImageCollectionViewController: PhotoCellDelegate {
             
         })
     }
-}
-
-
-extension ImageCollectionViewController{
+ }
+ 
+ 
+ extension FavoritesCollectionViewController{
     func startActivityIndicator()-> NVActivityIndicatorView{
         let cellWidth = Int(self.view.frame.width / CGFloat(4))
         let cellHeight = Int(self.view.frame.height / CGFloat(8))
@@ -257,14 +257,14 @@ extension ImageCollectionViewController{
         currentView?.addSubview(activityIndicator)
         return activityIndicator
     }
-}
-
-
- extension ImageCollectionViewController:NextItemDelegate,DismissDelgate{
+ }
+ 
+ 
+ extension FavoritesCollectionViewController:NextItemDelegate,DismissDelgate{
     func goToNextItem() {
         if itemIndex+1<itemKeys.count{
             itemIndex+=1
-        generateImages(keyString: itemKeys[itemIndex])
+            generateImages(keyString: itemKeys[itemIndex])
         }
         else {
             itemIndex=0
@@ -278,26 +278,5 @@ extension ImageCollectionViewController{
         currentView=self.view
     }
  }
-
-
- extension String
- {
-    func substring(start: Int, end: Int) -> String
-    {
-        if (start < 0 || start > self.characters.count)
-        {
-            print("start index \(start) out of bounds")
-            return ""
-        }
-        else if end < 0 || end > self.characters.count
-        {
-            print("end index \(end) out of bounds")
-            return ""
-        }
-        let startIndex = self.characters.index(self.startIndex, offsetBy: start)
-        let endIndex = self.characters.index(self.startIndex, offsetBy: end)
-        let range = startIndex..<endIndex
-        
-        return self.substring(with: range)
-    }
- }
+ 
+ 
