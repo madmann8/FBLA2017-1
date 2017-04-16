@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 import CoreLocation
+import ImagePicker
+import FirebaseStorage
 
 class ProfileViewController: UIViewController {
 
@@ -22,6 +24,7 @@ class ProfileViewController: UIViewController {
     var user:User?=nil
 
     @IBAction func imageButtonPressed(_ sender: UIButton) {
+        changeProfilePicture()
     }
 
     @IBAction func sellingOrFavoritesToggle(_ sender: UISegmentedControl) {
@@ -111,6 +114,47 @@ extension ProfileViewController:CLLocationManagerDelegate{
 
 
 }
+
+extension ProfileViewController:ImagePickerDelegate{
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]){}
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]){
+    profileImageView.image=images.first
+        var storageRef=FIRStorage.storage().reference()
+        var data = NSData()
+        data = UIImageJPEGRepresentation(profileImageView.image!, 0.5)! as NSData
+        // set upload path
+        let filePath = "userImages/\(FIRAuth.auth()!.currentUser!.uid)/\("userPhoto")"
+        let metaData = FIRStorageMetadata()
+        metaData.contentType = "image/jpg"
+        storageRef.child(filePath).put(data as Data, metadata: metaData){(metaData,error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }else{
+                //store downloadURL
+                let downloadURL = metaData!.downloadURL()!
+                //store downloadURL at database
+                let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
+                changeRequest?.photoURL = downloadURL
+                changeRequest?.commitChanges() { (error) in
+                    // ...
+                }
+            }
+            
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController){}
+
+    func changeProfilePicture(){
+        let imagePickerController = ImagePickerController()
+        imagePickerController.imageLimit = 1
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+}
+}
+
 
 
 

@@ -84,6 +84,18 @@ extension User {
                         if imageURL == "❌"{
                             ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
                         }
+                        let imageURL = value?["imageURL"] as? String ?? "❌"
+                        if imageURL == "❌"{
+                            ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
+                        }
+                        let imageURL = value?["imageURL"] as? String ?? "❌"
+                        if imageURL == "❌"{
+                            ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
+                        }
+                        let imageURL = value?["imageURL"] as? String ?? "❌"
+                        if imageURL == "❌"{
+                            ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
+                        }
                         else {
                             self.downloadedFrom(link: imageURL)
                         }
