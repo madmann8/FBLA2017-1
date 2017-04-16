@@ -3,6 +3,7 @@ import NVActivityIndicatorView
 import Firebase
 import FirebaseDatabase
 import FirebaseStorage
+ import CoreLocation
 
 //On the next episode: well fugure out how to  reload view without using the text bar
 
@@ -21,6 +22,7 @@ final class ImageCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         currentView=self.view
         loadCoverImages()
+ 
     }
     
     var itemIndex = 0

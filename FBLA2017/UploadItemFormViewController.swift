@@ -25,6 +25,7 @@ import FirebaseStorage
 
 
 
+
 class UploadItemFormViewController:UIViewController{
     let pickerView:DropDown=DropDown()
     var hasSetup=false
@@ -67,8 +68,7 @@ class UploadItemFormViewController:UIViewController{
         descriptionTextView.delegate=self
         titleTextField.delegate=self
         ref = FIRDatabase.database().reference()
-        
-    }
+          }
     
     
 }

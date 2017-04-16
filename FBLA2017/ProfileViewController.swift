@@ -17,7 +17,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     var geoCoder:CLGeocoder!
+    var locationManager:CLLocationManager!
 
+    @IBAction func imageButtonPressed(_ sender: UIButton) {
+    }
 
     @IBAction func sellingOrFavoritesToggle(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex==0{
@@ -31,9 +34,11 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        setNameLabel()
-        setCityLabel()
+        getProfilePic()
         geoCoder=CLGeocoder()
+        locationManager=CLLocationManager()
+                setNameLabel()
+        setCityLabel()
     }
     
     func setNameLabel() {
@@ -45,15 +50,17 @@ class ProfileViewController: UIViewController {
 
 }
 
+
+
+
+
 extension ProfileViewController:CLLocationManagerDelegate{
     func setCityLabel() {
-        var locationManager: CLLocationManager!
-        locationManager=CLLocationManager()
-        locationManager.desiredAccuracy=kCLLocationAccuracyBest
-        locationManager.delegate=self as! CLLocationManagerDelegate
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestLocation()
-        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -101,4 +108,24 @@ extension ProfileViewController:CLLocationManagerDelegate{
     }
 
 
+}
+
+
+extension ProfileViewController{
+    func getProfilePic() {
+        print(FIRAuth.auth()?.currentUser?.providerID)
+        if let providerData = FIRAuth.auth()?.currentUser?.providerData {
+            for userInfo in providerData {
+                switch userInfo.providerID {
+                case "facebook.com":
+                    print("user is signed in with facebook")
+                case "google.com":
+                    print("user is signed in with google")
+                case "email":
+                    print("Email sing ed via")
+                default:
+                    print("user is signed in with \(userInfo.providerID)")
+                }
+            }}
+    }
 }
