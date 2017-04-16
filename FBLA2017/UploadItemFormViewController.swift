@@ -223,7 +223,7 @@ extension UploadItemFormViewController{
         activityIndicator.startAnimating()
         
         var missingData=false
-        if (images==nil || name==nil || cents==nil || about==nil || condition==nil || locationString==nil /*|| category==nil*/) {
+        if (images==nil || name==nil || cents==nil || about==nil || condition==nil || locationString==nil || category==nil) {
             missingData=true
             if images==nil {
                 self.showMessage("Missing images", type: .error)
@@ -248,7 +248,7 @@ extension UploadItemFormViewController{
             }
         }
         
-                if !missingData{
+        //        if !missing?Data{
         let itemRef=self.ref.child("items").childByAutoId()
         
         itemRef.child("title").setValue(self.name)
@@ -305,14 +305,13 @@ extension UploadItemFormViewController{
         coverImageRef.childByAutoId().setValue("\(imageNumberRef)")
         
         let userRef=ref.child("users").child((FIRAuth.auth()?.currentUser?.uid)!)
-        userRef.child("coverImages").child(itemRef.key).setValue("\(imageNumberRef)")
-        itemRef.child("coverImages").child(itemRef.key).setValue("\(imageNumberRef)")
+        userRef.child("coverImages").childByAutoId().setValue("\(imageNumberRef)")
 
         
     }
     
     //UNcomment to prevent missing information uploads
-        }
+    //    }
 }
 
 

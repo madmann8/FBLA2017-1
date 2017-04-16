@@ -139,14 +139,8 @@ extension User {
                         
                         let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
                         let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
-                        if let coverArray=imagePathsSnapshot.value as? NSDictionary{
-                            if (coverArray.count)>0{
-                                for kv in coverArray{
-                                    let s=kv.value as! String
-                                    self.sellingImagesPaths.append(s)
-                                }
-                            }
-                        }
+
+                        
                         if let favoritesArray=imagePathsSnapshot.value as? NSDictionary{
                             if (favoritesArray.count)>0{
                                 for kv in favoritesArray{
@@ -234,7 +228,6 @@ extension User:CLLocationManagerDelegate{
             let value = snapshot.value as? NSDictionary
                 self.city=city
                 ref.child("locationString").setValue(self.city)
-            
                  })
     }
 }

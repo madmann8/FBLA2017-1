@@ -119,7 +119,7 @@
                             } else {
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
-                                if let extractedKey:String?=snapshot.key{
+                                if let extractedKey:String?=path.substring(start: 40, end: 60){
                                     self.itemKeys.append(extractedKey!)
                                 }
                                 i+=1
