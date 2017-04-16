@@ -12,6 +12,7 @@ import CoreLocation
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var sellingContainerView: UIView!
     @IBOutlet weak var favoritesContainerView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -34,6 +35,7 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+
         getProfilePic()
         geoCoder=CLGeocoder()
         locationManager=CLLocationManager()
@@ -59,6 +61,7 @@ extension ProfileViewController:CLLocationManagerDelegate{
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
     }
@@ -113,19 +116,81 @@ extension ProfileViewController:CLLocationManagerDelegate{
 
 extension ProfileViewController{
     func getProfilePic() {
-        print(FIRAuth.auth()?.currentUser?.providerID)
         if let providerData = FIRAuth.auth()?.currentUser?.providerData {
             for userInfo in providerData {
                 switch userInfo.providerID {
                 case "facebook.com":
+                    
+
                     print("user is signed in with facebook")
+                    profileImageView.downloadedFrom(link: (FIRAuth.auth()?.currentUser?.photoURL?.absoluteString)!)
+
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 case "google.com":
                     print("user is signed in with google")
-                case "email":
+                    profileImageView.downloadedFrom(link: (FIRAuth.auth()?.currentUser?.photoURL?.absoluteString)!)
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                case "passwork":
                     print("Email sing ed via")
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 default:
                     print("user is signed in with \(userInfo.providerID)")
                 }
             }}
+    }
+}
+
+extension UIImageView {
+    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        guard let url = NSURL(string: link) else { return }
+        contentMode = mode
+        URLSession.shared.dataTask(with: url as URL) { (data, response, error) in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.sync() {
+                self.image = image
+            }
+            }.resume()
     }
 }
