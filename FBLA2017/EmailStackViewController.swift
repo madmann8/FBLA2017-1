@@ -1,4 +1,4 @@
-//
+    //
 //  EmailStackViewController.swift
 //  FBLA2017
 //
@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+    import FirebaseDatabase
 
 class EmailStackViewController: UIViewController {
     
@@ -47,15 +48,17 @@ class EmailStackViewController: UIViewController {
 
                 }
                 else {
-                    
+                    let ref=FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
+                    ref.setValue("\(self.nameTextView.text!)")
+                    }
                     if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
                         UIApplication.shared.keyWindow?.rootViewController = viewController
                         self.dismiss(animated: true, completion: nil)
+                        
                     }
                     
                 }
                 
-            }
         }
         else {
             FIRAuth.auth()?.signIn(withEmail: self.emailTextView.text, password: self.passwordTextView.text) { (user, error) in

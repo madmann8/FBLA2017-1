@@ -30,14 +30,30 @@ class User:NSObject {
         self.locationManager=CLLocationManager()
 
         uid=FIRAuth.auth()?.currentUser?.uid
-        displayName=FIRAuth.auth()?.currentUser?.displayName
+        if let display=FIRAuth.auth()?.currentUser?.displayName{
+            displayName=display
+        }
+        else{
+            var ref: FIRDatabaseReference!
+            ref = FIRDatabase.database().reference()
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                self.displayName = value?["displayName"] as? String ?? ""
+                
+                // ...
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+        print("DEDE\(self.displayName)")
         email=FIRAuth.auth()?.currentUser?.email
         setCityLabel()
         getProfilePic()
-        
-
-        
     }
+    
+
     
 }
 
@@ -66,7 +82,7 @@ extension User {
                         let value = snapshot.value as? NSDictionary
                         let imageURL = value?["imageURL"] as? String ?? "❌"
                         if imageURL == "❌"{
-                            ref.setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
+                            ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
                         }
                         else {
                             self.downloadedFrom(link: imageURL)

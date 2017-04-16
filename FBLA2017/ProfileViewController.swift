@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     var geoCoder:CLGeocoder!
     var locationManager:CLLocationManager!
+    var user:User?=nil
 
     @IBAction func imageButtonPressed(_ sender: UIButton) {
     }
@@ -35,12 +36,10 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-
-        getProfilePic()
-        geoCoder=CLGeocoder()
-        locationManager=CLLocationManager()
-        setNameLabel()
-        setCityLabel()
+        self.user=currentUser
+        profileImageView.image=user?.profileImage
+        nameLabel.text=user?.displayName
+        cityLabel.text=user?.city
     }
     
     func setNameLabel() {
@@ -114,6 +113,4 @@ extension ProfileViewController:CLLocationManagerDelegate{
 }
 
 
-extension ProfileViewController{
-    }
 
