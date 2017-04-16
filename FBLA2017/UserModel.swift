@@ -12,23 +12,26 @@ import FirebaseDatabase
 import CoreLocation
 import UIKit
 
+
 class User:NSObject {
     
-     var uid: String!
-     var displayName: String!
-     var email: String!
-     var city: String!
-     var profileImage: UIImage!
+    var uid: String!
+    var displayName: String!
+    var email: String!
+    var city: String!
+    var profileImage: UIImage!
+    var sellingImagesPaths:[String]=[]
+    var favoriteImagesPaths:[String]=[]
     
     var geoCoder:CLGeocoder!
     var locationManager:CLLocationManager!
-
     
-
+    
+    
     public  func setupCurrentUser(){
         self.geoCoder=CLGeocoder()
         self.locationManager=CLLocationManager()
-
+        
         uid=FIRAuth.auth()?.currentUser?.uid
         if let display=FIRAuth.auth()?.currentUser?.displayName{
             displayName=display
@@ -51,10 +54,11 @@ class User:NSObject {
         email=FIRAuth.auth()?.currentUser?.email
         setCityLabel()
         getProfilePic()
+        
+        
+        
+        
     }
-    
-
-    
 }
 
 //Profile Picture Stuff
@@ -62,70 +66,107 @@ extension User {
     func getProfilePic() {
         if let providerData = FIRAuth.auth()?.currentUser?.providerData {
             for userInfo in providerData {
-                switch userInfo.providerID {
-                case "facebook.com":
-
-                    print("user is signed in with facebook")
-                    downloadedFrom(link: (FIRAuth.auth()?.currentUser?.photoURL?.absoluteString)!)
-                case "google.com":
-                    print("user is signed in with google")
-                    downloadedFrom(link: (FIRAuth.auth()?.currentUser?.photoURL?.absoluteString)!)
-
+                if userInfo.providerID=="password"  {
                     
-                    
-                case "password":
-                    print("Email sing ed via password")
                     var ref: FIRDatabaseReference!
                     ref = FIRDatabase.database().reference().child("users").child(uid!)
                     ref.observeSingleEvent(of: .value, with: { (snapshot) in
                         // Get user value
                         let value = snapshot.value as? NSDictionary
-                        let imageURL = value?["imageURL"] as? String ?? "❌"
+                        var imageURL = value?["imageURL"] as? String ?? "❌"
                         if imageURL == "❌"{
                             ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
+                            imageURL="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
                         }
-                        let imageURL = value?["imageURL"] as? String ?? "❌"
-                        if imageURL == "❌"{
-                            ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
+                        self.downloadedFrom(link: imageURL)
+                        
+                        //DO THIS
+                        
+                        //DO THIS
+                        
+                        
+                        var displayName = value?["displayName"] as? String ?? "❌"
+                        if displayName == "❌"{
+                            ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
+                            displayName=(FIRAuth.auth()?.currentUser?.displayName)!
                         }
-                        let imageURL = value?["imageURL"] as? String ?? "❌"
-                        if imageURL == "❌"{
-                            ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
+                        
+                        let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
+                        let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
+                        if let coverArray=imagePathsSnapshot.value as? NSDictionary{
+                            if (coverArray.count)>0{
+                                for kv in coverArray{
+                                    let s=kv.value as! String
+                                    self.sellingImagesPaths.append(s)
+                                }
+                            }
                         }
-                        let imageURL = value?["imageURL"] as? String ?? "❌"
+                        if let favoritesArray=imagePathsSnapshot.value as? NSDictionary{
+                            if (favoritesArray.count)>0{
+                                for kv in favoritesArray{
+                                    let s=kv.value as! String
+                                    self.favoriteImagesPaths.append(s)
+                                }
+                            }
+                        }
+                    }
+                    )
+                }
+                    
+                    
+                else{
+                    var ref: FIRDatabaseReference!
+                    ref = FIRDatabase.database().reference().child("users").child(uid!)
+                    ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                        // Get user value
+                        let value = snapshot.value as? NSDictionary
+                        var imageURL = FIRAuth.auth()?.currentUser?.photoURL as? String ?? "❌"
                         if imageURL == "❌"{
                             ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
+                            imageURL="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
                         }
                         else {
-                            self.downloadedFrom(link: imageURL)
+                            ref.child("imageURL").setValue(imageURL)
+                        }
+                        self.downloadedFrom(link: imageURL)
+                        
+                        
+                        var displayName = value?["displayName"] as? String ?? "❌"
+                        if displayName == "❌"{
+                            ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
+                            displayName=(FIRAuth.auth()?.currentUser?.displayName)!
                         }
                         
-                        
-                        // ...
-                    }) { (error) in
-                        print(error.localizedDescription)
-                    }
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                default:
-                    print("user is signed in with \(userInfo.providerID)")
+                        let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
+                        let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
+                        if let coverArray=imagePathsSnapshot.value as? NSDictionary{
+                            if (coverArray.count)>0{
+                                for kv in coverArray{
+                                    let s=kv.value as! String
+                                    self.sellingImagesPaths.append(s)
+                                }
+                            }
+                        }
+                        if let favoritesArray=imagePathsSnapshot.value as? NSDictionary{
+                            if (favoritesArray.count)>0{
+                                for kv in favoritesArray{
+                                    let s=kv.value as! String
+                                    self.favoriteImagesPaths.append(s)
+                                }
+                            }
+                        }
+                    })
                 }
-            }}
-    }
-
+                
+                
+                
+                
+                
+            }
+        }}
 }
+
+
 
 
 
@@ -134,8 +175,8 @@ extension User {
 //Location Stuff
 
 extension User:CLLocationManagerDelegate{
-
-
+    
+    
     func setCityLabel() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -161,16 +202,16 @@ extension User:CLLocationManagerDelegate{
             let addrList = addressDict["FormattedAddressLines"] as! [String]
             if addrList.count>1{
                 let address:String? = addrList[1]
-                self.city = address
+                self.handleLocation(city: address!)
             }
             else {
                 if !addrList.isEmpty{
                     let address:String? = addrList[0]
-                    self.city = address
+                    self.handleLocation(city: address!)
                 }
                 else {
                     let address="Unknown Location"
-                    self.city = address
+                    self.handleLocation(city: address)
                 }
                 
             }
@@ -185,7 +226,17 @@ extension User:CLLocationManagerDelegate{
         
     }
     
-    
+    func  handleLocation(city:String){
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference().child("users").child(uid!)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+                self.city=city
+                ref.child("locationString").setValue(self.city)
+            
+                 })
+    }
 }
 
 
