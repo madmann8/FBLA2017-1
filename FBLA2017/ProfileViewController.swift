@@ -134,11 +134,7 @@ extension ProfileViewController:ImagePickerDelegate{
                 //store downloadURL
                 let downloadURL = metaData!.downloadURL()!
                 //store downloadURL at database
-                let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
-                changeRequest?.photoURL = downloadURL
-                changeRequest?.commitChanges() { (error) in
-                    // ...
-                }
+                self.user?.changeProfilePicture(downloadURL: downloadURL.absoluteString)
             }
             
         }

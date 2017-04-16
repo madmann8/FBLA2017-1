@@ -26,6 +26,7 @@ class FirstContainerViewController:PulleyViewController {
     var condition:Int?=nil
     var keyString:String?=nil
     var coverImagePath:String?=nil
+    var userID:String?=nil
     
     var nextItemDelegate:NextItemDelegate?=nil
     var dismissDelegate:DismissDelgate?=nil
@@ -64,6 +65,7 @@ class FirstContainerViewController:PulleyViewController {
                 middle.dismissDelegate=self
                 middle.coverImagePath=coverImagePath
                 middle.keyString=keyString
+                middle.userID=userID
                 
             }
         

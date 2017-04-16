@@ -12,6 +12,10 @@ import FirebaseDatabase
 import CoreLocation
 import UIKit
 
+protocol UserDelegate {
+    func imageLoaded(image:UIImage)
+}
+
 
 class User:NSObject {
     
@@ -26,13 +30,13 @@ class User:NSObject {
     var geoCoder:CLGeocoder!
     var locationManager:CLLocationManager!
     
+    var delegate:UserDelegate?=nil
     
-    
-    public  func setupCurrentUser(){
+    public  func setupUser(id:String){
         self.geoCoder=CLGeocoder()
         self.locationManager=CLLocationManager()
         
-        uid=FIRAuth.auth()?.currentUser?.uid
+        uid=id
         if let display=FIRAuth.auth()?.currentUser?.displayName{
             displayName=display
         }
@@ -120,15 +124,26 @@ extension User {
                     ref.observeSingleEvent(of: .value, with: { (snapshot) in
                         // Get user value
                         let value = snapshot.value as? NSDictionary
-                        var imageURL = FIRAuth.auth()?.currentUser?.photoURL as? String ?? "❌"
+                        var imageURL:String = FIRAuth.auth()?.currentUser?.photoURL?.absoluteString ?? "❌"
                         if imageURL == "❌"{
                             ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
                             imageURL="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
                         }
                         else {
-                            ref.child("imageURL").setValue(imageURL)
-                        }
-                        self.downloadedFrom(link: imageURL)
+                            var imageURL2 = value?["imageURL"] as? String ?? "❌"
+                            if imageURL == "❌"{
+                                ref.child("imageURL").setValue(imageURL)
+                                self.downloadedFrom(link: imageURL)
+
+                                
+   }
+                            else {
+
+                                self.downloadedFrom(link: imageURL2)
+
+
+                            }
+                       }
                         
                         
                         var displayName = value?["displayName"] as? String ?? "❌"
@@ -139,15 +154,11 @@ extension User {
                         
                         let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
                         let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
-
-                        
-                        if let favoritesArray=imagePathsSnapshot.value as? NSDictionary{
-                            if (favoritesArray.count)>0{
-                                for kv in favoritesArray{
-                                    let s=kv.value as! String
-                                    self.favoriteImagesPaths.append(s)
-                                }
-                            }
+                        for dict in imagePathsSnapshot.children {
+                            self.sellingImagesPaths.append((dict as AnyObject).value)
+                        }
+                        for dict in favoritesPathSnapshot.children {
+                            self.favoriteImagesPaths.append((dict as AnyObject).value)
                         }
                     })
                 }
@@ -230,6 +241,14 @@ extension User:CLLocationManagerDelegate{
                 ref.child("locationString").setValue(self.city)
                  })
     }
+    
+    func changeProfilePicture(downloadURL:String){
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference().child("users").child(uid!)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            ref.child("imageURL").setValue(downloadURL)
+        })
+    }
 }
 
 
@@ -246,6 +265,7 @@ extension User {
                 else { return }
             DispatchQueue.main.sync() {
                 self.profileImage=image
+                self.delegate?.imageLoaded(image: image)
                 return
             }
             }.resume()

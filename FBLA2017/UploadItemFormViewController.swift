@@ -259,6 +259,7 @@ extension UploadItemFormViewController{
         itemRef.child("locationLatitude").setValue(self.locationLatitude)
         itemRef.child("locationLongitude").setValue(self.locationLongitude)
         itemRef.child("category").setValue(category)
+        itemRef.child("userID").setValue(FIRAuth.auth()?.currentUser?.uid)
         
         let autoID=itemRef.key
         

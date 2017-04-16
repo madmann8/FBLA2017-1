@@ -32,6 +32,7 @@ class InfoContainerViewController: UIViewController {
     var cents:Int?=nil
     var condition:Int?=nil
     var coverImagePath:String?=nil
+    var userID:String?=nil
 
     var hasLiked=false
     
@@ -42,11 +43,12 @@ class InfoContainerViewController: UIViewController {
     
     var ref:FIRDatabaseReference?=nil
     
+    var user=User()
+    
     override func viewDidLoad() {
-        print("FOOOO")
-        print(coverImagePath)
-        print("BAAAR")
         super.viewDidLoad()
+        user.setupUser(id: userID!)
+        user.delegate=self
         ref=FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
         ref?.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -144,5 +146,11 @@ extension InfoContainerViewController:NextItemDelegate{
     func goToNextItem() {
         self.nextItemDelegate?.goToNextItem()
 
+    }
+}
+
+extension InfoContainerViewController:UserDelegate{
+    func imageLoaded(image:UIImage){
+        self.profileImage.image=image
     }
 }

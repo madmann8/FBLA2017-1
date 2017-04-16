@@ -5,8 +5,7 @@ import FirebaseDatabase
 import FirebaseStorage
  import CoreLocation
 
-//On the next episode: well fugure out how to  reload view without using the text bar
-
+//ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
 final class ImageCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
@@ -21,7 +20,7 @@ final class ImageCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         currentView=self.view
-        currentUser.setupCurrentUser()
+        currentUser.setupUser(id: (FIRAuth.auth()?.currentUser?.uid)!)
         loadCoverImages()
  
     }
@@ -162,6 +161,7 @@ extension ImageCollectionViewController: PhotoCellDelegate {
         var addressString:String?=nil
         var cents:Int?=nil
         var condition:Int?=nil
+        var userID:String?=nil
     
 
         
@@ -178,6 +178,8 @@ extension ImageCollectionViewController: PhotoCellDelegate {
             addressString = value?["locationString"] as? String ?? ""
             condition = value?["condition"] as? Int ?? 0
             cents = value?["cents"] as? Int ?? 0
+            userID = value?["userID"] as? String ?? ""
+//
 
 
 
@@ -222,6 +224,7 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     middle.nextItemDelegate=self
                                     middle.dismissDelegate=self
                                     middle.coverImagePath=path
+                                    middle.userID=userID
                                     
 
                                 
