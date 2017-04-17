@@ -32,7 +32,7 @@ class User:NSObject {
     
     var delegate:UserDelegate?=nil
     
-    public  func setupUser(id:String){
+    public  func setupUser(id:String,isLoggedIn:Bool){
         self.geoCoder=CLGeocoder()
         self.locationManager=CLLocationManager()
         
@@ -54,10 +54,9 @@ class User:NSObject {
                 print(error.localizedDescription)
             }
         }
-        print("DEDE\(self.displayName)")
         email=FIRAuth.auth()?.currentUser?.email
         setCityLabel()
-        getProfilePic()
+        getProfilePic(isLoggedIn: isLoggedIn)
         
         
         
@@ -67,7 +66,8 @@ class User:NSObject {
 
 //Profile Picture Stuff
 extension User {
-    func getProfilePic() {
+    func getProfilePic(isLoggedIn:Bool) {
+        if (isLoggedIn){
         if let providerData = FIRAuth.auth()?.currentUser?.providerData {
             for userInfo in providerData {
                 if userInfo.providerID=="password"  {
@@ -88,11 +88,16 @@ extension User {
                         
                         //DO THIS
                         
+                        self.email = value?["email"] as? String ?? "❌"
+                        if self.email == "❌"{
+                            ref.child("email").setValue(FIRAuth.auth()?.currentUser?.email)
+                            self.email=(FIRAuth.auth()?.currentUser?.email)!
+                        }
                         
-                        var displayName = value?["displayName"] as? String ?? "❌"
-                        if displayName == "❌"{
+                         self.displayName = value?["displayName"] as? String ?? "❌"
+                        if self.displayName == "❌"{
                             ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
-                            displayName=(FIRAuth.auth()?.currentUser?.displayName)!
+                            self.displayName=(FIRAuth.auth()?.currentUser?.displayName)!
                         }
                         
                         let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
@@ -168,7 +173,46 @@ extension User {
                 
                 
             }
-        }}
+        }
+        }
+        else {
+            
+            
+            var ref: FIRDatabaseReference!
+            ref = FIRDatabase.database().reference().child("users").child(uid!)
+            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                let imageURL = value?["imageURL"] as? String ?? "❌"
+                self.downloadedFrom(link: imageURL)
+                self.email = value?["email"] as? String ?? "❌"
+                self.displayName = value?["displayName"] as? String ?? "❌"
+                let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
+                let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
+                if let coverArray=imagePathsSnapshot.value as? NSDictionary{
+                    if (coverArray.count)>0{
+                        for kv in coverArray{
+                            let s=kv.value as! String
+                            self.sellingImagesPaths.append(s)
+                        }
+                    }
+                }
+                if let favoritesArray=imagePathsSnapshot.value as? NSDictionary{
+                    if (favoritesArray.count)>0{
+                        for kv in favoritesArray{
+                            let s=kv.value as! String
+                            self.favoriteImagesPaths.append(s)
+                        }
+                    }
+                }
+                
+                
+            })
+        
+        
+        
+        
+        }
+        }
 }
 
 

@@ -47,7 +47,7 @@ class InfoContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        user.setupUser(id: userID!)
+        user.setupUser(id: userID!, isLoggedIn: false)
         user.delegate=self
         ref=FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
         ref?.observe(.value, with: { (snapshot) in
@@ -141,8 +141,8 @@ class InfoContainerViewController: UIViewController {
     @IBAction func profileButtonPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
-        viewController.user=self.user
+        let viewController = storyboard.instantiateViewController(withIdentifier: "OtherUserProfile") as! OtherUserProfileViewController
+        viewController.otherUser=self.user
         UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }

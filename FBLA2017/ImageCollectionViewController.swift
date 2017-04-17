@@ -20,7 +20,7 @@ final class ImageCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         currentView=self.view
-        currentUser.setupUser(id: (FIRAuth.auth()?.currentUser?.uid)!)
+        currentUser.setupUser(id: (FIRAuth.auth()?.currentUser?.uid)!, isLoggedIn: true)
         loadCoverImages()
  
     }
