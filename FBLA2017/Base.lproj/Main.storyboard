@@ -395,6 +395,45 @@
             </objects>
             <point key="canvasLocation" x="-967.20000000000005" y="-0.44977511244377816"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="hDb-Gh-2Nv">
+            <objects>
+                <viewController id="Ksa-eI-sQ9" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7kv-bQ-Mbh"/>
+                        <viewControllerLayoutGuide type="bottom" id="zTL-BX-w7Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="63V-Dj-ceu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EA4-X8-UgO">
+                                <rect key="frame" x="0.0" y="0.0" width="216" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Global"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="crn-JV-pqt" userLabel="Global">
+                                <rect key="frame" x="159" y="216" width="216" height="451"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="6oi-yG-fPs" kind="embed" id="IA3-Dh-8jH"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQz-u4-BK4" userLabel="DMs">
+                                <rect key="frame" x="0.0" y="216" width="160" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U7a-nb-SOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2988" y="-2664.0179910044981"/>
+        </scene>
         <!--Item Chat View Controller-->
         <scene sceneID="aDm-lF-agQ">
             <objects>
@@ -410,7 +449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TnZ-DF-zxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3702" y="-2644"/>
+            <point key="canvasLocation" x="4028" y="-2676"/>
         </scene>
         <!--Info Container View Controller-->
         <scene sceneID="cbx-XE-sz0">
@@ -1242,6 +1281,7 @@
         <image name="ProfilePicture" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ORa-sI-Pdp"/>
         <segue reference="BWZ-ea-6a7"/>
         <segue reference="Cbb-yr-Evc"/>
     </inferredMetricsTieBreakers>
