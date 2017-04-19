@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:OtherUserProfileViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:FBLA2017.xcodeproj">
    </FileRef>
    <FileRef
