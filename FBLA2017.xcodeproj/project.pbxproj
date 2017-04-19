@@ -37,6 +37,7 @@
 		48BF02801EA390410071467E /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BF027F1EA390410071467E /* CurrentUser.swift */; };
 		48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C535CC1EA07941007062FE /* FirstContainerViewController.swift */; };
 		48D356471E99B3D100FBF6B3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D356461E99B3D100FBF6B3 /* TabBarController.swift */; };
+		48D5F3FD1EA7170500FD0526 /* ChatContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5F3FC1EA7170500FD0526 /* ChatContainerViewController.swift */; };
 		48DE95101E9ED21400583327 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE950F1E9ED21400583327 /* PageViewController.swift */; };
 		48DE95121E9EE62600583327 /* SBMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE95111E9EE62600583327 /* SBMaker.swift */; };
 		48DE95191E9F0D5800583327 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48DE95181E9F0D5800583327 /* GoogleService-Info.plist */; };
@@ -90,6 +91,7 @@
 		48C154401EA3728100844E3D /* FBLA2017.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FBLA2017.entitlements; sourceTree = "<group>"; };
 		48C535CC1EA07941007062FE /* FirstContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstContainerViewController.swift; sourceTree = "<group>"; };
 		48D356461E99B3D100FBF6B3 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		48D5F3FC1EA7170500FD0526 /* ChatContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContainerViewController.swift; sourceTree = "<group>"; };
 		48DE950F1E9ED21400583327 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		48DE95111E9EE62600583327 /* SBMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBMaker.swift; sourceTree = "<group>"; };
 		48DE95181E9F0D5800583327 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -135,7 +137,6 @@
 		4819C17A1EA2D382000853F7 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				4869245A1EA44C9000000052 /* OtherUserProfileViewController.swift */,
 				4819C1811EA2D40B000853F7 /* FavoritesCollectionViewController.swift */,
 				4819C1781EA2C9A1000853F7 /* ProfileViewController.swift */,
 				4819C1831EA2D4D4000853F7 /* SellingCollectionViewController.swift */,
@@ -167,6 +168,7 @@
 		481DD8CB1E98354E005765AF /* FBLA2017 */ = {
 			isa = PBXGroup;
 			children = (
+				48D5F3FE1EA7170D00FD0526 /* Chat */,
 				48C154401EA3728100844E3D /* FBLA2017.entitlements */,
 				4819C17A1EA2D382000853F7 /* Profile */,
 				4819C1711EA294D7000853F7 /* Login */,
@@ -205,11 +207,20 @@
 			name = "Support Files";
 			sourceTree = "<group>";
 		};
+		48D5F3FE1EA7170D00FD0526 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				48D5F3FC1EA7170500FD0526 /* ChatContainerViewController.swift */,
+				483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */,
+				4869245A1EA44C9000000052 /* OtherUserProfileViewController.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
 		48DE95131E9EE78200583327 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
 				48DE950F1E9ED21400583327 /* PageViewController.swift */,
-				483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */,
 				48BD2F281E9FFAD400FDA557 /* ImageViewController.swift */,
 				48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */,
 				487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */,
@@ -397,6 +408,7 @@
 				4869245B1EA44C9000000052 /* OtherUserProfileViewController.swift in Sources */,
 				487527531EA01BDD0047E083 /* MoreDetailsViewController.swift in Sources */,
 				48DE95121E9EE62600583327 /* SBMaker.swift in Sources */,
+				48D5F3FD1EA7170500FD0526 /* ChatContainerViewController.swift in Sources */,
 				4819C1841EA2D4D4000853F7 /* SellingCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
