@@ -62,8 +62,8 @@ class ChatContainerViewController: UIViewController {
         if segue.identifier=="toGlobalChat"{
             if let vc:ItemChatViewController=segue.destination as! ItemChatViewController{
                 vc.keyString=keyString
-                vc.senderId=FIRAuth.auth()?.currentUser?.uid
-                vc.senderDisplayName=vc.senderId
+                vc.senderId=currentUser.uid
+                vc.senderDisplayName=currentUser.displayName
 
             }
         }

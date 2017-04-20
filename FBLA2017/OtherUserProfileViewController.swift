@@ -48,8 +48,8 @@ class OtherUserProfileViewController: UIViewController {
         if segue.identifier=="toChat"{
             if let vc=segue.destination as? TwoUserChatViewController {
             vc.senderId=currentUser.uid
-            vc.senderDisplayName=vc.senderId
-                     let LIUID:String=(loginInUser?.uid)!
+            vc.senderDisplayName=currentUser.displayName
+                let LIUID:String=(loginInUser?.uid)!
             let otherUID:String=(otherUser?.uid)!
             var chatPath:String=""
             if LIUID.localizedStandardCompare(otherUID)==ComparisonResult.orderedAscending{

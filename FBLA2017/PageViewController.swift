@@ -4,7 +4,7 @@
 //  FBLA2017
 //
 //  Created by Luke Mann on 4/12/17.
-//  Copyright © 2017 Luke Mann. All rights reserved.
+//  Copyright Â© 2017 Luke Mann. All rights reserved.
 //
 
 import UIKit
@@ -30,7 +30,7 @@ class PageViewController: UIPageViewController {
     override func viewDidLoad() {
         self.gestureRecognizers.first?.cancelsTouchesInView=true
         self.dataSource=self
-              if !(images?.isEmpty)!{
+        if !(images?.isEmpty)!{
             for image in images!{
                 makeAndAppeadVC(image: image)
             }
@@ -100,4 +100,3 @@ extension PageViewController:NextItemDelegate{
         self.nextItemDelegate?.goToNextItem()
     }
 }
-
