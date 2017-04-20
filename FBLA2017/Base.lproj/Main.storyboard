@@ -428,6 +428,9 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQz-u4-BK4" userLabel="DMs">
                                 <rect key="frame" x="0.0" y="216" width="160" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="BIZ-Uc-qFs" kind="show" id="ScK-bD-btC"/>
+                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -450,13 +453,13 @@
                         <viewControllerLayoutGuide type="bottom" id="r4U-Zi-OWc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KoL-IX-VrI">
-                        <rect key="frame" x="0.0" y="0.0" width="216" height="451"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TnZ-DF-zxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4080" y="-2748"/>
+            <point key="canvasLocation" x="3967" y="-2745"/>
         </scene>
         <!--Info Container View Controller-->
         <scene sceneID="cbx-XE-sz0">
@@ -744,7 +747,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yas-XQ-Scg">
-                                <rect key="frame" x="139" y="72" width="97" height="34"/>
+                                <rect key="frame" x="140" y="72" width="97" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="97" id="EQg-AT-1vZ"/>
                                 </constraints>
@@ -754,7 +757,7 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="3ai-kc-Mhd">
-                                <rect key="frame" x="128" y="323" width="118" height="31"/>
+                                <rect key="frame" x="129" y="323" width="118" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="YIm-Xc-9XX"/>
                                 </constraints>
@@ -1288,8 +1291,9 @@
         <image name="ProfilePicture" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IA3-Dh-8jH"/>
+        <segue reference="ORa-sI-Pdp"/>
         <segue reference="BWZ-ea-6a7"/>
         <segue reference="Cbb-yr-Evc"/>
+        <segue reference="ScK-bD-btC"/>
     </inferredMetricsTieBreakers>
 </document>
