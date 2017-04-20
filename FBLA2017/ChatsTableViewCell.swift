@@ -10,6 +10,11 @@ import UIKit
 
 class ChatsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +25,5 @@ class ChatsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
