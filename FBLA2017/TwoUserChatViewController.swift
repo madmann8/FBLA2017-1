@@ -19,7 +19,6 @@ import FirebaseAuth
 class TwoUserChatViewController: JSQMessagesViewController {
 
 
-    var frame:CGRect?=nil
     
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
@@ -68,7 +67,6 @@ class TwoUserChatViewController: JSQMessagesViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.view.frame=self.frame ?? self.view.frame
         observeTyping()
         
     }

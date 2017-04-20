@@ -422,14 +422,14 @@
                                 <rect key="frame" x="159" y="216" width="216" height="451"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="6oi-yG-fPs" kind="embed" id="IA3-Dh-8jH"/>
+                                    <segue destination="6oi-yG-fPs" kind="embed" identifier="toGlobalChat" id="IA3-Dh-8jH"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQz-u4-BK4" userLabel="DMs">
                                 <rect key="frame" x="0.0" y="216" width="160" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="BIZ-Uc-qFs" kind="embed" id="6U7-sS-Rca"/>
+                                    <segue destination="BIZ-Uc-qFs" kind="embed" identifier="toDirectChat" id="6U7-sS-Rca"/>
                                 </connections>
                             </containerView>
                         </subviews>

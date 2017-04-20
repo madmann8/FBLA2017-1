@@ -71,10 +71,10 @@ class FirstContainerViewController:PulleyViewController {
         
         }
         if segue.identifier=="containerToChat"{
-            if let vc:ItemChatViewController=segue.destination as! ItemChatViewController{
+            if let vc:ChatContainerViewController=segue.destination as! ChatContainerViewController{
                 vc.keyString=keyString
-                vc.senderId=FIRAuth.auth()?.currentUser?.uid
-                vc.senderDisplayName=vc.senderId
+//                vc.senderId=FIRAuth.auth()?.currentUser?.uid
+//                vc.senderDisplayName=vc.senderId
                 print(vc.view.frame.height)
                 let frame=self.view.frame
                 let newHeight=frame.height*0.8

@@ -46,7 +46,7 @@ class OtherUserProfileViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="toChat"{
-            let vc=segue.destination as! TwoUserChatViewController
+            if let vc=segue.destination as? TwoUserChatViewController {
             vc.senderId=currentUser.uid
             vc.senderDisplayName=vc.senderId
                      let LIUID:String=(loginInUser?.uid)!
@@ -63,7 +63,7 @@ class OtherUserProfileViewController: UIViewController {
             vc.messageRef=vc.channelRef?.child("messages")
             
             
-
+            }
         }
     }
     
