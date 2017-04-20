@@ -28,7 +28,8 @@
     var currentView:UIView? = nil
     var currentVC:UIViewController? = nil
     
-    
+    var user:User?=nil
+
  }
  
  // MARK: - Private
@@ -104,7 +105,7 @@
         
         
         
-        let ref = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("coverImages")
+        let ref = FIRDatabase.database().reference().child("users").child((user?.uid)!).child("coverImages")
         print((FIRAuth.auth()?.currentUser?.uid)!)
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in

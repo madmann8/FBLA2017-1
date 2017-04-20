@@ -28,6 +28,8 @@
     var currentView:UIView? = nil
     var currentVC:UIViewController? = nil
     
+    var user:User?=nil
+    
     
  }
  
@@ -104,7 +106,7 @@
         
         
         
-        let ref = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
+        let ref = FIRDatabase.database().reference().child("users").child((user?.uid)!).child("likedCoverImages")
         print((FIRAuth.auth()?.currentUser?.uid)!)
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in

@@ -65,6 +65,17 @@ class OtherUserProfileViewController: UIViewController {
             
             }
         }
+        
+        if segue.identifier=="toSelling"{
+             let vc=segue.destination as! SellingCollectionViewController
+                vc.user=self.otherUser
+            
+        }
+        if segue.identifier=="toFavorites"{
+             let vc=segue.destination as! SellingCollectionViewController
+                vc.user=self.otherUser
+            
+        }
     }
     
 }
