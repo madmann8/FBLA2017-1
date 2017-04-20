@@ -72,7 +72,7 @@ class OtherUserProfileViewController: UIViewController {
             
         }
         if segue.identifier=="toFavorites"{
-             let vc=segue.destination as! SellingCollectionViewController
+             let vc=segue.destination as! FavoritesCollectionViewController
                 vc.user=self.otherUser
             
         }
