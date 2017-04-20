@@ -120,11 +120,11 @@ extension ImageCollectionViewController {
                             } else {
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
-                                if let extractedKey:String?=path.substring(start: 40, end: 60){
+                                if let extractedKey:String?=path.substring(start: 44, end: 64){
                                     self.itemKeys.append(extractedKey!)
                                 }
                                 i+=1
-                                if i==snapshots.count-1{
+                                if i==snapshots.count{
                                     activityIndicator.stopAnimating()
                                     self.collectionView?.reloadData()
                                 }

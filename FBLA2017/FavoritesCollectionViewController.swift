@@ -104,9 +104,12 @@
         let activityIndicator=startActivityIndicator()
         
         
+        var ref:FIRDatabaseReference
+        if let user=user {
+            ref = FIRDatabase.database().reference().child("users").child((user.uid)!).child("likedCoverImages")
+        }
+        else { ref = FIRDatabase.database().reference().child("users").child((currentUser.uid)!).child("likedCoverImages")}
         
-        
-        let ref = FIRDatabase.database().reference().child("users").child((user?.uid)!).child("likedCoverImages")
         print((FIRAuth.auth()?.currentUser?.uid)!)
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in
@@ -121,7 +124,7 @@
                             } else {
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
-                                if let extractedKey:String?=path.substring(start: 40, end: 60){
+                                if let extractedKey:String?=path.substring(start: 44, end: 64){
                                     self.itemKeys.append(extractedKey!)
                                 }
                                 i+=1

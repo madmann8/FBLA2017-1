@@ -22,6 +22,7 @@
 		483109901EA86A060069208C /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4831098F1EA86A060069208C /* ChatsTableViewController.swift */; };
 		483109921EA86E2E0069208C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 483109911EA86E2E0069208C /* GoogleService-Info.plist */; };
 		483109941EA86E8C0069208C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483109931EA86E8C0069208C /* PageViewController.swift */; };
+		483109961EA874D90069208C /* ChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483109951EA874D90069208C /* ChatsTableViewCell.swift */; };
 		483D9D391E9C5A8F00BFA619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483D9D381E9C5A8F00BFA619 /* CoreLocation.framework */; };
 		483D9D3B1E9C5A9500BFA619 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483D9D3A1E9C5A9500BFA619 /* MapKit.framework */; };
 		483F1F8F1EA08210000C5788 /* ItemChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */; };
@@ -77,6 +78,7 @@
 		4831098F1EA86A060069208C /* ChatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsTableViewController.swift; sourceTree = "<group>"; };
 		483109911EA86E2E0069208C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		483109931EA86E8C0069208C /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		483109951EA874D90069208C /* ChatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsTableViewCell.swift; sourceTree = "<group>"; };
 		483D9D381E9C5A8F00BFA619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		483D9D3A1E9C5A9500BFA619 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemChatViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				4831098C1EA869B10069208C /* ChatsViewController.swift */,
 				4831098F1EA86A060069208C /* ChatsTableViewController.swift */,
+				483109951EA874D90069208C /* ChatsTableViewCell.swift */,
 			);
 			name = Chats;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				483109961EA874D90069208C /* ChatsTableViewCell.swift in Sources */,
 				486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */,
 				4808B9BB1E9B0D2400BF1181 /* FontLoader.swift in Sources */,
 				4815FF4F1E99549B0018FA30 /* ImageCollectionViewController.swift in Sources */,
