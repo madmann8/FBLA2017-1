@@ -27,11 +27,9 @@ class FirstContainerViewController:PulleyViewController {
     var keyString:String?=nil
     var coverImagePath:String?=nil
     var userID:String?=nil
-    var user=User(){
-        didSet{
-            user.setupUser(id: userID!, isLoggedIn: false)
-        }
-    }
+    var user:User?=nil
+ 
+    
     
     var nextItemDelegate:NextItemDelegate?=nil
     var dismissDelegate:DismissDelgate?=nil
@@ -57,7 +55,7 @@ class FirstContainerViewController:PulleyViewController {
         self.primaryContentContainerView=self.primaryView
         self.drawerContentContainerView=self.secondaryView
         if segue.identifier=="toSecondContainer"{
-            if let middle:InfoContainerViewController=segue.destination as! InfoContainerViewController{
+            if let middle:InfoContainerViewController=segue.destination as? InfoContainerViewController{
                 middle.categorey=categorey
                 middle.name=name
                 middle.about=about
@@ -77,17 +75,16 @@ class FirstContainerViewController:PulleyViewController {
         
         }
         if segue.identifier=="containerToChat"{
-            if let vc:ChatContainerViewController=segue.destination as! ChatContainerViewController{
+            if let vc:ChatContainerViewController=segue.destination as? ChatContainerViewController{
                 vc.keyString=keyString
-                vc.otherUser=user
+                vc.otherUser=self.user
 //                vc.senderId=FIRAuth.auth()?.currentUser?.uid
 //                vc.senderDisplayName=vc.senderId
-                print(vc.view.frame.height)
                 let frame=self.view.frame
-                let newHeight=frame.height*0.8
-                print(newHeight)
                 let newFrame=CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height-self.topInset)
                 vc.frame=newFrame
+                print(newFrame.height)
+                print(vc.frame?.height)
             
 
             

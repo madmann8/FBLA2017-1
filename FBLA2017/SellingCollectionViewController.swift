@@ -145,7 +145,6 @@
         let index=itemKeys.index(of: keyString)
         itemIndex=index!
     }
-    
     func generateImages(keyString: String){
         var activityIndicator=startActivityIndicator()
         
@@ -160,11 +159,13 @@
         var addressString:String?=nil
         var cents:Int?=nil
         var condition:Int?=nil
+        var userID:String?=nil
         
         
         
         
         let ref = FIRDatabase.database().reference().child("items").child(keyString)
+        let user=User()
         
         ref.observe(.value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -176,6 +177,9 @@
             addressString = value?["locationString"] as? String ?? ""
             condition = value?["condition"] as? Int ?? 0
             cents = value?["cents"] as? Int ?? 0
+            userID = value?["userID"] as? String ?? ""
+            user.setupUser(id: userID!, isLoggedIn: false)
+            
             
             
             
@@ -220,7 +224,7 @@
                                     middle.nextItemDelegate=self
                                     middle.dismissDelegate=self
                                     middle.coverImagePath=path
-
+                                    middle.user=user
                                     
                                     
                                     

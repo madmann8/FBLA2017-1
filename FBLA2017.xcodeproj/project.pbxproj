@@ -143,7 +143,6 @@
 				4819C1831EA2D4D4000853F7 /* SellingCollectionViewController.swift */,
 				48BF027D1EA38FFD0071467E /* UserModel.swift */,
 				48BF027F1EA390410071467E /* CurrentUser.swift */,
-				4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -211,6 +210,7 @@
 		48D5F3FE1EA7170D00FD0526 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */,
 				48D5F3FC1EA7170500FD0526 /* ChatContainerViewController.swift */,
 				483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */,
 			);

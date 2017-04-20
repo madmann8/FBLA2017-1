@@ -20,6 +20,11 @@ class ChatContainerViewController: UIViewController {
     
     var otherUser:User?=nil
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.frame=self.frame!
+
+    }
+    
     @IBOutlet weak var dmChatContainer: UIView!
     @IBOutlet weak var globalChat: UIView!
     
@@ -52,7 +57,6 @@ class ChatContainerViewController: UIViewController {
                 
                 vc.messageRef=vc.channelRef?.child("messages")
                 
-                
             }
         }
         if segue.identifier=="toGlobalChat"{
@@ -60,7 +64,7 @@ class ChatContainerViewController: UIViewController {
                 vc.keyString=keyString
                 vc.senderId=FIRAuth.auth()?.currentUser?.uid
                 vc.senderDisplayName=vc.senderId
-                
+
             }
         }
     }

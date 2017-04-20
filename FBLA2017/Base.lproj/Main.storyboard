@@ -407,8 +407,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="crn-JV-pqt" userLabel="Global">
+                                <rect key="frame" x="0.0" y="36" width="375" height="631"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="6oi-yG-fPs" kind="embed" identifier="toGlobalChat" id="IA3-Dh-8jH"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQz-u4-BK4" userLabel="DMs">
+                                <rect key="frame" x="0.0" y="36" width="375" height="640"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="BIZ-Uc-qFs" kind="embed" identifier="toDirectChat" id="6U7-sS-Rca"/>
+                                </connections>
+                            </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EA4-X8-UgO">
-                                <rect key="frame" x="0.0" y="0.0" width="216" height="29"/>
+                                <rect key="frame" x="79" y="0.0" width="216" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Global"/>
@@ -418,20 +432,6 @@
                                     <action selector="switchChanged:" destination="Ksa-eI-sQ9" eventType="valueChanged" id="TjV-l1-Ovr"/>
                                 </connections>
                             </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="crn-JV-pqt" userLabel="Global">
-                                <rect key="frame" x="159" y="216" width="216" height="451"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="6oi-yG-fPs" kind="embed" identifier="toGlobalChat" id="IA3-Dh-8jH"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQz-u4-BK4" userLabel="DMs">
-                                <rect key="frame" x="0.0" y="216" width="160" height="460"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="BIZ-Uc-qFs" kind="embed" identifier="toDirectChat" id="6U7-sS-Rca"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -453,7 +453,7 @@
                         <viewControllerLayoutGuide type="bottom" id="r4U-Zi-OWc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KoL-IX-VrI">
-                        <rect key="frame" x="0.0" y="0.0" width="216" height="451"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="631"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                 </viewController>
@@ -1266,7 +1266,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0NM-W6-SOT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3c3-a5-4Dq">
-                        <rect key="frame" x="0.0" y="0.0" width="160" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cs2-L8-fJs">
@@ -1291,8 +1291,8 @@
         <image name="ProfilePicture" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6U7-sS-Rca"/>
-        <segue reference="BWZ-ea-6a7"/>
-        <segue reference="Cbb-yr-Evc"/>
+        <segue reference="zHW-XZ-tjJ"/>
+        <segue reference="bRa-Be-ak4"/>
+        <segue reference="gFJ-Ib-shz"/>
     </inferredMetricsTieBreakers>
 </document>

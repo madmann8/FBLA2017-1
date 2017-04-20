@@ -167,7 +167,8 @@ extension ImageCollectionViewController: PhotoCellDelegate {
         
         
         let ref = FIRDatabase.database().reference().child("items").child(keyString)
-        
+        let user=User()
+
         ref.observe(.value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
             name = value?["title"] as? String ?? ""
@@ -179,7 +180,8 @@ extension ImageCollectionViewController: PhotoCellDelegate {
             condition = value?["condition"] as? Int ?? 0
             cents = value?["cents"] as? Int ?? 0
             userID = value?["userID"] as? String ?? ""
-//
+            user.setupUser(id: userID!, isLoggedIn: false)
+
 
 
 
@@ -224,7 +226,7 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     middle.nextItemDelegate=self
                                     middle.dismissDelegate=self
                                     middle.coverImagePath=path
-                                    middle.userID=userID
+                                    middle.user=user
                                     
 
                                 
