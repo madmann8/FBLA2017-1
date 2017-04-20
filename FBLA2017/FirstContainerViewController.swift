@@ -27,6 +27,11 @@ class FirstContainerViewController:PulleyViewController {
     var keyString:String?=nil
     var coverImagePath:String?=nil
     var userID:String?=nil
+    var user=User(){
+        didSet{
+            user.setupUser(id: userID!, isLoggedIn: false)
+        }
+    }
     
     var nextItemDelegate:NextItemDelegate?=nil
     var dismissDelegate:DismissDelgate?=nil
@@ -39,6 +44,7 @@ class FirstContainerViewController:PulleyViewController {
         super.viewDidLoad()
         self.delegate=self
         setNeedsSupportedDrawerPositionsUpdate()
+//        user.setupUser(id: userID!, isLoggedIn: false)
         // Do any additional setup after loading the view.
     }
 
@@ -65,7 +71,7 @@ class FirstContainerViewController:PulleyViewController {
                 middle.dismissDelegate=self
                 middle.coverImagePath=coverImagePath
                 middle.keyString=keyString
-                middle.userID=userID
+                middle.user=user
                 
             }
         
@@ -73,6 +79,7 @@ class FirstContainerViewController:PulleyViewController {
         if segue.identifier=="containerToChat"{
             if let vc:ChatContainerViewController=segue.destination as! ChatContainerViewController{
                 vc.keyString=keyString
+                vc.otherUser=user
 //                vc.senderId=FIRAuth.auth()?.currentUser?.uid
 //                vc.senderDisplayName=vc.senderId
                 print(vc.view.frame.height)

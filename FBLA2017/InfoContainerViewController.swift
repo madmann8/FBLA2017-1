@@ -43,12 +43,11 @@ class InfoContainerViewController: UIViewController {
     
     var ref:FIRDatabaseReference?=nil
     
-    var user=User()
+    var user:User?=nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        user.setupUser(id: userID!, isLoggedIn: false)
-        user.delegate=self
+        user?.delegate=self
         ref=FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
         ref?.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
