@@ -19,13 +19,17 @@ class ChatsTableViewCell: UITableViewCell {
     var chatPath:String?=nil
     var date:String?=nil
     var name:String?=nil
+    var img:UIImage?=nil
 
     
     override func awakeFromNib() {
         super.awakeFromNib()
+      
+    }
+    override func layoutSubviews() {
         self.titleLabel.text=user?.uid
         self.dateLabel.text=date
-
+        self.imageView?.image=img
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

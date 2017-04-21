@@ -29,6 +29,7 @@ class User:NSObject {
     var itemChats=[ChatsTableViewCell]()
     var directChats=[ChatsTableViewCell]()
     var cellIndex:Int?=nil
+    var itemChar:Bool?=nil
     
     var geoCoder:CLGeocoder!
     var locationManager:CLLocationManager!
@@ -318,7 +319,7 @@ extension User:UserDelegate{
             tempRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 let value = snapshot.value as? NSDictionary
-                date = value?["lastChatDate"] as? String ?? ""
+                date = value?["chatLastDate"] as? String ?? ""
                 let user1 = value?["user1"] as? String ?? ""
                 let user2 = value?["user2"] as? String ?? ""
                 var tempUser = User()
@@ -336,6 +337,9 @@ extension User:UserDelegate{
                 cell.isGlobal=false
                 cell.chatPath=path
                 cell.date=date
+                cell.name=tempUser.uid
+                print(date)
+                print(cell.date)
                 self.directChats.append(cell)
                 i+=1
 
@@ -355,34 +359,42 @@ extension User:UserDelegate{
         
         
         
-        let ref2 = FIRDatabase.database().reference().child("users").child(keyString).child("itemChats")
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        var e=0
+        let ref2 = FIRDatabase.database().reference().child("items").child(keyString)
+        ref2.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            let path = snapshot.key
-            let tempRef=FIRDatabase.database().reference().child("items").child(path)
-            tempRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                let date = value?["lastChatDate"] as? String ?? ""
-                let name = value?["Waterfall"] as? String ?? ""
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
-                let cell=ChatsTableViewCell()
+                for child in snapshot.children{
+                    let path:String = (child as AnyObject).key
+                    var date:String=""
+                    let tempRef=FIRDatabase.database().reference().child("chats").child(path)
+                    tempRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                        // Get user value
+                        let value = snapshot.value as? NSDictionary
+                        date = value?["chatLastDate"] as? String ?? ""
+                        let name = value?["title"] as? String ?? ""
 
-                cell.isGlobal=false
-                cell.chatPath=path
-                cell.date=date
-                cell.name=name
-                self.itemChats.append(cell)
-                
-                
-            }) { (error) in
-                print(error.localizedDescription)
-            }
+                                              let cell=ChatsTableViewCell()
+                        cell.isGlobal=true
+                        cell.chatPath=path
+                        cell.date=date
+                        cell.name = name
+                        print(cell.date)
+                        self.directChats.append(cell)
+                        i+=1
+                        
+                        
+                    }) { (error) in
+                        print(error.localizedDescription)
+                    }
+                }}
             
             
         }) { (error) in
             print(error.localizedDescription)
         }
+        
 
         
         
@@ -390,7 +402,7 @@ extension User:UserDelegate{
         
     }
     func imageLoaded(image: UIImage, user: User, index:Int?) {
-        directChats[index!].imageView?.image=image
+        directChats[index!].img=image
     }
     
     
