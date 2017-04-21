@@ -12,12 +12,20 @@ class ChatsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    
+    var user:User?=nil
+    var isGlobal:Bool?=nil
+    var chatPath:String?=nil
+    var date:String?=nil
+    var name:String?=nil
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.titleLabel.text=user?.uid
+        self.dateLabel.text=date
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

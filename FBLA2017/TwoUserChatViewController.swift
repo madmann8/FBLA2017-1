@@ -28,10 +28,14 @@ class TwoUserChatViewController: JSQMessagesViewController {
     
     let imageURLNotSetKey = "NOTSET"
     
-    
-    
+    var userRef1:FIRDatabaseReference?=nil
+    var userRef2:FIRDatabaseReference?=nil
 
-             
+    var loggedInUser:User?=nil
+    var otherUser:User?=nil
+
+
+    
     var messageRef: FIRDatabaseReference? = nil
     var channelRef: FIRDatabaseReference? = nil
     private var newMessageRefHandle: FIRDatabaseHandle?
@@ -70,6 +74,8 @@ class TwoUserChatViewController: JSQMessagesViewController {
         super.viewDidAppear(animated)
         self.view.frame=self.frame ?? self.view.frame
         observeTyping()
+        channelRef?.child("user1").setValue(loggedInUser?.uid)
+        channelRef?.child("user2").setValue(otherUser?.uid)
         
     }
     
@@ -82,12 +88,17 @@ class TwoUserChatViewController: JSQMessagesViewController {
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         let itemRef=messageRef?.childByAutoId()
-        let messageItem = [ // 2
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        let dateResult = formatter.string(from: date)
+        let messageItem = [
             "senderId": senderId!,
             "senderName": senderDisplayName!,
             "text": text!,
             ]
         itemRef?.setValue(messageItem)
+        messageRef?.parent?.child("chatLastDate").setValue(dateResult)
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         isTyping = false
         finishSendingMessage()
@@ -111,16 +122,18 @@ class TwoUserChatViewController: JSQMessagesViewController {
             let messageData = snapshot.value as! Dictionary<String, String>
             
             if let id = messageData["senderId"] as String!, let name = messageData["senderName"] as String!, let text = messageData["text"] as String!, text.characters.count > 0 {
+                self.userRef1?.setValue("👍")
+                self.userRef2?.setValue("👍")
+
                 self.addMessage(withId: id, name: name, text: text)
                 self.finishReceivingMessage()
             }
             else if let id = messageData["senderId"] as String!,
-                let photoURL = messageData["photoURL"] as String! { // 1
-                // 2
+                let photoURL = messageData["photoURL"] as String! {
+                self.userRef1?.setValue("👍")
+                self.userRef2?.setValue("👍")
                 if let mediaItem = JSQPhotoMediaItem(maskAsOutgoing: id == self.senderId) {
-                    // 3
                     self.addPhotoMessage(withId: id, key: snapshot.key, mediaItem: mediaItem)
-                    // 4
                     if photoURL.hasPrefix("gs://") {
                         self.fetchImageDataAtURL(photoURL, forMediaItem: mediaItem, clearsPhotoMessageMapOnSuccessForKey: nil)
                     }

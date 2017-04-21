@@ -4,7 +4,7 @@
  import FirebaseDatabase
  import FirebaseStorage
  
- //On the next episode: well fugure out how to  reload view without using the text bar
+
  
  final class SellingCollectionViewController: UICollectionViewController {
     

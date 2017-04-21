@@ -13,7 +13,7 @@ import CoreLocation
 import UIKit
 
 protocol UserDelegate {
-    func imageLoaded(image:UIImage)
+    func imageLoaded(image: UIImage, user: User, index:Int?)
 }
 
 
@@ -26,6 +26,9 @@ class User:NSObject {
     var profileImage: UIImage!
     var sellingImagesPaths:[String]=[]
     var favoriteImagesPaths:[String]=[]
+    var itemChats=[ChatsTableViewCell]()
+    var directChats=[ChatsTableViewCell]()
+    var cellIndex:Int?=nil
     
     var geoCoder:CLGeocoder!
     var locationManager:CLLocationManager!
@@ -57,6 +60,9 @@ class User:NSObject {
         email=FIRAuth.auth()?.currentUser?.email
         setCityLabel()
         getProfilePic(isLoggedIn: isLoggedIn)
+        if isLoggedIn{
+            getChatsCells(keyString: id)
+        }
         
         
         
@@ -68,112 +74,112 @@ class User:NSObject {
 extension User {
     func getProfilePic(isLoggedIn:Bool) {
         if (isLoggedIn){
-        if let providerData = FIRAuth.auth()?.currentUser?.providerData {
-            for userInfo in providerData {
-                if userInfo.providerID=="password"  {
-                    
-                    var ref: FIRDatabaseReference!
-                    ref = FIRDatabase.database().reference().child("users").child(uid!)
-                    ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                        // Get user value
-                        let value = snapshot.value as? NSDictionary
-                        var imageURL = value?["imageURL"] as? String ?? "❌"
-                        if imageURL == "❌"{
-                            ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
-                            imageURL="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
-                        }
-                        self.downloadedFrom(link: imageURL)
+            if let providerData = FIRAuth.auth()?.currentUser?.providerData {
+                for userInfo in providerData {
+                    if userInfo.providerID=="password"  {
                         
-                        //DO THIS
-                        
-                        //DO THIS
-                        
-                        self.email = value?["email"] as? String ?? "❌"
-                        if self.email == "❌"{
-                            ref.child("email").setValue(FIRAuth.auth()?.currentUser?.email)
-                            self.email=(FIRAuth.auth()?.currentUser?.email)!
-                        }
-                        
-                         self.displayName = value?["displayName"] as? String ?? "❌"
-                        if self.displayName == "❌"{
-                            ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
-                            self.displayName=(FIRAuth.auth()?.currentUser?.displayName)!
-                        }
-                        
-                        let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
-                        let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
-                        if let coverArray=imagePathsSnapshot.value as? NSDictionary{
-                            if (coverArray.count)>0{
-                                for kv in coverArray{
-                                    let s=kv.value as! String
-                                    self.sellingImagesPaths.append(s)
-                                }
-                            }
-                        }
-                        if let favoritesArray=imagePathsSnapshot.value as? NSDictionary{
-                            if (favoritesArray.count)>0{
-                                for kv in favoritesArray{
-                                    let s=kv.value as! String
-                                    self.favoriteImagesPaths.append(s)
-                                }
-                            }
-                        }
-                    }
-                    )
-                }
-                    
-                    
-                else{
-                    var ref: FIRDatabaseReference!
-                    ref = FIRDatabase.database().reference().child("users").child(uid!)
-                    ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                        // Get user value
-                        let value = snapshot.value as? NSDictionary
-                        var imageURL:String = FIRAuth.auth()?.currentUser?.photoURL?.absoluteString ?? "❌"
-                        if imageURL == "❌"{
-                            ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
-                            imageURL="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
-                        }
-                        else {
-                            var imageURL2 = value?["imageURL"] as? String ?? "❌"
+                        var ref: FIRDatabaseReference!
+                        ref = FIRDatabase.database().reference().child("users").child(uid!)
+                        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                            // Get user value
+                            let value = snapshot.value as? NSDictionary
+                            var imageURL = value?["imageURL"] as? String ?? "❌"
                             if imageURL == "❌"{
-                                ref.child("imageURL").setValue(imageURL)
-                                self.downloadedFrom(link: imageURL)
-
-                                
-   }
-                            else {
-
-                                self.downloadedFrom(link: imageURL2)
-
-
+                                ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
+                                imageURL="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
                             }
-                       }
+                            self.downloadedFrom(link: imageURL)
+                            
+                            //DO THIS
+                            
+                            //DO THIS
+                            
+                            self.email = value?["email"] as? String ?? "❌"
+                            if self.email == "❌"{
+                                ref.child("email").setValue(FIRAuth.auth()?.currentUser?.email)
+                                self.email=(FIRAuth.auth()?.currentUser?.email)!
+                            }
+                            
+                            self.displayName = value?["displayName"] as? String ?? "❌"
+                            if self.displayName == "❌"{
+                                ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
+                                self.displayName=(FIRAuth.auth()?.currentUser?.displayName)!
+                            }
+                            
+                            let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
+                            let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
+                            if let coverArray=imagePathsSnapshot.value as? NSDictionary{
+                                if (coverArray.count)>0{
+                                    for kv in coverArray{
+                                        let s=kv.value as! String
+                                        self.sellingImagesPaths.append(s)
+                                    }
+                                }
+                            }
+                            if let favoritesArray=imagePathsSnapshot.value as? NSDictionary{
+                                if (favoritesArray.count)>0{
+                                    for kv in favoritesArray{
+                                        let s=kv.value as! String
+                                        self.favoriteImagesPaths.append(s)
+                                    }
+                                }
+                            }
+                        }
+                        )
+                    }
                         
                         
-                        var displayName = value?["displayName"] as? String ?? "❌"
-                        if displayName == "❌"{
-                            ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
-                            displayName=(FIRAuth.auth()?.currentUser?.displayName)!
-                        }
-                        
-                        let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
-                        let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
-                        for dict in imagePathsSnapshot.children {
-                            self.sellingImagesPaths.append((dict as AnyObject).value)
-                        }
-                        for dict in favoritesPathSnapshot.children {
-                            self.favoriteImagesPaths.append((dict as AnyObject).value)
-                        }
-                    })
+                    else{
+                        var ref: FIRDatabaseReference!
+                        ref = FIRDatabase.database().reference().child("users").child(uid!)
+                        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                            // Get user value
+                            let value = snapshot.value as? NSDictionary
+                            var imageURL:String = FIRAuth.auth()?.currentUser?.photoURL?.absoluteString ?? "❌"
+                            if imageURL == "❌"{
+                                ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
+                                imageURL="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
+                            }
+                            else {
+                                var imageURL2 = value?["imageURL"] as? String ?? "❌"
+                                if imageURL == "❌"{
+                                    ref.child("imageURL").setValue(imageURL)
+                                    self.downloadedFrom(link: imageURL)
+                                    
+                                    
+                                }
+                                else {
+                                    
+                                    self.downloadedFrom(link: imageURL2)
+                                    
+                                    
+                                }
+                            }
+                            
+                            
+                            var displayName = value?["displayName"] as? String ?? "❌"
+                            if displayName == "❌"{
+                                ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
+                                displayName=(FIRAuth.auth()?.currentUser?.displayName)!
+                            }
+                            
+                            let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
+                            let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
+                            for dict in imagePathsSnapshot.children {
+                                self.sellingImagesPaths.append((dict as AnyObject).value)
+                            }
+                            for dict in favoritesPathSnapshot.children {
+                                self.favoriteImagesPaths.append((dict as AnyObject).value)
+                            }
+                        })
+                    }
+                    
+                    
+                    
+                    
+                    
                 }
-                
-                
-                
-                
-                
             }
-        }
         }
         else {
             
@@ -207,12 +213,12 @@ extension User {
                 
                 
             })
-        
-        
-        
-        
+            
+            
+            
+            
         }
-        }
+    }
 }
 
 
@@ -281,9 +287,9 @@ extension User:CLLocationManagerDelegate{
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
-                self.city=city
-                ref.child("locationString").setValue(self.city)
-                 })
+            self.city=city
+            ref.child("locationString").setValue(self.city)
+        })
     }
     
     func changeProfilePicture(downloadURL:String){
@@ -294,6 +300,102 @@ extension User:CLLocationManagerDelegate{
         })
     }
 }
+
+
+
+extension User:UserDelegate{
+    func getChatsCells(keyString:String){
+        var i=0
+        let ref = FIRDatabase.database().reference().child("users").child(keyString).child("directChats")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+
+            for child in snapshot.children{
+                let path:String = (child as AnyObject).key
+            var date:String=""
+            let tempRef=FIRDatabase.database().reference().child("chats").child(path)
+            tempRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                date = value?["lastChatDate"] as? String ?? ""
+                let user1 = value?["user1"] as? String ?? ""
+                let user2 = value?["user2"] as? String ?? ""
+                var tempUser = User()
+                tempUser.delegate=self
+                tempUser.cellIndex=i
+                
+                if user1==currentUser.uid{
+                    tempUser.setupUser(id: user1, isLoggedIn: false)
+                }
+                else {
+                    tempUser.setupUser(id: user2, isLoggedIn: false)
+                }
+                let cell=ChatsTableViewCell()
+                cell.user=tempUser
+                cell.isGlobal=false
+                cell.chatPath=path
+                cell.date=date
+                self.directChats.append(cell)
+                i+=1
+
+                
+            }) { (error) in
+                print(error.localizedDescription)
+                }
+                }}
+            
+
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+
+        
+        
+        
+        
+        let ref2 = FIRDatabase.database().reference().child("users").child(keyString).child("itemChats")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let path = snapshot.key
+            let tempRef=FIRDatabase.database().reference().child("items").child(path)
+            tempRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                let date = value?["lastChatDate"] as? String ?? ""
+                let name = value?["Waterfall"] as? String ?? ""
+                
+                let cell=ChatsTableViewCell()
+
+                cell.isGlobal=false
+                cell.chatPath=path
+                cell.date=date
+                cell.name=name
+                self.itemChats.append(cell)
+                
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+
+        
+        
+        
+        
+    }
+    func imageLoaded(image: UIImage, user: User, index:Int?) {
+        directChats[index!].imageView?.image=image
+    }
+    
+    
+}
+
 
 
 
@@ -309,8 +411,9 @@ extension User {
                 else { return }
             DispatchQueue.main.sync() {
                 self.profileImage=image
-                self.delegate?.imageLoaded(image: image)
+                self.delegate?.imageLoaded(image: image,user: self, index: self.cellIndex)
                 return
+                
             }
             }.resume()
     }

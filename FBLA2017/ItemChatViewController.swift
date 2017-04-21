@@ -26,11 +26,12 @@ class ItemChatViewController: JSQMessagesViewController {
     
     let imageURLNotSetKey = "NOTSET"
     
-    
+    var chatRef:FIRDatabaseReference?=nil
     
     var keyString:String?=nil {
         didSet {
-            self.channelRef=FIRDatabase.database().reference().child("items").child("\(keyString)")
+            let notOptional:String=keyString ?? ""
+            self.channelRef=FIRDatabase.database().reference().child("items").child("\(notOptional)")
             self.messageRef=channelRef?.child("messages")
             
         }
@@ -85,13 +86,19 @@ class ItemChatViewController: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        chatRef?.setValue("👍")
         let itemRef=messageRef?.childByAutoId()
-        let messageItem = [ // 2
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        let dateResult = formatter.string(from: date)
+        let messageItem = [
             "senderId": senderId!,
             "senderName": senderDisplayName!,
             "text": text!,
             ]
         itemRef?.setValue(messageItem)
+        messageRef?.parent?.child("chatLastDate").setValue(dateResult)
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         isTyping = false
         finishSendingMessage()
@@ -110,7 +117,7 @@ class ItemChatViewController: JSQMessagesViewController {
     
     private func observeMessages() {
         let messagesQuery=messageRef?.queryLimited(toLast: 25)
-        
+
         newMessageRefHandle=messagesQuery?.observe(.childAdded, with: { (snapshot) -> Void in
             let messageData = snapshot.value as! Dictionary<String, String>
             
