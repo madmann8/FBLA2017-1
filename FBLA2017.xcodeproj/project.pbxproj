@@ -26,6 +26,7 @@
 		483D9D3B1E9C5A9500BFA619 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483D9D3A1E9C5A9500BFA619 /* MapKit.framework */; };
 		483F1F8F1EA08210000C5788 /* ItemChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */; };
 		485A02201E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */; };
+		48624F4F1EAABF60008CE0E0 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48624F4E1EAABF60008CE0E0 /* ItemModel.swift */; };
 		4869245B1EA44C9000000052 /* OtherUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869245A1EA44C9000000052 /* OtherUserProfileViewController.swift */; };
 		4869245F1EA4561E00000052 /* TwoUserChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */; };
 		486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */; };
@@ -83,6 +84,7 @@
 		483D9D3A1E9C5A9500BFA619 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemChatViewController.swift; sourceTree = "<group>"; };
 		485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPricePopoverViewController.swift; sourceTree = "<group>"; };
+		48624F4E1EAABF60008CE0E0 /* ItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		4869245A1EA44C9000000052 /* OtherUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileViewController.swift; sourceTree = "<group>"; };
 		4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoUserChatViewController.swift; sourceTree = "<group>"; };
 		486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				481DD8D21E98354E005765AF /* Main.storyboard */,
 				481DD8D51E98354E005765AF /* Assets.xcassets */,
 				489473511EA3129000949659 /* LogOutViewController.swift */,
+				48624F4E1EAABF60008CE0E0 /* ItemModel.swift */,
 			);
 			path = FBLA2017;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				48BD2F291E9FFAD400FDA557 /* ImageViewController.swift in Sources */,
 				4819C1791EA2C9A1000853F7 /* ProfileViewController.swift in Sources */,
 				489CA76D1E9C2D630021ECAE /* SDKAPIKey.swift in Sources */,
+				48624F4F1EAABF60008CE0E0 /* ItemModel.swift in Sources */,
 				4831098D1EA869B10069208C /* ChatsViewController.swift in Sources */,
 				48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */,
 				48B07F0E1EA151FE0068709A /* LoginViewController.swift in Sources */,

@@ -13,7 +13,7 @@ import CoreLocation
 import UIKit
 
 protocol UserDelegate {
-    func imageLoaded(image: UIImage)
+    func imageLoaded(image: UIImage, user: User, index:Int?)
 }
 
 
@@ -303,7 +303,7 @@ extension User:CLLocationManagerDelegate{
 }
 
 
-
+//Chat tableview stuff
 extension User:UserDelegate{
     func getChatsCells(keyString:String){
         var i=0
@@ -360,28 +360,29 @@ extension User:UserDelegate{
         
         
         var e=0
-        let ref2 = FIRDatabase.database().reference().child("items").child(keyString)
+        let ref2 = FIRDatabase.database().reference().child("users").child(keyString).child("itemChats")
         ref2.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
                 for child in snapshot.children{
                     let path:String = (child as AnyObject).key
-                    var date:String=""
-                    let tempRef=FIRDatabase.database().reference().child("chats").child(path)
+                    let tempRef=FIRDatabase.database().reference().child("items").child(path)
                     tempRef.observeSingleEvent(of: .value, with: { (snapshot) in
                         // Get user value
                         let value = snapshot.value as? NSDictionary
-                        date = value?["chatLastDate"] as? String ?? ""
+                        let date = value?["chatLastDate"] as? String ?? ""
                         let name = value?["title"] as? String ?? ""
-
-                                              let cell=ChatsTableViewCell()
+                        let imagePath = value?["coverImage"] as? String ?? ""
+                        let cell=ChatsTableViewCell()
+         
+                        cell.coverImagePath=imagePath
                         cell.isGlobal=true
-                        cell.chatPath=path
                         cell.date=date
                         cell.name = name
+                        cell.itemPath=path
                         print(cell.date)
-                        self.directChats.append(cell)
+                        self.itemChats.append(cell)
                         i+=1
                         
                         

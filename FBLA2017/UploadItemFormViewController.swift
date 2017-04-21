@@ -304,6 +304,7 @@ extension UploadItemFormViewController{
         }
         coverImageRef.childByAutoId().setValue("\(imageNumberRef)")
         let userRef=ref.child("users").child((FIRAuth.auth()?.currentUser?.uid)!)
+        itemRef.child("coverImage").setValue("\(imageNumberRef)")
         userRef.child("coverImages").childByAutoId().setValue("\(imageNumberRef)")
 
         

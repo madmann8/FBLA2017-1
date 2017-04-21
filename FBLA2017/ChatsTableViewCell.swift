@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 protocol TranferDelegate {
     func tranferImage(image:UIImage)
+    
 }
 
 class ChatsTableViewCell: UITableViewCell {
@@ -32,14 +34,15 @@ class ChatsTableViewCell: UITableViewCell {
     var date:String?=nil
     var name:String?=nil
     var img:UIImage?=nil
-    {
+    var coverImagePath:String?=nil{
         didSet{
-            //
+            loadCoverImage()
         }
     }
+    var itemPath:String?=nil
+    
 
-//    self.textLabel?.text=user.displayName
-//    self.detailTextLabel?.text=self.date
+
     
 }
 
@@ -53,7 +56,7 @@ extension ChatsTableViewCell:UserDelegate,TranferDelegate{
         }
     }
 
-    func imageLoaded(image: UIImage) {
+    func imageLoaded(image: UIImage, user: User, index: Int?) {
         delegate?.tranferImage(image: image)
         if let mainIV=self.mainImageView {
             mainIV.image=image
@@ -62,6 +65,30 @@ extension ChatsTableViewCell:UserDelegate,TranferDelegate{
             self.img=image
         }
 
+    }
+    
+    func loadCoverImage() {
+        let storage = FIRStorage.storage()
+        let path = self.coverImagePath!
+            let coverImagePath = storage.reference(forURL: path)
+            coverImagePath.data(withMaxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    // Uh-oh, an error occurred!
+                } else {
+                    let image = UIImage(data: data!)
+                    self.delegate?.tranferImage(image: image!)
+                    if let mainIV=self.mainImageView {
+                        mainIV.image=image
+                    }
+                    else {
+                        self.img=image
+                    }
+
+                   
+                }
+            }
+            
+        
     }
     
 
