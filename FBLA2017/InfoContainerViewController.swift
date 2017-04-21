@@ -157,7 +157,7 @@ extension InfoContainerViewController:NextItemDelegate{
 }
 
 extension InfoContainerViewController:UserDelegate{
-    func imageLoaded(image: UIImage, user: User, index: Int?) {
+    func imageLoaded(image: UIImage) {
         self.profileImage.image=image
 
     }

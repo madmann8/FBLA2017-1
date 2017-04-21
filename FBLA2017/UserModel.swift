@@ -13,7 +13,7 @@ import CoreLocation
 import UIKit
 
 protocol UserDelegate {
-    func imageLoaded(image: UIImage, user: User, index:Int?)
+    func imageLoaded(image: UIImage)
 }
 
 
@@ -336,8 +336,8 @@ extension User:UserDelegate{
                 cell.user=tempUser
                 cell.isGlobal=false
                 cell.chatPath=path
-//                cell.date=date
-                cell.name=tempUser.uid
+                cell.date=date
+                cell.name=tempUser.displayName
                 print(date)
                 print(cell.date)
                 self.directChats.append(cell)

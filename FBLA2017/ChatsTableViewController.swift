@@ -49,7 +49,13 @@ class ChatsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section==0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as! ChatsTableViewCell
             let cell2=directCells[indexPath.row]
+            cell.mainImageView?.image=cell2.img
+            cell.dateLabel.text=cell2.date
+            cell.nameLabel.text=cell2.name
+            cell.delegate=cell2
+        
             
   
             return cell2
@@ -63,10 +69,10 @@ class ChatsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section==0{
-            return "Item Chats"
+            return "User Chats"
         }
         else{
-            return "User Chats"
+            return "Item Chats"
         }
     }
     /*
