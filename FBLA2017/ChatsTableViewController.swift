@@ -86,22 +86,61 @@ class ChatsTableViewController: UITableViewController {
     }
     
 }
-extension ChatsTableViewController:ItemModelDelegate{
+extension ChatsTableViewController:ItemDelegate{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section==0){
             let cell=loadedDirectCells[indexPath.row]
-            let item=ItemModel()
-            item.delegate=self
+            let user=cell?.user
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "OtherUserProfile") as! OtherUserProfileViewController
+            viewController.loadOtherChat=true
+            viewController.loginInUser=currentUser
+            viewController.otherUser=user
+            present(viewController, animated: true, completion: nil)
             
             
         }
         else {
             let cell=loadedItemCells[indexPath.row]
+            let item=Item()
+            item.delegate=self
+            item.load(keyString: (cell?.itemPath)!)
+            
+
         }
     }
     
-    func doneLoading(item:ItemModel) {
-        //
+    func doneLoading(item:Item) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        
+        let middle=storyboard.instantiateViewController(withIdentifier: "pulley") as! FirstContainerViewController
+        middle.categorey=item.categorey
+        middle.name=item.name
+        middle.about=item.about
+        middle.latitudeString=item.latitudeString
+        middle.longitudeString=item.longitudeString
+        middle.addressString=item.addressString
+        middle.cents=item.cents
+        middle.condition=item.condition
+        middle.images=item.images
+        middle.keyString=item.keyString
+        middle.nextItemDelegate=nil
+        middle.dismissDelegate=nil
+        middle.coverImagePath=nil
+        middle.user=item.user
+        
+        
+        
+//        if let vc=self.currentVC{
+//            vc.dismiss(animated: false, completion: nil)
+//        }
+//        self.currentView = middle.view
+//        self.currentVC=middle
+        self.present(middle, animated: false, completion: nil)
+        
+        
+
     }
 }
 

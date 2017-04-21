@@ -1,5 +1,5 @@
 //
-//  ItemModel.swift
+//  Item.swift
 //  FBLA2017
 //
 //  Created by Luke Mann on 4/21/17.
@@ -9,12 +9,12 @@
 import UIKit
 import Firebase
 
-protocol ItemModelDelegate{
-    func doneLoading(item:ItemModel){
-    }
+protocol ItemDelegate{
+    func doneLoading(item:Item)
+    
 }
 
-class ItemModel{
+class Item{
     var images:[UIImage]?=nil
     var categorey:String?=nil
     var name:String?=nil
@@ -30,7 +30,7 @@ class ItemModel{
     var user:User?=nil
     
     
-    var delegate:ItemModelDelegate?=nil
+    var delegate:ItemDelegate?=nil
     
     func load(keyString:String){
         
@@ -96,7 +96,7 @@ class ItemModel{
                                     self.keyString=keyString
                                     self.user=user
                                     
-                                    self.delegate?.doneLoading(self)
+                                    self.delegate?.doneLoading(item: self)
                                 
 
                                 }

@@ -24,6 +24,7 @@ class OtherUserProfileViewController: UIViewController {
     var locationManager:CLLocationManager!
     var loginInUser:User?=nil
     var otherUser:User?=nil
+    var loadOtherChat:Bool?=nil
     
     
     @IBAction func sellingOrFavoritesToggle(_ sender: UISegmentedControl) {
@@ -42,6 +43,9 @@ class OtherUserProfileViewController: UIViewController {
         profileImageView.image=otherUser?.profileImage
         nameLabel.text=otherUser?.displayName
         cityLabel.text=otherUser?.city
+        if let exists=loadOtherChat{
+            self.performSegue(withIdentifier: "toChat", sender: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
