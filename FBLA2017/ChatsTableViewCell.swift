@@ -26,10 +26,13 @@ class ChatsTableViewCell: UITableViewCell {
         super.awakeFromNib()
       
     }
-    override func layoutSubviews() {
+    override func didMoveToSuperview() {
+        self.titleLabel=UILabel()
+        self.dateLabel=UILabel()
         self.titleLabel.text=user?.uid
         self.dateLabel.text=date
-        self.imageView?.image=img
+//        self.imageView?.image=img
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
