@@ -1142,7 +1142,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V1z-Qv-SqU" id="7VD-EA-GbI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xke-Ts-DSy">
@@ -1168,7 +1168,7 @@
                                 <connections>
                                     <outlet property="dateLabel" destination="VQq-tU-KEo" id="JQF-YR-hgA"/>
                                     <outlet property="mainImageView" destination="Xke-Ts-DSy" id="MDD-bw-PP0"/>
-                                    <outlet property="titleLabel" destination="Peu-hZ-wqB" id="RcT-dD-41G"/>
+                                    <outlet property="nameLabel" destination="Peu-hZ-wqB" id="55Z-CK-boY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1328,7 +1328,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0NM-W6-SOT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3c3-a5-4Dq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="640"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cs2-L8-fJs">
@@ -1353,8 +1353,8 @@
         <image name="ProfilePicture" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BWZ-ea-6a7"/>
-        <segue reference="Cbb-yr-Evc"/>
-        <segue reference="6U7-sS-Rca"/>
+        <segue reference="gFJ-Ib-shz"/>
+        <segue reference="bRa-Be-ak4"/>
+        <segue reference="zHW-XZ-tjJ"/>
     </inferredMetricsTieBreakers>
 </document>

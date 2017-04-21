@@ -143,7 +143,7 @@ extension User {
                             }
                             else {
                                 var imageURL2 = value?["imageURL"] as? String ?? "❌"
-                                if imageURL == "❌"{
+                                if imageURL2 == "❌"{
                                     ref.child("imageURL").setValue(imageURL)
                                     self.downloadedFrom(link: imageURL)
                                     
@@ -322,21 +322,21 @@ extension User:UserDelegate{
                 date = value?["chatLastDate"] as? String ?? ""
                 let user1 = value?["user1"] as? String ?? ""
                 let user2 = value?["user2"] as? String ?? ""
+                let cell=ChatsTableViewCell()
                 var tempUser = User()
-                tempUser.delegate=self
+                tempUser.delegate=cell
                 tempUser.cellIndex=i
                 
                 if user1==currentUser.uid{
-                    tempUser.setupUser(id: user1, isLoggedIn: false)
-                }
-                else {
                     tempUser.setupUser(id: user2, isLoggedIn: false)
                 }
-                let cell=ChatsTableViewCell()
+                else {
+                    tempUser.setupUser(id: user1, isLoggedIn: false)
+                }
                 cell.user=tempUser
                 cell.isGlobal=false
                 cell.chatPath=path
-                cell.date=date
+//                cell.date=date
                 cell.name=tempUser.uid
                 print(date)
                 print(cell.date)

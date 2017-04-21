@@ -11,34 +11,29 @@ import UIKit
 class ChatsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var mainImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
-    var user:User?=nil
+    var user:User?=nil{
+        didSet{
+            //
+        }
+    }
+    
+    
     var isGlobal:Bool?=nil
     var chatPath:String?=nil
     var date:String?=nil
     var name:String?=nil
     var img:UIImage?=nil
 
+
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-      
-    }
-    override func didMoveToSuperview() {
-        self.titleLabel=UILabel()
-        self.dateLabel=UILabel()
-        self.titleLabel.text=user?.uid
-        self.dateLabel.text=date
-//        self.imageView?.image=img
+}
 
+extension ChatsTableViewCell:UserDelegate{
+    func imageLoaded(image: UIImage, user: User, index: Int?) {
+        self.imageView?.image=image
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

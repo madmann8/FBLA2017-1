@@ -49,12 +49,15 @@ class ChatsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section==0{
-            let cell=directCells[indexPath.row]
+            let cell2=directCells[indexPath.row]
+            
   
-            return cell
+            return cell2
         }
-        let cell=itemCells[indexPath.row]
-             return cell
+        //itemChatsIsBlank
+        let cell2=itemCells[indexPath.row]
+       
+        return cell2
 
     }
 
