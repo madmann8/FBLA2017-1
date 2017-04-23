@@ -15,13 +15,12 @@ class EmailStackViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.flatWatermelon
-        passwordTextView.isSecureTextEntry=true
         nameTextView.delegate=self
         emailTextView.delegate=self
         passwordTextView.delegate=self
-        setupBorder(tv: emailTextView)
-        setupBorder(tv: nameTextView)
-        setupBorder(tv: passwordTextView)
+        setupBorder(tv: emailTextView!)
+        setupBorder(tv: nameTextView!)
+        setupBorder(tv: passwordTextView!)
 
         
 
@@ -35,9 +34,9 @@ class EmailStackViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var nameTextView: UITextView!
-    @IBOutlet weak var emailTextView: UITextView!
-    @IBOutlet weak var passwordTextView: UITextView!
+    @IBOutlet weak var emailTextView: UITextField!
+    @IBOutlet weak var nameTextView: UITextField!
+    @IBOutlet weak var passwordTextView: UITextField!
     
     func updateVisible(signUp:Bool){
         if signUp{
@@ -50,13 +49,10 @@ class EmailStackViewController: UIViewController {
     
     func upload() {
         if !nameTextView.isHidden{
-            FIRAuth.auth()?.createUser(withEmail: emailTextView.text, password: emailTextView.text) { (user, error) in
+            FIRAuth.auth()?.createUser(withEmail: emailTextView.text!, password: emailTextView.text!) { (user, error) in
                 if let error=error {
-                    print("Login error: \(error.localizedDescription)")
-                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(okayAction)
-                    self.present(alertController, animated: true, completion: nil)
+                    ErrorGenerator.presentError(view: self, type: "Login", error: error)
+
 
                 }
                 else {
@@ -73,13 +69,9 @@ class EmailStackViewController: UIViewController {
                 
         }
         else {
-            FIRAuth.auth()?.signIn(withEmail: self.emailTextView.text, password: self.passwordTextView.text) { (user, error) in
+            FIRAuth.auth()?.signIn(withEmail: self.emailTextView.text!, password: self.passwordTextView.text!) { (user, error) in
                 if let error=error {
-                    print("Login error: \(error.localizedDescription)")
-                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(okayAction)
-                    self.present(alertController, animated: true, completion: nil)
+                  ErrorGenerator.presentError(view: self, type: "Login", error: error)
 
                 }
                 else {
@@ -92,28 +84,18 @@ class EmailStackViewController: UIViewController {
             }
         }
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 
     
 }
     
-    extension EmailStackViewController:UITextViewDelegate{
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            if (text == "\n") {
-                textView.resignFirstResponder()
-            }
-            return true
+    extension EmailStackViewController:UITextFieldDelegate{
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            self.view.endEditing(true)
+            return false
         }
-        func setupBorder(tv:UITextView){
+        func setupBorder(tv:UITextField){
             tv.layer.borderColor=UIColor.flatGrayDark.cgColor
             tv.layer.borderWidth = 0.5
         }
