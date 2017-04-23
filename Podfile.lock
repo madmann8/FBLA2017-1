@@ -42,6 +42,7 @@ PODS:
     - FirebaseAnalytics (~> 3.7)
     - GTMSessionFetcher/Core (~> 1.1)
   - Format (0.5.0)
+  - FSQCollectionViewAlignedLayout (1.1.1)
   - GoogleSignIn (4.0.2):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
@@ -86,6 +87,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - Format
+  - FSQCollectionViewAlignedLayout
   - GoogleSignIn
   - GSMessages
   - Hero
@@ -119,6 +121,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
   Format: b6966297bcb3af90774ad34a8ad756cb26ebd7e3
+  FSQCollectionViewAlignedLayout: 122006b230bf5635ae159f1ad1eaa9b5ef11391e
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GSMessages: b26e37bb6017b11d61f2708684179d5e9495c063
@@ -133,6 +136,6 @@ SPEC CHECKSUMS:
   Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
   Pulley: 99a45ad8aba14dafb2c6f4f16cb9667eb41c0919
 
-PODFILE CHECKSUM: 3198b81e69a85bc479631aba649cd04574cdc640
+PODFILE CHECKSUM: bddb94aa868a39b3f57ac2bf0544b62067eb33d5
 
 COCOAPODS: 1.2.0

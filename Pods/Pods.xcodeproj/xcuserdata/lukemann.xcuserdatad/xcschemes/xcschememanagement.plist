@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FSQCollectionViewAlignedLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Format.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -107,17 +112,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>03A878DBD81300E40B69A994074A2549</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>09A62655F66AE53A474D64E42E6E9DF9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>239A3CA3B6D9D79F13974B54BC2952E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,12 +152,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
+		<key>57CC7793854EDFC8A19C649DEBD29D7D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>71592E71D728733F6D296D220F55B315</key>
+		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,17 +167,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A31B3EBE592A1473FB647C73FA6A46E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>80A1AAD476BC6D0D87976DE91984E49D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8668763DFFCEDC44366DBA1A67B5F2C1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9419259E5586C510495CC1461979875C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9CA0C5CE6736D7A46E2D48267B680B3D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,7 +212,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FBFF6F359AE97365C75F2AE0C28021D6</key>
+		<key>E7D431DDAA196DA199467E9F278536FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

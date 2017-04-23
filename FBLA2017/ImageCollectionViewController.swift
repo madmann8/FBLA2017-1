@@ -4,6 +4,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
  import CoreLocation
+ import FSQCollectionViewAlignedLayout
 
 //ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
 final class ImageCollectionViewController: UICollectionViewController {
@@ -72,10 +73,13 @@ extension ImageCollectionViewController {
     
 }
 
-extension ImageCollectionViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+extension ImageCollectionViewController : FSQCollectionViewDelegateAlignedLayout {
+    func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: FSQCollectionViewAlignedLayout!, attributesForSectionAt sectionIndex: Int) -> FSQCollectionViewAlignedLayoutSectionAttributes! {
+        
+        return FSQCollectionViewAlignedLayoutSectionAttributes.withHorizontalAlignment(FSQCollectionViewHorizontalAlignment.center, verticalAlignment: FSQCollectionViewVerticalAlignment.top)
+    }
+    func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: FSQCollectionViewAlignedLayout!, sizeForItemAt indexPath: IndexPath!, remainingLineSpace: CGFloat) -> CGSize {
+        
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
@@ -85,13 +89,14 @@ extension ImageCollectionViewController : UICollectionViewDelegateFlowLayout {
         let dynamicHeightRatio=height/width
         
         return CGSize(width: widthPerItem, height: widthPerItem*dynamicHeightRatio)
+//        return CGSizeMake(100, 100)
     }
-    
-    func collectionView(_ collectionView: UICollectionView,
+       func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left

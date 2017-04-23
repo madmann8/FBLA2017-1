@@ -120,25 +120,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HGP-e7-2S1">
-                            <size key="itemSize" width="200" height="200"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
+                        <collectionViewLayout key="collectionViewLayout" id="cNV-gA-MuJ" customClass="FSQCollectionViewAlignedLayout"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="e4v-qk-BWi" customClass="PhotoCell" customModule="FBLA2017" customModuleProvider="target">
-                                <rect key="frame" x="88" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zod-4F-G7c">
-                                            <rect key="frame" x="8" y="8" width="184" height="184"/>
+                                            <rect key="frame" x="8" y="8" width="34" height="34"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faz-vL-h3B">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <connections>
                                                 <action selector="buttonIsPressed:" destination="e4v-qk-BWi" eventType="touchUpInside" id="Ge8-pa-KQ0"/>
                                             </connections>
@@ -989,7 +984,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="247" height="121"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bUp-td-zza">
-                                        <rect key="frame" x="0.0" y="0.0" width="247" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="247" height="40.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Name">
                                                 <attributes>
@@ -1002,7 +997,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="no" returnKeyType="done"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MNF-Pb-28B">
-                                        <rect key="frame" x="0.0" y="40" width="247" height="41"/>
+                                        <rect key="frame" x="0.0" y="40.5" width="247" height="40"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Email">
                                                 <attributes>
@@ -1015,7 +1010,7 @@
                                         <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="odx-fv-MLe">
-                                        <rect key="frame" x="0.0" y="81" width="247" height="40"/>
+                                        <rect key="frame" x="0.0" y="80.5" width="247" height="40.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Password">
                                                 <attributes>
@@ -1072,7 +1067,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="udX-Sq-A27" customClass="PhotoCell" customModule="FBLA2017" customModuleProvider="target">
-                                <rect key="frame" x="72" y="0.0" width="232" height="191"/>
+                                <rect key="frame" x="71.5" y="0.0" width="232" height="191"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="232" height="191"/>
@@ -1177,7 +1172,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V1z-Qv-SqU" id="7VD-EA-GbI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xke-Ts-DSy">
@@ -1233,7 +1228,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="1yk-w0-PEb" customClass="PhotoCell" customModule="FBLA2017" customModuleProvider="target">
-                                <rect key="frame" x="72" y="0.0" width="232" height="191"/>
+                                <rect key="frame" x="71.5" y="0.0" width="232" height="191"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="232" height="191"/>
