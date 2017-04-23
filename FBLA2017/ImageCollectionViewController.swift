@@ -116,7 +116,7 @@ extension ImageCollectionViewController {
                         let coverImagePath = storage.reference(forURL: path)
                         coverImagePath.data(withMaxSize: 1 * 1024 * 1024) { data, error in
                             if let error = error {
-                                // Uh-oh, an error occurred!
+                                ErrorGenerator.presentError(view: self, type: "Cover Images", error: error)
                             } else {
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
@@ -197,16 +197,13 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                         let imagePath = storage.reference(forURL: path)
                         imagePath.data(withMaxSize: 1 * 6000 * 6000) { data, error in
                             if let error = error {
-                                // Uh-oh, an error occurred!
+                                ErrorGenerator.presentError(view: self, type: "Item Images", error: error)
                             } else {
                                 let image = UIImage(data: data!)
                                 images.append(image!)
                                 print(i)
                                 i+=1
                                 if i==snapshots.count{
-                                    
-                                    
-                                    
                                 
                                     activityIndicator.stopAnimating()
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
