@@ -1651,7 +1651,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/ItemModel.swift"
-                  timestampString = "514677515.035613"
+                  timestampString = "514678099.163021"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"
@@ -1666,7 +1666,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/ItemModel.swift"
-                  timestampString = "514677515.037507"
+                  timestampString = "514678099.16749"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"
@@ -1681,7 +1681,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/ItemModel.swift"
-                  timestampString = "514677515.039458"
+                  timestampString = "514678099.170695"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"
@@ -1826,7 +1826,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/ImageCollectionViewController.swift"
-                  timestampString = "514677515.051198"
+                  timestampString = "514678099.185628"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "192"
@@ -1841,7 +1841,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/ImageCollectionViewController.swift"
-                  timestampString = "514677515.053016"
+                  timestampString = "514678099.187503"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "155"
@@ -2450,11 +2450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/EmailStackViewController.swift"
-            timestampString = "514677513.659152"
+            timestampString = "514678097.845403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "textFieldShouldReturn(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2466,11 +2466,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/EmailStackViewController.swift"
-            timestampString = "514675917.647988"
+            timestampString = "514677929.352071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "upload()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2478,20 +2478,20 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/EmailStackViewController.swift"
-            timestampString = "514677513.659152"
+            timestampString = "514678097.845403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "upload()"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "FBLA2017.EmailStackViewController.upload () -&gt; ()"
@@ -2506,7 +2506,7 @@
                   offsetFromSymbolStart = "1536">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "FBLA2017.EmailStackViewController.(upload () -&gt; ()).(closure #2)"
@@ -2521,6 +2521,166 @@
                   offsetFromSymbolStart = "28">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/EmailStackViewController.swift"
+            timestampString = "514678097.845403"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "upload()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/EmailStackViewController.swift"
+            timestampString = "514678097.845403"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "upload()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FBLA2017.EmailStackViewController.(upload () -&gt; ()).(closure #2)"
+                  moduleName = "FBLA2017"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/EmailStackViewController.swift"
+                  timestampString = "514678099.24846"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FBLA2017.EmailStackViewController.(upload () -&gt; ()).(closure #2)"
+                  moduleName = "FBLA2017"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/EmailStackViewController.swift"
+                  timestampString = "514678099.250178"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "544">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/EmailStackViewController.swift"
+            timestampString = "514677929.352071"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "upload()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/EmailStackViewController.swift"
+            timestampString = "514677929.352071"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "upload()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/EmailStackViewController.swift"
+            timestampString = "514677929.352071"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "upload()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FBLA2017.EmailStackViewController.(upload () -&gt; ()).(closure #1)"
+                  moduleName = "FBLA2017"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/EmailStackViewController.swift"
+                  timestampString = "514678099.261221"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FBLA2017.EmailStackViewController.(upload () -&gt; ()).(closure #1)"
+                  moduleName = "FBLA2017"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/EmailStackViewController.swift"
+                  timestampString = "514678099.264569"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "2564">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/EmailStackViewController.swift"
+            timestampString = "514678119.920907"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "upload()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -57,7 +57,9 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="toEmailContainer"{
-            self.stackVC=segue.destination as! EmailStackViewController
+            let vc = segue.destination as! EmailStackViewController
+            self.stackVC=vc
+            vc.largeVC=self
         }
     }
     @IBAction func googleSignInButtonPressed() {

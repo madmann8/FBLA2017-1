@@ -12,6 +12,8 @@ import FirebaseAuth
 
 class EmailStackViewController: UIViewController {
     
+    var largeVC:UIViewController?=nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.flatWatermelon
@@ -22,10 +24,6 @@ class EmailStackViewController: UIViewController {
         setupBorder(tv: nameTextView!)
         setupBorder(tv: passwordTextView!)
 
-        
-
-
-        
         // Do any additional setup after loading the view.
     }
     
@@ -51,19 +49,18 @@ class EmailStackViewController: UIViewController {
         if !nameTextView.isHidden{
             FIRAuth.auth()?.createUser(withEmail: emailTextView.text!, password: emailTextView.text!) { (user, error) in
                 if let error=error {
-                    ErrorGenerator.presentError(view: self, type: "Login", error: error)
-
-
+                    ErrorGenerator.presentError(view: self.largeVC!, type: "Sign Up", error: error)
                 }
                 else {
                     let ref=FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
                     ref.setValue("\(self.nameTextView.text!)")
-                    }
                     if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
                         UIApplication.shared.keyWindow?.rootViewController = viewController
                         self.dismiss(animated: true, completion: nil)
                         
                     }
+                    }
+
                     
                 }
                 
@@ -71,7 +68,7 @@ class EmailStackViewController: UIViewController {
         else {
             FIRAuth.auth()?.signIn(withEmail: self.emailTextView.text!, password: self.passwordTextView.text!) { (user, error) in
                 if let error=error {
-                  ErrorGenerator.presentError(view: self, type: "Login", error: error)
+                  ErrorGenerator.presentError(view: self.largeVC!, type: "Login", error: error)
 
                 }
                 else {
