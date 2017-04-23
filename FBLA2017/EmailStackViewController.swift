@@ -14,6 +14,18 @@ class EmailStackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor=UIColor.flatWatermelon
+        passwordTextView.isSecureTextEntry=true
+        nameTextView.delegate=self
+        emailTextView.delegate=self
+        passwordTextView.delegate=self
+        setupBorder(tv: emailTextView)
+        setupBorder(tv: nameTextView)
+        setupBorder(tv: passwordTextView)
+
+        
+
+
         
         // Do any additional setup after loading the view.
     }
@@ -90,4 +102,19 @@ class EmailStackViewController: UIViewController {
      }
      */
     
+
+    
 }
+    
+    extension EmailStackViewController:UITextViewDelegate{
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+            if (text == "\n") {
+                textView.resignFirstResponder()
+            }
+            return true
+        }
+        func setupBorder(tv:UITextView){
+            tv.layer.borderColor=UIColor.flatGrayDark.cgColor
+            tv.layer.borderWidth = 0.5
+        }
+    }

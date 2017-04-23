@@ -22,4 +22,5 @@ pod 'GoogleSignIn'
   pod 'Bolts'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
+pod "Hero"
 end

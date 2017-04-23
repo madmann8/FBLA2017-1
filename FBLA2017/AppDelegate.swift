@@ -28,9 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window?.tintColor=themeColor
-        let avenirFont = UIFont(name: "Avenir", size: 12.5)
-        UILabel.appearance().font = avenirFont
-        UITextView.appearance().font = avenirFont
+
         
         
         

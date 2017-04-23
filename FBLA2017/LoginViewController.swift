@@ -10,6 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import FirebaseAuth
 import GoogleSignIn
+import ChameleonFramework
 
 
 class LoginViewController: UIViewController,GIDSignInUIDelegate {
@@ -21,7 +22,10 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         GIDSignIn.sharedInstance().uiDelegate = self
+        signInButton.colorScheme = .dark
 //        GIDSignIn.sharedInstance().signIn()
 
         // TODO(developer) Configure the sign-in button look/feel
@@ -59,7 +63,6 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
     @IBAction func googleSignInButtonPressed() {
 //        GIDSignIn.sharedInstance().signIn()
 
-        print(UIApplication.shared.keyWindow?.rootViewController)
     }
     
     @IBOutlet weak var signInButton: GIDSignInButton!
