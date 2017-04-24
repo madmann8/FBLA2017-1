@@ -1,17 +1,18 @@
  import UIKit
-import NVActivityIndicatorView
-import Firebase
-import FirebaseDatabase
-import FirebaseStorage
+ import NVActivityIndicatorView
+ import Firebase
+ import FirebaseDatabase
+ import FirebaseStorage
  import CoreLocation
- import FSQCollectionViewAlignedLayout
-
-//ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
-final class ImageCollectionViewController: UICollectionViewController {
+import QuiltView
+ //ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
+ final class ImageCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
     fileprivate let reuseIdentifier = "ItemCell"
-    fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    fileprivate let sectionInsets = UIEdgeInsets(top: 2, left: 2, bottom: 5, right: 2)
+    var layout:QuiltView?=nil
+
     
     var coverImages = [UIImage]()
     var itemKeys=[String]()
@@ -20,10 +21,16 @@ final class ImageCollectionViewController: UICollectionViewController {
     var nextItemDelegate:NextItemDelegate?=nil
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         currentView=self.view
+        layout = self.collectionView?.collectionViewLayout as! QuiltView
+        layout?.itemBlockSize   = CGSize(
+            width: 75,
+            height: 75
+        )
         currentUser.setupUser(id: (FIRAuth.auth()?.currentUser?.uid)!, isLoggedIn: true)
         loadCoverImages()
- 
+        
     }
     
     var itemIndex = 0
@@ -32,12 +39,12 @@ final class ImageCollectionViewController: UICollectionViewController {
     var currentVC:UIViewController? = nil
     
     
-}
-
-// MARK: - Private
-
-
-extension ImageCollectionViewController : UITextFieldDelegate {
+ }
+ 
+ // MARK: - Private
+ 
+ 
+ extension ImageCollectionViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         
@@ -47,10 +54,10 @@ extension ImageCollectionViewController : UITextFieldDelegate {
         //        textField.resignFirstResponder()
         return true
     }
-}
-
-// MARK: - UICollectionViewDataSource
-extension ImageCollectionViewController {
+ }
+ 
+ // MARK: - UICollectionViewDataSource
+ extension ImageCollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView,
@@ -71,15 +78,11 @@ extension ImageCollectionViewController {
         return cell
     }
     
-}
+ }
+ 
+ extension ImageCollectionViewController : QuiltViewDelegate {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, blockSizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
 
-extension ImageCollectionViewController : FSQCollectionViewDelegateAlignedLayout {
-    func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: FSQCollectionViewAlignedLayout!, attributesForSectionAt sectionIndex: Int) -> FSQCollectionViewAlignedLayoutSectionAttributes! {
-        
-        return FSQCollectionViewAlignedLayoutSectionAttributes.withHorizontalAlignment(FSQCollectionViewHorizontalAlignment.center, verticalAlignment: FSQCollectionViewVerticalAlignment.top)
-    }
-    func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: FSQCollectionViewAlignedLayout!, sizeForItemAt indexPath: IndexPath!, remainingLineSpace: CGFloat) -> CGSize {
-        
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
@@ -88,23 +91,22 @@ extension ImageCollectionViewController : FSQCollectionViewDelegateAlignedLayout
         let width=photo.size.width
         let dynamicHeightRatio=height/width
         
-        return CGSize(width: widthPerItem, height: widthPerItem*dynamicHeightRatio)
-//        return CGSizeMake(100, 100)
+        print(widthPerItem*dynamicHeightRatio)
+        return CGSize(width: 2, height: 2*dynamicHeightRatio)
+        //        return CGSizeMake(100, 100)
     }
-       func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return sectionInsets
-    }
-
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.left
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForItemAtIndexPath indexPath: IndexPath) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
     }
-}
-
-
-extension ImageCollectionViewController {
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return sectionInsets.left
+//    }
+ }
+ 
+ 
+ extension ImageCollectionViewController {
     func loadCoverImages(){
         let activityIndicator=startActivityIndicator()
         
@@ -142,10 +144,10 @@ extension ImageCollectionViewController {
             
         })
     }
-}
-
-
-extension ImageCollectionViewController: PhotoCellDelegate {
+ }
+ 
+ 
+ extension ImageCollectionViewController: PhotoCellDelegate {
     func buttonPressed(keyString: String) {
         generateImages(keyString: keyString)
         let index=itemKeys.index(of: keyString)
@@ -167,13 +169,13 @@ extension ImageCollectionViewController: PhotoCellDelegate {
         var cents:Int?=nil
         var condition:Int?=nil
         var userID:String?=nil
-    
-
+        
+        
         
         
         let ref = FIRDatabase.database().reference().child("items").child(keyString)
         let user=User()
-
+        
         ref.observe(.value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
             name = value?["title"] as? String ?? ""
@@ -186,12 +188,12 @@ extension ImageCollectionViewController: PhotoCellDelegate {
             cents = value?["cents"] as? Int ?? 0
             userID = value?["userID"] as? String ?? ""
             user.setupUser(id: userID!, isLoggedIn: false)
-
-
-
-
-
-
+            
+            
+            
+            
+            
+            
         })
         let storage = FIRStorage.storage()
         ref.child("imagePaths").observe(.value, with: { (snapshot) in
@@ -209,7 +211,7 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                 print(i)
                                 i+=1
                                 if i==snapshots.count{
-                                
+                                    
                                     activityIndicator.stopAnimating()
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                     
@@ -230,8 +232,8 @@ extension ImageCollectionViewController: PhotoCellDelegate {
                                     middle.coverImagePath=path
                                     middle.user=user
                                     
-
-                                
+                                    
+                                    
                                     if let vc=self.currentVC{
                                         vc.dismiss(animated: false, completion: nil)
                                     }
@@ -252,10 +254,10 @@ extension ImageCollectionViewController: PhotoCellDelegate {
             
         })
     }
-}
-
-
-extension ImageCollectionViewController{
+ }
+ 
+ 
+ extension ImageCollectionViewController{
     func startActivityIndicator()-> NVActivityIndicatorView{
         let cellWidth = Int(self.view.frame.width / CGFloat(4))
         let cellHeight = Int(self.view.frame.height / CGFloat(8))
@@ -267,14 +269,14 @@ extension ImageCollectionViewController{
         currentView?.addSubview(activityIndicator)
         return activityIndicator
     }
-}
-
-
+ }
+ 
+ 
  extension ImageCollectionViewController:NextItemDelegate,DismissDelgate{
     func goToNextItem() {
         if itemIndex+1<itemKeys.count{
             itemIndex+=1
-        generateImages(keyString: itemKeys[itemIndex])
+            generateImages(keyString: itemKeys[itemIndex])
         }
         else {
             itemIndex=0
@@ -292,12 +294,12 @@ extension ImageCollectionViewController{
  
  
  
-
  
  
  
-
-
+ 
+ 
+ 
  extension String
  {
     func substring(start: Int, end: Int) -> String
@@ -317,5 +319,4 @@ extension ImageCollectionViewController{
         let range = startIndex..<endIndex
         
         return self.substring(with: range)
-    }
- }
+    }}

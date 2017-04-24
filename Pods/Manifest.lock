@@ -42,7 +42,6 @@ PODS:
     - FirebaseAnalytics (~> 3.7)
     - GTMSessionFetcher/Core (~> 1.1)
   - Format (0.5.0)
-  - FSQCollectionViewAlignedLayout (1.1.1)
   - GoogleSignIn (4.0.2):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
@@ -75,6 +74,7 @@ PODS:
   - Popover (1.0.5)
   - Presentr (1.2.3)
   - Pulley (1.3.1)
+  - QuiltView (0.1.4)
 
 DEPENDENCIES:
   - Bolts
@@ -87,7 +87,6 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - Format
-  - FSQCollectionViewAlignedLayout
   - GoogleSignIn
   - GSMessages
   - Hero
@@ -97,6 +96,7 @@ DEPENDENCIES:
   - Popover
   - Presentr
   - Pulley
+  - QuiltView
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -121,7 +121,6 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
   Format: b6966297bcb3af90774ad34a8ad756cb26ebd7e3
-  FSQCollectionViewAlignedLayout: 122006b230bf5635ae159f1ad1eaa9b5ef11391e
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GSMessages: b26e37bb6017b11d61f2708684179d5e9495c063
@@ -135,7 +134,8 @@ SPEC CHECKSUMS:
   Popover: f31b0ef6f43192256e6fcf13a0ce10f01c803159
   Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
   Pulley: 99a45ad8aba14dafb2c6f4f16cb9667eb41c0919
+  QuiltView: 991e9710b432946b04bcd5721ee4b14175fa0292
 
-PODFILE CHECKSUM: bddb94aa868a39b3f57ac2bf0544b62067eb33d5
+PODFILE CHECKSUM: 4e59a4b5462255fec0e8823ec320550df9e93a71
 
 COCOAPODS: 1.2.0

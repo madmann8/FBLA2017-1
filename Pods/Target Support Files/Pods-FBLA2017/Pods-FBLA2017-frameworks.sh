@@ -94,7 +94,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DropDown/DropDown.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FBSDKCoreKit/FBSDKCoreKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FBSDKLoginKit/FBSDKLoginKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FSQCollectionViewAlignedLayout/FSQCollectionViewAlignedLayout.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Format/Format.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GSMessages/GSMessages.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GTMOAuth2/GTMOAuth2.framework"
@@ -108,6 +107,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Popover/Popover.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Presentr/Presentr.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Pulley/Pulley.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/QuiltView/QuiltView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Bolts/Bolts.framework"
@@ -115,7 +115,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DropDown/DropDown.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FBSDKCoreKit/FBSDKCoreKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FBSDKLoginKit/FBSDKLoginKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FSQCollectionViewAlignedLayout/FSQCollectionViewAlignedLayout.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Format/Format.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GSMessages/GSMessages.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GTMOAuth2/GTMOAuth2.framework"
@@ -129,6 +128,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Popover/Popover.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Presentr/Presentr.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Pulley/Pulley.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/QuiltView/QuiltView.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

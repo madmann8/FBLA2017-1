@@ -23,5 +23,5 @@ pod 'GoogleSignIn'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
 pod "Hero"
-pod 'FSQCollectionViewAlignedLayout'
+pod 'QuiltView'
 end
