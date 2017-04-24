@@ -11,7 +11,6 @@ import QuiltView
     // MARK: - Properties
     fileprivate let reuseIdentifier = "ItemCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 2, left: 2, bottom: 5, right: 2)
-    var layout:QuiltView?=nil
 
     
     var coverImages = [UIImage]()
@@ -23,10 +22,11 @@ import QuiltView
     override func viewDidLoad() {
         super.viewDidLoad()
         currentView=self.view
-        layout = self.collectionView?.collectionViewLayout as! QuiltView
-        layout?.itemBlockSize   = CGSize(
-            width: 75,
-            height: 75
+        let layout = self.collectionView?.collectionViewLayout as! QuiltView
+        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        layout.itemBlockSize   = CGSize(
+            width: 67,
+            height: 67
         )
         currentUser.setupUser(id: (FIRAuth.auth()?.currentUser?.uid)!, isLoggedIn: true)
         loadCoverImages()
@@ -64,6 +64,10 @@ import QuiltView
                                  numberOfItemsInSection section: Int) -> Int {
         return coverImages.count
     }
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return coverImages.count
+    }
+    
     
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -97,9 +101,9 @@ import QuiltView
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForItemAtIndexPath indexPath: IndexPath) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        return UIEdgeInsets.zero
     }
-    
+//    
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 //        return sectionInsets.left
 //    }

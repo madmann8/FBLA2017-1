@@ -15,6 +15,12 @@ protocol PhotoCellDelegate {
 
 class PhotoCell: UICollectionViewCell {
     
+    override func awakeFromNib() {
+        imageView.layer.cornerRadius = 6.2
+        imageView.clipsToBounds = true
+
+    }
+    
     var keyString:String?=nil
     
     var delegate: PhotoCellDelegate?=nil
