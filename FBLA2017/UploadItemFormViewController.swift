@@ -277,15 +277,15 @@ extension UploadItemFormViewController{
         var mainImagePaths=[String]()
         
         let coverImageRef=ref.child("coverImagePaths")
-        let coverImage=images?[0].jpeg(.low)
+        let coverImage=images?[0].jpeg(.lowest)
         let imageNumberRef=uniqueItemImageRef.child("cover.jpeg")
         _=imageNumberRef.put(coverImage!)
         for image in self.images!{
-            let imageNumberRef=uniqueItemImageRef.child("\(i).png")
+            let imageNumberRef=uniqueItemImageRef.child("\(i).jpeg")
             print(activityIndicator.isAnimating)
             mainImagePaths.append("\(imageNumberRef)")
             i+=1
-            let imageData=UIImagePNGRepresentation(image)
+            let imageData=image.jpeg(.medium)
             _ = imageNumberRef.put(imageData!, metadata: nil) { (metadata, error) in
                 guard let metadata = metadata else {
                     
@@ -351,7 +351,7 @@ extension UIImage {
     enum JPEGQuality: CGFloat {
         case lowest  = 0
         case low     = 0.25
-        case medium  = 0.5
+        case medium  = 0.7
         case high    = 0.75
         case highest = 1
     }

@@ -11,6 +11,7 @@ import Firebase
 import ChameleonFramework
 import FBSDKCoreKit
 import GoogleSignIn
+import Hero
 
 
 //On the next episode: We make the chat!
@@ -108,5 +109,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
         
         
+    }
+}
+
+extension UICollectionView {
+    /// default hero animation type for presenting & dismissing modally
+    public var heroModalAnimationType: HeroDefaultAnimationType{
+        return .zoom
+    }
+}
+
+extension UINavigationController {
+    /// default hero animation type for push and pop within the navigation controller
+    public var heroNavigationAnimationType: HeroDefaultAnimationType{
+        return .cover(direction: .up)
+    }
+    open override func didChangeValue(forKey key: String) {
+        //
     }
 }

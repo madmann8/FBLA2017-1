@@ -5,6 +5,7 @@
  import FirebaseStorage
  import CoreLocation
 import QuiltView
+ import Hero
  //ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
  final class ImageCollectionViewController: UICollectionViewController {
     
@@ -153,12 +154,12 @@ import QuiltView
  
  extension ImageCollectionViewController: PhotoCellDelegate {
     func buttonPressed(keyString: String) {
-        generateImages(keyString: keyString)
+        generateImages(keyString: keyString, inImageView: false)
         let index=itemKeys.index(of: keyString)
         itemIndex=index!
     }
     
-    func generateImages(keyString: String){
+    func generateImages(keyString: String,inImageView:Bool){
         var activityIndicator=startActivityIndicator()
         
         
@@ -238,13 +239,19 @@ import QuiltView
                                     
                                     
                                     
-                                    if let vc=self.currentVC{
+                                    if var vc=self.currentVC{
+                                        vc=middle
                                         vc.dismiss(animated: false, completion: nil)
+                                    
                                     }
                                     self.currentView = middle.view
                                     self.currentVC=middle
-                                    self.present(middle, animated: false, completion: nil)
-                                    
+//                                    if inImageView{
+//                                        self.present(middle, animated: false, completion: nil)
+//                                    }
+//                                    else {
+//                                    self.present(middle, animated: true, completion: nil)
+//                                    }
                                     
                                     
                                     
@@ -280,11 +287,11 @@ import QuiltView
     func goToNextItem() {
         if itemIndex+1<itemKeys.count{
             itemIndex+=1
-            generateImages(keyString: itemKeys[itemIndex])
+            generateImages(keyString: itemKeys[itemIndex],inImageView: true)
         }
         else {
             itemIndex=0
-            generateImages(keyString: itemKeys[itemIndex])
+            generateImages(keyString: itemKeys[itemIndex],inImageView: true)
             itemIndex+=1
         }
     }
