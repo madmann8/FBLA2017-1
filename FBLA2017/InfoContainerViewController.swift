@@ -119,16 +119,10 @@ class InfoContainerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="showPageVC" {
             let pageDesitnation=segue.destination as! PageViewController
-            print(self.view.frame.height)
-            print(pageDesitnation.view.frame.height)
             pageDesitnation.images=self.images
             titleLabel.text=name
             pageDesitnation.nextItemDelegate=self
-            if let cents=cents,let rating=condition {
-                costLabel.text=dollarsString
-                ratingLabel.text=String(describing: rating)
-                
-            }
+           
         }
     }
     
