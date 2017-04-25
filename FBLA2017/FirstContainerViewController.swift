@@ -28,6 +28,9 @@ class FirstContainerViewController:PulleyViewController {
     var coverImagePath:String?=nil
     var userID:String?=nil
     var user:User?=nil
+    var vcToDismiss:FirstContainerViewController?=nil
+    var userDelegate:UserDelegate?=nil
+    var tempUserImage:UIImage?=nil
  
     
     
@@ -45,6 +48,7 @@ class FirstContainerViewController:PulleyViewController {
 //        user.setupUser(id: userID!, isLoggedIn: false)
         // Do any additional setup after loading the view.
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -70,6 +74,11 @@ class FirstContainerViewController:PulleyViewController {
                 middle.coverImagePath=coverImagePath
                 middle.keyString=keyString
                 middle.user=user
+                self.userDelegate=middle
+                if let tempUserImage=tempUserImage{
+                    middle.tempUserImage=tempUserImage
+                }
+                
                 
             }
         
@@ -95,6 +104,7 @@ class FirstContainerViewController:PulleyViewController {
 
     }
 }
+    
 }
 
 
@@ -116,11 +126,17 @@ extension FirstContainerViewController:PulleyDrawerViewControllerDelegate{
 
 }
 
-extension FirstContainerViewController:NextItemDelegate,DismissDelgate{
+extension FirstContainerViewController:NextItemDelegate,DismissDelgate,UserDelegate{
     func goToNextItem() {
         nextItemDelegate?.goToNextItem()
     }
     func switchCurrentVC() {
         dismissDelegate?.switchCurrentVC()
+        vcToDismiss?.switchCurrentVC()
+        self.dismiss(animated: false, completion: nil)
+    }
+    func imageLoaded(image: UIImage, user: User, index: Int?) {
+        self.userDelegate?.imageLoaded(image: image, user: user, index: index)
+        tempUserImage=image
     }
 }

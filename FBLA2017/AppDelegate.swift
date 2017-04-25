@@ -119,6 +119,15 @@ extension UICollectionView {
     }
 }
 
+
+extension UIViewController {
+    /// default hero animation type for presenting & dismissing modally
+    public var heroModalAnimationType: HeroDefaultAnimationType{
+        return .fade
+    }
+}
+
+
 extension UINavigationController {
     /// default hero animation type for push and pop within the navigation controller
     public var heroNavigationAnimationType: HeroDefaultAnimationType{

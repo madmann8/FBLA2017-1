@@ -4,7 +4,7 @@
  import FirebaseDatabase
  import FirebaseStorage
  import CoreLocation
-import QuiltView
+ import QuiltView
  import Hero
  //ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
  final class ImageCollectionViewController: UICollectionViewController {
@@ -12,7 +12,7 @@ import QuiltView
     // MARK: - Properties
     fileprivate let reuseIdentifier = "ItemCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 2, left: 2, bottom: 5, right: 2)
-
+    
     
     var coverImages = [UIImage]()
     var itemKeys=[String]()
@@ -38,6 +38,7 @@ import QuiltView
     
     var currentView:UIView? = nil
     var currentVC:UIViewController? = nil
+    var firstDetailVC:UIViewController?=nil
     
     
  }
@@ -87,7 +88,7 @@ import QuiltView
  
  extension ImageCollectionViewController : QuiltViewDelegate {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, blockSizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-
+        
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
@@ -104,10 +105,10 @@ import QuiltView
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForItemAtIndexPath indexPath: IndexPath) -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return sectionInsets.left
-//    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    //        return sectionInsets.left
+    //    }
  }
  
  
@@ -201,6 +202,8 @@ import QuiltView
             
         })
         let storage = FIRStorage.storage()
+        let middle=storyboard?.instantiateViewController(withIdentifier: "pulley") as! FirstContainerViewController
+        user.delegate=middle
         ref.child("imagePaths").observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 var i=0
@@ -221,7 +224,6 @@ import QuiltView
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                     
                                     
-                                    let middle=storyboard.instantiateViewController(withIdentifier: "pulley") as! FirstContainerViewController
                                     middle.categorey=categorey
                                     middle.name=name
                                     middle.about=about
@@ -236,22 +238,26 @@ import QuiltView
                                     middle.dismissDelegate=self
                                     middle.coverImagePath=path
                                     middle.user=user
+                                    user.delegate=middle
                                     
                                     
                                     
-                                    if var vc=self.currentVC{
-                                        vc=middle
-                                        vc.dismiss(animated: false, completion: nil)
                                     
+                                    if inImageView{
+                                        if let vc = self.currentVC as? FirstContainerViewController{
+                                            vc.present(middle, animated: true)
+                                            middle.vcToDismiss=vc
+                                        }
+                                        
                                     }
+                                    else {
+                                        self.present(middle, animated: false, completion: nil)
+                                        self.firstDetailVC=middle
+                                    }
+
                                     self.currentView = middle.view
                                     self.currentVC=middle
-//                                    if inImageView{
-//                                        self.present(middle, animated: false, completion: nil)
-//                                    }
-//                                    else {
-//                                    self.present(middle, animated: true, completion: nil)
-//                                    }
+                                    
                                     
                                     
                                     
@@ -297,8 +303,11 @@ import QuiltView
     }
     
     func switchCurrentVC() {
+
         currentVC=nil
         currentView=self.view
+        //TODO: Fix this
+        firstDetailVC?.dismiss(animated: false, completion: nil)
     }
  }
  
