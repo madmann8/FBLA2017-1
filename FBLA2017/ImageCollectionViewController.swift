@@ -251,7 +251,7 @@
                                         
                                     }
                                     else {
-                                        self.present(middle, animated: false, completion: nil)
+                                        self.present(middle, animated: true, completion: nil)
                                         self.firstDetailVC=middle
                                     }
 

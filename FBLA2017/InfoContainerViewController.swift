@@ -61,6 +61,7 @@ class InfoContainerViewController: UIViewController {
     
     var activitityIndicator:NVActivityIndicatorView?=nil
     
+    @IBOutlet weak var favoriteButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,9 +105,9 @@ class InfoContainerViewController: UIViewController {
         
 
 
-        if let cents=cents,let rating=condition {
+        if let rating:Int=condition, let dollarsString:String=dollarsString {
             costLabel.text="Asking Price: \(dollarsString)"
-            ratingLabel.text="\(rating)/5"
+            ratingLabel.text="\(String(describing: rating))/5"
             
         }
 
@@ -154,10 +155,12 @@ class InfoContainerViewController: UIViewController {
     @IBAction func likeButtonPressed() {
         
         if hasLiked{
+            favoriteButton.setImage(#imageLiteral(resourceName: "HeartEmpty"), for: .normal)
             ref?.child("\(keyString!)").removeValue()
             hasLiked=false
         }
         else {
+            favoriteButton.setImage(#imageLiteral(resourceName: "HeartFilled"), for: .normal)
             ref?.child("\(keyString!)").setValue("\(coverImagePath!)")
             hasLiked=true
         }

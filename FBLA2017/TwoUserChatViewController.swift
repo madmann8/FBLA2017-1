@@ -177,7 +177,7 @@ extension TwoUserChatViewController {
     
     func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
+        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.flatNavyBlue)
     }
     
     

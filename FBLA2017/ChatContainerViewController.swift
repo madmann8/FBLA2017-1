@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import ChameleonFramework
 
 class ChatContainerViewController: UIViewController {
     
@@ -19,6 +20,11 @@ class ChatContainerViewController: UIViewController {
     var loginInUser=currentUser
     
     var otherUser:User?=nil
+    
+    @IBOutlet weak var chatSwitch: UISegmentedControl!
+    override func viewDidLoad() {
+        chatSwitch.tintColor=UIColor.flatWatermelon
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         self.view.frame=self.frame!
