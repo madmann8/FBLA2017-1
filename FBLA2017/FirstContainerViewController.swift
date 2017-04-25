@@ -46,6 +46,7 @@ class FirstContainerViewController:PulleyViewController {
         self.delegate=self
         setNeedsSupportedDrawerPositionsUpdate()
 //        user.setupUser(id: userID!, isLoggedIn: false)
+        print(view.frame.width)
         // Do any additional setup after loading the view.
     }
 
@@ -80,6 +81,7 @@ class FirstContainerViewController:PulleyViewController {
                 }
                 
                 
+                
             }
         
         }
@@ -92,8 +94,7 @@ class FirstContainerViewController:PulleyViewController {
                 let frame=self.view.frame
                 let newFrame=CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height-self.topInset)
                 vc.frame=newFrame
-                print(newFrame.height)
-                print(vc.frame?.height)
+
             
 
             
