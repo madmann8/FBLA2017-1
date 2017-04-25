@@ -77,7 +77,7 @@ class Item{
                         let imagePath = storage.reference(forURL: path)
                         imagePath.data(withMaxSize: 1 * 6000 * 6000) { data, error in
                             if let error = error {
-                                ErrorGenerator.presentError(view: (UIApplication.shared.keyWindow?.rootViewController)!, type: "User Download", error: error)
+                                // Uh-oh, an error occurred!
                             } else {
                                 let image = UIImage(data: data!)
                                 images.append(image!)

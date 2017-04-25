@@ -68,7 +68,7 @@ class InfoContainerViewController: UIViewController {
         
         setupViews()
         
-              user?.delegate=self
+        user?.delegate=self
         ref=FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
         ref?.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -104,14 +104,14 @@ class InfoContainerViewController: UIViewController {
         profileImage.layer.cornerRadius = profileImage.frame.height/2
         profileImage.clipsToBounds = true
         
-
-
+        
+        
         if let rating:Int=condition, let dollarsString:String=dollarsString {
             costLabel.text="Asking Price: \(dollarsString)"
             ratingLabel.text="\(String(describing: rating))/5"
             
         }
-
+        
     }
     
     
@@ -122,7 +122,7 @@ class InfoContainerViewController: UIViewController {
             pageDesitnation.images=self.images
             titleLabel.text=name
             pageDesitnation.nextItemDelegate=self
-           
+            
         }
     }
     
@@ -185,7 +185,7 @@ class InfoContainerViewController: UIViewController {
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
-
+    
     
 }
 
