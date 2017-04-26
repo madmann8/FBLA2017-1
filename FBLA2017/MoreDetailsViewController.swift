@@ -102,15 +102,15 @@ class MoreDetailsViewController: UIViewController {
 
     }
 
-    @IBAction func profileImageButtonPressed(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let viewController = storyboard.instantiateViewController(withIdentifier: "OtherUserProfile") as! OtherUserProfileViewController
-        viewController.otherUser=self.user
-        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
-
-    }
+//    @IBAction func profileImageButtonPressed(_ sender: UIButton) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        
+//        let viewController = storyboard.instantiateViewController(withIdentifier: "OtherUserProfile") as! OtherUserProfileViewController
+//        viewController.otherUser=self.user
+//        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+//        UIApplication.shared.keyWindow?.rootViewController = viewController
+//
+//    }
 
 }
 
