@@ -184,8 +184,7 @@ class InfoContainerViewController: UIViewController {
         
         let viewController = storyboard.instantiateViewController(withIdentifier: "OtherUserProfile") as! OtherUserProfileViewController
         viewController.otherUser=self.user
-        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        present(viewController, animated: true, completion: nil)
     }
     
     
