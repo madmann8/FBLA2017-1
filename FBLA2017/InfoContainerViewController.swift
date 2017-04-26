@@ -137,6 +137,9 @@ class InfoContainerViewController: UIViewController {
         vc.addressString=self.addressString
         vc.cents=self.cents
         vc.condition=self.condition
+        vc.dollarString=self.dollarsString
+        vc.user=user
+        vc.profileImageView=profileImage
         
         
         let sizeToSubtract=moreInfoButtonToTopConstraint.constant*(-1.4)
