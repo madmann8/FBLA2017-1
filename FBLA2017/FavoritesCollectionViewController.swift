@@ -3,14 +3,16 @@
  import Firebase
  import FirebaseDatabase
  import FirebaseStorage
- 
- //On the next episode: well fugure out how to  reload view without using the text bar
- 
+ import CoreLocation
+ import QuiltView
+ import Hero
+ //ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
  final class FavoritesCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
     fileprivate let reuseIdentifier = "ItemCell"
-    fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    fileprivate let sectionInsets = UIEdgeInsets(top: 2, left: 2, bottom: 5, right: 2)
+    
     
     var coverImages = [UIImage]()
     var itemKeys=[String]()
@@ -19,14 +21,24 @@
     var nextItemDelegate:NextItemDelegate?=nil
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         currentView=self.view
+        let layout = self.collectionView?.collectionViewLayout as! QuiltView
+        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        layout.itemBlockSize   = CGSize(
+            width: 67,
+            height: 67
+        )
+        currentUser.setupUser(id: (FIRAuth.auth()?.currentUser?.uid)!, isLoggedIn: true)
         loadCoverImages()
+        
     }
     
     var itemIndex = 0
     
     var currentView:UIView? = nil
     var currentVC:UIViewController? = nil
+    var firstDetailVC:UIViewController?=nil
     
     var user:User?=nil
     
@@ -56,6 +68,10 @@
                                  numberOfItemsInSection section: Int) -> Int {
         return coverImages.count
     }
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return coverImages.count
+    }
+    
     
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -72,10 +88,9 @@
     
  }
  
- extension FavoritesCollectionViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+ extension FavoritesCollectionViewController : QuiltViewDelegate {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, blockSizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
@@ -84,24 +99,26 @@
         let width=photo.size.width
         let dynamicHeightRatio=height/width
         
-        return CGSize(width: widthPerItem, height: widthPerItem*dynamicHeightRatio)
+        print(widthPerItem*dynamicHeightRatio)
+        return CGSize(width: 2, height: 2*dynamicHeightRatio)
+        //        return CGSizeMake(100, 100)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return sectionInsets
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForItemAtIndexPath indexPath: IndexPath) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.left
-    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    //        return sectionInsets.left
+    //    }
  }
  
  
  extension FavoritesCollectionViewController {
     func loadCoverImages(){
         let activityIndicator=startActivityIndicator()
+        
+        
         
         
         var ref:FIRDatabaseReference
@@ -120,7 +137,7 @@
                         let coverImagePath = storage.reference(forURL: path)
                         coverImagePath.data(withMaxSize: 1 * 1024 * 1024) { data, error in
                             if let error = error {
-                                // Uh-oh, an error occurred!
+                                ErrorGenerator.presentError(view: self, type: "Cover Images", error: error)
                             } else {
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
@@ -128,7 +145,7 @@
                                     self.itemKeys.append(extractedKey!)
                                 }
                                 i+=1
-                                if i==snapshots.count-1{
+                                if i==snapshots.count{
                                     activityIndicator.stopAnimating()
                                     self.collectionView?.reloadData()
                                 }
@@ -146,11 +163,12 @@
  
  extension FavoritesCollectionViewController: PhotoCellDelegate {
     func buttonPressed(keyString: String) {
-        generateImages(keyString: keyString)
+        generateImages(keyString: keyString, inImageView: false)
         let index=itemKeys.index(of: keyString)
         itemIndex=index!
     }
-    func generateImages(keyString: String){
+    
+    func generateImages(keyString: String,inImageView:Bool){
         var activityIndicator=startActivityIndicator()
         
         
@@ -192,6 +210,8 @@
             
         })
         let storage = FIRStorage.storage()
+        let middle=storyboard?.instantiateViewController(withIdentifier: "pulley") as! FirstContainerViewController
+        user.delegate=middle
         ref.child("imagePaths").observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 var i=0
@@ -200,7 +220,7 @@
                         let imagePath = storage.reference(forURL: path)
                         imagePath.data(withMaxSize: 1 * 6000 * 6000) { data, error in
                             if let error = error {
-                                // Uh-oh, an error occurred!
+                                ErrorGenerator.presentError(view: self, type: "Item Images", error: error)
                             } else {
                                 let image = UIImage(data: data!)
                                 images.append(image!)
@@ -208,14 +228,10 @@
                                 i+=1
                                 if i==snapshots.count{
                                     
-                                    
-                                    
-                                    
                                     activityIndicator.stopAnimating()
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                     
                                     
-                                    let middle=storyboard.instantiateViewController(withIdentifier: "pulley") as! FirstContainerViewController
                                     middle.categorey=categorey
                                     middle.name=name
                                     middle.about=about
@@ -230,15 +246,25 @@
                                     middle.dismissDelegate=self
                                     middle.coverImagePath=path
                                     middle.user=user
+                                    user.delegate=middle
                                     
                                     
                                     
-                                    if let vc=self.currentVC{
-                                        vc.dismiss(animated: false, completion: nil)
+                                    
+                                    if inImageView{
+                                        if let vc = self.currentVC as? FirstContainerViewController{
+                                            vc.present(middle, animated: true)
+                                            middle.vcToDismiss=vc
+                                        }
+                                        
                                     }
+                                    else {
+                                        self.present(middle, animated: true, completion: nil)
+                                        self.firstDetailVC=middle
+                                    }
+                                    
                                     self.currentView = middle.view
                                     self.currentVC=middle
-                                    self.present(middle, animated: false, completion: nil)
                                     
                                     
                                     
@@ -275,19 +301,28 @@
     func goToNextItem() {
         if itemIndex+1<itemKeys.count{
             itemIndex+=1
-            generateImages(keyString: itemKeys[itemIndex])
+            generateImages(keyString: itemKeys[itemIndex],inImageView: true)
         }
         else {
             itemIndex=0
-            generateImages(keyString: itemKeys[itemIndex])
+            generateImages(keyString: itemKeys[itemIndex],inImageView: true)
             itemIndex+=1
         }
     }
     
     func switchCurrentVC() {
+        
         currentVC=nil
         currentView=self.view
+        //TODO: Fix this
+        firstDetailVC?.hero_dismissViewController()
     }
  }
+ 
+ 
+ 
+ 
+ 
+ 
  
  

@@ -307,7 +307,7 @@
         currentVC=nil
         currentView=self.view
         //TODO: Fix this
-        firstDetailVC?.dismiss(animated: false, completion: nil)
+        firstDetailVC?.hero_dismissViewController()
     }
  }
  
@@ -320,23 +320,4 @@
  
  
  
- extension String
- {
-    func substring(start: Int, end: Int) -> String
-    {
-        if (start < 0 || start > self.characters.count)
-        {
-            print("start index \(start) out of bounds")
-            return ""
-        }
-        else if end < 0 || end > self.characters.count
-        {
-            print("end index \(end) out of bounds")
-            return ""
-        }
-        let startIndex = self.characters.index(self.startIndex, offsetBy: start)
-        let endIndex = self.characters.index(self.startIndex, offsetBy: end)
-        let range = startIndex..<endIndex
-        
-        return self.substring(with: range)
-    }}
+ 

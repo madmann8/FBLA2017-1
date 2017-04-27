@@ -258,16 +258,16 @@ extension User:CLLocationManagerDelegate{
             let addrList = addressDict["FormattedAddressLines"] as! [String]
             if addrList.count>1{
                 let address:String? = addrList[1]
-                self.handleLocation(city: address!)
+                self.handleLocation(city: address!, lat: nil, long: nil)
             }
             else {
                 if !addrList.isEmpty{
                     let address:String? = addrList[0]
-                    self.handleLocation(city: address!)
+                    self.handleLocation(city: address!, lat: nil, long: nil)
                 }
                 else {
                     let address="Unknown Location"
-                    self.handleLocation(city: address)
+                    self.handleLocation(city: address, lat: "\(location.coordinate.latitude)", long: "\(location.coordinate.longitude)")
                 }
                 
             }
@@ -282,7 +282,7 @@ extension User:CLLocationManagerDelegate{
         
     }
     
-    func  handleLocation(city:String){
+    func  handleLocation(city:String,lat:String?,long:String?){
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference().child("users").child(uid!)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -290,6 +290,11 @@ extension User:CLLocationManagerDelegate{
             let value = snapshot.value as? NSDictionary
             self.city=city
             ref.child("locationString").setValue(self.city)
+            ref.child("oluLat").setValue(city)
+            ref.child("oluLong").setValue(lat)
+            ref.child("oluLong").setValue(long)
+
+
         })
     }
     

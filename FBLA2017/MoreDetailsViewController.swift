@@ -25,6 +25,7 @@ class MoreDetailsViewController: UIViewController {
     var user:User?=nil
     var profileImageView:UIImageView?=nil
 
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -35,6 +36,7 @@ class MoreDetailsViewController: UIViewController {
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileButton: UIButton!
 
     
     override func viewDidLoad() {
@@ -42,7 +44,10 @@ class MoreDetailsViewController: UIViewController {
         
     }
     
+
+
     func setupViews(){
+
         if
             let name=name,
 //            let category = categorey,
@@ -81,6 +86,10 @@ class MoreDetailsViewController: UIViewController {
             
             mapView.addAnnotation(information)
             
+//            if let button=profilePicButton{
+//                self.profileButton=button
+//            }
+            
             
         }
         titleLabel.textColor=UIColor.flatWatermelonDark
@@ -104,9 +113,12 @@ class MoreDetailsViewController: UIViewController {
 
 
 
-//    @IBAction func imageButtonPressed() {
-//        print("Here")
-//    }
+
+    @IBAction func imageButtonPressed() {
+        print("Here")
+    }
+    
+    
 //    @IBAction func profileButtonPressed(_ sender: Any) {
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        

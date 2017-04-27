@@ -141,7 +141,6 @@ class InfoContainerViewController: UIViewController {
         vc.user=user
         vc.profileImageView=profileImage
         
-        
         let sizeToSubtract=moreInfoButtonToTopConstraint.constant*(-1.4)
         let newFrame=CGRect(x: vc.view.frame.minX, y: vc.view.frame.minY, width: vc.view.frame.width-10, height: vc.view.frame.height-sizeToSubtract)
         vc.view.frame=newFrame
@@ -177,6 +176,8 @@ class InfoContainerViewController: UIViewController {
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet var moreInfoButtonToTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var profileButton: UIButton!
+
     
     
     @IBAction func profileButtonPressed(_ sender: Any) {
