@@ -307,7 +307,7 @@
         currentVC=nil
         currentView=self.view
         //TODO: Fix this
-        firstDetailVC?.hero_dismissViewController()
+        firstDetailVC?.dismiss(animated: false, completion: nil)
     }
  }
  

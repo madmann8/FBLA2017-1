@@ -46,6 +46,14 @@ class OtherUserProfileViewController: UIViewController {
         if let exists=loadOtherChat{
             self.performSegue(withIdentifier: "toChat", sender: nil)
         }
+        profileImageView.layer.borderWidth = 1
+        profileImageView.layer.masksToBounds = false
+        profileImageView.layer.borderColor = UIColor.flatGrayDark.cgColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        profileImageView.clipsToBounds = true
+        cityLabel.textColor=UIColor.flatNavyBlue
+        nameLabel.textColor=UIColor.flatNavyBlue
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
