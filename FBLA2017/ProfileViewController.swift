@@ -43,6 +43,14 @@ class ProfileViewController: UIViewController {
         profileImageView.image=user?.profileImage
         nameLabel.text=user?.displayName
         cityLabel.text=user?.city
+        profileImageView.layer.borderWidth = 1
+        profileImageView.layer.masksToBounds = false
+        profileImageView.layer.borderColor = UIColor.flatGrayDark.cgColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        profileImageView.clipsToBounds = true
+        cityLabel.textColor=UIColor.flatWatermelonDark
+        nameLabel.textColor=UIColor.flatWatermelonDark
+
     }
     
     func setNameLabel() {
