@@ -31,6 +31,7 @@
 		4869245F1EA4561E00000052 /* TwoUserChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */; };
 		486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */; };
 		486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */; };
+		486DE4691EB1AF4200ACB06A /* ActualTwoUserChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486DE4681EB1AF4200ACB06A /* ActualTwoUserChatViewController.swift */; };
 		487527531EA01BDD0047E083 /* MoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */; };
 		4888023C1EAD2F2A00BCB9D4 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888023B1EAD2F2A00BCB9D4 /* Fonts.swift */; };
 		488802401EAD39A800BCB9D4 /* FontList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888023F1EAD39A800BCB9D4 /* FontList.swift */; };
@@ -92,6 +93,7 @@
 		4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoUserChatViewController.swift; sourceTree = "<group>"; };
 		486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		486DE4681EB1AF4200ACB06A /* ActualTwoUserChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActualTwoUserChatViewController.swift; path = Assets.xcassets/ActualTwoUserChatViewController.swift; sourceTree = "<group>"; };
 		487527521EA01BDD0047E083 /* MoreDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreDetailsViewController.swift; sourceTree = "<group>"; };
 		4888023B1EAD2F2A00BCB9D4 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		4888023F1EAD39A800BCB9D4 /* FontList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontList.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		4831098E1EA869BE0069208C /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				486DE4681EB1AF4200ACB06A /* ActualTwoUserChatViewController.swift */,
 				4831098C1EA869B10069208C /* ChatsViewController.swift */,
 				4831098F1EA86A060069208C /* ChatsTableViewController.swift */,
 				48BA58F51EA87E130099E932 /* ChatsTableViewCell.swift */,
@@ -441,6 +444,7 @@
 			files = (
 				48BA58F71EA87E130099E932 /* ChatsTableViewCell.swift in Sources */,
 				486D222D1E9CA7C900EA2BDC /* PhotoCell.swift in Sources */,
+				486DE4691EB1AF4200ACB06A /* ActualTwoUserChatViewController.swift in Sources */,
 				4815FF4F1E99549B0018FA30 /* ImageCollectionViewController.swift in Sources */,
 				48AE1C741E99D1B8007B8AC6 /* UploadItemFormViewController.swift in Sources */,
 				48BF027E1EA38FFD0071467E /* UserModel.swift in Sources */,

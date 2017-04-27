@@ -1576,14 +1576,41 @@
                         <viewControllerLayoutGuide type="bottom" id="0NM-W6-SOT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3c3-a5-4Dq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ita-JY-4SM">
+                                <rect key="frame" x="0.0" y="48" width="375" height="592"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="R7S-Lc-3ma" kind="embed" identifier="toContainedChat" id="qrA-95-1yX"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2IU-fZ-hoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3750" y="718"/>
+            <point key="canvasLocation" x="3749.5999999999999" y="717.84107946026995"/>
+        </scene>
+        <!--Actual Two User Chat View Controller-->
+        <scene sceneID="w0w-M2-dbd">
+            <objects>
+                <viewController id="R7S-Lc-3ma" customClass="ActualTwoUserChatViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ayH-DF-bAq"/>
+                        <viewControllerLayoutGuide type="bottom" id="0cj-Gg-umE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uV3-2i-BlZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7HP-z5-qAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4946" y="768"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="nGw-pK-WrA">
@@ -1669,6 +1696,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="BWZ-ea-6a7"/>
         <segue reference="Cbb-yr-Evc"/>
-        <segue reference="bRa-Be-ak4"/>
+        <segue reference="6U7-sS-Rca"/>
     </inferredMetricsTieBreakers>
 </document>

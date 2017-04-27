@@ -48,8 +48,7 @@ class ChatContainerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="toDirectChat"{
             if let vc=segue.destination as? TwoUserChatViewController {
-                vc.senderId=currentUser.uid
-                vc.senderDisplayName=vc.senderId
+
                                let LIUID:String=(loginInUser.uid)!
                 let otherUID:String=(otherUser?.uid)!
                 var chatPath:String=""

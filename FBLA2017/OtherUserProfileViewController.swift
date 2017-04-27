@@ -59,8 +59,7 @@ class OtherUserProfileViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="toChat"{
             if let vc=segue.destination as? TwoUserChatViewController {
-            vc.senderId=currentUser.uid
-            vc.senderDisplayName=currentUser.displayName
+   
                 let LIUID:String=(loginInUser?.uid)!
             let otherUID:String=(otherUser?.uid)!
             var chatPath:String=""
