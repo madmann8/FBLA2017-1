@@ -21,7 +21,7 @@
     var nextItemDelegate:NextItemDelegate?=nil
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+//        super.viewDidLoad()
         currentView=self.view
         let layout = self.collectionView?.collectionViewLayout as! QuiltView
         layout.scrollDirection = UICollectionViewScrollDirection.vertical
