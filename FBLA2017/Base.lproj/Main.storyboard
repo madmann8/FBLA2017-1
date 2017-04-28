@@ -144,7 +144,7 @@
         <scene sceneID="ioN-8i-ABw">
             <objects>
                 <collectionViewController id="Hei-X5-zUt" customClass="ImageCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="tlf-oa-1iS">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tlf-oa-1iS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -594,6 +594,25 @@
                                     <segue destination="GKc-6K-nPA" kind="embed" identifier="showPageVC" id="MJx-s8-ZY0"/>
                                 </connections>
                             </containerView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hq0-lF-Dhe">
+                                <rect key="frame" x="16" y="580" width="344" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20190328359603882" green="0.28701490163803101" blue="0.36788973212242126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Mark as Sold">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99479166666666663" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="18" name="AvenirNext-DemiBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="soldButtonPressed" destination="y0u-Bh-ch7" eventType="touchUpInside" id="wK7-Wz-7oc"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Condition:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmt-Ra-l1V">
                                 <rect key="frame" x="276" y="572" width="83" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -702,6 +721,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="conditionTitleLabel" destination="cmt-Ra-l1V" id="A7H-tf-S8R"/>
                         <outlet property="costLabel" destination="A9O-9S-83w" id="qHY-tD-Qgb"/>
                         <outlet property="favoriteButton" destination="arr-Yz-KTO" id="Zx6-F3-csw"/>
                         <outlet property="moreInfoButton" destination="EKy-mk-hdU" id="kqM-cA-AGD"/>
@@ -709,6 +729,7 @@
                         <outlet property="profileButton" destination="I6M-RB-2jM" id="bqn-UH-J0Q"/>
                         <outlet property="profileImage" destination="Ma2-MT-cC6" id="NUh-On-eQd"/>
                         <outlet property="ratingLabel" destination="pXF-nf-ort" id="Pv2-wE-Sxa"/>
+                        <outlet property="soldButton" destination="Hq0-lF-Dhe" id="pmR-7j-ied"/>
                         <outlet property="titleLabel" destination="gRD-L1-2L2" id="8FN-yD-zwA"/>
                     </connections>
                 </viewController>
@@ -728,7 +749,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lK1-VQ-8Br">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lK1-VQ-8Br">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="coverImageView"/>
@@ -777,7 +798,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrY-Gw-eKo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Browse" id="DNw-Mh-nZ5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dQ1-gj-fih">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQ1-gj-fih">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -878,8 +899,8 @@
                                             <action selector="locationButtonPressed:" destination="vv6-O7-CX8" eventType="touchUpInside" id="Z9V-hi-gNx"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtN-VU-jxO">
-                                        <rect key="frame" x="0.0" y="32" width="343" height="1"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OtN-VU-jxO">
+                                        <rect key="frame" x="0.0" y="24" width="343" height="8"/>
                                         <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="i3Z-f8-Ia2"/>
@@ -1195,6 +1216,18 @@
         <!--Item-->
         <scene sceneID="d6W-4S-n5x">
             <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="pIp-dV-5Wz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="PCz-Z6-xQE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKR-FV-t1O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vv6-O7-CX8" kind="relationship" relationship="rootViewController" id="9Y6-po-Okp"/>
+                    </connections>
+                </navigationController>
                 <view alpha="0.55000000000000004" contentMode="scaleToFill" id="uNQ-2M-pRi">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1210,18 +1243,6 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMU-yd-pqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="pIp-dV-5Wz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="PCz-Z6-xQE"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BKR-FV-t1O">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vv6-O7-CX8" kind="relationship" relationship="rootViewController" id="9Y6-po-Okp"/>
-                    </connections>
-                </navigationController>
             </objects>
             <point key="canvasLocation" x="1094" y="-704"/>
         </scene>

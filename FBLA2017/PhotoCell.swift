@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol PhotoCellDelegate {
-    func buttonPressed(keyString:String)
+    func buttonPressed(keyString:String, coverImageKeyString:String)
 }
 
 class PhotoCell: UICollectionViewCell {
@@ -22,12 +22,13 @@ class PhotoCell: UICollectionViewCell {
     }
     
     var keyString:String?=nil
+    var coverImageKeyString:String?=nil
     
     var delegate: PhotoCellDelegate?=nil
     
     @IBAction func buttonIsPressed(_ sender: Any) {
-        if let keyString=keyString{
-        delegate?.buttonPressed(keyString: keyString)
+        if let keyString=keyString,let coverImageKeyString=coverImageKeyString{
+            delegate?.buttonPressed(keyString: keyString,coverImageKeyString:coverImageKeyString)
         }
     }
     @IBOutlet weak var imageView: UIImageView!

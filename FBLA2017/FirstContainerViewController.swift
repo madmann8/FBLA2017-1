@@ -31,6 +31,7 @@ class FirstContainerViewController:PulleyViewController {
     var vcToDismiss:FirstContainerViewController?=nil
     var userDelegate:UserDelegate?=nil
     var tempUserImage:UIImage?=nil
+    var coverImageKey:String?=nil
  
     
     
@@ -73,6 +74,7 @@ class FirstContainerViewController:PulleyViewController {
                 middle.dismissDelegate=self
                 middle.coverImagePath=coverImagePath
                 middle.keyString=keyString
+                middle.coverImageKey=coverImageKey
                 middle.user=user
                 self.userDelegate=middle
                 if let tempUserImage=tempUserImage{

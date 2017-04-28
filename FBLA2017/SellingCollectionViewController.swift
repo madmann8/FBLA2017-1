@@ -159,7 +159,7 @@
  
  
  extension SellingCollectionViewController: PhotoCellDelegate {
-    func buttonPressed(keyString: String) {
+    func buttonPressed(keyString: String, coverImageKeyString:String) {
         generateImages(keyString: keyString, inImageView: false)
         let index=itemKeys.index(of: keyString)
         itemIndex=index!

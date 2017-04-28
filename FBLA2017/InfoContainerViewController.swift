@@ -32,6 +32,7 @@ class InfoContainerViewController: UIViewController {
     var latitudeString:String?=nil
     var longitudeString:String?=nil
     var addressString:String?=nil
+    var coverImageKey:String?=nil
     var cents:Int?=nil
     {
         didSet{
@@ -87,7 +88,17 @@ class InfoContainerViewController: UIViewController {
             
         })
         
-        
+        if (user?.uid==currentUser.uid){
+            soldButton.isHidden=false
+            soldButton.layer.cornerRadius = soldButton.frame.height/2
+            profileButton.isHidden=true
+            profileImage.isHidden=true
+            ratingLabel.isHidden=true
+            conditionTitleLabel.isHidden=true
+            costLabel.isHidden=true
+            
+            
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -177,6 +188,8 @@ class InfoContainerViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet var moreInfoButtonToTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var profileButton: UIButton!
+    @IBOutlet weak var soldButton: UIButton!
+    @IBOutlet weak var conditionTitleLabel: UILabel!
 
     
     
@@ -188,6 +201,37 @@ class InfoContainerViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
     
+    @IBAction func soldButtonPressed() {
+        
+        let alertController = UIAlertController(title: "Mark as Sold", message: "Are you sure you want to mark your product as sold?", preferredStyle: .alert)
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "Mark as Sold", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+            self.removeItem(alertController: alertController)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func removeItem(alertController:UIAlertController){
+        let ref=FIRDatabase.database().reference()
+        ref.child("items").child(self.keyString!).removeValue()
+        ref.child("coverImagePaths").child(self.coverImageKey!).removeValue()
+        alertController.dismiss(animated: false, completion: nil)
+        dismissDelegate?.switchCurrentVC()
+        
+    }
     
     
 }
@@ -195,6 +239,7 @@ class InfoContainerViewController: UIViewController {
 extension InfoContainerViewController:NextItemDelegate{
     func goToNextItem() {
         self.nextItemDelegate?.goToNextItem()
+        
         
     }
 }

@@ -16,6 +16,7 @@
     
     var coverImages = [UIImage]()
     var itemKeys=[String]()
+    var coverImageKeys=[String]()
     fileprivate let itemsPerRow: CGFloat = 3
     
     var nextItemDelegate:NextItemDelegate?=nil
@@ -81,6 +82,9 @@
         
         cell.keyString=itemKeys[indexPath.row]
         
+        cell.coverImageKeyString=coverImageKeys[indexPath.row]
+
+        
         return cell
     }
     
@@ -135,6 +139,7 @@
                                 self.coverImages.append(image!)
                                 if let extractedKey:String?=path.substring(start: 44, end: 64){
                                     self.itemKeys.append(extractedKey!)
+                                    self.coverImageKeys.append((snapshot.key as? String)!)
                                 }
                                 i+=1
                                 if i==snapshots.count{
@@ -154,13 +159,13 @@
  
  
  extension ImageCollectionViewController: PhotoCellDelegate {
-    func buttonPressed(keyString: String) {
-        generateImages(keyString: keyString, inImageView: false)
+    func buttonPressed(keyString: String, coverImageKeyString:String ) {
+        generateImages(keyString: keyString, inImageView: false, coverImageKey: coverImageKeyString)
         let index=itemKeys.index(of: keyString)
         itemIndex=index!
     }
     
-    func generateImages(keyString: String,inImageView:Bool){
+    func generateImages(keyString: String,inImageView:Bool, coverImageKey:String){
         var activityIndicator=startActivityIndicator()
         
         
@@ -183,7 +188,7 @@
         let user=User()
         
         ref.observe(.value, with: {(snapshot) in
-            let value = snapshot.value as? NSDictionary
+            let value = snapshot.value as? NSDictionary, 
             name = value?["title"] as? String ?? ""
             about = value?["about"] as? String ?? ""
             categorey = value?["category"] as? String ?? ""
@@ -236,8 +241,10 @@
                                     middle.keyString=keyString
                                     middle.nextItemDelegate=self
                                     middle.dismissDelegate=self
+                                    //This is just for image at index 0, not actyual compresed cover image
                                     middle.coverImagePath=path
                                     middle.user=user
+                                    middle.coverImageKey=snapshot.key as? String
                                     user.delegate=middle
                                     
                                     
@@ -293,11 +300,11 @@
     func goToNextItem() {
         if itemIndex+1<itemKeys.count{
             itemIndex+=1
-            generateImages(keyString: itemKeys[itemIndex],inImageView: true)
+            generateImages(keyString: itemKeys[itemIndex],inImageView: true,coverImageKeyString[itemIndex])
         }
         else {
             itemIndex=0
-            generateImages(keyString: itemKeys[itemIndex],inImageView: true)
+            generateImages(keyString: itemKeys[itemIndex],inImageView: true,coverImageKeyString: coverImageKeys[itemIndex])
             itemIndex+=1
         }
     }
