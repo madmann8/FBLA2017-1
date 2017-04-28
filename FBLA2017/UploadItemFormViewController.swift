@@ -150,8 +150,9 @@ extension UploadItemFormViewController:EnterPriceDelegate{
         
     }
     
-    func retrievePrice(price: Int) {
+    func retrievePrice(price: Int,string:String) {
         self.cents=price
+        priceButton.setTitle(string, for: .normal)
     }
     
     

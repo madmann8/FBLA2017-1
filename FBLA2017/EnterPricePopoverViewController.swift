@@ -10,7 +10,7 @@ import UIKit
 import Format
 
 protocol EnterPriceDelegate {
-    func retrievePrice(price: Int)
+    func retrievePrice(price: Int,string:String)
 }
 
 class EnterPricePopoverViewController: UIViewController {
@@ -57,7 +57,7 @@ class EnterPricePopoverViewController: UIViewController {
                 cents=String(cents.characters.reversed())
                 if let dollarVal = Int(part) {
                     if let centVal=Int(cents){
-                        self.delegate?.retrievePrice(price: centVal+(dollarVal*100))
+                        self.delegate?.retrievePrice(price: centVal+(dollarVal*100),string: cents)
                     }
                 }
             }
