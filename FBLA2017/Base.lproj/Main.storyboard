@@ -1579,15 +1579,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ita-JY-4SM">
-                                <rect key="frame" x="0.0" y="48" width="375" height="592"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ita-JY-4SM">
+                                <rect key="frame" x="0.0" y="35" width="375" height="605"/>
                                 <connections>
                                     <segue destination="R7S-Lc-3ma" kind="embed" identifier="toContainedChat" id="qrA-95-1yX"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0w-yu-kuW">
+                                <rect key="frame" x="16" y="0.0" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="bqI-5h-eTX"/>
+                                    <constraint firstAttribute="width" constant="30" id="uEh-B3-jwa"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="XPink"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="X"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="hero_dismissViewController" destination="2IU-fZ-hoL" eventType="touchUpInside" id="9pe-ZB-rB7"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ita-JY-4SM" firstAttribute="top" secondItem="v0w-yu-kuW" secondAttribute="bottom" constant="5" id="DRE-Dz-BGY"/>
+                            <constraint firstItem="v0w-yu-kuW" firstAttribute="top" secondItem="JTR-Mr-2ZT" secondAttribute="bottom" id="GJE-x9-CvV"/>
+                            <constraint firstAttribute="trailing" secondItem="ita-JY-4SM" secondAttribute="trailing" id="PbS-sU-qCx"/>
+                            <constraint firstItem="v0w-yu-kuW" firstAttribute="leading" secondItem="3c3-a5-4Dq" secondAttribute="leadingMargin" id="R1G-FU-f9J"/>
+                            <constraint firstItem="0NM-W6-SOT" firstAttribute="top" secondItem="ita-JY-4SM" secondAttribute="bottom" id="S9M-cq-ZCD"/>
+                            <constraint firstItem="ita-JY-4SM" firstAttribute="leading" secondItem="3c3-a5-4Dq" secondAttribute="leading" id="zpI-Gi-cgq"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2IU-fZ-hoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1603,7 +1624,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0cj-Gg-umE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uV3-2i-BlZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="605"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

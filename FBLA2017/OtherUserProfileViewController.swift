@@ -70,7 +70,8 @@ class OtherUserProfileViewController: UIViewController {
                 chatPath=otherUID+LIUID
             }
             vc.channelRef=FIRDatabase.database().reference().child("chats").child("\(chatPath)")
-            
+            vc.loggedInUser=loginInUser
+                vc.otherUser=otherUser
             vc.messageRef=vc.channelRef?.child("messages")
             
             
