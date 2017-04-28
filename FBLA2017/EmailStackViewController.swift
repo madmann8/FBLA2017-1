@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
     import FirebaseDatabase
+    import ChameleonFramework
 
 class EmailStackViewController: UIViewController {
     
@@ -20,6 +21,9 @@ class EmailStackViewController: UIViewController {
         nameTextView.delegate=self
         emailTextView.delegate=self
         passwordTextView.delegate=self
+        nameTextView.textColor=UIColor(red: 0, green: 0, blue: 1/99999, alpha: 1.0)
+        emailTextView.textColor=UIColor(red: 0, green: 0, blue: 1/99999, alpha: 1.0)
+        passwordTextView.textColor=UIColor(red: 0, green: 0, blue: 1/99999, alpha: 1.0)
         setupBorder(tv: emailTextView!)
         setupBorder(tv: nameTextView!)
         setupBorder(tv: passwordTextView!)
@@ -95,5 +99,12 @@ class EmailStackViewController: UIViewController {
         func setupBorder(tv:UITextField){
             tv.layer.borderColor=UIColor.flatGrayDark.cgColor
             tv.layer.borderWidth = 0.5
+        }
+        func textFieldDidBeginEditing(_ textField: UITextField) {
+            if textField.textColor == UIColor(red: 0, green: 0, blue: 1/99999, alpha: 1.0)      
+ {
+                textField.text = nil
+                textField.textColor = UIColor.black
+            }
         }
     }

@@ -34,7 +34,7 @@ class UploadItemFormViewController:UIViewController{
     let categories = ["test1", "test2", "test3", "test4", "test5"]
     
     var name:String?=nil
-    var images:[UIImage]? = nil
+    var images=[UIImage?](repeatElement(nil, count: 5))
     var cents:Int?=nil
     var about:String?=nil
     var condition:Int?=nil
@@ -47,10 +47,11 @@ class UploadItemFormViewController:UIViewController{
     var ref: FIRDatabaseReference!
     
     
+
     
     var imagePickerController = ImagePickerController()
     var hasSetupImagePicker=false
-    
+    var imageCells=[ImageCollectionViewCell]()
     
     
     @IBOutlet weak var titleTextField: UITextField!
@@ -62,12 +63,22 @@ class UploadItemFormViewController:UIViewController{
     @IBOutlet weak var priceButton: UIButton!
     @IBOutlet weak var conditionLabel: UILabel!
     
+
+    var selectedCell: Int = 0
+
     
     
     override func viewDidLoad() {
+        self.navigationController?.isNavigationBarHidden=true
         descriptionTextView.delegate=self
         titleTextField.delegate=self
         ref = FIRDatabase.database().reference()
+        selectedCell=0
+        titleTextField.textColor = UIColor.lightGray
+        descriptionTextView.textColor=UIColor.lightGray
+
+        
+        
           }
     
     
@@ -109,8 +120,13 @@ extension UploadItemFormViewController:ImagePickerDelegate{
 
 //Title Stuff
 extension UploadItemFormViewController:UITextFieldDelegate{
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.textColor == UIColor.lightGray {
+            textField.text = nil
+            textField.textColor = UIColor.black
+        }
         self.name=textField.text
+        
     }
 }
 
@@ -146,7 +162,11 @@ extension UploadItemFormViewController:EnterPriceDelegate{
 
 //Description Stuff
 extension UploadItemFormViewController:UITextViewDelegate{
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
         about=textView.text
     }
 }
@@ -223,9 +243,9 @@ extension UploadItemFormViewController{
         activityIndicator.startAnimating()
         
         var missingData=false
-        if (images==nil || name==nil || cents==nil || about==nil || condition==nil || locationString==nil || category==nil) {
+        if (images.isEmpty || name==nil || cents==nil || about==nil || condition==nil || locationString==nil || category==nil) {
             missingData=true
-            if images==nil {
+            if images.isEmpty {
                 self.showMessage("Missing images", type: .error)
             }
             if name==nil{
@@ -275,23 +295,24 @@ extension UploadItemFormViewController{
         self.view.addSubview(activityIndicator)
         
         var mainImagePaths=[String]()
-        
+        let trimedImages = images.filter { $0 != nil }
         let coverImageRef=ref.child("coverImagePaths")
-        let coverImage=images?[0].jpeg(.lowest)
+        let coverImage=trimedImages[0]?.jpeg(.lowest)
         let imageNumberRef=uniqueItemImageRef.child("cover.jpeg")
+        let
         _=imageNumberRef.put(coverImage!)
-        for image in self.images!{
+        for image in trimedImages{
             let imageNumberRef=uniqueItemImageRef.child("\(i).jpeg")
             print(activityIndicator.isAnimating)
             mainImagePaths.append("\(imageNumberRef)")
             i+=1
-            let imageData=image.jpeg(.medium)
+            let imageData=image?.jpeg(.medium)
             _ = imageNumberRef.put(imageData!, metadata: nil) { (metadata, error) in
                 guard let metadata = metadata else {
                     
                     return
                 }
-                if i==self.images?.count{
+                if i==trimedImages.count{
                     activityIndicator.stopAnimating()
                 }
             }
@@ -314,6 +335,127 @@ extension UploadItemFormViewController{
     //    }
 }
 
+
+
+extension UploadItemFormViewController:UICollectionViewDataSource,UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! ImageCollectionViewCell
+        cell.image.image=#imageLiteral(resourceName: "AddPhoto")
+        cell.parent=self
+        cell.num=self.selectedCell
+        selectedCell+=1
+        self.imageCells.append(cell)
+        return cell
+        
+        
+    }
+}
+
+class ImageCollectionViewCell:UICollectionViewCell,ImagePickerDelegate{
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var button: UIButton!
+    var hasLoaded=false
+        var hideViews=false
+    var parent:UploadItemFormViewController?=nil
+    {
+            didSet{
+            if hasLoaded{
+            var filledImages=0
+            if let images:[UIImage?]=parent?.images{
+                for i in 0..<images.count{
+                    if let image=images[i]{
+                        filledImages+=1
+                    }
+                }
+            }
+            if (num!>filledImages+1){
+                hideViews=true
+                self.image.isHidden=true
+                self.button.isHidden=false
+            }
+            }
+            else {
+                hasLoaded=true
+            }
+
+        }
+    }
+    var num:Int?=nil{
+        didSet{
+            if hasLoaded{
+                var filledImages=0
+                if let images:[UIImage?]=parent?.images{
+                    for i in 0..<images.count{
+                        if let image=images[i]{
+                            filledImages+=1
+                        }
+                    }
+                }
+                if (num!>filledImages){
+                    hideViews=true
+                    self.image.isHidden=true
+                    self.button.isHidden=true
+                }
+            }
+            else {
+                hasLoaded=true
+            }
+            
+        }
+    }
+    @IBAction func addPhotoButtonPressed(_ sender: UIButton) {
+       
+            var configuration = Configuration()
+            configuration.backgroundColor=UIColor.flatBlue
+            configuration.recordLocation = false
+            //            configuration.
+           let imagePickerController = ImagePickerController(configuration: configuration)
+            imagePickerController.delegate = self
+        
+        parent?.present(imagePickerController, animated: true, completion: nil)
+        
+        
+}
+    override func awakeFromNib() {
+        self.backgroundColor=UIColor.flatGray
+        self.layer.cornerRadius=10
+        let frame=self.frame
+        self.frame=CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.width)
+        if hideViews{
+            self.image.isHidden=false
+            self.button.isHidden=false
+        }
+            }
+    
+    
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        parent?.images[num!]=images[0]
+        self.image.image=images[0]
+        if num!<4{
+        if let cell=parent?.imageCells[num!+1]{
+            cell.image.isHidden=false
+            cell.button.isHidden=false
+        }
+
+
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+
+        //
+    }
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        
+    }
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        //
+    }
+
+    
+}
 
 
 
