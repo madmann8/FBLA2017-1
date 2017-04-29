@@ -57,7 +57,7 @@ class EnterPricePopoverViewController: UIViewController {
                 cents=String(cents.characters.reversed())
                 if let dollarVal = Int(part) {
                     if let centVal=Int(cents){
-                        self.delegate?.retrievePrice(price: centVal+(dollarVal*100),string: cents)
+                        self.delegate?.retrievePrice(price: centVal+(dollarVal*100),string: (textView?.text)!)
                     }
                 }
             }

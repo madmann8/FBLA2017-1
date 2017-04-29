@@ -77,6 +77,13 @@ class UploadItemFormViewController:UIViewController{
         selectedCell=0
         titleTextField.textColor = UIColor.lightGray
         descriptionTextView.textColor=UIColor.lightGray
+        priceButton.titleLabel?.minimumScaleFactor = 0.5
+        priceButton.titleLabel?.numberOfLines = 1
+        priceButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        priceButton.backgroundColor = .clear
+        priceButton.layer.cornerRadius = 5
+        priceButton.layer.borderWidth = 0.75
+        priceButton.layer.borderColor = UIColor.lightGray.cgColor
 
         
         
@@ -129,8 +136,33 @@ extension UploadItemFormViewController:UITextFieldDelegate{
         self.name=textField.text
         
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool     {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
+
+
+
+//Description Stuff
+extension UploadItemFormViewController:UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+        about=textView.text
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+}
 
 
 //Price Stuff
@@ -162,17 +194,6 @@ extension UploadItemFormViewController:EnterPriceDelegate{
 
 
 
-//Description Stuff
-extension UploadItemFormViewController:UITextViewDelegate{
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-        about=textView.text
-    }
-}
-
 
 //Condition Stuff
 
@@ -192,9 +213,11 @@ extension UploadItemFormViewController{
 extension UploadItemFormViewController:SelectLocationProtocol{
     func recieveLocation(latitude: String, longitude: String, addressString: String) {
         self.locationButton.setTitle(addressString, for: .normal)
+        self.locationButton.setTitleColor(UIColor.black, for: .normal)
         self.locationLatitude=latitude
         self.locationLongitude=longitude
         self.locationString=addressString
+        
     }
     
     
