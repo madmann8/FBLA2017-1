@@ -321,9 +321,12 @@
         //TODO: Fix this
         firstDetailVC?.dismiss(animated: false, completion: nil)
         if shouldReload{
-             self.coverImages.
-            self.itemKeys.
-            var coverImageKeys=[String]()
+            //TODO: Might want to call viewDidLoad() here
+             coverImages = [UIImage]()
+             itemKeys=[String]()
+             coverImageKeys=[String]()
+             currentView = nil
+             firstDetailVC=nil
 
         }
     }
