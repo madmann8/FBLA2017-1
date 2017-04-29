@@ -71,6 +71,7 @@ class UploadItemFormViewController:UIViewController{
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden=true
         descriptionTextView.delegate=self
+        descriptionTextView.contentInset=UIEdgeInsetsMake(-4, -3, 0, 0)
         titleTextField.delegate=self
         ref = FIRDatabase.database().reference()
         selectedCell=0
