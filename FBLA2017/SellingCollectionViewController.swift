@@ -307,7 +307,7 @@
         }
     }
     
-    func switchCurrentVC() {
+    func switchCurrentVC(shouldReload:Bool) {
         
         currentVC=nil
         currentView=self.view

@@ -310,12 +310,15 @@
         }
     }
     
-    func switchCurrentVC() {
+    func switchCurrentVC(shouldReload:Bool) {
         
         currentVC=nil
         currentView=self.view
         //TODO: Fix this
         firstDetailVC?.hero_dismissViewController()
+        if shouldReload{
+            viewDidLoad()
+        }
     }
  }
  

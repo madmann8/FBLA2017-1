@@ -244,29 +244,34 @@
                                     //This is just for image at index 0, not actyual compresed cover image
                                     middle.coverImagePath=path
                                     middle.user=user
-                                    middle.coverImageKey=snapshot.key as? String
                                     user.delegate=middle
+                                    middle.coverImageKey=coverImageKey
                                     
-                                    
-                                    
-                                    
-                                    if inImageView{
-                                        if let vc = self.currentVC as? FirstContainerViewController{
-                                            vc.present(middle, animated: true)
-                                            middle.vcToDismiss=vc
-                                        }
+                                    FIRDatabase.database().reference().child("coverImagePaths").child(coverImageKey).observe(.value, with: { (snapshot) in
                                         
-                                    }
-                                    else {
-                                        self.present(middle, animated: true, completion: nil)
-                                        self.firstDetailVC=middle
-                                    }
+                                                if let path = snapshot.value as? String {
+                                                    middle.coverImagePath=path
+                                                    if inImageView{
+                                                        if let vc = self.currentVC as? FirstContainerViewController{
+                                                            vc.present(middle, animated: true)
+                                                            middle.vcToDismiss=vc
+                                                        }
+                                                        
+                                                    }
+                                                    else {
+                                                        self.present(middle, animated: true, completion: nil)
+                                                        self.firstDetailVC=middle
+                                                    }
+                                                    
+                                                    self.currentView = middle.view
+                                                    self.currentVC=middle
+                                                    
+                                                    
 
-                                    self.currentView = middle.view
-                                    self.currentVC=middle
+                                                }
                                     
-                                    
-                                    
+                                        
+                                    })
                                     
                                 }
                             }
@@ -300,21 +305,27 @@
     func goToNextItem() {
         if itemIndex+1<itemKeys.count{
             itemIndex+=1
-            generateImages(keyString: itemKeys[itemIndex],inImageView: true,coverImageKeyString[itemIndex])
+            generateImages(keyString: itemKeys[itemIndex],inImageView: true,coverImageKey: coverImageKeys[itemIndex])
         }
         else {
             itemIndex=0
-            generateImages(keyString: itemKeys[itemIndex],inImageView: true,coverImageKeyString: coverImageKeys[itemIndex])
+            generateImages(keyString: itemKeys[itemIndex],inImageView: true,coverImageKey: coverImageKeys[itemIndex])
             itemIndex+=1
         }
     }
     
-    func switchCurrentVC() {
+    func switchCurrentVC(shouldReload:Bool) {
 
         currentVC=nil
         currentView=self.view
         //TODO: Fix this
         firstDetailVC?.dismiss(animated: false, completion: nil)
+        if shouldReload{
+             self.coverImages.
+            self.itemKeys.
+            var coverImageKeys=[String]()
+
+        }
     }
  }
  

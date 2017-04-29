@@ -132,9 +132,9 @@ extension FirstContainerViewController:NextItemDelegate,DismissDelgate,UserDeleg
     func goToNextItem() {
         nextItemDelegate?.goToNextItem()
     }
-    func switchCurrentVC() {
-        vcToDismiss?.switchCurrentVC()
-        dismissDelegate?.switchCurrentVC()
+    func switchCurrentVC(shouldReload:Bool) {
+        vcToDismiss?.switchCurrentVC(shouldReload:shouldReload )
+        dismissDelegate?.switchCurrentVC(shouldReload:shouldReload )
         self.dismiss(animated: false, completion: nil)
     }
     func imageLoaded(image: UIImage, user: User, index: Int?) {

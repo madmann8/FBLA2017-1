@@ -30,6 +30,7 @@ class User:NSObject {
     var directChats=[ChatsTableViewCell]()
     var cellIndex:Int?=nil
     var itemChar:Bool?=nil
+    var hasLoaded=false
     
     var geoCoder:CLGeocoder!
     var locationManager:CLLocationManager!
@@ -37,6 +38,12 @@ class User:NSObject {
     var delegate:UserDelegate?=nil
     
     public  func setupUser(id:String,isLoggedIn:Bool){
+        var shouldLoad=true
+        
+        if (currentUser.uid) != nil{
+            shouldLoad=false
+        }
+        if shouldLoad{
         self.geoCoder=CLGeocoder()
         self.locationManager=CLLocationManager()
         
@@ -65,8 +72,22 @@ class User:NSObject {
             getChatsCells(keyString: id)
         }
         
-        
-        
+        }
+        else {
+             uid=currentUser.uid
+             displayName=currentUser.displayName
+             email=currentUser.email
+             city=currentUser.city
+            profileImage=currentUser.profileImage
+             sellingImagesPaths=currentUser.sellingImagesPaths
+             favoriteImagesPaths=currentUser.favoriteImagesPaths
+             itemChats=currentUser.itemChats
+             directChats=currentUser.directChats
+             cellIndex=currentUser.cellIndex
+             itemChar=currentUser.itemChar
+             geoCoder=currentUser.geoCoder
+             locationManager=currentUser.locationManager
+        }
         
     }
 }
@@ -215,7 +236,7 @@ extension User {
                 
             })
             
-            
+        
             
             
         }

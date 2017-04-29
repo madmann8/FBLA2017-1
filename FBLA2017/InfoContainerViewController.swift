@@ -19,7 +19,7 @@ protocol NextItemDelegate {
 }
 
 protocol DismissDelgate{
-    func switchCurrentVC()
+    func switchCurrentVC(shouldReload:Bool)
 }
 
 
@@ -179,7 +179,7 @@ class InfoContainerViewController: UIViewController {
     }
     
     @IBAction func exitButtonPressed(_ sender: UIButton) {
-        dismissDelegate?.switchCurrentVC()
+        dismissDelegate?.switchCurrentVC(shouldReload: false)
     }
     @IBOutlet var moreInfoButton: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
@@ -226,10 +226,28 @@ class InfoContainerViewController: UIViewController {
     
     func removeItem(alertController:UIAlertController){
         let ref=FIRDatabase.database().reference()
-        ref.child("items").child(self.keyString!).removeValue()
-        ref.child("coverImagePaths").child(self.coverImageKey!).removeValue()
-        alertController.dismiss(animated: false, completion: nil)
-        dismissDelegate?.switchCurrentVC()
+
+        ref.child("users").child(user!.uid).child("coverImages").observe(.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snapshot in snapshots {
+                    if let path = snapshot.key as? String {
+                        if let path2=snapshot.value as? String{
+                            if path2==self.coverImagePath{
+                        
+                        ref.child("users").child(self.user!.uid).child("coverImages").child(path).removeValue()
+                        let path:String=self.keyString!
+                        let coverPath:String=self.coverImageKey!
+                        ref.child("items").child(path).removeValue()
+                        ref.child("coverImagePaths").child(coverPath).removeValue()
+                        alertController.dismiss(animated: false, completion: nil)
+                        self.dismissDelegate?.switchCurrentVC(shouldReload: true)
+                    }}
+                    }
+                }
+            }
+            
+        })
+
         
     }
     
