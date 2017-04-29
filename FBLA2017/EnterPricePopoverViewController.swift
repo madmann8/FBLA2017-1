@@ -18,7 +18,6 @@ class EnterPricePopoverViewController: UIViewController {
     @IBOutlet weak var moneyTextBox: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor=UIColor.blue
         moneyTextBox.delegate=self
         moneyTextBox.textAlignment = .right
         // Do any additional setup after loading the view.
