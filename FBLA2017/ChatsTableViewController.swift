@@ -16,83 +16,105 @@ class ChatsTableViewController: UITableViewController {
     let directCells=currentUser.directChats
     var loadedItemCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.itemChats.count)
     var loadedDirectCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.directChats.count)
-
-      override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        if !(itemCells.count<1||directCells.count<1){
+            let itemCell1:ChatsTableViewCell? = loadedItemCells[0]
+            let directCell2:ChatsTableViewCell? = loadedDirectCells[0]
+            if (itemCell1==nil) || (directCell2==nil) {
+                return 2
+            }
+        }
+        return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if section==0{
+            if itemCells.count<1{
+                return directCells.count
+            }
+            if let itemCell1:ChatsTableViewCell = itemCells[0]{
+                    return itemCells.count
+                
+            }
             return directCells.count
         }
-        else{
-            return itemCells.count
-        }
+        return itemCells.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section==0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as! ChatsTableViewCell
-            let cell2=directCells[indexPath.row]
+            let cell2=itemCells[indexPath.row]
             cell.mainImageView?.image=cell2.img
             cell.dateLabel.text=cell2.date
             cell.nameLabel.text=cell2.name
             cell.delegate=cell2
-            loadedDirectCells[indexPath.row]=cell2
-
-        
+            loadedItemCells[indexPath.row]=cell2
             
-  
+
+            
+
+            
+            
+            
             return cell2
         }
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as! ChatsTableViewCell
-        let cell2=itemCells[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as! ChatsTableViewCell
+        let cell2=directCells[indexPath.row]
         cell.mainImageView?.image=cell2.img
         cell.dateLabel.text=cell2.date
         cell.nameLabel.text=cell2.name
         cell.delegate=cell2
-        loadedItemCells[indexPath.row]=cell2
-       
+        loadedDirectCells[indexPath.row]=cell2
+        
         return cell2
-
+        
     }
-
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section==0{
-            return "User Chats"
+            if itemCells.count>0{
+                if let _:ChatsTableViewCell = itemCells[0]{
+                    return "Items"
+
+                }
+            }
+            return "Users"
         }
-        else{
-            return "Item Chats"
-        }
+        
+        return "Items"
+        
     }
     
 }
 extension ChatsTableViewController:ItemDelegate{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section==0){
+        if (indexPath.section==0 && directCells.count>0){
             let cell=loadedDirectCells[indexPath.row]
             let user=cell?.user
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "OtherUserProfile") as! OtherUserProfileViewController
+            let viewController = storyboard.instantiateViewController(withIdentifier: "OtherUserProfile") as! OtherUserProfileViewController
             viewController.loadOtherChat=true
             viewController.loginInUser=currentUser
             viewController.otherUser=user
@@ -106,7 +128,7 @@ extension ChatsTableViewController:ItemDelegate{
             item.delegate=self
             item.load(keyString: (cell?.itemPath)!)
             
-
+            
         }
     }
     
@@ -132,15 +154,15 @@ extension ChatsTableViewController:ItemDelegate{
         
         
         
-//        if let vc=self.currentVC{
-//            vc.dismiss(animated: false, completion: nil)
-//        }
-//        self.currentView = middle.view
-//        self.currentVC=middle
+        //        if let vc=self.currentVC{
+        //            vc.dismiss(animated: false, completion: nil)
+        //        }
+        //        self.currentView = middle.view
+        //        self.currentVC=middle
         self.present(middle, animated: false, completion: nil)
         
         
-
+        
     }
 }
 

@@ -14,9 +14,16 @@ protocol TranferDelegate {
     
 }
 
+
 class ChatsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var mainImageView: UIImageView!{
+        didSet{
+            self.mainImageView.layer.cornerRadius=10
+            mainImageView.clipsToBounds = true
+        }
+        
+    }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -40,6 +47,12 @@ class ChatsTableViewCell: UITableViewCell {
         }
     }
     var itemPath:String?=nil
+    
+    override func awakeFromNib() {
+        self.mainImageView.layer.cornerRadius=10
+        mainImageView.clipsToBounds = true
+
+    }
     
 
 
@@ -79,9 +92,12 @@ extension ChatsTableViewCell:UserDelegate,TranferDelegate{
                     self.delegate?.tranferImage(image: image!)
                     if let mainIV=self.mainImageView {
                         mainIV.image=image
+                        
+
                     }
                     else {
                         self.img=image
+
                     }
 
                    
@@ -93,3 +109,4 @@ extension ChatsTableViewCell:UserDelegate,TranferDelegate{
     
 
 }
+

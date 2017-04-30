@@ -100,6 +100,7 @@ class InfoContainerViewController: UIViewController {
             profileImage.isHidden=true
             ratingLabel.isHidden=true
             conditionTitleLabel.isHidden=true
+            titleLabel.isHidden=true
             costLabel.isHidden=true
             
             
@@ -245,6 +246,7 @@ class InfoContainerViewController: UIViewController {
                         ref.child("items").child(path).removeValue()
                         ref.child("coverImagePaths").child(coverPath).removeValue()
                         alertController.dismiss(animated: false, completion: nil)
+                                
                         self.dismissDelegate?.switchCurrentVC(shouldReload: true)
                     }}
                     }
