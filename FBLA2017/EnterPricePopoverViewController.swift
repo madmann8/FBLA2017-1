@@ -20,6 +20,10 @@ class EnterPricePopoverViewController: UIViewController {
         super.viewDidLoad()
         moneyTextBox.delegate=self
         moneyTextBox.textAlignment = .right
+        moneyTextBox.adjustsFontForContentSizeCategory=true
+        moneyTextBox.font=UIFont(name: "AvenirNext-Bold", size: 36)
+        self.view.layer.cornerRadius=10
+        moneyTextBox.becomeFirstResponder()
         // Do any additional setup after loading the view.
     }
     

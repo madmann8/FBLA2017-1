@@ -61,6 +61,7 @@ class UploadItemFormViewController:UIViewController{
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var priceButton: UIButton!
     @IBOutlet weak var conditionLabel: UILabel!
+    @IBOutlet weak var uploadButton: UIButton!
     
 
     var selectedCell: Int = 0
@@ -85,6 +86,8 @@ class UploadItemFormViewController:UIViewController{
         priceButton.layer.borderColor =
             UIColor.lightGray.cgColor
         categoryButton.setTitleColor(UIColor.lightGray, for: .normal)
+        let height=uploadButton.frame.height
+        uploadButton.layer.cornerRadius=height/2
 
         }
     
@@ -132,8 +135,10 @@ extension UploadItemFormViewController:UITextFieldDelegate{
             textField.text = nil
             textField.textColor = UIColor.black
         }
-        self.name=textField.text
         
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.name=textField.text
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool     {
         textField.resignFirstResponder()
@@ -270,37 +275,37 @@ extension UploadItemFormViewController{
         let x=Int(self.view.frame.width/2)-cellWidth/2
         let y=Int(self.view.frame.height/2)-cellWidth/2
         let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
-        let activityIndicator=NVActivityIndicatorView(frame: frame, type: .pacman, color: UIColor.red, padding: nil)
-        activityIndicator.startAnimating()
         
         var missingData=false
-        if (images.isEmpty || name==nil || cents==nil || about==nil || condition==nil || locationString==nil || category==nil) {
+        if (images[0]==nil || name==nil || cents==nil || about==nil || condition==nil || locationString==nil || category==nil) {
             missingData=true
-            if images.isEmpty {
+            if images[0]==nil {
                 self.showMessage("Missing images", type: .error)
             }
-            if name==nil{
+            else if name==nil{
                 self.showMessage("Missing name", type: .error)
             }
-            if cents==nil{
-                self.showMessage("Missing cents", type: .error)
+            else if cents==nil{
+                self.showMessage("Missing price", type: .error)
             }
-            if about==nil{
+            else if about==nil{
                 self.showMessage("Missing about", type: .error)
             }
-            if condition==nil{
+            else if condition==nil{
                 self.showMessage("Missing condition", type: .error)
             }
-            if locationString==nil{
+            else if locationString==nil{
                 self.showMessage("Missing location", type: .error)
             }
-            if category==nil{
+            else if category==nil{
                 self.showMessage("Missing category", type: .error)
             }
         }
         
-        //        if !missing?Data{
+                if !missingData{
         let itemRef=self.ref.child("items").childByAutoId()
+                    let activityIndicator=ActivityIndicatorLoader.startActivityIndicator(view: self.view)
+
         
         itemRef.child("title").setValue(self.name)
         itemRef.child("cents").setValue(self.cents)
@@ -323,7 +328,6 @@ extension UploadItemFormViewController{
         
         
         
-        self.view.addSubview(activityIndicator)
         
         var mainImagePaths=[String]()
         let trimedImages = images.filter { $0 != nil }
@@ -334,7 +338,6 @@ extension UploadItemFormViewController{
         _=imageNumberRef.put(coverImage!)
         for image in trimedImages{
             let imageNumberRef=uniqueItemImageRef.child("\(i).jpeg")
-            print(activityIndicator.isAnimating)
             mainImagePaths.append("\(imageNumberRef)")
             i+=1
             let imageData=image?.jpeg(.medium)
@@ -363,7 +366,7 @@ extension UploadItemFormViewController{
     }
     
     //UNcomment to prevent missing information uploads
-    //    }
+        }
 }
 
 
@@ -538,3 +541,5 @@ extension UIImage {
         return UIImageJPEGRepresentation(self, quality.rawValue)
     }
 }
+
+

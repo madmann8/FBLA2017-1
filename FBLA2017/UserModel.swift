@@ -40,7 +40,7 @@ class User:NSObject {
     public  func setupUser(id:String,isLoggedIn:Bool){
         var shouldLoad=true
         
-        if (currentUser.uid) != nil{
+        if (currentUser.uid) != nil && currentUser.uid==id{
             shouldLoad=false
         }
         if shouldLoad{

@@ -89,6 +89,11 @@ class InfoContainerViewController: UIViewController {
         })
         
         if (user?.uid==currentUser.uid){
+            print(user?.uid)
+            print (currentUser.uid)
+            print(user?.displayName)
+            print(currentUser.displayName)
+            
             soldButton.isHidden=false
             soldButton.layer.cornerRadius = soldButton.frame.height/2
             profileButton.isHidden=true

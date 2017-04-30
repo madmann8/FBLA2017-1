@@ -133,7 +133,8 @@
                         let coverImagePath = storage.reference(forURL: path)
                         coverImagePath.data(withMaxSize: 1 * 1024 * 1024) { data, error in
                             if let error = error {
-                                ErrorGenerator.presentError(view: self, type: "Cover Images", error: error)
+                                //Might want to add this back but gets error when making item
+//                                ErrorGenerator.presentError(view: self, type: "Cover Images", error: error)
                             } else {
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
@@ -166,7 +167,7 @@
     }
     
     func generateImages(keyString: String,inImageView:Bool, coverImageKey:String){
-        var activityIndicator=startActivityIndicator()
+        let activityIndicator=startActivityIndicator()
         
         
         
@@ -188,8 +189,8 @@
         let user=User()
         
         ref.observe(.value, with: {(snapshot) in
-            let value = snapshot.value as? NSDictionary, 
-            name = value?["title"] as? String ?? ""
+            let value = snapshot.value as? NSDictionary
+             name = value?["title"] as? String ?? ""
             about = value?["about"] as? String ?? ""
             categorey = value?["category"] as? String ?? ""
             latitudeString = value?["locationLatitude"] as? String ?? ""
@@ -241,7 +242,6 @@
                                     middle.keyString=keyString
                                     middle.nextItemDelegate=self
                                     middle.dismissDelegate=self
-                                    //This is just for image at index 0, not actyual compresed cover image
                                     middle.coverImagePath=path
                                     middle.user=user
                                     user.delegate=middle

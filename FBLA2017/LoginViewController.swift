@@ -12,6 +12,7 @@ import FirebaseAuth
 import GoogleSignIn
 import ChameleonFramework
 
+//TODO: CANT LOGIN FROM GOOGLE THEN SIWCT TO EMAIL
 
 class LoginViewController: UIViewController,GIDSignInUIDelegate {
     
