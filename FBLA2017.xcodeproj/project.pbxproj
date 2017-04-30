@@ -168,6 +168,7 @@
 		4819C1711EA294D7000853F7 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				4819C1831EA2D4D4000853F7 /* SellingCollectionViewController.swift */,
 				48B07F0D1EA151FE0068709A /* LoginViewController.swift */,
 				4819C1761EA2B015000853F7 /* EmailStackViewController.swift */,
 			);
@@ -180,7 +181,6 @@
 				4869245A1EA44C9000000052 /* OtherUserProfileViewController.swift */,
 				4819C1811EA2D40B000853F7 /* FavoritesCollectionViewController.swift */,
 				4819C1781EA2C9A1000853F7 /* ProfileViewController.swift */,
-				4819C1831EA2D4D4000853F7 /* SellingCollectionViewController.swift */,
 				48BF027F1EA390410071467E /* CurrentUser.swift */,
 			);
 			name = Profile;

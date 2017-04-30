@@ -28,14 +28,16 @@ class Item{
     var coverImagePath:String?=nil
     var userID:String?=nil
     var user:User?=nil
+    var uid:String?=nil
+    var deleted:Bool=false
     
     
     var delegate:ItemDelegate?=nil
     
     func load(keyString:String){
+        if !deleted{
         
-        
-        
+        self.uid=keyString
         var images=[UIImage]()
         var name:String?=nil
         var about:String?=nil
@@ -47,13 +49,17 @@ class Item{
         var condition:Int?=nil
         var userID:String?=nil
         
+        let ref=FIRDatabase.database().reference().child("coverImagePaths").child(keyString)
+        ref.observe(.value, with: {(snapshot) in
+            if let value = snapshot.value as? String{
+            self.coverImagePath=value
+            }
+        })
         
-        
-        
-        let ref = FIRDatabase.database().reference().child("items").child(keyString)
+        let ref1 = FIRDatabase.database().reference().child("items").child(keyString)
         let user=User()
         
-        ref.observe(.value, with: {(snapshot) in
+        ref1.observe(.value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
             name = value?["title"] as? String ?? ""
             about = value?["about"] as? String ?? ""
@@ -69,7 +75,7 @@ class Item{
             
         })
         let storage = FIRStorage.storage()
-        ref.child("imagePaths").observe(.value, with: { (snapshot) in
+        ref1.child("imagePaths").observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 var i=0
                 for snapshot in snapshots {
@@ -108,5 +114,6 @@ class Item{
             }
             
         })
+        }
     }
     }

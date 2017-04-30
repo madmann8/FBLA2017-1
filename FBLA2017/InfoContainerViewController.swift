@@ -33,8 +33,9 @@ class InfoContainerViewController: UIViewController {
     var longitudeString:String?=nil
     var addressString:String?=nil
     var coverImageKey:String?=nil
+    var item:Item?=nil
     var cents:Int?=nil
-    {
+            {
         didSet{
             let num:Double=Double(cents!)/100.0
             let formatter = NumberFormatter()
@@ -62,6 +63,7 @@ class InfoContainerViewController: UIViewController {
     var user:User?=nil
     
     var activitityIndicator:NVActivityIndicatorView?=nil
+    
     
     @IBOutlet weak var favoriteButton: UIButton!
     override func viewDidLoad() {
@@ -241,14 +243,24 @@ class InfoContainerViewController: UIViewController {
                             if path2==self.coverImagePath{
                         
                         ref.child("users").child(self.user!.uid).child("coverImages").child(path).removeValue()
+                                ref.child("users").child(self.user!.uid).child("itemChats").child(path).removeValue()
+
                         let path:String=self.keyString!
-                        let coverPath:String=self.coverImageKey!
                         ref.child("items").child(path).removeValue()
-                        ref.child("coverImagePaths").child(coverPath).removeValue()
+                        ref.child("coverImagePaths").child(self.keyString!).removeValue()
                         alertController.dismiss(animated: false, completion: nil)
-                                
-                        self.dismissDelegate?.switchCurrentVC(shouldReload: true)
-                    }}
+                                if let dd:FirstContainerViewController=self.dismissDelegate as! FirstContainerViewController{
+                                    if dd.dismissDelegate==nil{
+                                        self.item?.deleted=true
+                                        self.dismissDelegate?.switchCurrentVC(shouldReload: false)
+                                    }
+                                    else {
+                                        self.dismissDelegate?.switchCurrentVC(shouldReload: true)
+
+                                    }
+                                }
+                    break
+                            }}
                     }
                 }
             }

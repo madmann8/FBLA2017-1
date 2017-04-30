@@ -19,6 +19,7 @@ class LogOutViewController: UIViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
+        currentUser=User()
         
         
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "Login") {

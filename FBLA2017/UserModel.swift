@@ -38,6 +38,7 @@ class User:NSObject {
     var delegate:UserDelegate?=nil
     
     public  func setupUser(id:String,isLoggedIn:Bool){
+        if id != ""{
         var shouldLoad=true
         
         if (currentUser.uid) != nil && currentUser.uid==id{
@@ -89,6 +90,7 @@ class User:NSObject {
              locationManager=currentUser.locationManager
         }
         
+    }
     }
 }
 
@@ -207,7 +209,9 @@ extension User {
             
             
             var ref: FIRDatabaseReference!
-            ref = FIRDatabase.database().reference().child("users").child(uid!)
+            if let uid=uid{
+                if uid != ""{
+            ref = FIRDatabase.database().reference().child("users").child(uid)
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
                 let imageURL = value?["imageURL"] as? String ?? "❌"
@@ -236,8 +240,8 @@ extension User {
                 
             })
             
-        
-            
+                }
+            }
             
         }
     }

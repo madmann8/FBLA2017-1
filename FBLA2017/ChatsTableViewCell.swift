@@ -41,6 +41,7 @@ class ChatsTableViewCell: UITableViewCell {
     var date:String?=nil
     var name:String?=nil
     var img:UIImage?=nil
+    var item:Item?=nil
     var coverImagePath:String?=nil{
         didSet{
             loadCoverImage()

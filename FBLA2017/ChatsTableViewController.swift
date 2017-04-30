@@ -86,6 +86,7 @@ class ChatsTableViewController: UITableViewController {
         cell.dateLabel.text=cell2.date
         cell.nameLabel.text=cell2.name
         cell.delegate=cell2
+        cell2.item=cell.item
         loadedDirectCells[indexPath.row]=cell2
         
         return cell2
@@ -127,6 +128,7 @@ extension ChatsTableViewController:ItemDelegate{
             let item=Item()
             item.delegate=self
             item.load(keyString: (cell?.itemPath)!)
+            cell?.item=item
             
             
         }
@@ -149,8 +151,9 @@ extension ChatsTableViewController:ItemDelegate{
         middle.keyString=item.keyString
         middle.nextItemDelegate=nil
         middle.dismissDelegate=nil
-        middle.coverImagePath=nil
+        middle.coverImagePath=item.coverImagePath
         middle.user=item.user
+        middle.item=item
         
         
         

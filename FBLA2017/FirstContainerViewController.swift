@@ -32,6 +32,7 @@ class FirstContainerViewController:PulleyViewController {
     var userDelegate:UserDelegate?=nil
     var tempUserImage:UIImage?=nil
     var coverImageKey:String?=nil
+    var item:Item?=nil
  
     
     
@@ -76,6 +77,7 @@ class FirstContainerViewController:PulleyViewController {
                 middle.keyString=keyString
                 middle.coverImageKey=coverImageKey
                 middle.user=user
+                middle.item=self.item
                 self.userDelegate=middle
                 if let tempUserImage=tempUserImage{
                     middle.tempUserImage=tempUserImage
@@ -89,13 +91,9 @@ class FirstContainerViewController:PulleyViewController {
             if let vc:ChatContainerViewController=segue.destination as? ChatContainerViewController{
                 vc.keyString=keyString
                 vc.otherUser=self.user
-//                vc.senderId=FIRAuth.auth()?.currentUser?.uid
-//                vc.senderDisplayName=vc.senderId
                 let frame=self.view.frame
                 let newFrame=CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height-self.topInset)
                 vc.frame=newFrame
-                print(newFrame.height)
-                print(vc.frame?.height)
             
 
             
