@@ -44,9 +44,11 @@ class EnterPricePopoverViewController: UIViewController {
      }
      */
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        moneyTextBox.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
     @IBAction func okButtonPressed(_ sender: Any) {
+        moneyTextBox.endEditing(true)
         let textView=self.moneyTextBox
         if let text=textView?.text{
             if !text.isEmpty{
@@ -68,6 +70,8 @@ class EnterPricePopoverViewController: UIViewController {
         dismiss(animated: true, completion: nil)
 
     }
+    
+    
     
 }
 
