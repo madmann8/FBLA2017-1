@@ -63,6 +63,7 @@ class UploadItemFormViewController:UIViewController{
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var priceButton: UIButton!
     @IBOutlet weak var conditionLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     
 
     var selectedCell: Int = 0
@@ -84,11 +85,11 @@ class UploadItemFormViewController:UIViewController{
         priceButton.backgroundColor = .clear
         priceButton.layer.cornerRadius = 5
         priceButton.layer.borderWidth = 0.75
-        priceButton.layer.borderColor = UIColor.lightGray.cgColor
+        priceButton.layer.borderColor =
+            UIColor.lightGray.cgColor
+        categoryLabel.textColor = UIColor.lightGray
 
-        
-        
-          }
+        }
     
     
 }
@@ -241,18 +242,20 @@ extension UploadItemFormViewController {
     @IBAction func categoryButtonPressed(_ sender: UIButton) {
         let popoverView=PickerDialog.getPicker()
         let pickerData = [
-            ["value": "school", "display": "School Supplies"],
-            ["value": "electronics", "display": "Electronics"],
-            ["value": "hg", "display": "Home and Garden"],
-            ["value": "clothing", "display": "Clothing"],
-            ["value": "games", "display": "Sports and Games"],
-            ["value": "other", "display": "Other"],
+            ["value": "School Supplies", "display": "School Supplies"],
+            ["value":"Electronics", "display": "Electronics"],
+            ["value": "Home and Garden", "display": "Home and Garden"],
+            ["value": "Clothing", "display": "Clothing"],
+            ["value": "Sports and Games", "display": "Sports and Games"],
+            ["value": "Other", "display": "Other"],
             
         ]
         popoverView.show("Select Category", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", options: pickerData, selected:  "kilometer") {
             (value) -> Void in
             
-            print("Unit selected: \(value)")
+            self.categoryLabel.text=value
+            self.categoryLabel.textColor=UIColor.black
+            self.category=value
         }
     }
 }
@@ -472,12 +475,9 @@ class ImageCollectionViewCell:UICollectionViewCell,ImagePickerDelegate{
 
         }
         imagePicker.dismiss(animated: true, completion: nil)
-
-        //
     }
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
         imagePicker.dismiss(animated: true, completion: nil)
-        
     }
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         //

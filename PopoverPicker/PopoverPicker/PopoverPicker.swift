@@ -32,7 +32,7 @@ public class PickerDialog: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
     fileprivate var selectedPickerValue: String?
     fileprivate var callback:            PickerCallback?
     
-    public var itemsFont: UIFont?
+    public var itemsFont: UIFont=UIFont(name: "AvenirNext-Medium", size: 17)!
     
     /* Overrides */
     init() {
