@@ -20,6 +20,7 @@ import GSMessages
 import NVActivityIndicatorView
 import Firebase
 import FirebaseStorage
+import PopoverPicker
 
 
 
@@ -238,18 +239,21 @@ extension UploadItemFormViewController:SelectLocationProtocol{
 extension UploadItemFormViewController {
     
     @IBAction func categoryButtonPressed(_ sender: UIButton) {
-        print("HERE")
-//        if (!hasSetup){
-//            self.pickerView.anchorView = self.categoryButton
-//            self.pickerView.dataSource = ["Electronics", "Cars and Motors", "Sports and Games", "Home and Garden", "Fashion and Accessories", "Movies, Books and Music", "Other"]
-//            self.pickerView.selectionAction = { [unowned self] (index: Int, item: String) in
-//                self.category=item
-//                self.categoryButton.setTitle(item, for: .normal)
-//            }
-//            hasSetup=true
-//        }
-//        pickerView.show()
-//        
+        let popoverView=PickerDialog.getPicker()
+        let pickerData = [
+            ["value": "school", "display": "School Supplies"],
+            ["value": "electronics", "display": "Electronics"],
+            ["value": "hg", "display": "Home and Garden"],
+            ["value": "clothing", "display": "Clothing"],
+            ["value": "games", "display": "Sports and Games"],
+            ["value": "other", "display": "Other"],
+            
+        ]
+        popoverView.show("Select Category", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", options: pickerData, selected:  "kilometer") {
+            (value) -> Void in
+            
+            print("Unit selected: \(value)")
+        }
     }
 }
 

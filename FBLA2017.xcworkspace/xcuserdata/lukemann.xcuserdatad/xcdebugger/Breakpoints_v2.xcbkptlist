@@ -682,12 +682,12 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/UserModel.swift"
-                  timestampString = "515129449.308983"
+                  timestampString = "515202969.840906"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "211"
                   endingLineNumber = "211"
-                  offsetFromSymbolStart = "3088">
+                  offsetFromSymbolStart = "3682">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -697,12 +697,12 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/UserModel.swift"
-                  timestampString = "515129449.312961"
+                  timestampString = "515202969.844954"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "212"
                   endingLineNumber = "212"
-                  offsetFromSymbolStart = "40">
+                  offsetFromSymbolStart = "31">
                </Location>
             </Locations>
          </BreakpointContent>
