@@ -311,9 +311,6 @@ extension User:CLLocationManagerDelegate{
             let value = snapshot.value as? NSDictionary
             self.city=city
             ref.child("locationString").setValue(self.city)
-            ref.child("oluLat").setValue(city)
-            ref.child("oluLong").setValue(lat)
-            ref.child("oluLong").setValue(long)
 
 
         })

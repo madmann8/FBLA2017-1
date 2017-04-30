@@ -32,7 +32,6 @@ class UploadItemFormViewController:UIViewController{
     var hasSetup=false
     
     
-    let categories = ["test1", "test2", "test3", "test4", "test5"]
     
     var name:String?=nil
     var images=[UIImage?](repeatElement(nil, count: 5))
@@ -60,10 +59,8 @@ class UploadItemFormViewController:UIViewController{
     @IBOutlet weak var conditionSlider: UISlider!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var categoryButton: UIButton!
-    @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var priceButton: UIButton!
     @IBOutlet weak var conditionLabel: UILabel!
-    @IBOutlet weak var categoryLabel: UILabel!
     
 
     var selectedCell: Int = 0
@@ -87,7 +84,7 @@ class UploadItemFormViewController:UIViewController{
         priceButton.layer.borderWidth = 0.75
         priceButton.layer.borderColor =
             UIColor.lightGray.cgColor
-        categoryLabel.textColor = UIColor.lightGray
+        categoryButton.setTitleColor(UIColor.lightGray, for: .normal)
 
         }
     
@@ -188,6 +185,8 @@ extension UploadItemFormViewController:EnterPriceDelegate{
     func retrievePrice(price: Int,string:String) {
         self.cents=price
         priceButton.setTitle(string, for: .normal)
+        priceButton.setTitleColor(UIColor.black, for: .normal)
+        priceButton.layer.borderColor=UIColor.black.cgColor
     }
     
     
@@ -253,8 +252,8 @@ extension UploadItemFormViewController {
         popoverView.show("Select Category", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", options: pickerData, selected:  "kilometer") {
             (value) -> Void in
             
-            self.categoryLabel.text=value
-            self.categoryLabel.textColor=UIColor.black
+            self.categoryButton.setTitle(value, for: .normal)
+            self.categoryButton.setTitleColor(UIColor.black, for: .normal)
             self.category=value
         }
     }
