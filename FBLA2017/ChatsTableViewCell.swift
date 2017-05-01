@@ -26,6 +26,8 @@ class ChatsTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var background: UIView!
+
     
     
     var user:User?=nil
@@ -46,8 +48,8 @@ class ChatsTableViewCell: UITableViewCell {
     var itemPath:String?=nil
     
     override func awakeFromNib() {
-        self.contentView.layer.cornerRadius = 10
-        cell.contentView.clipsToBounds = true
+        self.background.layer.cornerRadius = 10
+        self.background.layer.masksToBounds = true
         self.mainImageView.layer.cornerRadius=10
         mainImageView.clipsToBounds = true
 

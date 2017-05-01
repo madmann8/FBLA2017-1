@@ -44,9 +44,7 @@ return 2
         }
         return 1
     }
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 15
-    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if section != 0{
@@ -71,6 +69,7 @@ return 2
             cell.nameLabel.text=cell2.name
             cell.delegate=cell2
             loadedItemCells[indexPath.row]=cell2
+            
                       return cell2
         }
         
@@ -100,6 +99,8 @@ return 2
         return "Users"
         }
 }
+
+
 extension ChatsTableViewController:ItemDelegate{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section==0 && directCells.count>0){

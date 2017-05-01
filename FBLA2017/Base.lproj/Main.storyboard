@@ -1817,9 +1817,13 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V1z-Qv-SqU" id="7VD-EA-GbI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJB-Du-TXD">
+                                            <rect key="frame" x="8" y="8" width="359" height="92"/>
+                                            <color key="backgroundColor" red="0.92146831750869751" green="0.92162638902664185" blue="0.92145842313766479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxi-5d-gdn">
                                             <rect key="frame" x="115" y="14" width="252" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1844,8 +1848,15 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="bJB-Du-TXD" secondAttribute="bottom" id="Sqw-u1-Z2A"/>
+                                        <constraint firstItem="bJB-Du-TXD" firstAttribute="top" secondItem="7VD-EA-GbI" secondAttribute="topMargin" id="fFo-St-hIK"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bJB-Du-TXD" secondAttribute="trailing" id="hj0-Er-mQv"/>
+                                        <constraint firstItem="bJB-Du-TXD" firstAttribute="leading" secondItem="7VD-EA-GbI" secondAttribute="leadingMargin" id="ljS-il-zBd"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="background" destination="bJB-Du-TXD" id="2iV-ax-lPw"/>
                                     <outlet property="dateLabel" destination="qyV-Ny-jNg" id="5Vy-YC-uPW"/>
                                     <outlet property="mainImageView" destination="Xke-Ts-DSy" id="MDD-bw-PP0"/>
                                     <outlet property="nameLabel" destination="Dxi-5d-gdn" id="7nX-Mr-ITq"/>
@@ -1860,7 +1871,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JhR-TZ-Mg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2145" y="2772"/>
+            <point key="canvasLocation" x="2150" y="2794"/>
         </scene>
         <!--Favorites Collection View Controller-->
         <scene sceneID="haS-zN-wTF">

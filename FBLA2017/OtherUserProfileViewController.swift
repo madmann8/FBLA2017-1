@@ -46,6 +46,11 @@ class OtherUserProfileViewController: UIViewController {
         if let exists=loadOtherChat{
             self.performSegue(withIdentifier: "toChat", sender: nil)
         }
+        else {
+            
+            //INSERT CODE FOR EMOVING EXIT BUTTOON HERE
+        }
+        
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.masksToBounds = false
         profileImageView.layer.borderColor = UIColor.flatGrayDark.cgColor
