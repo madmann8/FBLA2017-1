@@ -14,6 +14,15 @@ import UIKit
 
 protocol UserDelegate {
     func imageLoaded(image: UIImage, user: User, index:Int?)
+    
+}
+
+protocol ChatImageLoadedDelegate {
+    func chatUserImageLoaded()
+}
+
+protocol ChatsTableCanReloadDelegate {
+    func refreshChats()
 }
 
 
@@ -31,6 +40,8 @@ class User:NSObject {
     var cellIndex:Int?=nil
     var itemChar:Bool?=nil
     var hasLoaded=false
+    var chatsCount=0
+    var chatsCountIncrementer=0
     
     
     
@@ -38,6 +49,8 @@ class User:NSObject {
     var locationManager:CLLocationManager!
     
     var delegate:UserDelegate?=nil
+    var chatImageLoadedDelegate:ChatImageLoadedDelegate?=nil
+    var chatTableCanReloadDelegate:ChatsTableCanReloadDelegate?=nil
     var hasLoadedDelegate:TableHasLoadedDelegate? = nil
     
     public  func setupUser(id:String,isLoggedIn:Bool){
@@ -339,6 +352,27 @@ extension User:UserDelegate{
         var doneLoading=false
         var i=0
         let ref = FIRDatabase.database().reference().child("users").child(keyString).child("directChats")
+        let ref2 = FIRDatabase.database().reference().child("users").child(keyString).child("itemChats")
+        
+        ref2.observeSingleEvent(of: .value, with: { (snapshot) in
+            for child in snapshot.children{
+                self.chatsCount+=1
+            }
+        })
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            for child in snapshot.children{
+                self.chatsCount+=1
+            }
+        })
+
+        
+        
+        
+        
+        
+        
+        
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -356,6 +390,7 @@ extension User:UserDelegate{
                 let cell=ChatsTableViewCell()
                 var tempUser = User()
                 tempUser.delegate=cell
+                tempUser.chatImageLoadedDelegate=self
                 tempUser.cellIndex=i
                 
                 if user1==currentUser.uid{
@@ -368,6 +403,7 @@ extension User:UserDelegate{
                 cell.isGlobal=false
                 cell.chatPath=path
                 cell.date=date
+                
                 cell.name=tempUser.displayName
                 self.directChats.append(cell)
                 if doneLoading{
@@ -376,7 +412,7 @@ extension User:UserDelegate{
                     doneLoading=true
 
                 }
-                i+=1
+//                i+=1
 
                 
             }) { (error) in
@@ -390,12 +426,10 @@ extension User:UserDelegate{
         }
         
 
+
         
-        
-        
-        
+      
         var e=0
-        let ref2 = FIRDatabase.database().reference().child("users").child(keyString).child("itemChats")
         ref2.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -416,6 +450,8 @@ extension User:UserDelegate{
                         cell.date=date
                         cell.name = name
                         cell.itemPath=path
+                        cell.chatImageLoadedDelegate=self
+                        
                         self.itemChats.append(cell)
                         if doneLoading{
                             self.hasLoadedDelegate?.hasLoaded()
@@ -423,7 +459,7 @@ extension User:UserDelegate{
                             doneLoading=true
                             
                         }
-                        i+=1
+//                        i+=1
                         
                         
                     }) { (error) in
@@ -447,10 +483,34 @@ extension User:UserDelegate{
     }
     
     
+    func doneLoading(){
+        //
+    }
+    
+    
 }
 
 
+extension User:ChatImageLoadedDelegate{
+    func chatUserImageLoaded(){
+         chatsCountIncrementer+=1
+        if chatsCountIncrementer>=self.chatsCount{
+           self.chatTableCanReloadDelegate?.refreshChats()
+        }
 
+   //
+    }
+    func resetLoadedCell(){
+         self.itemChats=[ChatsTableViewCell]()
+        self.directChats=[ChatsTableViewCell]()
+        self.chatsCountIncrementer=0
+        self.chatsCount=0
+        getChatsCells(keyString: self.uid)
+        
+        
+        
+    }
+}
 
 extension User {
     func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
@@ -465,7 +525,9 @@ extension User {
             DispatchQueue.main.sync() {
                 self.profileImage=image
                 self.delegate?.imageLoaded(image: image,user: self, index: self.cellIndex)
+                self.chatImageLoadedDelegate?.chatUserImageLoaded()
                 return
+                
                 
             }
             }.resume()

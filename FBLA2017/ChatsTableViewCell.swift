@@ -41,6 +41,8 @@ class ChatsTableViewCell: UITableViewCell {
     var user:User?=nil
     
     var delegate:TranferDelegate?=nil
+    var chatImageLoadedDelegate:ChatImageLoadedDelegate?=nil
+
     
     var tableViewDelegate:ChatsTableViewLoadedDelgate?=nil{
         didSet{
@@ -127,12 +129,16 @@ extension ChatsTableViewCell:UserDelegate,TranferDelegate{
                         self.img=image
                         if !self.hasLoaded{
                             self.tableViewDelegate?.cellLoaded()
+                             self.chatImageLoadedDelegate?.chatUserImageLoaded()
+
                             self.hasLoaded=true
                         }                    }
                     else {
                         self.img=image
                         if !self.hasLoaded{
                             self.tableViewDelegate?.cellLoaded()
+                            self.chatImageLoadedDelegate?.chatUserImageLoaded()
+
                             self.hasLoaded=true
                         }
                     }

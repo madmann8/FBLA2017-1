@@ -25,6 +25,10 @@ class ChatsTableViewController: UITableViewController,TableHasLoadedDelegate {
     var cellsToLoad=currentUser.itemChats.count+currentUser.directChats.count
     var cellsLoaded=0
     
+
+
+var refresher=UIRefreshControl()
+    
     var activityIndicator:NVActivityIndicatorView?=nil
     
     var loadCells=false
@@ -36,8 +40,10 @@ class ChatsTableViewController: UITableViewController,TableHasLoadedDelegate {
     }
     
     override func viewDidLoad() {
-        currentUser.hasLoadedDelegate=self
         super.viewDidLoad()
+        currentUser.hasLoadedDelegate=self
+refresher.addTarget(self, action:#selector(refreshData), for: .valueChanged)
+    self.tableView.addSubview(refresher)
         self.tableView.separatorStyle = .none
         if loadCells == false {
             if let activityIndicator=self.activityIndicator{
@@ -64,6 +70,7 @@ return 2
         return 1
     }
     
+
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -222,7 +229,7 @@ extension ChatsTableViewController:ItemDelegate{
 
 
 
-extension ChatsTableViewController:ChatsTableViewLoadedDelgate{
+extension ChatsTableViewController:ChatsTableViewLoadedDelgate,ChatsTableCanReloadDelegate{
     func cellLoaded(){
         cellsLoaded+=1
         if cellsLoaded>=cellsToLoad{
@@ -232,8 +239,23 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate{
     
     
     func doneLoading(){
-        loadCells=true
         activityIndicator?.stopAnimating()
+//        refresher.removeFromSuperview()
+        loadCells=true
+//        self.tableView.reloadData()
+        viewDidLoad()
+//        self.viewWillAppear(true)
+    }
+    
+    
+    func refreshData(){
+        currentUser.chatTableCanReloadDelegate=self
+        currentUser.resetLoadedCell()
+    }
+    func refreshChats(){
+              refresher.endRefreshing()
+        loadCells=true
+        self.tableView.reloadData()
         viewDidLoad()
         self.viewWillAppear(true)
     }

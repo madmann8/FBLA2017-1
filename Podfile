@@ -24,4 +24,5 @@ pod 'GoogleSignIn'
   pod 'FBSDKLoginKit'
 pod "Hero"
 pod 'QuiltView'
+pod 'PullToBounce'
 end
