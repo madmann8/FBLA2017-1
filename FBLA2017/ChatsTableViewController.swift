@@ -5,11 +5,16 @@
 //  Created by Luke Mann on 4/20/17.
 //  Copyright © 2017 Luke Mann. All rights reserved.
 //
+protocol TableHasLoadedDelegate{
+    func hasLoaded()
+}
+
 
 import UIKit
 import NVActivityIndicatorView
+import ChameleonFramework
 //Outlets cause an error, need to define delegate/datasource
-class ChatsTableViewController: UITableViewController {
+class ChatsTableViewController: UITableViewController,TableHasLoadedDelegate {
     
     var itemKeys=[String]()
     var directChatKeys=[String]()
@@ -17,18 +22,32 @@ class ChatsTableViewController: UITableViewController {
     let directCells=currentUser.directChats
     var loadedItemCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.itemChats.count)
     var loadedDirectCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.directChats.count)
+    var cellsToLoad=currentUser.itemChats.count+currentUser.directChats.count
+    var cellsLoaded=0
     
     var activityIndicator:NVActivityIndicatorView?=nil
     
+    var loadCells=false
+    
+    func hasLoaded(){
+        self.tableView.reloadData()
+        self.viewWillAppear(true)
+        viewDidLoad()
+    }
+    
     override func viewDidLoad() {
+        currentUser.hasLoadedDelegate=self
         super.viewDidLoad()
         self.tableView.separatorStyle = .none
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+        if loadCells == false {
+            if let activityIndicator=self.activityIndicator{
+                
+            }
+            else{
+        activityIndicator=ActivityIndicatorLoader.startActivityIndicator(view: self.view)
+            }}
+
+            }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -44,9 +63,12 @@ return 2
         }
         return 1
     }
+    
+
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        
         if section != 0{
             if itemCells.count<1{
                 return directCells.count
@@ -64,23 +86,61 @@ return 2
             let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as! ChatsTableViewCell
             print(indexPath.row)
             let cell2=itemCells[indexPath.row]
+            cell.hasLoaded=cell2.hasLoaded
             cell.mainImageView?.image=cell2.img
             cell.dateLabel.text=cell2.date
             cell.nameLabel.text=cell2.name
             cell.delegate=cell2
+            cell2.item=cell.item
             loadedItemCells[indexPath.row]=cell2
             
-                      return cell2
+            
+            if !loadCells{
+                cell.background.backgroundColor=UIColor.white
+                if cell.img == nil && cell.mainImageView.image == nil && cell.hasLoaded == false{
+                    cell.tableViewDelegate=self
+                    cell2.tableViewDelegate=self
+
+                }
+                else {
+                    cellLoaded()
+                }
+            }
+            else {
+                cell.background.backgroundColor=UIColor.flatGray
+            }
+            
+            
+            
+            return cell2
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as! ChatsTableViewCell
         let cell2=directCells[indexPath.row]
+        cell.hasLoaded=cell2.hasLoaded
         cell.mainImageView?.image=cell2.img
         cell.dateLabel.text=cell2.date
         cell.nameLabel.text=cell2.name
         cell.delegate=cell2
         cell2.item=cell.item
         loadedDirectCells[indexPath.row]=cell2
+        
+        
+        if !loadCells{
+            cell.background.backgroundColor=UIColor.white
+            if cell.img == nil && cell.hasLoaded == false{
+                cell.tableViewDelegate=self
+                cell2.tableViewDelegate=self
+            }
+            else {
+                cellLoaded()
+            }
+        }
+        else {
+            cell.background.backgroundColor=UIColor.flatGray
+        }
+        
+        
         
         return cell2
         
@@ -157,5 +217,25 @@ extension ChatsTableViewController:ItemDelegate{
         
         
     }
+    
 }
 
+
+
+extension ChatsTableViewController:ChatsTableViewLoadedDelgate{
+    func cellLoaded(){
+        cellsLoaded+=1
+        if cellsLoaded>=cellsToLoad{
+            doneLoading()
+        }
+    }
+    
+    
+    func doneLoading(){
+        loadCells=true
+        activityIndicator?.stopAnimating()
+        viewDidLoad()
+        self.viewWillAppear(true)
+    }
+    
+    }

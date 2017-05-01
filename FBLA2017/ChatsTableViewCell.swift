@@ -1,4 +1,4 @@
-//
+ //
 //  ChatsTableViewCell.swift
 //  FBLA2017
 //
@@ -15,6 +15,12 @@ protocol TranferDelegate {
 }
 
 
+protocol ChatsTableViewLoadedDelgate {
+    func cellLoaded()
+    
+}
+
+
 class ChatsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var mainImageView: UIImageView!{
@@ -27,12 +33,25 @@ class ChatsTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var background: UIView!
+    
+    var hasLoaded=false
 
     
     
     var user:User?=nil
     
     var delegate:TranferDelegate?=nil
+    
+    var tableViewDelegate:ChatsTableViewLoadedDelgate?=nil{
+        didSet{
+            if let img=self.img{
+                if !hasLoaded{
+                self.tableViewDelegate?.cellLoaded()
+                    hasLoaded=true
+                }
+        }
+        }
+    }
     
     var isGlobal:Bool?=nil
     var chatPath:String?=nil
@@ -64,9 +83,15 @@ extension ChatsTableViewCell:UserDelegate,TranferDelegate{
     func tranferImage(image: UIImage) {
         if let mainIV=self.mainImageView {
             mainIV.image=image
+            self.img=image
+
         }
         else {
             self.img?=image
+            if !hasLoaded{
+                self.tableViewDelegate?.cellLoaded()
+                hasLoaded=true
+            }
         }
     }
 
@@ -74,10 +99,16 @@ extension ChatsTableViewCell:UserDelegate,TranferDelegate{
         delegate?.tranferImage(image: image)
         if let mainIV=self.mainImageView {
             mainIV.image=image
+            self.img=image
+            if !hasLoaded{
+                self.tableViewDelegate?.cellLoaded()
+                hasLoaded=true
+            }
         }
         else {
             self.img=image
         }
+        
 
     }
     
@@ -93,12 +124,17 @@ extension ChatsTableViewCell:UserDelegate,TranferDelegate{
                     self.delegate?.tranferImage(image: image!)
                     if let mainIV=self.mainImageView {
                         mainIV.image=image
-                        
-
-                    }
+                        self.img=image
+                        if !self.hasLoaded{
+                            self.tableViewDelegate?.cellLoaded()
+                            self.hasLoaded=true
+                        }                    }
                     else {
                         self.img=image
-
+                        if !self.hasLoaded{
+                            self.tableViewDelegate?.cellLoaded()
+                            self.hasLoaded=true
+                        }
                     }
 
                    

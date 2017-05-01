@@ -32,10 +32,13 @@ class User:NSObject {
     var itemChar:Bool?=nil
     var hasLoaded=false
     
+    
+    
     var geoCoder:CLGeocoder!
     var locationManager:CLLocationManager!
     
     var delegate:UserDelegate?=nil
+    var hasLoadedDelegate:TableHasLoadedDelegate? = nil
     
     public  func setupUser(id:String,isLoggedIn:Bool){
         if id != ""{
@@ -333,6 +336,7 @@ extension User:CLLocationManagerDelegate{
 //Chat tableview stuff
 extension User:UserDelegate{
     func getChatsCells(keyString:String){
+        var doneLoading=false
         var i=0
         let ref = FIRDatabase.database().reference().child("users").child(keyString).child("directChats")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -365,9 +369,13 @@ extension User:UserDelegate{
                 cell.chatPath=path
                 cell.date=date
                 cell.name=tempUser.displayName
-                print(date)
-                print(cell.date)
                 self.directChats.append(cell)
+                if doneLoading{
+                    self.hasLoadedDelegate?.hasLoaded()
+                }else{
+                    doneLoading=true
+
+                }
                 i+=1
 
                 
@@ -408,8 +416,13 @@ extension User:UserDelegate{
                         cell.date=date
                         cell.name = name
                         cell.itemPath=path
-                        print(cell.date)
                         self.itemChats.append(cell)
+                        if doneLoading{
+                            self.hasLoadedDelegate?.hasLoaded()
+                        }else{
+                            doneLoading=true
+                            
+                        }
                         i+=1
                         
                         
