@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 //Outlets cause an error, need to define delegate/datasource
 class ChatsTableViewController: UITableViewController {
     
@@ -17,9 +18,11 @@ class ChatsTableViewController: UITableViewController {
     var loadedItemCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.itemChats.count)
     var loadedDirectCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.directChats.count)
     
+    var activityIndicator:NVActivityIndicatorView?=nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tableView.separatorStyle = .none
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -37,47 +40,38 @@ class ChatsTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         if !(itemCells.count<1||directCells.count<1){
-            let itemCell1:ChatsTableViewCell? = loadedItemCells[0]
-            let directCell2:ChatsTableViewCell? = loadedDirectCells[0]
-            if (itemCell1==nil) || (directCell2==nil) {
-                return 2
-            }
+return 2
         }
         return 1
     }
-    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 15
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if section==0{
+        if section != 0{
             if itemCells.count<1{
                 return directCells.count
             }
-            if let itemCell1:ChatsTableViewCell = itemCells[0]{
-                    return itemCells.count
-                
+            if directCells.count<0{
+                return itemCells.count
             }
-            return directCells.count
+            return itemCells.count
         }
-        return itemCells.count
+        return directCells.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section==0{
+        if indexPath.section != 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as! ChatsTableViewCell
+            print(indexPath.row)
             let cell2=itemCells[indexPath.row]
             cell.mainImageView?.image=cell2.img
             cell.dateLabel.text=cell2.date
             cell.nameLabel.text=cell2.name
             cell.delegate=cell2
             loadedItemCells[indexPath.row]=cell2
-            
-
-            
-
-            
-            
-            
-            return cell2
+                      return cell2
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as! ChatsTableViewCell
@@ -94,20 +88,17 @@ class ChatsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section==0{
-            if itemCells.count>0{
-                if let _:ChatsTableViewCell = itemCells[0]{
-                    return "Items"
-
-                }
+        if section != 0{
+            if itemCells.count<1{
+                return "Users"
             }
-            return "Users"
+            if directCells.count<0{
+                return "Items"
+            }
+            return "Items"
         }
-        
-        return "Items"
-        
-    }
-    
+        return "Users"
+        }
 }
 extension ChatsTableViewController:ItemDelegate{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -128,6 +119,7 @@ extension ChatsTableViewController:ItemDelegate{
             let item=Item()
             item.delegate=self
             item.load(keyString: (cell?.itemPath)!)
+            activityIndicator=ActivityIndicatorLoader.startActivityIndicator(view: self.view)
             cell?.item=item
             
             
@@ -154,14 +146,11 @@ extension ChatsTableViewController:ItemDelegate{
         middle.coverImagePath=item.coverImagePath
         middle.user=item.user
         middle.item=item
+        middle.openWithChat=true
         
         
         
-        //        if let vc=self.currentVC{
-        //            vc.dismiss(animated: false, completion: nil)
-        //        }
-        //        self.currentView = middle.view
-        //        self.currentVC=middle
+       activityIndicator?.stopAnimating()
         self.present(middle, animated: false, completion: nil)
         
         

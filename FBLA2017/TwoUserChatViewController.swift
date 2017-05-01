@@ -52,6 +52,10 @@ class TwoUserChatViewController: UIViewController {
                     chatPath=otherUID+LIUID
                 }
                 vc.channelRef=FIRDatabase.database().reference().child("chats").child("\(chatPath)")
+                vc.userRef1=userRef1
+                vc.userRef2=userRef2
+                vc.loggedInUser=loggedInUser
+                vc.otherUser=otherUser
                 
                 vc.messageRef=vc.channelRef?.child("messages")
                 

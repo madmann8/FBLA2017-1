@@ -122,8 +122,9 @@
         
         
         var ref:FIRDatabaseReference
-        if let user=user {
-            ref = FIRDatabase.database().reference().child("users").child((user.uid)!).child("likedCoverImages")
+        let userT=user
+        if let user=user,let uid=user.uid {
+            ref = FIRDatabase.database().reference().child("users").child(uid).child("likedCoverImages")
         }
         else { ref = FIRDatabase.database().reference().child("users").child((currentUser.uid)!).child("likedCoverImages")}
         

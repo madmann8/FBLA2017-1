@@ -33,6 +33,7 @@ class FirstContainerViewController:PulleyViewController {
     var tempUserImage:UIImage?=nil
     var coverImageKey:String?=nil
     var item:Item?=nil
+    var openWithChat:Bool=false
  
     
     
@@ -47,6 +48,9 @@ class FirstContainerViewController:PulleyViewController {
         super.viewDidLoad()
         self.delegate=self
         setNeedsSupportedDrawerPositionsUpdate()
+        if openWithChat{
+            self.setDrawerPosition(position: .open)
+        }
 //        user.setupUser(id: userID!, isLoggedIn: false)
         // Do any additional setup after loading the view.
     }

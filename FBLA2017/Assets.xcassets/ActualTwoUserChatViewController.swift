@@ -74,8 +74,6 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
         super.viewDidAppear(animated)
         self.view.frame=self.frame ?? self.view.frame
         observeTyping()
-        channelRef?.child("user1").setValue(loggedInUser?.uid)
-        channelRef?.child("user2").setValue(otherUser?.uid)
         
     }
     
@@ -124,6 +122,9 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
             if let id = messageData["senderId"] as String!, let name = messageData["senderName"] as String!, let text = messageData["text"] as String!, text.characters.count > 0 {
                 self.userRef1?.setValue("👍")
                 self.userRef2?.setValue("👍")
+                self.channelRef?.child("user1").setValue(self.loggedInUser?.uid)
+                self.channelRef?.child("user2").setValue(self.otherUser?.uid)
+
                 
                 self.addMessage(withId: id, name: name, text: text)
                 self.finishReceivingMessage()
@@ -132,6 +133,9 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
                 let photoURL = messageData["photoURL"] as String! {
                 self.userRef1?.setValue("👍")
                 self.userRef2?.setValue("👍")
+                self.channelRef?.child("user1").setValue(self.loggedInUser?.uid)
+                self.channelRef?.child("user2").setValue(self.otherUser?.uid)
+
                 if let mediaItem = JSQPhotoMediaItem(maskAsOutgoing: id == self.senderId) {
                     self.addPhotoMessage(withId: id, key: snapshot.key, mediaItem: mediaItem)
                     if photoURL.hasPrefix("gs://") {

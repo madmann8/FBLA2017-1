@@ -28,11 +28,7 @@ class ChatsTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     
     
-    var user:User?=nil{
-        didSet{
-            //
-        }
-    }
+    var user:User?=nil
     
     var delegate:TranferDelegate?=nil
     
@@ -50,6 +46,8 @@ class ChatsTableViewCell: UITableViewCell {
     var itemPath:String?=nil
     
     override func awakeFromNib() {
+        self.contentView.layer.cornerRadius = 10
+        cell.contentView.clipsToBounds = true
         self.mainImageView.layer.cornerRadius=10
         mainImageView.clipsToBounds = true
 
