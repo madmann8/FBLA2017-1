@@ -25,7 +25,8 @@ class OtherUserProfileViewController: UIViewController {
     var locationManager:CLLocationManager!
     var loginInUser:User?=nil
     var otherUser:User?=nil
-    var loadOtherChat:Bool?=nil
+    var loadOtherChat=false
+    var hasLoaded=false
     
     
     @IBAction func sellingOrFavoritesToggle(_ sender: UISegmentedControl) {
@@ -44,9 +45,7 @@ class OtherUserProfileViewController: UIViewController {
         profileImageView.image=otherUser?.profileImage
         nameLabel.text=otherUser?.displayName
         cityLabel.text=otherUser?.city
-        if let exists=loadOtherChat{
-            self.performSegue(withIdentifier: "toChat", sender: nil)
-        }
+ 
    
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.masksToBounds = false
@@ -56,6 +55,13 @@ class OtherUserProfileViewController: UIViewController {
         cityLabel.textColor=UIColor.flatNavyBlue
         nameLabel.textColor=UIColor.flatNavyBlue
 
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if loadOtherChat && !hasLoaded{
+            self.performSegue(withIdentifier: "toChat", sender: nil)
+            hasLoaded=true
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,7 +81,9 @@ class OtherUserProfileViewController: UIViewController {
             vc.loggedInUser=loginInUser
                 vc.otherUser=otherUser
             vc.messageRef=vc.channelRef?.child("messages")
-                vc.hideButton=true
+                    vc.hideButton=false
+
+
             
             
             }

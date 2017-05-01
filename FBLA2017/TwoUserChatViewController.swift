@@ -32,7 +32,7 @@ class TwoUserChatViewController: UIViewController {
     var loggedInUser:User?=nil
     var otherUser:User?=nil
 
-    var hideButton:Bool=false
+    var hideButton:Bool=true
     
     var messageRef: FIRDatabaseReference? = nil
     var channelRef: FIRDatabaseReference? = nil
