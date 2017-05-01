@@ -20,6 +20,7 @@ class OtherUserProfileViewController: UIViewController {
     @IBOutlet weak var favoritesContainerView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var exitButtton: UIButton!
     var geoCoder:CLGeocoder!
     var locationManager:CLLocationManager!
     var loginInUser:User?=nil
@@ -46,11 +47,7 @@ class OtherUserProfileViewController: UIViewController {
         if let exists=loadOtherChat{
             self.performSegue(withIdentifier: "toChat", sender: nil)
         }
-        else {
-            
-            //INSERT CODE FOR EMOVING EXIT BUTTOON HERE
-        }
-        
+   
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.masksToBounds = false
         profileImageView.layer.borderColor = UIColor.flatGrayDark.cgColor
@@ -78,6 +75,7 @@ class OtherUserProfileViewController: UIViewController {
             vc.loggedInUser=loginInUser
                 vc.otherUser=otherUser
             vc.messageRef=vc.channelRef?.child("messages")
+                vc.hideButton=true
             
             
             }

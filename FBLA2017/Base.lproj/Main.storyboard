@@ -1871,7 +1871,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JhR-TZ-Mg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2150" y="2794"/>
+            <point key="canvasLocation" x="2144.8000000000002" y="2770.6146926536735"/>
         </scene>
         <!--Favorites Collection View Controller-->
         <scene sceneID="haS-zN-wTF">
@@ -2058,6 +2058,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="cityLabel" destination="hge-Ff-G0l" id="9JC-TL-R6z"/>
+                        <outlet property="exitButtton" destination="CF9-Cx-Lr4" id="83U-tQ-CJG"/>
                         <outlet property="favoritesContainerView" destination="vzC-0V-5rh" id="wO6-Eh-aRt"/>
                         <outlet property="nameLabel" destination="zMi-Ig-Znq" id="wAu-oD-JCq"/>
                         <outlet property="profileImageView" destination="prW-Cd-Ma1" id="kwc-KS-PQ2"/>
@@ -2111,10 +2112,13 @@
                             <constraint firstItem="ita-JY-4SM" firstAttribute="leading" secondItem="3c3-a5-4Dq" secondAttribute="leading" id="zpI-Gi-cgq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="exitButton" destination="v0w-yu-kuW" id="ypq-uC-AIt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2IU-fZ-hoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3749.5999999999999" y="717.84107946026995"/>
+            <point key="canvasLocation" x="3447" y="650"/>
         </scene>
         <!--Actual Two User Chat View Controller-->
         <scene sceneID="w0w-M2-dbd">
