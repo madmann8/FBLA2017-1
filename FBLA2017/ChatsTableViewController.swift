@@ -18,8 +18,8 @@ class ChatsTableViewController: UITableViewController,TableHasLoadedDelegate {
     
     var itemKeys=[String]()
     var directChatKeys=[String]()
-    let itemCells=currentUser.itemChats
-    let directCells=currentUser.directChats
+    var itemCells=currentUser.itemChats
+    var directCells=currentUser.directChats
     var loadedItemCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.itemChats.count)
     var loadedDirectCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.directChats.count)
     var cellsToLoad=currentUser.itemChats.count+currentUser.directChats.count
@@ -42,6 +42,7 @@ var refresher=UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
         currentUser.hasLoadedDelegate=self
+        refreshData()
 refresher.addTarget(self, action:#selector(refreshData), for: .valueChanged)
     self.tableView.addSubview(refresher)
         self.tableView.separatorStyle = .none
@@ -103,7 +104,6 @@ return 2
             
             
             if !loadCells{
-                cell.background.backgroundColor=UIColor.white
                 if cell.img == nil && cell.mainImageView.image == nil && cell.hasLoaded == false{
                     cell.tableViewDelegate=self
                     cell2.tableViewDelegate=self
@@ -112,9 +112,6 @@ return 2
                 else {
                     cellLoaded()
                 }
-            }
-            else {
-                cell.background.backgroundColor=UIColor.flatGray
             }
             
             
@@ -134,7 +131,6 @@ return 2
         
         
         if !loadCells{
-            cell.background.backgroundColor=UIColor.white
             if cell.img == nil && cell.hasLoaded == false{
                 cell.tableViewDelegate=self
                 cell2.tableViewDelegate=self
@@ -142,9 +138,6 @@ return 2
             else {
                 cellLoaded()
             }
-        }
-        else {
-            cell.background.backgroundColor=UIColor.flatGray
         }
         
         
@@ -255,8 +248,14 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate,ChatsTableCanRelo
     func refreshChats(){
               refresher.endRefreshing()
         loadCells=true
+        itemCells=currentUser.itemChats
+        directCells=currentUser.directChats
+         loadedItemCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.itemChats.count)
+         loadedDirectCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.directChats.count)
+         cellsToLoad=currentUser.itemChats.count+currentUser.directChats.count
+         cellsLoaded=0
+
         self.tableView.reloadData()
-        viewDidLoad()
         self.viewWillAppear(true)
     }
     
