@@ -18,6 +18,7 @@ import FirebaseAuth
 
 class TwoUserChatViewController: UIViewController {
 
+    @IBOutlet weak var exitButton: UIButton!
 
     var frame:CGRect?=nil
     
@@ -31,10 +32,15 @@ class TwoUserChatViewController: UIViewController {
     var loggedInUser:User?=nil
     var otherUser:User?=nil
 
-
+    var hideButton:Bool=false
     
     var messageRef: FIRDatabaseReference? = nil
     var channelRef: FIRDatabaseReference? = nil
+    override func viewDidLoad() {
+        if hideButton{
+            exitButton.isHidden=true
+        }
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
