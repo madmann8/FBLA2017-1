@@ -51,7 +51,7 @@ class EmailStackViewController: UIViewController {
     
     func upload() {
         if !nameTextView.isHidden{
-            FIRAuth.auth()?.createUser(withEmail: emailTextView.text!, password: emailTextView.text!) { (user, error) in
+            FIRAuth.auth()?.createUser(withEmail: emailTextView.text!, password: passwordTextView.text!) { (user, error) in
                 if let error=error {
                     ErrorGenerator.presentError(view: self.largeVC!, type: "Sign Up", error: error)
                 }
@@ -70,8 +70,9 @@ class EmailStackViewController: UIViewController {
                 
         }
         else {
-            FIRAuth.auth()?.signIn(withEmail: self.emailTextView.text!, password: self.passwordTextView.text!) { (user, error) in
-                if let error=error {
+            print(self.passwordTextView.text!)
+            FIRAuth.auth()?.signIn(withEmail: emailTextView.text!, password: passwordTextView.text!) { (user, error) in
+                     if let error=error {
                   ErrorGenerator.presentError(view: self.largeVC!, type: "Login", error: error)
 
                 }

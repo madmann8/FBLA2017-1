@@ -34,9 +34,9 @@ var refresher=UIRefreshControl()
     var loadCells=false
     
     func hasLoaded(){
-        self.tableView.reloadData()
-        self.viewWillAppear(true)
-        viewDidLoad()
+//        self.tableView.reloadData()
+//        self.viewWillAppear(true)
+//        viewDidLoad()
     }
     
     override func viewDidLoad() {
@@ -46,13 +46,6 @@ var refresher=UIRefreshControl()
 refresher.addTarget(self, action:#selector(refreshData), for: .valueChanged)
     self.tableView.addSubview(refresher)
         self.tableView.separatorStyle = .none
-        if loadCells == false {
-            if let activityIndicator=self.activityIndicator{
-                
-            }
-            else{
-            }}
-
             }
     
     override func didReceiveMemoryWarning() {
@@ -251,17 +244,24 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate,ChatsTableCanRelo
         currentUser.resetLoadedCell()
     }
     func refreshChats(){
-              refresher.endRefreshing()
         loadCells=true
+        self.itemCells.removeAll()
+        self.directCells.removeAll()
+            loadedItemCells.removeAll()
+        loadedDirectCells.removeAll()
+        self.tableView.reloadData()
+        viewWillAppear(false)
         itemCells=currentUser.itemChats
         directCells=currentUser.directChats
          loadedItemCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.itemChats.count)
          loadedDirectCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.directChats.count)
          cellsToLoad=currentUser.itemChats.count+currentUser.directChats.count
          cellsLoaded=0
-
         self.tableView.reloadData()
-        self.viewWillAppear(false)
+
+        refresher.endRefreshing()
+
+        self.viewWillAppear(true)
     }
     
     }
