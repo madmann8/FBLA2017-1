@@ -9,6 +9,10 @@ protocol TableHasLoadedDelegate{
     func hasLoaded()
 }
 
+protocol ClearCellDelegate{
+    func clear()
+    func unClear()
+}
 
 import UIKit
 import NVActivityIndicatorView
@@ -25,11 +29,12 @@ class ChatsTableViewController: UITableViewController,TableHasLoadedDelegate {
     var cellsToLoad=currentUser.itemChats.count+currentUser.directChats.count
     var cellsLoaded=0
     
+    var cellsToClear=[ClearCellDelegate]()
+    var activityIndicator:NVActivityIndicatorView?=nil
 
 
 var refresher=UIRefreshControl()
     
-    var activityIndicator:NVActivityIndicatorView?=nil
     
     var loadCells=false
     
@@ -44,6 +49,9 @@ var refresher=UIRefreshControl()
         currentUser.hasLoadedDelegate=self
 //        refreshData()
 refresher.addTarget(self, action:#selector(refreshData), for: .valueChanged)
+        refresher.beginRefreshing()
+ activityIndicator=ActivityIndicatorLoader.startActivityIndicator(view: self.view)
+        refreshData()
     self.tableView.addSubview(refresher)
         self.tableView.separatorStyle = .none
             }
@@ -57,6 +65,9 @@ refresher.addTarget(self, action:#selector(refreshData), for: .valueChanged)
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        if (itemCells.count<1 && directCells.count<1){
+            return 0
+        }
         if !(itemCells.count<1||directCells.count<1){
 return 2
         }
@@ -101,6 +112,7 @@ return 2
                 }
             }
             
+            cellsToClear.append(cell)
             
             
             return cell2
@@ -127,7 +139,8 @@ return 2
             }
         }
         
-        
+        cellsToClear.append(cell)
+
         
         return cell2
         
@@ -216,6 +229,9 @@ extension ChatsTableViewController:ItemDelegate{
         
         
     }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
 }
 
@@ -240,28 +256,40 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate,ChatsTableCanRelo
     
     
     func refreshData(){
-        currentUser.chatTableCanReloadDelegate=self
+             currentUser.chatTableCanReloadDelegate=self
+        
         currentUser.resetLoadedCell()
     }
     func refreshChats(){
+
         loadCells=true
         self.itemCells.removeAll()
         self.directCells.removeAll()
             loadedItemCells.removeAll()
         loadedDirectCells.removeAll()
-        self.tableView.reloadData()
-        viewWillAppear(false)
+        for cell in cellsToClear{
+            cell.clear()
+        }
+
+        cellsToLoad=0
+        cellsLoaded=0
+        tableView.reloadData()
+
         itemCells=currentUser.itemChats
         directCells=currentUser.directChats
          loadedItemCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.itemChats.count)
          loadedDirectCells=[ChatsTableViewCell?](repeating: nil, count:currentUser.directChats.count)
          cellsToLoad=currentUser.itemChats.count+currentUser.directChats.count
-         cellsLoaded=0
+         cellsLoaded=cellsToLoad
+        cellsToClear.removeAll()
         self.tableView.reloadData()
+//
+self.activityIndicator?.stopAnimating()
+        qrefresher.endRefreshing()
 
-        refresher.endRefreshing()
 
+//
         self.viewWillAppear(true)
-    }
+          }
     
     }

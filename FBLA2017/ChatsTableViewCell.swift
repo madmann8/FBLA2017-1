@@ -152,4 +152,21 @@ extension ChatsTableViewCell:UserDelegate,TranferDelegate{
     
 
 }
+ 
+ extension ChatsTableViewCell: ClearCellDelegate{
+    func clear(){
+        removeFromSuperview()
+//        for view in self.subviews{
+//            view.isHidden=true
+//            removeFromSuperview()
+//        }
+
+
+    }
+    func unClear(){
+        for view in self.subviews{
+            view.isHidden=false
+        }
+    }
+ }
 
