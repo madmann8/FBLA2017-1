@@ -1,4 +1,4 @@
-//
+ //
 //  CurrentUserModel.swift
 //  FBLA2017
 //
@@ -54,7 +54,7 @@ class User:NSObject {
     var hasLoadedDelegate:TableHasLoadedDelegate? = nil
     
     public  func setupUser(id:String,isLoggedIn:Bool){
-        if id != ""{
+              if id != ""{
         var shouldLoad=true
         
         if (currentUser.uid) != nil && currentUser.uid==id{
@@ -123,6 +123,13 @@ extension User {
                         ref.observeSingleEvent(of: .value, with: { (snapshot) in
                             // Get user value
                             let value = snapshot.value as? NSDictionary
+                            
+                            self.displayName = value?["displayName"] as? String ?? "❌"
+                            if self.displayName == "❌"{
+                                ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
+                                self.displayName=(FIRAuth.auth()?.currentUser?.displayName)!
+                            }
+
                             var imageURL = value?["imageURL"] as? String ?? "❌"
                             if imageURL == "❌"{
                                 ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
@@ -140,11 +147,6 @@ extension User {
                                 self.email=(FIRAuth.auth()?.currentUser?.email)!
                             }
                             
-                            self.displayName = value?["displayName"] as? String ?? "❌"
-                            if self.displayName == "❌"{
-                                ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
-                                self.displayName=(FIRAuth.auth()?.currentUser?.displayName)!
-                            }
                             
                             let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
                             let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
@@ -175,6 +177,12 @@ extension User {
                         ref.observeSingleEvent(of: .value, with: { (snapshot) in
                             // Get user value
                             let value = snapshot.value as? NSDictionary
+                            var displayName = value?["displayName"] as? String ?? "❌"
+                            if displayName == "❌"{
+                                ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
+                                displayName=(FIRAuth.auth()?.currentUser?.displayName)!
+                            }
+
                             var imageURL:String = FIRAuth.auth()?.currentUser?.photoURL?.absoluteString ?? "❌"
                             if imageURL == "❌"{
                                 ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
@@ -197,11 +205,6 @@ extension User {
                             }
                             
                             
-                            var displayName = value?["displayName"] as? String ?? "❌"
-                            if displayName == "❌"{
-                                ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
-                                displayName=(FIRAuth.auth()?.currentUser?.displayName)!
-                            }
                             
                             let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
                             let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
@@ -230,10 +233,10 @@ extension User {
             ref = FIRDatabase.database().reference().child("users").child(uid)
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
+                self.displayName = value?["displayName"] as? String ?? "❌"
                 let imageURL = value?["imageURL"] as? String ?? "❌"
                 self.downloadedFrom(link: imageURL)
                 self.email = value?["email"] as? String ?? "❌"
-                self.displayName = value?["displayName"] as? String ?? "❌"
                 let imagePathsSnapshot=snapshot.childSnapshot(forPath: "coverImages")
                 let favoritesPathSnapshot=snapshot.childSnapshot(forPath: "likedCoverImages")
                 if let coverArray=imagePathsSnapshot.value as? NSDictionary{
@@ -493,9 +496,14 @@ extension User:UserDelegate{
 
 extension User:ChatImageLoadedDelegate{
     func chatUserImageLoaded(){
+
          chatsCountIncrementer+=1
         if chatsCountIncrementer>=self.chatsCount{
+            for cell in directChats{
+                cell.name=cell.user?.displayName
+            }
            self.chatTableCanReloadDelegate?.refreshChats()
+
         }
 
    //

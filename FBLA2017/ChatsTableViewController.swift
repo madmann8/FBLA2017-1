@@ -42,7 +42,7 @@ var refresher=UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
         currentUser.hasLoadedDelegate=self
-        refreshData()
+//        refreshData()
 refresher.addTarget(self, action:#selector(refreshData), for: .valueChanged)
     self.tableView.addSubview(refresher)
         self.tableView.separatorStyle = .none
@@ -51,7 +51,6 @@ refresher.addTarget(self, action:#selector(refreshData), for: .valueChanged)
                 
             }
             else{
-        activityIndicator=ActivityIndicatorLoader.startActivityIndicator(view: self.view)
             }}
 
             }
@@ -77,20 +76,15 @@ return 2
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        if section != 0{
-            if itemCells.count<1{
-                return directCells.count
-            }
-            if directCells.count<0{
-                return itemCells.count
-            }
+        if getSectionType(section: section) == .item {
             return itemCells.count
         }
         return directCells.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section != 0{
+        let type=getSectionType(section: indexPath.section)
+        if type == .item{
             let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as! ChatsTableViewCell
             print(indexPath.row)
             let cell2=itemCells[indexPath.row]
@@ -110,7 +104,7 @@ return 2
 
                 }
                 else {
-                    cellLoaded()
+//                    cellLoaded()
                 }
             }
             
@@ -136,7 +130,7 @@ return 2
                 cell2.tableViewDelegate=self
             }
             else {
-                cellLoaded()
+//                cellLoaded()
             }
         }
         
@@ -147,19 +141,31 @@ return 2
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section != 0{
-            if itemCells.count<1{
+        if getSectionType(section: section) == .user{
                 return "Users"
             }
-            if directCells.count<0{
-                return "Items"
+                    return "Items"
+    }
+    
+    func getSectionType(section:Int) ->SectionType{
+        if section == 0{
+            if itemCells.count<1{
+                return .user
             }
-            return "Items"
+            if directCells.count<1{
+                return .item
+            }
+            return .item
         }
-        return "Users"
-        }
+        return .user
+
+    }
 }
 
+enum SectionType{
+    case user
+    case item
+}
 
 extension ChatsTableViewController:ItemDelegate{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -230,13 +236,12 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate,ChatsTableCanRelo
         }
     }
     
-    
     func doneLoading(){
         activityIndicator?.stopAnimating()
 //        refresher.removeFromSuperview()
         loadCells=true
 //        self.tableView.reloadData()
-        viewDidLoad()
+//        viewDidLoad()
 //        self.viewWillAppear(true)
     }
     
@@ -256,7 +261,7 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate,ChatsTableCanRelo
          cellsLoaded=0
 
         self.tableView.reloadData()
-        self.viewWillAppear(true)
+        self.viewWillAppear(false)
     }
     
     }
