@@ -33,6 +33,8 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
         // ...
         handle = FIRAuth.auth()?.addStateDidChangeListener() { (auth, user) in
             if user != nil {
+                print(user?.displayName)
+                print(user?.uid)
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
                 let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
