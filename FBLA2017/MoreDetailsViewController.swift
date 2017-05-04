@@ -40,6 +40,7 @@ class MoreDetailsViewController: UIViewController {
 
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupViews()
         
     }

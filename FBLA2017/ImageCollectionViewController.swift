@@ -44,7 +44,7 @@
         let layout = self.collectionView?.collectionViewLayout as! QuiltView
         layout.scrollDirection = UICollectionViewScrollDirection.vertical
         switch Device.size() {
-        case .screen4_7Inch:layout.itemBlockSize  = CGSize(width: 59,height: 59)
+        case .screen4_7Inch:layout.itemBlockSize  = CGSize(width: 62,height: 62)
         case .screen5_5Inch: layout.itemBlockSize = CGSize(width: 67,height: 67)
         default: layout.itemBlockSize = CGSize(width: 67,height: 67)
             
