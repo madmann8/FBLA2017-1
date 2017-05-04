@@ -74,6 +74,16 @@ return 2
         return 1
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.backgroundView?.backgroundColor=UIColor.flatNavyBlue
+        header.backgroundColor=UIColor.flatNavyBlue
+        header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
+
+
+    }
+    
 
 
 

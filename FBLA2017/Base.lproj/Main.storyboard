@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -518,7 +519,7 @@
                                     <segue destination="rbS-oZ-j3X" kind="embed" identifier="toEmailContainer" id="dfp-Yv-29K"/>
                                 </connections>
                             </containerView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0V-xy-R7x">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0V-xy-R7x">
                                 <rect key="frame" x="16" y="443" width="343" height="46"/>
                                 <color key="backgroundColor" red="0.20190328360000001" green="0.28701490159999998" blue="0.36788973209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal">
@@ -1797,15 +1798,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YhB-wI-Lm7">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YhB-wI-Lm7">
+                                <rect key="frame" x="0.0" y="28" width="375" height="590"/>
                                 <connections>
                                     <segue destination="djh-V4-E8A" kind="embed" id="ihD-sy-5Y0"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YhB-wI-Lm7" firstAttribute="bottom" secondItem="W0t-Qv-TKZ" secondAttribute="top" id="1XJ-Wg-FKL"/>
+                            <constraint firstItem="YhB-wI-Lm7" firstAttribute="leading" secondItem="F9K-Jh-cdC" secondAttribute="leading" id="1mP-VH-ywh"/>
+                            <constraint firstItem="YhB-wI-Lm7" firstAttribute="top" secondItem="E3j-Eq-RgS" secondAttribute="bottom" constant="8" symbolic="YES" id="ncZ-Q0-smh"/>
+                            <constraint firstAttribute="trailing" secondItem="YhB-wI-Lm7" secondAttribute="trailing" id="xag-HW-TKK"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Chats" image="ChatsIcon" selectedImage="ChatsIcon" id="h1o-Mk-vwf"/>
                 </viewController>
@@ -1818,7 +1824,7 @@
             <objects>
                 <tableViewController id="djh-V4-E8A" customClass="ChatsTableViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="108" sectionHeaderHeight="28" sectionFooterHeight="28" id="kma-Wc-fND">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="590"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -1832,26 +1838,20 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJB-Du-TXD">
                                             <rect key="frame" x="8" y="8" width="359" height="91"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xke-Ts-DSy">
-                                                    <rect key="frame" x="8" y="6" width="80" height="80"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="8ea-JY-AAq"/>
-                                                        <constraint firstAttribute="height" constant="80" id="uT3-ET-3aQ"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                            </subviews>
                                             <color key="backgroundColor" red="0.92146831750869751" green="0.92162638902664185" blue="0.92145842313766479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="Xke-Ts-DSy" firstAttribute="centerY" secondItem="bJB-Du-TXD" secondAttribute="centerY" id="7Ya-SS-L89"/>
-                                                <constraint firstItem="Xke-Ts-DSy" firstAttribute="leading" secondItem="bJB-Du-TXD" secondAttribute="leadingMargin" id="e49-6K-RFG"/>
-                                            </constraints>
                                         </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xke-Ts-DSy">
+                                            <rect key="frame" x="16" y="13" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="8ea-JY-AAq"/>
+                                                <constraint firstAttribute="height" constant="80" id="uT3-ET-3aQ"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxi-5d-gdn">
                                             <rect key="frame" x="115" y="14" width="252" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1868,10 +1868,12 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Xke-Ts-DSy" firstAttribute="leading" secondItem="bJB-Du-TXD" secondAttribute="leadingMargin" id="PGm-9i-kof"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="bJB-Du-TXD" secondAttribute="bottom" id="Sqw-u1-Z2A"/>
                                         <constraint firstItem="bJB-Du-TXD" firstAttribute="top" secondItem="7VD-EA-GbI" secondAttribute="topMargin" id="fFo-St-hIK"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="bJB-Du-TXD" secondAttribute="trailing" id="hj0-Er-mQv"/>
                                         <constraint firstItem="bJB-Du-TXD" firstAttribute="leading" secondItem="7VD-EA-GbI" secondAttribute="leadingMargin" id="ljS-il-zBd"/>
+                                        <constraint firstItem="Xke-Ts-DSy" firstAttribute="centerY" secondItem="7VD-EA-GbI" secondAttribute="centerY" id="tXg-c4-Uwd"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

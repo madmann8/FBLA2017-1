@@ -22,7 +22,7 @@ class EnterPricePopoverViewController: UIViewController {
         moneyTextBox.textAlignment = .right
         moneyTextBox.adjustsFontForContentSizeCategory=true
         moneyTextBox.font=UIFont(name: "AvenirNext-Bold", size: 36)
-        self.view.layer.cornerRadius=10
+     
         moneyTextBox.becomeFirstResponder()
         // Do any additional setup after loading the view.
     }
@@ -30,6 +30,12 @@ class EnterPricePopoverViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.layer.cornerRadius = 10
+        self.view.layer.masksToBounds = true
+
     }
     
     var delegate:EnterPriceDelegate? = nil

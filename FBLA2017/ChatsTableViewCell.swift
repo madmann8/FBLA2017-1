@@ -70,6 +70,8 @@ class ChatsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         self.background.layer.cornerRadius = 10
+        self.background.backgroundColor=UIColor.flatWatermelon
+        self.background.alpha=0.7
         self.background.layer.masksToBounds = true
         self.mainImageView.layer.cornerRadius=10
         mainImageView.clipsToBounds = true

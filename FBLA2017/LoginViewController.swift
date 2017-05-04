@@ -27,6 +27,8 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        submitButton.layer.cornerRadius = submitButton.frame.height/2
+
         
         
         GIDSignIn.sharedInstance().uiDelegate = self
