@@ -12,6 +12,7 @@ import FirebaseAuth
 import GoogleSignIn
 import ChameleonFramework
 
+
 //TODO: CANT LOGIN FROM GOOGLE THEN SIWCT TO EMAIL
 
 class LoginViewController: UIViewController,GIDSignInUIDelegate {
@@ -19,6 +20,9 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
     var handle: FIRAuthStateDidChangeListenerHandle?
 
     var stackVC:EmailStackViewController?=nil
+    
+    @IBOutlet weak var submitButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +37,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
         // ...
         handle = FIRAuth.auth()?.addStateDidChangeListener() { (auth, user) in
             if user != nil {
-                print(user?.displayName)
-                print(user?.uid)
+
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
                 let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
@@ -50,11 +53,19 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
     
     @IBAction func emailSwitchChanged(_ sender: UISegmentedControl) {
         stackVC?.updateVisible(signUp: sender.selectedSegmentIndex==1)
+        if submitButton.title(for: .normal)=="Sign Up"{
+            submitButton.setTitle("Log In", for: .normal)
+        }
+        else {
+            submitButton.setTitle("Sign Up", for: .normal)
+        }
+
     }
     
     
     @IBAction func submitButtonPressed() {
         stackVC?.upload()
+        
     }
     
     
@@ -109,4 +120,5 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
         
     }
 }
- 
+
+

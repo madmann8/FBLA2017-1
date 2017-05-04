@@ -41,6 +41,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         self.user=currentUser
         profileImageView.image=user?.profileImage
+        let image=user?.profileImage
         nameLabel.text=user?.displayName
         cityLabel.text=user?.city
         profileImageView.layer.borderWidth = 1
