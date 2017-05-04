@@ -119,6 +119,7 @@
 		4888023B1EAD2F2A00BCB9D4 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		4888023F1EAD39A800BCB9D4 /* FontList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontList.swift; sourceTree = "<group>"; };
 		489473511EA3129000949659 /* LogOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOutViewController.swift; sourceTree = "<group>"; };
+		489BA6741EBBA37000506F28 /* FBLA2017.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = FBLA2017.entitlements; sourceTree = "<group>"; };
 		489CA76C1E9C2D630021ECAE /* SDKAPIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKAPIKey.swift; sourceTree = "<group>"; };
 		48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadItemFormViewController.swift; sourceTree = "<group>"; };
 		48B07F0D1EA151FE0068709A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +129,6 @@
 		48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoContainerViewController.swift; sourceTree = "<group>"; };
 		48BF027D1EA38FFD0071467E /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		48BF027F1EA390410071467E /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
-		48C154401EA3728100844E3D /* FBLA2017.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FBLA2017.entitlements; sourceTree = "<group>"; };
 		48C535CC1EA07941007062FE /* FirstContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstContainerViewController.swift; sourceTree = "<group>"; };
 		48CD95091EACEF110051C4EC /* ErrorGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorGenerator.swift; path = ../ErrorGenerator.swift; sourceTree = "<group>"; };
 		48D356461E99B3D100FBF6B3 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -207,6 +207,7 @@
 		481DD8CB1E98354E005765AF /* FBLA2017 */ = {
 			isa = PBXGroup;
 			children = (
+				489BA6741EBBA37000506F28 /* FBLA2017.entitlements */,
 				481DD8CC1E98354E005765AF /* AppDelegate.swift */,
 				481DD8D21E98354E005765AF /* Main.storyboard */,
 				488802431EAD3A0D00BCB9D4 /* Misc View Controllers */,
@@ -214,7 +215,6 @@
 				488802411EAD39C800BCB9D4 /* Models */,
 				4831098E1EA869BE0069208C /* Chats */,
 				48D5F3FE1EA7170D00FD0526 /* Chat */,
-				48C154401EA3728100844E3D /* FBLA2017.entitlements */,
 				4819C17A1EA2D382000853F7 /* Profile */,
 				4819C1711EA294D7000853F7 /* Login */,
 				486D222E1E9CA7E400EA2BDC /* Support Files */,
