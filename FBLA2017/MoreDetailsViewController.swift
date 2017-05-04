@@ -11,6 +11,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import ChameleonFramework
+import Device
 
 class MoreDetailsViewController: UIViewController {
     var categorey:String?=nil
@@ -24,8 +25,8 @@ class MoreDetailsViewController: UIViewController {
     var dollarString:String?=nil
     var user:User?=nil
     var profileImageView:UIImageView?=nil
-
-
+    
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -37,21 +38,22 @@ class MoreDetailsViewController: UIViewController {
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileButton: UIButton!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         
+        
     }
     
-
-
+    
+    
     func setupViews(){
-
+        
         if
             let name=name,
-//            let category = categorey,
+            //            let category = categorey,
             let about=about,
             let latitude=latitudeString,
             let longitude=longitudeString,
@@ -61,7 +63,7 @@ class MoreDetailsViewController: UIViewController {
             let condition=condition{
             titleLabel.text=name
             costLabel.text="Asking Price: \(dollars)"
-//            categoryLabel.text=category
+            //            categoryLabel.text=category
             locationLabel.text=locationString
             descriptionLabel.text=about
             ratingLabel.text="Condition:\(String(describing: condition))/5"
@@ -87,9 +89,9 @@ class MoreDetailsViewController: UIViewController {
             
             mapView.addAnnotation(information)
             
-//            if let button=profilePicButton{
-//                self.profileButton=button
-//            }
+            //            if let button=profilePicButton{
+            //                self.profileButton=button
+            //            }
             
             
         }
@@ -107,32 +109,42 @@ class MoreDetailsViewController: UIViewController {
         profileImage.layer.borderColor = UIColor.flatGrayDark.cgColor
         profileImage.layer.cornerRadius = profileImage.frame.height/2
         profileImage.clipsToBounds = true
+        let frame=mapView.frame
         
-
-
+        switch Device.size() {
+        case .screen4_7Inch:
+            mapView.frame=CGRect(x: 20, y: frame.minY, width: self.view.frame.width-50, height: 280)
+        case .screen5_5Inch:
+            mapView.frame=CGRect(x: 20, y: frame.minY, width: self.view.frame.width-40, height: 330)
+        default:
+            mapView.frame=CGRect(x: 20, y: frame.minY, width: self.view.frame.width-20, height: 280)
+            
+        }
+        
+        
     }
-
-
-
-
+    
+    
+    
+    
     @IBAction func imageButtonPressed() {
         print("Here")
     }
     
     
-//    @IBAction func profileButtonPressed(_ sender: Any) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        
-//        let viewController = storyboard.instantiateViewController(withIdentifier: "OtherUserProfile") as! OtherUserProfileViewController
-//        viewController.otherUser=self.user
-//        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
-//        UIApplication.shared.keyWindow?.rootViewController = viewController
-//
-//    }
-//    @IBAction func profileImageButtonPressed(_ sender: UIButton) {
-//
-//    }
-
+    //    @IBAction func profileButtonPressed(_ sender: Any) {
+    //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    //
+    //        let viewController = storyboard.instantiateViewController(withIdentifier: "OtherUserProfile") as! OtherUserProfileViewController
+    //        viewController.otherUser=self.user
+    //        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+    //        UIApplication.shared.keyWindow?.rootViewController = viewController
+    //
+    //    }
+    //    @IBAction func profileImageButtonPressed(_ sender: UIButton) {
+    //
+    //    }
+    
 }
 
 
