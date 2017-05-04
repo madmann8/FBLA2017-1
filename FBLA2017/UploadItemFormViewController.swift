@@ -23,7 +23,9 @@ import FirebaseStorage
 import PopoverPicker
 
 
-
+protocol UploadFinishedDelegate{
+    func reload()
+}
 
 
 
@@ -46,7 +48,7 @@ class UploadItemFormViewController:UIViewController{
     
     var ref: FIRDatabaseReference!
     
-    
+    var delegate:UploadFinishedDelegate?=nil
 
     
     var imagePickerController = ImagePickerController()
@@ -348,6 +350,7 @@ extension UploadItemFormViewController{
                 }
                 if i==trimedImages.count{
                     activityIndicator.stopAnimating()
+                    delegate?.reload()
                 }
             }
             

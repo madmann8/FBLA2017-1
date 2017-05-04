@@ -1077,7 +1077,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/FavoritesCollectionViewController.swift"
-                  timestampString = "515622007.61283"
+                  timestampString = "515622772.456848"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "202"
@@ -1092,7 +1092,7 @@
                   moduleName = "FBLA2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lukemann/FBLA2017/FBLA2017/FavoritesCollectionViewController.swift"
-                  timestampString = "515622007.614673"
+                  timestampString = "515622772.459137"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "202"
@@ -1109,11 +1109,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/ImageCollectionViewController.swift"
-            timestampString = "515622134.989254"
+            timestampString = "515622452.978864"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "generateImages(keyString:inImageView:coverImageKey:)"
             landmarkType = "7">
             <Locations>
@@ -1189,7 +1189,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/ImageCollectionViewController.swift"
-            timestampString = "515622134.989254"
+            timestampString = "515622452.978864"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
@@ -1205,13 +1205,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/ImageCollectionViewController.swift"
-            timestampString = "515622134.989254"
+            timestampString = "515622452.978864"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "loadCoverImages()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA2017/ImageCollectionViewController.swift"
+            timestampString = "515622770.992784"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
+            landmarkName = "ImageCollectionViewController"
+            landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -103,6 +103,7 @@
     }
     
     func refresh(){
+        self.collectionView?.reloadData()
         coverImages.removeAll()
         coverImageKeys.removeAll()
         activityIndicator=nil
@@ -356,6 +357,11 @@
  }
  
  
+ extension ImageCollectionViewController:UploadFinishedDelegate{
+    func reload() {
+        refresh()
+    }
+ }
  
  
  
