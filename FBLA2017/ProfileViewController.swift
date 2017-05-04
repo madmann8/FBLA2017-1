@@ -41,7 +41,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         self.user=currentUser
         profileImageView.image=user?.profileImage
-        let image=user?.profileImage
         nameLabel.text=user?.displayName
         cityLabel.text=user?.city
         profileImageView.layer.borderWidth = 1
@@ -60,6 +59,22 @@ class ProfileViewController: UIViewController {
     }
     
     
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        currentUser=User()
+        
+        
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "Login") {
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+    }
 
 
 }

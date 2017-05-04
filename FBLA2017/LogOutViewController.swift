@@ -13,22 +13,7 @@ class LogOutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let firebaseAuth = FIRAuth.auth()
-        do {
-            try firebaseAuth?.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-        currentUser=User()
-        
-        
-        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "Login") {
-            UIApplication.shared.keyWindow?.rootViewController = viewController
-            self.dismiss(animated: true, completion: nil)
-        }
-
-        // Do any additional setup after loading the view.
-    }
+           }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

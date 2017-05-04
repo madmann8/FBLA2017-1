@@ -21,8 +21,20 @@
     
     var nextItemDelegate:NextItemDelegate?=nil
     
+    var refresher = UIRefreshControl()
+    
+    var activityIndicator:NVActivityIndicatorView?=nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicator=ActivityIndicatorLoader.startActivityIndicator(view: self.view)
+        
+        self.refresher.addTarget(self, action: #selector(ImageCollectionViewController.refresh), for: .valueChanged)
+        
+        self.collectionView?.refreshControl=refresher
+        
+        
         currentView=self.view
         let layout = self.collectionView?.collectionViewLayout as! QuiltView
         layout.scrollDirection = UICollectionViewScrollDirection.vertical
@@ -40,6 +52,8 @@
     var currentView:UIView? = nil
     var currentVC:UIViewController? = nil
     var firstDetailVC:UIViewController?=nil
+    
+    
     
     
  }
@@ -88,6 +102,13 @@
         return cell
     }
     
+    func refresh(){
+        coverImages.removeAll()
+        coverImageKeys.removeAll()
+        activityIndicator=nil
+        loadCoverImages()
+    }
+    
  }
  
  extension ImageCollectionViewController : QuiltViewDelegate {
@@ -118,7 +139,6 @@
  
  extension ImageCollectionViewController {
     func loadCoverImages(){
-        let activityIndicator=startActivityIndicator()
         
         
         
@@ -144,7 +164,8 @@
                                 }
                                 i+=1
                                 if i==snapshots.count{
-                                    activityIndicator.stopAnimating()
+                                    self.activityIndicator?.stopAnimating()
+                                    self.refresher.endRefreshing()
                                     self.collectionView?.reloadData()
                                 }
                             }
@@ -330,6 +351,8 @@
 
         }
     }
+    
+    
  }
  
  
