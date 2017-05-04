@@ -285,7 +285,7 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate,ChatsTableCanRelo
         self.tableView.reloadData()
 //
 self.activityIndicator?.stopAnimating()
-        qrefresher.endRefreshing()
+        refresher.endRefreshing()
 
 
 //

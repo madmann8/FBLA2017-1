@@ -103,7 +103,7 @@
                             <constraint firstItem="9qD-LH-bLo" firstAttribute="leading" secondItem="lge-kH-JMS" secondAttribute="leading" id="zML-lb-arT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="ofp-2H-Wdm"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="ProfileIcon" selectedImage="ProfileIcon" id="ofp-2H-Wdm"/>
                     <connections>
                         <outlet property="cityLabel" destination="mhI-eR-wRB" id="uYZ-sQ-hcY"/>
                         <outlet property="favoritesContainerView" destination="q84-FF-9bt" id="uUx-v5-LGA"/>
@@ -477,7 +477,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBG-9f-Ioj">
-                                                <rect key="frame" x="51" y="14" width="52" height="20"/>
+                                                <rect key="frame" x="51" y="14.5" width="52" height="19.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="52" id="RS1-zY-PLQ"/>
                                                 </constraints>
@@ -851,7 +851,7 @@
         <scene sceneID="6Bn-JD-wuq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrY-Gw-eKo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Browse" id="DNw-Mh-nZ5"/>
+                    <tabBarItem key="tabBarItem" title="Browse" image="BrowseIcon" selectedImage="BrowseIcon" id="DNw-Mh-nZ5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQ1-gj-fih">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -889,7 +889,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="7bK-Tk-tAF" customClass="ImageCollectionViewCell" customModule="FBLA2017" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="7" width="81" height="75"/>
+                                        <rect key="frame" x="0.0" y="6.5" width="81" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="81" height="75"/>
@@ -1423,7 +1423,7 @@
         <scene sceneID="d6W-4S-n5x">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="pIp-dV-5Wz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="PCz-Z6-xQE"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="SellIcon" selectedImage="SellIcon" id="PCz-Z6-xQE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKR-FV-t1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1633,7 +1633,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="247" height="121"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bUp-td-zza">
-                                        <rect key="frame" x="0.0" y="0.0" width="247" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="247" height="40.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Name">
                                                 <attributes>
@@ -1646,7 +1646,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="no" returnKeyType="done"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MNF-Pb-28B">
-                                        <rect key="frame" x="0.0" y="40" width="247" height="41"/>
+                                        <rect key="frame" x="0.0" y="40.5" width="247" height="40"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Email">
                                                 <attributes>
@@ -1659,7 +1659,7 @@
                                         <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="odx-fv-MLe">
-                                        <rect key="frame" x="0.0" y="81" width="247" height="40"/>
+                                        <rect key="frame" x="0.0" y="80.5" width="247" height="40.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Password">
                                                 <attributes>
@@ -1797,7 +1797,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chats" id="h1o-Mk-vwf"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="ChatsIcon" selectedImage="ChatsIcon" id="h1o-Mk-vwf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCC-Ei-Dji" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1817,7 +1817,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V1z-Qv-SqU" id="7VD-EA-GbI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJB-Du-TXD">
@@ -2150,11 +2150,15 @@
     </scenes>
     <resources>
         <image name="AddPhoto" width="1024" height="1024"/>
+        <image name="BrowseIcon" width="25" height="25"/>
+        <image name="ChatsIcon" width="25" height="25"/>
         <image name="FacbookIcon" width="300" height="300"/>
         <image name="HeartEmpty" width="100" height="100"/>
         <image name="LocationDrop" width="100" height="100"/>
+        <image name="ProfileIcon" width="25" height="25"/>
         <image name="ProfilePicture" width="100" height="100"/>
         <image name="RightArrow" width="32" height="32"/>
+        <image name="SellIcon" width="25" height="25"/>
         <image name="X" width="100" height="100"/>
         <image name="XPink" width="100" height="100"/>
         <image name="userChatIcon" width="100" height="100"/>
