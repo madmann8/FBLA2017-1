@@ -6,6 +6,9 @@
  import CoreLocation
  import QuiltView
  import Hero
+ import Device
+ 
+ 
  //ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
  final class ImageCollectionViewController: UICollectionViewController {
     
@@ -25,6 +28,8 @@
     
     var activityIndicator:NVActivityIndicatorView?=nil
     
+    var readyToLoad=true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,10 +43,13 @@
         currentView=self.view
         let layout = self.collectionView?.collectionViewLayout as! QuiltView
         layout.scrollDirection = UICollectionViewScrollDirection.vertical
-        layout.itemBlockSize   = CGSize(
-            width: 67,
-            height: 67
-        )
+        switch Device.size() {
+        case .screen4_7Inch:layout.itemBlockSize  = CGSize(width: 59,height: 59)
+        case .screen5_5Inch: layout.itemBlockSize = CGSize(width: 67,height: 67)
+        default: layout.itemBlockSize = CGSize(width: 67,height: 67)
+            
+
+        }
         currentUser.setupUser(id: (FIRAuth.auth()?.currentUser?.uid)!, isLoggedIn: true)
         loadCoverImages()
         
@@ -183,9 +191,12 @@
  
  extension ImageCollectionViewController: PhotoCellDelegate {
     func buttonPressed(keyString: String, coverImageKeyString:String ) {
+        if readyToLoad{
+            readyToLoad=false
         generateImages(keyString: keyString, inImageView: false, coverImageKey: coverImageKeyString)
         let index=itemKeys.index(of: keyString)
         itemIndex=index!
+        }
     }
     
     func generateImages(keyString: String,inImageView:Bool, coverImageKey:String){
@@ -294,7 +305,7 @@
                                     
                                         
                                     })
-                                    
+                                    self.readyToLoad=true
                                 }
                             }
                         }

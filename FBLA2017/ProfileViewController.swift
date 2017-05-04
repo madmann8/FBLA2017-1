@@ -22,6 +22,8 @@ class ProfileViewController: UIViewController {
     var geoCoder:CLGeocoder!
     var locationManager:CLLocationManager!
     var user:User?=nil
+    
+    var readyToLoad=true
 
     @IBAction func imageButtonPressed(_ sender: UIButton) {
         changeProfilePicture()

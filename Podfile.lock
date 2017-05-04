@@ -8,6 +8,7 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - Device (3.0.1)
   - DropDown (2)
   - FBSDKCoreKit (4.21.0):
     - Bolts (~> 1.7)
@@ -79,6 +80,7 @@ PODS:
 DEPENDENCIES:
   - Bolts
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - Device (~> 3.0.1)
   - DropDown
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -110,6 +112,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Device: c793851589633bc515b65e08a2b5a223bc87c45a
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
   FBSDKCoreKit: 8a372ab194b5c7c26355c1920ef52dbeb44bc222
   FBSDKLoginKit: a1a5f4b4ac445823a020fbeeaf5f03714a67ff9c
@@ -136,6 +139,6 @@ SPEC CHECKSUMS:
   Pulley: 99a45ad8aba14dafb2c6f4f16cb9667eb41c0919
   QuiltView: 991e9710b432946b04bcd5721ee4b14175fa0292
 
-PODFILE CHECKSUM: 4e59a4b5462255fec0e8823ec320550df9e93a71
+PODFILE CHECKSUM: 1567dc74ff384b879efd5a8f32c7483292fcef11
 
 COCOAPODS: 1.2.0

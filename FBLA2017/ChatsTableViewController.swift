@@ -31,10 +31,16 @@ class ChatsTableViewController: UITableViewController,TableHasLoadedDelegate {
     
     var cellsToClear=[ClearCellDelegate]()
     var activityIndicator:NVActivityIndicatorView?=nil
+    
+    var readyToLoad=true
 
 
 var refresher=UIRefreshControl()
     
+    override func viewDidAppear(_ animated: Bool) {
+        activityIndicator=ActivityIndicatorLoader.startActivityIndicator(view: self.view)
+        refreshData()
+    }
     
     var loadCells=false
     
@@ -49,9 +55,9 @@ var refresher=UIRefreshControl()
         currentUser.hasLoadedDelegate=self
 //        refreshData()
 refresher.addTarget(self, action:#selector(refreshData), for: .valueChanged)
-        refresher.beginRefreshing()
- activityIndicator=ActivityIndicatorLoader.startActivityIndicator(view: self.view)
-        refreshData()
+//        refresher.beginRefreshing()
+// activityIndicator=ActivityIndicatorLoader.startActivityIndicator(view: self.view)
+//        refreshData()
     self.tableView.addSubview(refresher)
         self.tableView.separatorStyle = .none
             }
@@ -185,7 +191,8 @@ enum SectionType{
 
 extension ChatsTableViewController:ItemDelegate{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section==0 && directCells.count>0){
+        if readyToLoad{
+        if getSectionType(section: indexPath.section) == .user{
             let cell=loadedDirectCells[indexPath.row]
             let user=cell?.user
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -202,10 +209,12 @@ extension ChatsTableViewController:ItemDelegate{
             let item=Item()
             item.delegate=self
             item.load(keyString: (cell?.itemPath)!)
+            readyToLoad=false
             activityIndicator=ActivityIndicatorLoader.startActivityIndicator(view: self.view)
             cell?.item=item
             
             
+        }
         }
     }
     
@@ -232,9 +241,9 @@ extension ChatsTableViewController:ItemDelegate{
         middle.openWithChat=true
         
         
-        
        activityIndicator?.stopAnimating()
-        self.present(middle, animated: false, completion: nil)
+        self.present(middle, animated: true, completion: nil)
+        readyToLoad=true
         
         
         
@@ -266,9 +275,12 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate,ChatsTableCanRelo
     
     
     func refreshData(){
+        if readyToLoad{
+        readyToLoad=false
              currentUser.chatTableCanReloadDelegate=self
         
         currentUser.resetLoadedCell()
+        }
     }
     func refreshChats(){
 
@@ -293,6 +305,7 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate,ChatsTableCanRelo
          cellsLoaded=cellsToLoad
         cellsToClear.removeAll()
         self.tableView.reloadData()
+        readyToLoad=true
 //
 self.activityIndicator?.stopAnimating()
         refresher.endRefreshing()

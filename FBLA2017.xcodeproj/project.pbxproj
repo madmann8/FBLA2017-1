@@ -298,8 +298,8 @@
 		48D5F3FE1EA7170D00FD0526 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				486DE4681EB1AF4200ACB06A /* ActualTwoUserChatViewController.swift */,
 				4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */,
+				486DE4681EB1AF4200ACB06A /* ActualTwoUserChatViewController.swift */,
 				48D5F3FC1EA7170500FD0526 /* ChatContainerViewController.swift */,
 				483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */,
 			);

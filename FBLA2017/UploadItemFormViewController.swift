@@ -350,7 +350,7 @@ extension UploadItemFormViewController{
                 }
                 if i==trimedImages.count{
                     activityIndicator.stopAnimating()
-                    delegate?.reload()
+                    self.delegate?.reload()
                 }
             }
             

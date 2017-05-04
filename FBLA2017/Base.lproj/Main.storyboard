@@ -238,9 +238,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NUG-v3-fhD">
-                                <rect key="frame" x="33" y="288" width="324" height="334"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NUG-v3-fhD">
+                                <rect key="frame" x="31" y="288" width="313" height="334"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -297,6 +296,25 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfilePicture" highlightedImage="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="W6L-Nd-dSF">
+                                <rect key="frame" x="180" y="20" width="68" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSo-dT-pLI">
+                                <rect key="frame" x="266" y="28" width="93" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcF-ZI-Z8j">
+                                <rect key="frame" x="266" y="52" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seller:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0k-J2-sQf">
                                 <rect key="frame" x="16" y="25" width="108" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -318,28 +336,15 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfilePicture" highlightedImage="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="W6L-Nd-dSF">
-                                <rect key="frame" x="180" y="20" width="68" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSo-dT-pLI">
-                                <rect key="frame" x="266" y="28" width="93" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcF-ZI-Z8j">
-                                <rect key="frame" x="266" y="52" width="82" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="BHh-ei-Fbt" firstAttribute="top" secondItem="NUG-v3-fhD" secondAttribute="bottom" constant="5" id="1pX-qE-3DT"/>
+                            <constraint firstItem="NUG-v3-fhD" firstAttribute="leading" secondItem="Ucs-oZ-Yvz" secondAttribute="leadingMargin" constant="15" id="CEb-Ic-wMw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NUG-v3-fhD" secondAttribute="trailing" constant="15" id="nax-AX-ZKY"/>
+                            <constraint firstItem="NUG-v3-fhD" firstAttribute="centerX" secondItem="Ucs-oZ-Yvz" secondAttribute="centerX" id="oE9-ht-iIw"/>
+                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -737,8 +742,9 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="pImage"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6M-RB-2jM">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6M-RB-2jM">
                                 <rect key="frame" x="16" y="580" width="45" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                         <integer key="value" value="1"/>
@@ -784,13 +790,11 @@
                             <constraint firstItem="Hq0-lF-Dhe" firstAttribute="centerX" secondItem="mVk-Qb-7tu" secondAttribute="centerX" id="LeU-Dj-8ZC"/>
                             <constraint firstItem="HnR-t0-uM2" firstAttribute="top" secondItem="EKy-mk-hdU" secondAttribute="bottom" constant="-58" id="Mf6-F4-m7y"/>
                             <constraint firstItem="arr-Yz-KTO" firstAttribute="trailing" secondItem="mVk-Qb-7tu" secondAttribute="trailingMargin" id="NIm-Oe-fWZ"/>
-                            <constraint firstItem="Hq0-lF-Dhe" firstAttribute="top" secondItem="I6M-RB-2jM" secondAttribute="top" id="UI5-Nt-trz"/>
                             <constraint firstItem="HnR-t0-uM2" firstAttribute="centerX" secondItem="EKy-mk-hdU" secondAttribute="centerX" id="YNe-jg-lP4"/>
                             <constraint firstItem="HnR-t0-uM2" firstAttribute="leading" secondItem="mVk-Qb-7tu" secondAttribute="leading" id="Yte-2c-xwW"/>
                             <constraint firstItem="HnR-t0-uM2" firstAttribute="bottom" secondItem="rYB-i5-9cm" secondAttribute="top" id="kXX-Zc-SJu"/>
                             <constraint firstItem="HnR-t0-uM2" firstAttribute="leading" secondItem="Hny-D5-Iod" secondAttribute="trailing" constant="-46" id="nCR-zf-jJo"/>
                             <constraint firstItem="rYB-i5-9cm" firstAttribute="top" secondItem="Hq0-lF-Dhe" secondAttribute="bottom" constant="80" id="nH4-62-7iy"/>
-                            <constraint firstItem="Hq0-lF-Dhe" firstAttribute="leading" secondItem="I6M-RB-2jM" secondAttribute="leading" id="sg9-d4-4hP"/>
                             <constraint firstItem="arr-Yz-KTO" firstAttribute="top" secondItem="Hny-D5-Iod" secondAttribute="bottom" constant="-30" id="tJ9-uy-oxo"/>
                             <constraint firstItem="HnR-t0-uM2" firstAttribute="top" secondItem="mVk-Qb-7tu" secondAttribute="top" id="urZ-9C-pMR"/>
                             <constraint firstAttribute="trailing" secondItem="HnR-t0-uM2" secondAttribute="trailing" id="ziC-LY-Ypn"/>
@@ -1639,7 +1643,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCC-Ei-Dji" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093.5999999999999" y="2794.4527736131936"/>
+            <point key="canvasLocation" x="961" y="2067"/>
         </scene>
         <!--Chats Table View Controller-->
         <scene sceneID="e8H-ET-dAQ">
@@ -1655,7 +1659,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V1z-Qv-SqU" id="7VD-EA-GbI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJB-Du-TXD">
@@ -1711,10 +1715,13 @@
                             <outlet property="delegate" destination="djh-V4-E8A" id="h3H-NT-Uzh"/>
                         </connections>
                     </tableView>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
+                    </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JhR-TZ-Mg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2144.8000000000002" y="2770.6146926536735"/>
+            <point key="canvasLocation" x="2130" y="2066"/>
         </scene>
         <!--Favorites Collection View Controller-->
         <scene sceneID="haS-zN-wTF">

@@ -43,7 +43,6 @@ class OtherUserProfileViewController: UIViewController {
     override func viewDidLoad() { 
         self.loginInUser=currentUser
         profileImageView.image=otherUser?.profileImage
-        let image=otherUser?.profileImage
         nameLabel.text=otherUser?.displayName
         cityLabel.text=otherUser?.city
  
