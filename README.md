@@ -24,12 +24,12 @@
 
 
 ## Installation
-###Prerequisites
+### Prerequisites
 * Xcode 8.3 (latest, but it should work with 8.1+)
 * An internet connection
 * iPhone 7 or 7 plus simulators installed or a physical iPhone running iOS 10.0 +
 
-### Installation
+### Steps
 1. 
  If you have [git](https://git-scm.com) : 
  Run  `git clone https://github.com/lukejmann/FBLA2017.git` in the desired installation folder.
@@ -49,5 +49,3 @@
 
 
 PUT SIGNING INFO HERE
-
-
