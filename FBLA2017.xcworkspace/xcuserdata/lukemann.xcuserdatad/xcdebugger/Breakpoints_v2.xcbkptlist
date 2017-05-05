@@ -1215,11 +1215,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA2017/FavoritesCollectionViewController.swift"
-            timestampString = "515676402.23077"
+            timestampString = "515676907.153105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "loadCoverImages()"
             landmarkType = "7">
             <Locations>
