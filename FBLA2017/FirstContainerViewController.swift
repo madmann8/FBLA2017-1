@@ -28,7 +28,6 @@ class FirstContainerViewController: PulleyViewController {
     var vcToDismiss: FirstContainerViewController?
     var userDelegate: UserDelegate?
     var tempUserImage: UIImage?
-    var coverImageKey: String?
     var item: Item?
     var openWithChat: Bool = false
 
@@ -59,6 +58,7 @@ class FirstContainerViewController: PulleyViewController {
         self.drawerContentContainerView = self.secondaryView
         if segue.identifier=="toSecondContainer"{
             if let middle: InfoContainerViewController = segue.destination as? InfoContainerViewController {
+                middle.item=item
                 middle.categorey = categorey
                 middle.name = name
                 middle.about = about
@@ -72,7 +72,6 @@ class FirstContainerViewController: PulleyViewController {
                 middle.dismissDelegate = self
                 middle.coverImagePath = coverImagePath
                 middle.keyString = keyString
-                middle.coverImageKey = coverImageKey
                 middle.user = user
                 middle.item = self.item
                 self.userDelegate = middle
@@ -85,7 +84,8 @@ class FirstContainerViewController: PulleyViewController {
         }
         if segue.identifier=="containerToChat"{
             if let vc: ChatContainerViewController = segue.destination as? ChatContainerViewController {
-                vc.keyString = keyString
+                
+                vc.keyString = self.item?.keyString
                 vc.otherUser = self.user
                 let frame = self.view.frame
                 let newFrame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height - self.topInset)

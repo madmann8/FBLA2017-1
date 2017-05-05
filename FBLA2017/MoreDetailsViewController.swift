@@ -24,6 +24,7 @@ class MoreDetailsViewController: UIViewController {
     var dollarString: String?
     var user: User?
     var profileImageView: UIImageView?
+    var item:Item?=nil
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
@@ -47,7 +48,7 @@ class MoreDetailsViewController: UIViewController {
 
         if
             let name = name,
-            //            let category = categorey,
+                        let category = categorey,
             let about = about,
             let latitude = latitudeString,
             let longitude = longitudeString,
@@ -55,12 +56,12 @@ class MoreDetailsViewController: UIViewController {
             let locationString = addressString,
             let userName = user?.displayName,
             let condition = condition {
-            titleLabel.text = name
+            titleLabel.text = item?.name
             costLabel.text="Asking Price: \(dollars)"
-            //            categoryLabel.text=category
-            locationLabel.text = locationString
-            descriptionLabel.text = about
-            ratingLabel.text="Condition:\(String(describing: condition))/5"
+            categoryLabel.text=item?.categorey
+            locationLabel.text = item?.addressString
+            descriptionLabel.text = item?.about
+            ratingLabel.text="Condition:\(String(describing: item?.condition))/5"
             var nameArr = userName.components(separatedBy: " ")
             var firstName = nameArr[0]
             var lastName=""
@@ -69,8 +70,9 @@ class MoreDetailsViewController: UIViewController {
             }
             firstNameLabel.text = firstName
             lastNameLabel.text = lastName
-            let latDouble = Double(latitude)
-            let longDouble = Double(longitude)
+            let latDouble = Double((item?.latitudeString)!)
+            let longDouble = Double((item?.longitudeString
+                )!)
             let location = CLLocation(latitude: latDouble!, longitude: longDouble!)
             let regionRadius: CLLocationDistance = 1_000
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
@@ -78,8 +80,8 @@ class MoreDetailsViewController: UIViewController {
             mapView.setRegion(coordinateRegion, animated: true)
             var information = MKPointAnnotation()
             information.coordinate = location.coordinate
-            information.title = "Test Title!"
-            information.subtitle = "Subtitle"
+            information.title = item?.name
+            information.subtitle = "Seller Location"
 
             mapView.addAnnotation(information)
 

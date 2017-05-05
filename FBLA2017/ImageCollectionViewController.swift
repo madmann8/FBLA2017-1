@@ -198,6 +198,7 @@ import UIKit
 
         let ref = FIRDatabase.database().reference().child("items").child(keyString)
         let user = User()
+        let item=Item()
 
         ref.observe(.value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -245,12 +246,33 @@ import UIKit
                                     middle.condition = condition
                                     middle.images = images
                                     middle.keyString = keyString
-                                    middle.nextItemDelegate = self
-                                    middle.dismissDelegate = self
                                     middle.coverImagePath = path
                                     middle.user = user
+                                    middle.item=item
+
+                                    
+                                    item.categorey=categorey
+                                    item.name=name
+                                    item.about=about
+                                    item.latitudeString=latitudeString
+                                    item.longitudeString=longitudeString
+                                    item.addressString=addressString
+                                    item.cents=cents
+                                    item.condition=condition
+                                    item.images=images
+                                    item.keyString=keyString
+                                    item.coverImagePath=path
+                                    item.user=user
+                                    middle.nextItemDelegate = self
+                                    middle.dismissDelegate = self
                                     user.delegate = middle
-                                    middle.coverImageKey = coverImageKey
+
+
+
+                                    
+                                    
+                                    
+                                    
 
                                     FIRDatabase.database().reference().child("coverImagePaths").child(coverImageKey).observe(.value, with: { (snapshot) in
 

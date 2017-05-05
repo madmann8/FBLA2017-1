@@ -30,7 +30,6 @@ class InfoContainerViewController: UIViewController {
     var latitudeString: String?
     var longitudeString: String?
     var addressString: String?
-    var coverImageKey: String?
     var item: Item?
     var cents: Int?=nil {
         didSet {
@@ -149,6 +148,7 @@ class InfoContainerViewController: UIViewController {
         vc.dollarString = self.dollarsString
         vc.user = user
         vc.profileImageView = profileImage
+        vc.item=self.item
 
         let sizeToSubtract = moreInfoButtonToTopConstraint.constant * (-1.4)
         let newFrame = CGRect(x: vc.view.frame.minX, y: vc.view.frame.minY, width: vc.view.frame.width - 10, height: vc.view.frame.height - sizeToSubtract)
