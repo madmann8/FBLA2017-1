@@ -12,19 +12,6 @@ import FirebaseAuth
 
 class FirstContainerViewController: PulleyViewController {
 
-    var images: [UIImage]?
-    var categorey: String?
-    var name: String?
-    var about: String?
-    var latitudeString: String?
-    var longitudeString: String?
-    var addressString: String?
-    var cents: Int?
-    var condition: Int?
-    var keyString: String?
-    var coverImagePath: String?
-    var userID: String?
-    var user: User?
     var vcToDismiss: FirstContainerViewController?
     var userDelegate: UserDelegate?
     var tempUserImage: UIImage?
@@ -59,21 +46,8 @@ class FirstContainerViewController: PulleyViewController {
         if segue.identifier=="toSecondContainer"{
             if let middle: InfoContainerViewController = segue.destination as? InfoContainerViewController {
                 middle.item=item
-                middle.categorey = categorey
-                middle.name = name
-                middle.about = about
-                middle.latitudeString = latitudeString
-                middle.longitudeString = longitudeString
-                middle.addressString = addressString
-                middle.cents = cents
-                middle.condition = condition
-                middle.images = images
                 middle.nextItemDelegate = self
                 middle.dismissDelegate = self
-                middle.coverImagePath = coverImagePath
-                middle.keyString = keyString
-                middle.user = user
-                middle.item = self.item
                 self.userDelegate = middle
                 if let tempUserImage = tempUserImage {
                     middle.tempUserImage = tempUserImage
@@ -86,7 +60,7 @@ class FirstContainerViewController: PulleyViewController {
             if let vc: ChatContainerViewController = segue.destination as? ChatContainerViewController {
                 
                 vc.keyString = self.item?.keyString
-                vc.otherUser = self.user
+                vc.otherUser = self.item?.user
                 let frame = self.view.frame
                 let newFrame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height - self.topInset)
                 vc.frame = newFrame

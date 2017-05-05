@@ -13,16 +13,7 @@ import ChameleonFramework
 import Device
 
 class MoreDetailsViewController: UIViewController {
-    var categorey: String?
-    var name: String?
-    var about: String?
-    var latitudeString: String?
-    var longitudeString: String?
-    var addressString: String?
-    var cents: Int?
-    var condition: Int?
-    var dollarString: String?
-    var user: User?
+
     var profileImageView: UIImageView?
     var item:Item?=nil
 
@@ -46,27 +37,18 @@ class MoreDetailsViewController: UIViewController {
 
     func setupViews() {
 
-        if
-            let name = name,
-                        let category = categorey,
-            let about = about,
-            let latitude = latitudeString,
-            let longitude = longitudeString,
-            let dollars: String = dollarString,
-            let locationString = addressString,
-            let userName = user?.displayName,
-            let condition = condition {
+
             titleLabel.text = item?.name
-            costLabel.text="Asking Price: \(dollars)"
+            costLabel.text="Asking Price: \(item?.dollarString)"
             categoryLabel.text=item?.categorey
             locationLabel.text = item?.addressString
             descriptionLabel.text = item?.about
             ratingLabel.text="Condition:\(String(describing: item?.condition))/5"
-            var nameArr = userName.components(separatedBy: " ")
-            var firstName = nameArr[0]
+            var nameArr = item?.user?.displayName.components(separatedBy: " ")
+            var firstName = nameArr?[0]
             var lastName=""
-            for i in 1..<nameArr.count {
-                lastName += nameArr[i]
+            for i in 1 ..< nameArr!.count {
+                lastName += (nameArr?[i])!
             }
             firstNameLabel.text = firstName
             lastNameLabel.text = lastName
@@ -88,8 +70,6 @@ class MoreDetailsViewController: UIViewController {
             //            if let button=profilePicButton{
             //                self.profileButton=button
             //            }
-
-        }
         titleLabel.textColor = UIColor.flatWatermelonDark
         categoryLabel.textColor = UIColor.flatWatermelonDark
         ratingLabel.textColor = UIColor.flatWatermelonDark

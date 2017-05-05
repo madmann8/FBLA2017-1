@@ -22,7 +22,19 @@ class Item {
     var latitudeString: String?
     var longitudeString: String?
     var addressString: String?
-    var cents: Int?
+    var cents: Int?{
+        didSet{
+            self.dollarString=""
+            let num: Double = Double(cents!) / 100.0
+            let formatter = NumberFormatter()
+            formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
+            formatter.numberStyle = .currency
+            if let formattedAmount = formatter.string(from: num as NSNumber) {
+                self.dollarString = "\(formattedAmount)"
+            }
+
+        }
+    }
     var condition: Int?
     var keyString: String?
     var coverImagePath: String?
@@ -30,6 +42,7 @@ class Item {
     var user: User?
     var uid: String?
     var deleted: Bool = false
+    var dollarString:String?
 
     var delegate: ItemDelegate?
 

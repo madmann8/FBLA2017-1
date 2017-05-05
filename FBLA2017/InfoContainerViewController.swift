@@ -23,40 +23,16 @@ protocol DismissDelgate {
 
 class InfoContainerViewController: UIViewController {
 
-    var images: [UIImage]?
-    var categorey: String?
-    var name: String?
-    var about: String?
-    var latitudeString: String?
-    var longitudeString: String?
-    var addressString: String?
     var item: Item?
-    var cents: Int?=nil {
-        didSet {
-            let num: Double = Double(cents!) / 100.0
-            let formatter = NumberFormatter()
-            formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
-            formatter.numberStyle = .currency
-            if let formattedAmount = formatter.string(from: num as NSNumber) {
-                dollarsString = "\(formattedAmount)"
-            }
-        }
-    }
-    var condition: Int?
-    var coverImagePath: String?
-    var userID: String?
-    var dollarsString: String?
     var hasLiked = false
     var tempUserImage: UIImage?
 
-    var keyString: String?
 
     var nextItemDelegate: NextItemDelegate?
     var dismissDelegate: DismissDelgate?
 
     var ref: FIRDatabaseReference?
 
-    var user: User?
 
     var activitityIndicator: NVActivityIndicatorView?
 
@@ -66,16 +42,16 @@ class InfoContainerViewController: UIViewController {
 
         setupViews()
 
-        user?.delegate = self
+        item?.user?.delegate = self
         ref = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
         ref?.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 var i = 0
                 for snapshot in snapshots {
                     if let path = snapshot.key as? String {
-                        print("Local path\(self.keyString!)")
+                        print("Local path\(self.item?.keyString!)")
                         print(path)
-                        if path == self.keyString {
+                        if path == self.item?.keyString {
                             self.hasLiked = true
                         }
 
@@ -85,12 +61,7 @@ class InfoContainerViewController: UIViewController {
 
         })
 
-        if (user?.uid == currentUser.uid) {
-            print(user?.uid)
-            print (currentUser.uid)
-            print(user?.displayName)
-            print(currentUser.displayName)
-
+        if (item?.user?.uid == currentUser.uid) {
             soldButton.isHidden = false
             soldButton.layer.cornerRadius = soldButton.frame.height / 2
             profileButton.isHidden = true
@@ -116,7 +87,7 @@ class InfoContainerViewController: UIViewController {
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
         profileImage.clipsToBounds = true
 
-        if let rating: Int = condition, let dollarsString: String = dollarsString {
+        if let rating: Int = item?.condition, let dollarsString: String = item?.dollarString {
             costLabel.text="Asking Price: \(dollarsString)"
             ratingLabel.text="\(String(describing: rating))/5"
 
@@ -127,8 +98,8 @@ class InfoContainerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="showPageVC" {
             let pageDesitnation = segue.destination as! PageViewController
-            pageDesitnation.images = self.images
-            titleLabel.text = name
+            pageDesitnation.images = self.item?.images
+            titleLabel.text = item?.name
             pageDesitnation.nextItemDelegate = self
 
         }
@@ -137,16 +108,6 @@ class InfoContainerViewController: UIViewController {
     @IBAction func moreInfoButtonPressed(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "detailTop") as! MoreDetailsViewController
-        vc.categorey = self.categorey
-        vc.name = self.name
-        vc.about = self.about
-        vc.latitudeString = self.latitudeString
-        vc.longitudeString = self.longitudeString
-        vc.addressString = self.addressString
-        vc.cents = self.cents
-        vc.condition = self.condition
-        vc.dollarString = self.dollarsString
-        vc.user = user
         vc.profileImageView = profileImage
         vc.item=self.item
 
@@ -164,11 +125,11 @@ class InfoContainerViewController: UIViewController {
 
         if hasLiked {
             favoriteButton.setImage(#imageLiteral(resourceName: "HeartEmpty"), for: .normal)
-            ref?.child("\(keyString!)").removeValue()
+            ref?.child("\(item?.keyString!)").removeValue()
             hasLiked = false
         } else {
             favoriteButton.setImage(#imageLiteral(resourceName: "HeartFilled"), for: .normal)
-            ref?.child("\(keyString!)").setValue("\(coverImagePath!)")
+            ref?.child("\(item?.keyString!)").setValue((item?.coverImagePath!) as! String)
             hasLiked = true
         }
 
@@ -191,7 +152,7 @@ class InfoContainerViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
         let viewController = storyboard.instantiateViewController(withIdentifier: "OtherUserProfile") as! OtherUserProfileViewController
-        viewController.otherUser = self.user
+        viewController.otherUser = self.item?.user
         present(viewController, animated: true, completion: nil)
     }
 
@@ -221,21 +182,21 @@ class InfoContainerViewController: UIViewController {
     func removeItem(alertController: UIAlertController) {
         let ref = FIRDatabase.database().reference()
 
-        ref.child("users").child(user!.uid).child("coverImages").observe(.value, with: { (snapshot) in
+        ref.child("users").child((item?.user!.uid)!).child("coverImages").observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snapshot in snapshots {
                     if let path = snapshot.key as? String {
                         if let path2 = snapshot.value as? String {
-                            if path2 == self.coverImagePath {
+                            if path2 == self.item?.coverImagePath {
 
-                        ref.child("users").child(self.user!.uid).child("coverImages").child(path).removeValue()
-                                ref.child("users").child(self.user!.uid).child("itemChats").child(path).removeValue()
+                        ref.child("users").child(self.item?.user?.uid ?? "n/a").child("coverImages").child(path).removeValue()
+                                ref.child("users").child(self.item?.user?.uid ?? "n/a").child("itemChats").child(path).removeValue()
 
-                        let path: String = self.keyString!
+                        let path: String = self.item?.keyString ?? "n/a"
                         ref.child("items").child(path).removeValue()
-                        ref.child("coverImagePaths").child(self.keyString!).removeValue()
+                        ref.child("coverImagePaths").child(self.item?.keyString ?? "n/a").removeValue()
                         alertController.dismiss(animated: false, completion: nil)
-                                if let dd: FirstContainerViewController = self.dismissDelegate as! FirstContainerViewController {
+                                if let dd: FirstContainerViewController = self.dismissDelegate as? FirstContainerViewController {
                                     if dd.dismissDelegate == nil {
                                         self.item?.deleted = true
                                         self.dismissDelegate?.switchCurrentVC(shouldReload: false)

@@ -9,7 +9,7 @@ import UIKit
  import Device
 
  //ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
- final class ImageCollectionViewController: UICollectionViewController {
+  class ImageCollectionViewController: UICollectionViewController {
 
     // MARK: - Properties
     fileprivate let reuseIdentifier = "ItemCell"
@@ -236,19 +236,6 @@ import UIKit
                                     activityIndicator.stopAnimating()
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-                                    middle.categorey = categorey
-                                    middle.name = name
-                                    middle.about = about
-                                    middle.latitudeString = latitudeString
-                                    middle.longitudeString = longitudeString
-                                    middle.addressString = addressString
-                                    middle.cents = cents
-                                    middle.condition = condition
-                                    middle.images = images
-                                    middle.keyString = keyString
-                                    middle.coverImagePath = path
-                                    middle.user = user
-                                    middle.item=item
 
                                     
                                     item.categorey=categorey
@@ -266,18 +253,15 @@ import UIKit
                                     middle.nextItemDelegate = self
                                     middle.dismissDelegate = self
                                     user.delegate = middle
+                                    middle.item=item
 
-
-
-                                    
-                                    
                                     
                                     
 
                                     FIRDatabase.database().reference().child("coverImagePaths").child(coverImageKey).observe(.value, with: { (snapshot) in
 
                                                 if let path = snapshot.value as? String {
-                                                    middle.coverImagePath = path
+                                                    item.coverImagePath = path
                                                     if inImageView {
                                                         if let vc = self.currentVC as? FirstContainerViewController {
                                                             vc.present(middle, animated: true)
@@ -358,3 +342,20 @@ import UIKit
         refresh()
     }
  }
+
+extension String {
+    func substring(start: Int, end: Int) -> String {
+        if (start < 0 || start > self.characters.count) {
+            print("start index \(start) out of bounds")
+            return ""
+        } else if end < 0 || end > self.characters.count {
+            print("end index \(end) out of bounds")
+            return ""
+        }
+        let startIndex = self.characters.index(self.startIndex, offsetBy: start)
+        let endIndex = self.characters.index(self.startIndex, offsetBy: end)
+        let range = startIndex..<endIndex
+        
+        return self.substring(with: range)
+    }}
+

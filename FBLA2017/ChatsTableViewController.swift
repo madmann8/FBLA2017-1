@@ -208,20 +208,9 @@ extension ChatsTableViewController:ItemDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
         let middle = storyboard.instantiateViewController(withIdentifier: "pulley") as! FirstContainerViewController
-        middle.categorey = item.categorey
-        middle.name = item.name
-        middle.about = item.about
-        middle.latitudeString = item.latitudeString
-        middle.longitudeString = item.longitudeString
-        middle.addressString = item.addressString
-        middle.cents = item.cents
-        middle.condition = item.condition
-        middle.images = item.images
-        middle.keyString = item.keyString
+
         middle.nextItemDelegate = nil
         middle.dismissDelegate = nil
-        middle.coverImagePath = item.coverImagePath
-        middle.user = item.user
         middle.item = item
         middle.openWithChat = true
 
