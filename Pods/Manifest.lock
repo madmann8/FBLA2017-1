@@ -76,6 +76,7 @@ PODS:
   - Presentr (1.2.3)
   - Pulley (1.3.1)
   - QuiltView (0.1.4)
+  - SwiftLint (0.18.1)
 
 DEPENDENCIES:
   - Bolts
@@ -99,6 +100,7 @@ DEPENDENCIES:
   - Presentr
   - Pulley
   - QuiltView
+  - SwiftLint
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -138,7 +140,8 @@ SPEC CHECKSUMS:
   Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
   Pulley: 99a45ad8aba14dafb2c6f4f16cb9667eb41c0919
   QuiltView: 991e9710b432946b04bcd5721ee4b14175fa0292
+  SwiftLint: b467d08f5b25dc3b3cfed243d8e1b74b91714c67
 
-PODFILE CHECKSUM: 1567dc74ff384b879efd5a8f32c7483292fcef11
+PODFILE CHECKSUM: a34438dd1d9364a4a9054790eb97240d6c59ce0d
 
 COCOAPODS: 1.2.0

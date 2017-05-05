@@ -115,7 +115,8 @@ class MoreDetailsViewController: UIViewController {
         case .screen4_7Inch:
             mapView.frame=CGRect(x: 20, y: frame.minY, width: self.view.frame.width-50, height: 280)
         case .screen5_5Inch:
-            mapView.frame=CGRect(x: 20, y: frame.minY, width: self.view.frame.width-50, height: 330)
+            mapView.frame=CGRect(x: 20, y: frame.minY, width: self.view.frame.width-50
+                , height: 330)
         default:
             mapView.frame=CGRect(x: 20, y: frame.minY, width: self.view.frame.width-20, height: 280)
             

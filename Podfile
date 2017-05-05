@@ -25,4 +25,6 @@ pod 'GoogleSignIn'
 pod "Hero"
 pod 'QuiltView'
 pod "Device", '~> 3.0.1'
+pod 'SwiftLint'
+
 end
