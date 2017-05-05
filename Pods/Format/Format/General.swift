@@ -32,7 +32,7 @@ public enum General: NumberFormatter, NumberFormatterCustomLocaleAvailable {
     public var type: NumberFormatterType {
         return .general
     }
-    
+
     /// NSNumberFormatter style
     public var style: Foundation.NumberFormatter.Style? {
         switch self {
@@ -41,7 +41,7 @@ public enum General: NumberFormatter, NumberFormatterCustomLocaleAvailable {
                 return .ordinal
             } else {
                 assertionFailure("Ordinal Style is only available from iOS9")
-                return nil;
+                return nil
             }
         case .spellOut:
             return .spellOut

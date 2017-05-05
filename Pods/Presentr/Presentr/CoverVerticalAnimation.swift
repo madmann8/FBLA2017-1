@@ -15,5 +15,5 @@ public class CoverVerticalAnimation: PresentrAnimation {
         initialFrame.origin.y = containerFrame.height + initialFrame.height
         return initialFrame
     }
-    
+
 }

@@ -28,9 +28,9 @@ public struct PresentrTransitionContext {
     let toView: UIView?
 
     let animatingViewController: UIViewController?
-    
+
     let animatingView: UIView?
-    
+
 }
 
 /// Options for the UIView animation.
@@ -63,7 +63,6 @@ open class PresentrAnimation: NSObject {
         return initialFrame
     }
 
-
     /// Actions to be performed in preparation, before an animation.
     ///
     /// - Parameter transitionContext: The context with everything needed for the animiation.
@@ -74,7 +73,6 @@ open class PresentrAnimation: NSObject {
         let initialFrame = transitionContext.isPresenting ? initialFrameForVC : finalFrameForVC
         transitionContext.animatingView?.frame = initialFrame
     }
-
 
     /// Actions to be performed for the animation.
     ///
@@ -111,7 +109,7 @@ extension PresentrAnimation: UIViewControllerAnimatedTransitioning {
 
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
-        
+
         let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)
         let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
         let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from)
@@ -159,7 +157,7 @@ extension PresentrAnimation: UIViewControllerAnimatedTransitioning {
         beforeAnimation(using: presentrContext)
         UIView.animate(withDuration: duration, animations: {
             self.performAnimation(using: presentrContext)
-        }) { (completed) in
+        }) { (_) in
             self.afterAnimation(using: presentrContext)
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
@@ -174,7 +172,7 @@ extension PresentrAnimation: UIViewControllerAnimatedTransitioning {
                        options: [],
                        animations: {
             self.performAnimation(using: presentrContext)
-        }) { (completed) in
+        }) { (_) in
             self.afterAnimation(using: presentrContext)
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }

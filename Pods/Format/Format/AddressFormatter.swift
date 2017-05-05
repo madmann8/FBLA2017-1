@@ -34,7 +34,7 @@ open class AddressFormatter {
      
      - returns: Formatted address string using Contacts framework.
      */
-    open func format(_ street: String?, city: String?, state: String?, postalCode: String?, country: String?, ISOCountryCode: String?) -> String{
+    open func format(_ street: String?, city: String?, state: String?, postalCode: String?, country: String?, ISOCountryCode: String?) -> String {
         let postalAddress = CNMutablePostalAddress()
         if let streetString = street {
             postalAddress.street = streetString

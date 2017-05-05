@@ -266,7 +266,7 @@ class SplitPaneViewController: BaseContainerViewController {
             finish()
         })
       } else {
-        UIView.animate(withDuration: 0.367, animations: animation) { (finished) in
+        UIView.animate(withDuration: 0.367, animations: animation) { (_) in
           finish()
         }
       }
@@ -347,7 +347,7 @@ class SplitPaneViewController: BaseContainerViewController {
       wrapperView.frame = fullBounds
 
       let (leftFrame, rightFrame) =
-        wrapperView.bounds.divided(atDistance: wrapperView.bounds.size.width/2, from: .minXEdge)
+        wrapperView.bounds.divided(atDistance: wrapperView.bounds.size.width / 2, from: .minXEdge)
 
       if collapsed {
         leftController.view.frame = wrapperView.bounds
@@ -369,7 +369,7 @@ class SplitPaneViewController: BaseContainerViewController {
       // full bounds. This makes it look like the second one is always hidden behind the first as
       // the size of them do not change.
       let (leftFrame, rightFrame) =
-        fullBounds.divided(atDistance: fullBounds.size.width/2, from: .minXEdge)
+        fullBounds.divided(atDistance: fullBounds.size.width / 2, from: .minXEdge)
 
       if collapsed {
         wrapperView.frame = leftFrame

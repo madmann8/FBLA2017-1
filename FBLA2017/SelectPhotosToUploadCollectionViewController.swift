@@ -9,27 +9,23 @@
 import Foundation
 import UIKit
 
-
-class SelectPhotosToUploadCollectionViewController:UICollectionViewController{
+class SelectPhotosToUploadCollectionViewController: UICollectionViewController {
     fileprivate let reuseIdentifier = "UploadCell"
 
-    override func collectionView(_ collectionView: UICollectionView,cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! UploadItemFormPhotoCellCollectionViewCell
         return cell
     }
-    
+
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     //2
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         return 1
     }
-    
-    
-    
-    
+
 }

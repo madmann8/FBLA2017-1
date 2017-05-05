@@ -12,21 +12,16 @@ import FirebaseStorage
 import Firebase
 import NVActivityIndicatorView
 
-
 class CachedData {
-    
-    
-    func loadCoverImages(view:UIView){
+
+    func loadCoverImages(view: UIView) {
         let cellWidth = Int(view.frame.width / CGFloat(4))
         let cellHeight = Int(view.frame.height / CGFloat(8))
-        let x=Int(view.frame.width/2)-cellWidth/2
-        let y=Int(view.frame.height/2)-cellWidth/2
+        let x = Int(view.frame.width / 2) - cellWidth / 2
+        let y = Int(view.frame.height / 2) - cellWidth / 2
         let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
-        let activityIndicator=NVActivityIndicatorView(frame: frame, type: .pacman, color: UIColor.red, padding: nil)
+        let activityIndicator = NVActivityIndicatorView(frame: frame, type: .pacman, color: UIColor.red, padding: nil)
         activityIndicator.startAnimating()
-
-        
-        
 
         var ref = FIRDatabase.database().reference().child("coverImagePaths")
         ref.observe(.value, with: { (snapshot) in
@@ -38,7 +33,7 @@ class CachedData {
                 }
             }
             activityIndicator.stopAnimating()
-            
+
         })
     }
 }

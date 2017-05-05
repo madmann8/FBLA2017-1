@@ -332,17 +332,17 @@ public enum Currency: String, NumberFormatter, NumberFormatterCustomLocaleAvaila
     case ZAR
     /// Zambia Kwacha
     case ZMW
-    
+
     /// Modifier
     public var modifier: String {
         return rawValue
     }
-    
+
     /// Type enum
     public var type: NumberFormatterType {
         return .currency
     }
-    
+
     /// NSNumberFormatter style
     public var style: Foundation.NumberFormatter.Style? {
         return .currency

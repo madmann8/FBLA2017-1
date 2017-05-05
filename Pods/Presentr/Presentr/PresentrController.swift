@@ -10,19 +10,19 @@ import UIKit
 
 /// Presentr's custom presentation controller. Handles the position and sizing for the view controller's.
 class PresentrController: UIPresentationController, UIAdaptivePresentationControllerDelegate {
-    
+
     /// Presentation type must be passed in to make all the sizing and position decisions.
     let presentationType: PresentationType
 
     /// Should the presented controller dismiss on background tap.
     let dismissOnTap: Bool
-    
+
     /// Should the presented controller dismiss on background Swipe.
     let dismissOnSwipe: Bool
 
     /// DismissSwipe direction
     let dismissOnSwipeDirection: DismissSwipeDirection
-    
+
     /// Should the presented controller use animation when dismiss on background tap.
     let dismissAnimated: Bool
 
@@ -101,11 +101,11 @@ class PresentrController: UIPresentationController, UIAdaptivePresentationContro
         self.customBackgroundView = customBackgroundView
 
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-        
+
         setupBackground(backgroundColor, backgroundOpacity: backgroundOpacity, blurBackground: blurBackground, blurStyle: blurStyle)
         setupCornerRadius(roundCorners: roundCorners, cornerRadius: cornerRadius)
         addDropShadow(shadow: dropShadow)
-        
+
         if dismissOnSwipe {
             setupDismissOnSwipe()
         }
@@ -121,7 +121,7 @@ class PresentrController: UIPresentationController, UIAdaptivePresentationContro
         let swipe = UIPanGestureRecognizer(target: self, action: #selector(presentedViewSwipe))
         presentedViewController.view.addGestureRecognizer(swipe)
     }
-    
+
     private func setupBackground(_ backgroundColor: UIColor, backgroundOpacity: Float, blurBackground: Bool, blurStyle: UIBlurEffectStyle) {
         let tap = UITapGestureRecognizer(target: self, action: #selector(chromeViewTapped))
         chromeView.addGestureRecognizer(tap)
@@ -147,7 +147,7 @@ class PresentrController: UIPresentationController, UIAdaptivePresentationContro
             presentedViewController.view.layer.cornerRadius = 0
         }
     }
-    
+
     private func addDropShadow(shadow: PresentrShadow?) {
         guard let shadow = shadow else {
             presentedViewController.view.layer.masksToBounds = true
@@ -169,12 +169,12 @@ class PresentrController: UIPresentationController, UIAdaptivePresentationContro
             presentedViewController.view.layer.shadowRadius = shadowRadius
         }
     }
-    
+
     fileprivate func registerKeyboardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(PresentrController.keyboardWasShown(notification:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(PresentrController.keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
     }
-    
+
     fileprivate func removeObservers() {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
@@ -185,14 +185,14 @@ class PresentrController: UIPresentationController, UIAdaptivePresentationContro
 // MARK: - UIPresentationController
 
 extension PresentrController {
-    
+
     // MARK: Presentation
-    
+
     override var frameOfPresentedViewInContainerView: CGRect {
         var presentedViewFrame = CGRect.zero
         let containerBounds = containerFrame
         let size = self.size(forChildContentContainer: presentedViewController, withParentContainerSize: containerBounds.size)
-        
+
         let origin: CGPoint
         // If the Presentation Type's calculate center point returns nil
         // this means that the user provided the origin, not a center point.
@@ -201,19 +201,19 @@ extension PresentrController {
         } else {
             origin = getOriginFromType() ?? CGPoint(x: 0, y: 0)
         }
-        
+
         presentedViewFrame.size = size
         presentedViewFrame.origin = origin
 
         return presentedViewFrame
     }
-    
+
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         let width = getWidthFromType(parentSize)
         let height = getHeightFromType(parentSize)
         return CGSize(width: CGFloat(width), height: CGFloat(height))
     }
-    
+
     override func containerViewWillLayoutSubviews() {
         guard !keyboardIsShowing else {
             return // prevent resetting of presented frame when the frame is being translated
@@ -221,9 +221,9 @@ extension PresentrController {
         chromeView.frame = containerFrame
         presentedView!.frame = frameOfPresentedViewInContainerView
     }
-    
+
     // MARK: Animation
-    
+
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView else {
             return
@@ -257,19 +257,19 @@ extension PresentrController {
             return
         }
 
-        coordinator.animate(alongsideTransition: { context in
+        coordinator.animate(alongsideTransition: { _ in
             blurEffectView?.effect = self.visualEffect
             self.chromeView.alpha = 1.0
         }, completion: nil)
     }
-    
+
     override func dismissalTransitionWillBegin() {
         guard let coordinator = presentedViewController.transitionCoordinator else {
             chromeView.alpha = 0.0
             return
         }
 
-        coordinator.animate(alongsideTransition: { context in
+        coordinator.animate(alongsideTransition: { _ in
             self.chromeView.alpha = 0.0
         }, completion: nil)
     }
@@ -330,7 +330,7 @@ fileprivate extension PresentrController {
         let y: CGFloat = center.y - size.height / 2
         return CGPoint(x: x, y: y)
     }
-    
+
 }
 
 // MARK: - Gesture Handling
@@ -439,7 +439,7 @@ extension PresentrController {
     func keyboardWillHide (notification: Notification) {
         if keyboardIsShowing {
             let presentedFrame = frameOfPresentedViewInContainerView
-            if self.presentedView?.frame !=  presentedFrame {
+            if self.presentedView?.frame != presentedFrame {
                 UIView.animate(withDuration: notification.keyboardAnimationDuration() ?? 0.5, animations: {
                     self.presentedView?.frame = presentedFrame
                 })

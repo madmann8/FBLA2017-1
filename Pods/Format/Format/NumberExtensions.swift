@@ -14,14 +14,14 @@ import Foundation
  Conforming types can be transformed with Format
  */
 public protocol NumberFormatProvider {
-    
+
     /**
      Returns the `NSNumber` version of the current number.
      
      - returns: An `NSNumber` which reflects the current number.
      */
     func formatNumber() -> NSNumber
-    
+
     /**
      Returns the transformation of the current number as a `String` based on the current locale.
      
@@ -31,7 +31,7 @@ public protocol NumberFormatProvider {
      `NumberFormat` provided.
      */
     func format(_ formatter: NumberFormatter) -> String
-    
+
     /**
      Returns the transformation of the current number as a `String` based on the provided locale.
      
@@ -48,7 +48,7 @@ public protocol NumberFormatProvider {
  Default implementation of `NumberFormatProvider`
  */
 extension NumberFormatProvider {
-    
+
     public func format(_ formatter: NumberFormatter) -> String {
         let formattedNumber = NumberFormat.sharedInstance.format(formatNumber(), formatter: formatter)
         return formattedNumber

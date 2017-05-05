@@ -8,29 +8,28 @@
 
 import UIKit
 
-
 protocol PhotoCellDelegate {
-    func buttonPressed(keyString:String, coverImageKeyString:String)
+    func buttonPressed(keyString: String, coverImageKeyString: String)
 }
 
 class PhotoCell: UICollectionViewCell {
-    
+
     override func awakeFromNib() {
         imageView.layer.cornerRadius = 6.2
         imageView.clipsToBounds = true
 
     }
-    
-    var keyString:String?=nil
-    var coverImageKeyString:String?=nil
-    
-    var delegate: PhotoCellDelegate?=nil
-    
+
+    var keyString: String?
+    var coverImageKeyString: String?
+
+    var delegate: PhotoCellDelegate?
+
     @IBAction func buttonIsPressed(_ sender: Any) {
-        if let keyString=keyString,let coverImageKeyString=coverImageKeyString{
-            delegate?.buttonPressed(keyString: keyString,coverImageKeyString:coverImageKeyString)
+        if let keyString = keyString, let coverImageKeyString = coverImageKeyString {
+            delegate?.buttonPressed(keyString: keyString, coverImageKeyString:coverImageKeyString)
         }
     }
     @IBOutlet weak var imageView: UIImageView!
-    
+
 }

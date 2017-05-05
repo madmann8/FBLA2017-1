@@ -9,9 +9,8 @@
 import Foundation
 import UIKit
 
-
 class SBMaker {
-    static func newVC(vc: String)-> UIViewController{
+    static func newVC(vc: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: vc)
     }
 }

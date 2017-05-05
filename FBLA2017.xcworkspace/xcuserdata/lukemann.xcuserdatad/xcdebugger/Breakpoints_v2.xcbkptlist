@@ -14,9 +14,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "509"
-            endingLineNumber = "509"
-            landmarkName = "chatUserImageLoaded()"
-            landmarkType = "7">
+            endingLineNumber = "509">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,9 +28,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "506"
-            endingLineNumber = "506"
-            landmarkName = "chatUserImageLoaded()"
-            landmarkType = "7">
+            endingLineNumber = "506">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,9 +42,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "500"
-            endingLineNumber = "500"
-            landmarkName = "chatUserImageLoaded()"
-            landmarkType = "7">
+            endingLineNumber = "500">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -191,8 +185,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "192"
             endingLineNumber = "192"
-            landmarkName = "ChatsTableViewController"
-            landmarkType = "4">
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -223,7 +217,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "267"
             endingLineNumber = "267"
-            landmarkName = "doneLoading()"
+            landmarkName = "refreshChats()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -238,9 +232,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "302"
-            endingLineNumber = "302"
-            landmarkName = "refreshChats()"
-            landmarkType = "7">
+            endingLineNumber = "302">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -303,7 +295,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "280"
             endingLineNumber = "280"
-            landmarkName = "refreshData()"
+            landmarkName = "refreshChats()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -318,9 +310,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "512"
-            endingLineNumber = "512"
-            landmarkName = "resetLoadedCell()"
-            landmarkType = "7">
+            endingLineNumber = "512">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -351,7 +341,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
             endingLineNumber = "100"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -382,9 +372,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "307"
-            endingLineNumber = "307"
-            landmarkName = "refreshChats()"
-            landmarkType = "7">
+            endingLineNumber = "307">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -510,9 +498,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "507"
-            endingLineNumber = "507"
-            landmarkName = "chatUserImageLoaded()"
-            landmarkType = "7">
+            endingLineNumber = "507">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -794,7 +780,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "284"
             endingLineNumber = "284"
-            landmarkName = "refreshData()"
+            landmarkName = "refreshChats()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -825,9 +811,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "505"
-            endingLineNumber = "505"
-            landmarkName = "chatUserImageLoaded()"
-            landmarkType = "7">
+            endingLineNumber = "505">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -841,9 +825,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "316"
-            endingLineNumber = "316"
-            landmarkName = "refreshChats()"
-            landmarkType = "7">
+            endingLineNumber = "316">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -937,9 +919,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "310"
-            endingLineNumber = "310"
-            landmarkName = "refreshChats()"
-            landmarkType = "7">
+            endingLineNumber = "310">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -986,7 +966,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
             endingLineNumber = "158"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkName = "tableView(_:titleForHeaderInSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1194,7 +1174,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
             endingLineNumber = "114"
-            landmarkName = "refresh()"
+            landmarkName = "collectionView(collectionView:layout:blockSizeForItemAtIndexPath:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1210,7 +1190,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "176"
             endingLineNumber = "176"
-            landmarkName = "loadCoverImages()"
+            landmarkName = "buttonPressed(keyString:coverImageKeyString:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1225,9 +1205,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "371"
-            endingLineNumber = "371"
-            landmarkName = "ImageCollectionViewController"
-            landmarkType = "4">
+            endingLineNumber = "371">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1242,7 +1220,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
             endingLineNumber = "213"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkName = "doneLoading(item:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1274,7 +1252,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
             endingLineNumber = "166"
-            landmarkName = "tableView(_:titleForHeaderInSection:)"
+            landmarkName = "getSectionType(section:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

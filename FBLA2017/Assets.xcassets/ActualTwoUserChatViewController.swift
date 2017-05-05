@@ -15,31 +15,27 @@ import Photos
 import ImagePicker
 import FirebaseAuth
 
-
 class ActualTwoUserChatViewController: JSQMessagesViewController {
-    
-    
-    var frame:CGRect?=nil
-    
+
+    var frame: CGRect?
+
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference()
-    
+
     let imageURLNotSetKey = "NOTSET"
-    
-    var userRef1:FIRDatabaseReference?=nil
-    var userRef2:FIRDatabaseReference?=nil
-    
-    var loggedInUser:User?=nil
-    var otherUser:User?=nil
-    
-    
-    
-    var messageRef: FIRDatabaseReference? = nil
-    var channelRef: FIRDatabaseReference? = nil
+
+    var userRef1: FIRDatabaseReference?
+    var userRef2: FIRDatabaseReference?
+
+    var loggedInUser: User?
+    var otherUser: User?
+
+    var messageRef: FIRDatabaseReference?
+    var channelRef: FIRDatabaseReference?
     private var newMessageRefHandle: FIRDatabaseHandle?
-    
+
     lazy var userIsTypingRef: FIRDatabaseReference =
         self.channelRef!.child("typingIndicator").child(self.senderId) // 1
     private var localTyping = false // 2
@@ -55,37 +51,32 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
     }
     lazy var usersTypingQuery: FIRDatabaseQuery =
         self.channelRef!.child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
-    
-    
+
     var photoMessageMap = [String: JSQPhotoMediaItem]()
     var updatedMessageRefHandle: FIRDatabaseHandle?
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         observeMessages()
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
     }
-    
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.view.frame=self.frame ?? self.view.frame
+        self.view.frame = self.frame ?? self.view.frame
         observeTyping()
-        
+
     }
-    
-    
+
     private func addMessage(withId id: String, name: String, text: String) {
         if let message = JSQMessage(senderId: id, displayName: name, text: text) {
             messages.append(message)
         }
     }
-    
+
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        let itemRef=messageRef?.childByAutoId()
+        let itemRef = messageRef?.childByAutoId()
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
@@ -101,35 +92,32 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
         isTyping = false
         finishSendingMessage()
     }
-    
+
     deinit {
         if let refHandle = newMessageRefHandle {
             messageRef?.removeObserver(withHandle: refHandle)
         }
-        
+
         if let refHandle = updatedMessageRefHandle {
             messageRef?.removeObserver(withHandle: refHandle)
         }
     }
-    
-    
+
     private func observeMessages() {
-        let messagesQuery=messageRef?.queryLimited(toLast: 25)
-        
-        newMessageRefHandle=messagesQuery?.observe(.childAdded, with: { (snapshot) -> Void in
+        let messagesQuery = messageRef?.queryLimited(toLast: 25)
+
+        newMessageRefHandle = messagesQuery?.observe(.childAdded, with: { (snapshot) -> Void in
             let messageData = snapshot.value as! Dictionary<String, String>
-            
+
             if let id = messageData["senderId"] as String!, let name = messageData["senderName"] as String!, let text = messageData["text"] as String!, text.characters.count > 0 {
                 self.userRef1?.setValue("👍")
                 self.userRef2?.setValue("👍")
                 self.channelRef?.child("user1").setValue(self.loggedInUser?.uid)
                 self.channelRef?.child("user2").setValue(self.otherUser?.uid)
 
-                
                 self.addMessage(withId: id, name: name, text: text)
                 self.finishReceivingMessage()
-            }
-            else if let id = messageData["senderId"] as String!,
+            } else if let id = messageData["senderId"] as String!,
                 let photoURL = messageData["photoURL"] as String! {
                 self.userRef1?.setValue("👍")
                 self.userRef2?.setValue("👍")
@@ -142,15 +130,14 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
                         self.fetchImageDataAtURL(photoURL, forMediaItem: mediaItem, clearsPhotoMessageMapOnSuccessForKey: nil)
                     }
                 }
-            }
-            else {
+            } else {
                 print("Error! Could not decode message data😒" )
             }
         })
         updatedMessageRefHandle = messageRef?.observe(.childChanged, with: { (snapshot) in
             let key = snapshot.key
             let messageData = snapshot.value as! Dictionary<String, String> // 1
-            
+
             if let photoURL = messageData["photoURL"] as String! { // 2
                 // The photo has been updated.
                 if let mediaItem = self.photoMessageMap[key] { // 3
@@ -161,30 +148,27 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
     }
 }
 
-
 //Appearnces
 extension ActualTwoUserChatViewController {
-    
+
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.item]
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
-    
+
     func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.flatNavyBlue)
     }
-    
+
     func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.flatWatermelon)
     }
-    
-    
-    
+
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item] // 1
         if message.senderId == senderId { // 2
@@ -193,15 +177,15 @@ extension ActualTwoUserChatViewController {
             return incomingBubbleImageView
         }
     }
-    
+
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         return nil
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
-        
+
         if message.senderId == senderId {
             cell.textView?.textColor = UIColor.white
         } else {
@@ -211,9 +195,8 @@ extension ActualTwoUserChatViewController {
     }
 }
 
-
 //IsTyping Stuff
-extension ActualTwoUserChatViewController{
+extension ActualTwoUserChatViewController {
     override func textViewDidChange(_ textView: UITextView) {
         super.textViewDidChange(textView)
         isTyping = textView.text != ""
@@ -232,51 +215,46 @@ extension ActualTwoUserChatViewController{
     }
 }
 
-
 //Send Photos Stuff
-extension ActualTwoUserChatViewController:ImagePickerDelegate{
+extension ActualTwoUserChatViewController:ImagePickerDelegate {
     func sendPhotoMessage() -> String? {
         let itemRef = messageRef?.childByAutoId()
-        
+
         let messageItem = [
             "photoURL": imageURLNotSetKey,
             "senderId": senderId!,
             ]
-        
+
         itemRef?.setValue(messageItem)
-        
+
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
-        
+
         finishSendingMessage()
         return itemRef?.key
     }
-    
+
     override func didPressAccessoryButton(_ sender: UIButton) {
         let picker = ImagePickerController()
-        picker.imageLimit=1
+        picker.imageLimit = 1
         picker.delegate = self
-        
+
         present(picker, animated: true, completion:nil)
     }
-    
-    
-    
+
     func setImageURL(_ url: String, forPhotoMessageWithKey key: String) {
         let itemRef = messageRef?.child(key)
         itemRef?.updateChildValues(["photoURL": url])
     }
-    
-    
-    
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]){}
-    
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]){
-        
+
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {}
+
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+
         if let key = sendPhotoMessage() {
             // 3
             let imageData = UIImageJPEGRepresentation(images[0], 0.5)
             // 4
-            let imagePath = FIRAuth.auth()!.currentUser!.uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+            let imagePath = FIRAuth.auth()!.currentUser!.uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1_000)).jpg"
             // 5
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
@@ -291,43 +269,42 @@ extension ActualTwoUserChatViewController:ImagePickerDelegate{
             }
         }
         imagePicker.dismiss(animated: true, completion:nil)
-        
+
     }
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController){    imagePicker.dismiss(animated: true, completion:nil)
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {    imagePicker.dismiss(animated: true, completion:nil)
     }
-    
+
     func addPhotoMessage(withId id: String, key: String, mediaItem: JSQPhotoMediaItem) {
         if let message = JSQMessage(senderId: id, displayName: "", media: mediaItem) {
             messages.append(message)
-            
+
             if (mediaItem.image == nil) {
                 photoMessageMap[key] = mediaItem
             }
-            
+
             collectionView.reloadData()
         }
     }
-    
+
     func fetchImageDataAtURL(_ photoURL: String, forMediaItem mediaItem: JSQPhotoMediaItem, clearsPhotoMessageMapOnSuccessForKey key: String?) {
         let storageRef = FIRStorage.storage().reference(forURL: photoURL)
-        
-        storageRef.data(withMaxSize: INT64_MAX){ (data, error) in
+
+        storageRef.data(withMaxSize: INT64_MAX) { (data, error) in
             if let error = error {
                 print("Error downloading image data: \(error)")
                 return
             }
-            
-            storageRef.metadata(completion: { (metadata, metadataErr) in
+
+            storageRef.metadata(completion: { (_, metadataErr) in
                 if let error = metadataErr {
                     print("Error downloading metadata: \(error)")
                     return
                 }
-                
-                
-                mediaItem.image = UIImage.init(data: data!)
-                
+
+                mediaItem.image = UIImage(data: data!)
+
                 self.collectionView.reloadData()
-                
+
                 guard key != nil else {
                     return
                 }
@@ -335,9 +312,5 @@ extension ActualTwoUserChatViewController:ImagePickerDelegate{
             })
         }
     }
-    
+
 }
-
-
-
-

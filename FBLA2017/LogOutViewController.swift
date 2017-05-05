@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth 
+import FirebaseAuth
 
 class LogOutViewController: UIViewController {
 
@@ -19,9 +19,7 @@ class LogOutViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    
     /*
     // MARK: - Navigation
 
@@ -31,7 +29,5 @@ class LogOutViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-  
 
 }

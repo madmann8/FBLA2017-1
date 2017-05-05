@@ -15,61 +15,55 @@ import Photos
 import ImagePicker
 import FirebaseAuth
 
-
 class TwoUserChatViewController: UIViewController {
 
     @IBOutlet weak var exitButton: UIButton!
 
-    var frame:CGRect?=nil
-    
+    var frame: CGRect?
+
     lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference()
-    
+
     let imageURLNotSetKey = "NOTSET"
-    
-    var userRef1:FIRDatabaseReference?=nil
-    var userRef2:FIRDatabaseReference?=nil
 
-    var loggedInUser:User?=nil
-    var otherUser:User?=nil
+    var userRef1: FIRDatabaseReference?
+    var userRef2: FIRDatabaseReference?
 
-    var hideButton:Bool=true
-    
-    var messageRef: FIRDatabaseReference? = nil
-    var channelRef: FIRDatabaseReference? = nil
+    var loggedInUser: User?
+    var otherUser: User?
+
+    var hideButton: Bool = true
+
+    var messageRef: FIRDatabaseReference?
+    var channelRef: FIRDatabaseReference?
     override func viewDidLoad() {
-        if hideButton{
-            exitButton.isHidden=true
+        if hideButton {
+            exitButton.isHidden = true
         }
     }
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="toContainedChat"{
-            if let vc=segue.destination as? ActualTwoUserChatViewController {
-                vc.senderId=currentUser.uid
-                vc.senderDisplayName=currentUser.displayName
-                let LIUID:String=(loggedInUser?.uid)!
-                let otherUID:String=(otherUser?.uid)!
-                var chatPath:String=""
-                if LIUID.localizedStandardCompare(otherUID)==ComparisonResult.orderedAscending{
-                    chatPath=LIUID+otherUID
+            if let vc = segue.destination as? ActualTwoUserChatViewController {
+                vc.senderId = currentUser.uid
+                vc.senderDisplayName = currentUser.displayName
+                let LIUID: String = (loggedInUser?.uid)!
+                let otherUID: String = (otherUser?.uid)!
+                var chatPath: String=""
+                if LIUID.localizedStandardCompare(otherUID) == ComparisonResult.orderedAscending {
+                    chatPath = LIUID + otherUID
+                } else {
+                    chatPath = otherUID + LIUID
                 }
-                else {
-                    chatPath=otherUID+LIUID
-                }
-                vc.channelRef=FIRDatabase.database().reference().child("chats").child("\(chatPath)")
-                vc.userRef1=userRef1
-                vc.userRef2=userRef2
-                vc.loggedInUser=loggedInUser
-                vc.otherUser=otherUser
-                
-                vc.messageRef=vc.channelRef?.child("messages")
-                
-                
+                vc.channelRef = FIRDatabase.database().reference().child("chats").child("\(chatPath)")
+                vc.userRef1 = userRef1
+                vc.userRef2 = userRef2
+                vc.loggedInUser = loggedInUser
+                vc.otherUser = otherUser
+
+                vc.messageRef = vc.channelRef?.child("messages")
+
             }
         }
  }
 
 }
-
-

@@ -9,8 +9,7 @@
 import UIKit
 import GoogleSignIn
 
-class GoogleLoginViewController: UIViewController,GIDSignInUIDelegate
-{
+class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +21,6 @@ class GoogleLoginViewController: UIViewController,GIDSignInUIDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

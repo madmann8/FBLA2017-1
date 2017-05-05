@@ -46,10 +46,10 @@ open class Popover: UIView {
   open var highlightCornerRadius: CGFloat = 0
 
   // custom closure
-  open var willShowHandler: (() -> ())?
-  open var willDismissHandler: (() -> ())?
-  open var didShowHandler: (() -> ())?
-  open var didDismissHandler: (() -> ())?
+  open var willShowHandler: (() -> Void)?
+  open var willDismissHandler: (() -> Void)?
+  open var didShowHandler: (() -> Void)?
+  open var didDismissHandler: (() -> Void)?
 
   fileprivate var blackOverlay: UIControl = UIControl()
   fileprivate var containerView: UIView!
@@ -63,7 +63,7 @@ open class Popover: UIView {
     self.accessibilityViewIsModal = true
   }
 
-  public init(showHandler: (() -> ())?, dismissHandler: (() -> ())?) {
+  public init(showHandler: (() -> Void)?, dismissHandler: (() -> Void)?) {
     super.init(frame: CGRect.zero)
     self.backgroundColor = UIColor.clear
     self.didShowHandler = showHandler
@@ -71,7 +71,7 @@ open class Popover: UIView {
     self.accessibilityViewIsModal = true
   }
 
-  public init(options: [PopoverOption]?, showHandler: (() -> ())? = nil, dismissHandler: (() -> ())? = nil) {
+  public init(options: [PopoverOption]?, showHandler: (() -> Void)? = nil, dismissHandler: (() -> Void)? = nil) {
     super.init(frame: CGRect.zero)
     self.backgroundColor = UIColor.clear
     self.setOptions(options)
@@ -80,7 +80,7 @@ open class Popover: UIView {
     self.accessibilityViewIsModal = true
   }
 
-  fileprivate func setOptions(_ options: [PopoverOption]?){
+  fileprivate func setOptions(_ options: [PopoverOption]?) {
     if let options = options {
       for option in options {
         switch option {
@@ -226,7 +226,7 @@ open class Popover: UIView {
         }
 
         inView.addSubview(self.blackOverlay)
-        
+
         if self.dismissOnBlackOverlayTap {
             self.blackOverlay.addTarget(self, action: #selector(Popover.dismiss), for: .touchUpInside)
         }
@@ -261,7 +261,7 @@ open class Popover: UIView {
       options: UIViewAnimationOptions(),
       animations: {
         self.transform = CGAffineTransform.identity
-      }){ _ in
+      }) { _ in
         self.didShowHandler?()
     }
     UIView.animate(withDuration: self.animationIn / 3,
@@ -272,7 +272,7 @@ open class Popover: UIView {
       }, completion: { _ in
     })
   }
-  
+
   open override func accessibilityPerformEscape() -> Bool {
     self.dismiss()
     return true
@@ -284,9 +284,9 @@ open class Popover: UIView {
       UIView.animate(withDuration: self.animationOut, delay: 0,
         options: UIViewAnimationOptions(),
         animations: {
-          self.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+          self.transform = CGAffineTransform(scaleX: 0.000_1, y: 0.000_1)
           self.blackOverlay.alpha = 0
-        }){ _ in
+        }) { _ in
           self.contentView.removeFromSuperview()
           self.blackOverlay.removeFromSuperview()
           self.removeFromSuperview()

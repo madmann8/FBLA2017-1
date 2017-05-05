@@ -36,24 +36,23 @@ public protocol NumberFormatterCustomLocaleAvailable: NumberFormatter {}
 
 /// Number format class
 open class NumberFormat {
-    
+
     static let sharedInstance = NumberFormat()
-    
+
     var nsFormatter = Foundation.NumberFormatter()
-    
+
     let distanceFormatter = MKDistanceFormatter()
-    
+
     let massFormatter = MassFormatter()
 
-    open func format(_ number: NSNumber, formatter: NumberFormatter) -> String{
+    open func format(_ number: NSNumber, formatter: NumberFormatter) -> String {
         if let customLocaleFormatter = formatter as? NumberFormatterCustomLocaleAvailable {
             return format(number, formatter: customLocaleFormatter, locale: Locale.current)
-        }
-        else {
+        } else {
             return defaultLocaleOnlyFormat(number, formatter: formatter)
         }
     }
-    
+
     /**
      Number formatting function for formatters that accept custom locales. Inits the NSFormatter again if style changes.
      
@@ -63,8 +62,8 @@ open class NumberFormat {
      
      - returns: formatted string.
      */
-    open func format(_ number: NSNumber, formatter: NumberFormatterCustomLocaleAvailable, locale: Locale) -> String{
-        if let style = formatter.style , nsFormatter.numberStyle != style {
+    open func format(_ number: NSNumber, formatter: NumberFormatterCustomLocaleAvailable, locale: Locale) -> String {
+        if let style = formatter.style, nsFormatter.numberStyle != style {
             nsFormatter = Foundation.NumberFormatter()
             nsFormatter.numberStyle = style
         }
@@ -99,7 +98,7 @@ open class NumberFormat {
         }
         return finalString
     }
-    
+
     internal func defaultLocaleOnlyFormat(_ number: NSNumber, formatter: NumberFormatter) -> String {
         var formattedString: String?
         if (formatter.type == .mass) {
@@ -113,4 +112,3 @@ open class NumberFormat {
     }
 
 }
-

@@ -9,56 +9,55 @@
 import UIKit
 import Firebase
 
-protocol ItemDelegate{
-    func doneLoading(item:Item)
-    
+protocol ItemDelegate {
+    func doneLoading(item: Item)
+
 }
 
-class Item{
-    var images:[UIImage]?=nil
-    var categorey:String?=nil
-    var name:String?=nil
-    var about:String?=nil
-    var latitudeString:String?=nil
-    var longitudeString:String?=nil
-    var addressString:String?=nil
-    var cents:Int?=nil
-    var condition:Int?=nil
-    var keyString:String?=nil
-    var coverImagePath:String?=nil
-    var userID:String?=nil
-    var user:User?=nil
-    var uid:String?=nil
-    var deleted:Bool=false
-    
-    
-    var delegate:ItemDelegate?=nil
-    
-    func load(keyString:String){
-        if !deleted{
-        
-        self.uid=keyString
+class Item {
+    var images: [UIImage]?
+    var categorey: String?
+    var name: String?
+    var about: String?
+    var latitudeString: String?
+    var longitudeString: String?
+    var addressString: String?
+    var cents: Int?
+    var condition: Int?
+    var keyString: String?
+    var coverImagePath: String?
+    var userID: String?
+    var user: User?
+    var uid: String?
+    var deleted: Bool = false
+
+    var delegate: ItemDelegate?
+
+    func load(keyString: String) {
+        if !deleted {
+
+        self.uid = keyString
         var images=[UIImage]()
-        var name:String?=nil
-        var about:String?=nil
-        var categorey:String?=nil
-        var latitudeString:String?=nil
-        var longitudeString:String?=nil
-        var addressString:String?=nil
-        var cents:Int?=nil
-        var condition:Int?=nil
-        var userID:String?=nil
-        
-        let ref=FIRDatabase.database().reference().child("coverImagePaths").child(keyString)
+        var name: String?=nil
+        var about: String?=nil
+        var categorey: String?=nil
+        var latitudeString: String?=nil
+        var longitudeString: String?=nil
+        var addressString: String?=nil
+        var cents: Int?=nil
+        var condition: Int?=nil
+        var userID: String?=nil
+
+        let ref = FIRDatabase.database().reference().child("coverImagePaths").child(keyString)
         ref.observe(.value, with: {(snapshot) in
-            if let value = snapshot.value as? String{
-            self.coverImagePath=value
+            if let value = snapshot.value as? String {
+            self.coverImagePath = value
             }
         })
-        
+
         let ref1 = FIRDatabase.database().reference().child("items").child(keyString)
-        let user=User()
-        
+        let user = User()
+
         ref1.observe(.value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
             name = value?["title"] as? String ?? ""
@@ -72,47 +71,45 @@ class Item{
             userID = value?["userID"] as? String ?? ""
             user.setupUser(id: userID!, isLoggedIn: false)
 
-            
         })
         let storage = FIRStorage.storage()
         ref1.child("imagePaths").observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                var i=0
+                var i = 0
                 for snapshot in snapshots {
                     if let path = snapshot.value as? String {
                         let imagePath = storage.reference(forURL: path)
-                        imagePath.data(withMaxSize: 1 * 6000 * 6000) { data, error in
+                        imagePath.data(withMaxSize: 1 * 6_000 * 6_000) { data, error in
                             if let error = error {
                                 // Uh-oh, an error occurred!
                             } else {
                                 let image = UIImage(data: data!)
                                 images.append(image!)
                                 print(i)
-                                i+=1
-                                if i==snapshots.count{
-                                    self.categorey=categorey
-                                    self.name=name
-                                    self.about=about
-                                    self.latitudeString=latitudeString
-                                    self.longitudeString=longitudeString
-                                    self.addressString=addressString
-                                    self.cents=cents
-                                    self.condition=condition
-                                    self.images=images
-                                    self.keyString=keyString
-                                    self.user=user
-                                    
+                                i += 1
+                                if i == snapshots.count {
+                                    self.categorey = categorey
+                                    self.name = name
+                                    self.about = about
+                                    self.latitudeString = latitudeString
+                                    self.longitudeString = longitudeString
+                                    self.addressString = addressString
+                                    self.cents = cents
+                                    self.condition = condition
+                                    self.images = images
+                                    self.keyString = keyString
+                                    self.user = user
+
                                     self.delegate?.doneLoading(item: self)
-                                
 
                                 }
                             }
                         }
-                        
+
                     }
                 }
             }
-            
+
         })
         }
     }

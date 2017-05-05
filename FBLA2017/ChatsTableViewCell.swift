@@ -1,4 +1,4 @@
- //
+//
 //  ChatsTableViewCell.swift
 //  FBLA2017
 //
@@ -10,165 +10,148 @@ import UIKit
 import FirebaseStorage
 
 protocol TranferDelegate {
-    func tranferImage(image:UIImage)
-    
-}
+    func tranferImage(image: UIImage)
 
+}
 
 protocol ChatsTableViewLoadedDelgate {
     func cellLoaded()
-    
-}
 
+}
 
 class ChatsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var mainImageView: UIImageView!{
-        didSet{
-            self.mainImageView.layer.cornerRadius=10
+    @IBOutlet weak var mainImageView: UIImageView! {
+        didSet {
+            self.mainImageView.layer.cornerRadius = 10
             mainImageView.clipsToBounds = true
         }
-        
+
     }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var background: UIView!
-    
-    var hasLoaded=false
 
-    
-    
-    var user:User?=nil
-    
-    var delegate:TranferDelegate?=nil
-    var chatImageLoadedDelegate:ChatImageLoadedDelegate?=nil
+    var hasLoaded = false
 
-    
-    var tableViewDelegate:ChatsTableViewLoadedDelgate?=nil{
-        didSet{
-            if let img=self.img{
-                if !hasLoaded{
+    var user: User?
+
+    var delegate: TranferDelegate?
+    var chatImageLoadedDelegate: ChatImageLoadedDelegate?
+
+    var tableViewDelegate: ChatsTableViewLoadedDelgate?=nil {
+        didSet {
+            if let img = self.img {
+                if !hasLoaded {
                 self.tableViewDelegate?.cellLoaded()
-                    hasLoaded=true
+                    hasLoaded = true
                 }
         }
         }
     }
-    
-    var isGlobal:Bool?=nil
-    var chatPath:String?=nil
-    var date:String?=nil
-    var name:String?=nil
-    var img:UIImage?=nil
-    var item:Item?=nil
-    var coverImagePath:String?=nil{
-        didSet{
+
+    var isGlobal: Bool?
+    var chatPath: String?
+    var date: String?
+    var name: String?
+    var img: UIImage?
+    var item: Item?
+    var coverImagePath: String?=nil {
+        didSet {
             loadCoverImage()
         }
     }
-    var itemPath:String?=nil
-    
+    var itemPath: String?
+
     override func awakeFromNib() {
         self.background.layer.cornerRadius = 10
-        self.background.backgroundColor=UIColor.flatWatermelon
-        self.background.alpha=0.7
+        self.background.backgroundColor = UIColor.flatWatermelon
+        self.background.alpha = 0.7
         self.background.layer.masksToBounds = true
-        self.mainImageView.layer.cornerRadius=10
+        self.mainImageView.layer.cornerRadius = 10
         mainImageView.clipsToBounds = true
 
     }
-    
 
-
-    
 }
 
-extension ChatsTableViewCell:UserDelegate,TranferDelegate{
+extension ChatsTableViewCell:UserDelegate, TranferDelegate {
     func tranferImage(image: UIImage) {
-        if let mainIV=self.mainImageView {
-            mainIV.image=image
-            self.img=image
+        if let mainIV = self.mainImageView {
+            mainIV.image = image
+            self.img = image
 
-        }
-        else {
+        } else {
             self.img?=image
-            if !hasLoaded{
+            if !hasLoaded {
                 self.tableViewDelegate?.cellLoaded()
-                hasLoaded=true
+                hasLoaded = true
             }
         }
     }
 
     func imageLoaded(image: UIImage, user: User, index: Int?) {
         delegate?.tranferImage(image: image)
-        if let mainIV=self.mainImageView {
-            mainIV.image=image
-            self.img=image
-            if !hasLoaded{
+        if let mainIV = self.mainImageView {
+            mainIV.image = image
+            self.img = image
+            if !hasLoaded {
                 self.tableViewDelegate?.cellLoaded()
-                hasLoaded=true
+                hasLoaded = true
             }
+        } else {
+            self.img = image
         }
-        else {
-            self.img=image
-        }
-        
 
     }
-    
+
     func loadCoverImage() {
         let storage = FIRStorage.storage()
         let path = self.coverImagePath!
             let coverImagePath = storage.reference(forURL: path)
-            coverImagePath.data(withMaxSize: 1 * 1024 * 1024) { data, error in
+            coverImagePath.data(withMaxSize: 1 * 1_024 * 1_024) { data, error in
                 if let error = error {
                     // Uh-oh, an error occurred!
                 } else {
                     let image = UIImage(data: data!)
                     self.delegate?.tranferImage(image: image!)
-                    if let mainIV=self.mainImageView {
-                        mainIV.image=image
-                        self.img=image
-                        if !self.hasLoaded{
+                    if let mainIV = self.mainImageView {
+                        mainIV.image = image
+                        self.img = image
+                        if !self.hasLoaded {
                             self.tableViewDelegate?.cellLoaded()
                              self.chatImageLoadedDelegate?.chatUserImageLoaded()
 
-                            self.hasLoaded=true
-                        }                    }
-                    else {
-                        self.img=image
-                        if !self.hasLoaded{
+                            self.hasLoaded = true
+                        }                    } else {
+                        self.img = image
+                        if !self.hasLoaded {
                             self.tableViewDelegate?.cellLoaded()
                             self.chatImageLoadedDelegate?.chatUserImageLoaded()
 
-                            self.hasLoaded=true
+                            self.hasLoaded = true
                         }
                     }
 
-                   
                 }
             }
-            
-        
+
     }
-    
 
 }
- 
- extension ChatsTableViewCell: ClearCellDelegate{
-    func clear(){
+
+ extension ChatsTableViewCell: ClearCellDelegate {
+    func clear() {
         removeFromSuperview()
 //        for view in self.subviews{
 //            view.isHidden=true
 //            removeFromSuperview()
 //        }
 
-
     }
-    func unClear(){
-        for view in self.subviews{
-            view.isHidden=false
+    func unClear() {
+        for view in self.subviews {
+            view.isHidden = false
         }
     }
  }
-

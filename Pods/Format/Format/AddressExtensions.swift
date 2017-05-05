@@ -30,7 +30,7 @@ public extension CLPlacemark {
         let postalCode = addressDictionary[String(kABPersonAddressZIPKey)] as? String
         let country = addressDictionary[String(kABPersonAddressCountryKey)] as? String
         let ISOCountryCode = addressDictionary[String(kABPersonAddressCountryCodeKey)] as? String
-        
+
         formattedString = AddressFormatter().format(street, city: city, state: state, postalCode: postalCode, country: country, ISOCountryCode: ISOCountryCode)
         return formattedString
     }

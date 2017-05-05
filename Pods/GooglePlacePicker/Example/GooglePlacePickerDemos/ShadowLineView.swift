@@ -49,10 +49,10 @@ class ShadowLineView: UIView {
     shadowView.enableShadow = enableShadow
     // Adjust the positioning of the shadow view so that it is centered in our bounds, but has a
     // height of shadow size, and a width which is 2*shadow size larger.
-    shadowView.frame = bounds.insetBy(dx: -shadowSize, dy: -shadowSize/2)
+    shadowView.frame = bounds.insetBy(dx: -shadowSize, dy: -shadowSize / 2)
     // Make the shadow radius be half of the requested size. As the shadow view itself is half the
     // size of the requested shadow size once you add this value the shadow will be the correct
     // height.
-    shadowView.shadowRadius = shadowSize/2
+    shadowView.shadowRadius = shadowSize / 2
   }
 }

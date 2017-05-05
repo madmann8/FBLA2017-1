@@ -10,82 +10,73 @@ import UIKit
 import MapKit
 import CoreLocation
 
-
 protocol SelectLocationProtocol {
-    func recieveLocation(latitude: String, longitude:String, addressString: String)
+    func recieveLocation(latitude: String, longitude: String, addressString: String)
 
 }
-
-
 
 class SelectLocationViewController: UIViewController {
-    
+
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    
-    var geoCoder:CLGeocoder!
+
+    var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
-    var previousAddress:String!
-    
-    var delgate:SelectLocationProtocol?=nil
-    
+    var previousAddress: String!
+
+    var delgate: SelectLocationProtocol?
+
     override func viewDidLoad() {
-        
-        
+
         super.viewDidLoad()
-        locationManager=CLLocationManager()
-        locationManager.desiredAccuracy=kCLLocationAccuracyBest
-        locationManager.delegate=self
+        locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.requestLocation()
-        geoCoder=CLGeocoder()
-        self.mapView.delegate=self
+        geoCoder = CLGeocoder()
+        self.mapView.delegate = self
         // Do any additional setup after loading the view.
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
+
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
+
 }
 
-
-extension SelectLocationViewController:CLLocationManagerDelegate{
-    func geoCode(location : CLLocation!){
+extension SelectLocationViewController:CLLocationManagerDelegate {
+    func geoCode(location: CLLocation!) {
         geoCoder.cancelGeocode()
-        geoCoder.reverseGeocodeLocation(location, completionHandler: { (data, error) -> Void in
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (data, _) -> Void in
             guard let placeMarks = data as [CLPlacemark]! else {
                 return
             }
             let loc: CLPlacemark = placeMarks[0]
-            let addressDict : [NSString:NSObject] = loc.addressDictionary as! [NSString: NSObject]
+            let addressDict: [NSString:NSObject] = loc.addressDictionary as! [NSString: NSObject]
             let addrList = addressDict["FormattedAddressLines"] as! [String]
-            if addrList.count>1{
-                let address:String? = addrList[1]
+            if addrList.count > 1 {
+                let address: String? = addrList[1]
                 self.address.text = address
                 self.previousAddress = address
-            }
-            else {
-                if !addrList.isEmpty{
-                    let address:String? = addrList[0]
+            } else {
+                if !addrList.isEmpty {
+                    let address: String? = addrList[0]
                     self.address.text = address
                     self.previousAddress = address
-                }
-                else {
+                } else {
                     let address="Unknown Location"
                     self.address.text = address
                     self.previousAddress = address
                 }
-                
+
             }
         })
-        
+
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.first!
         self.mapView.centerCoordinate = location.coordinate
@@ -93,26 +84,23 @@ extension SelectLocationViewController:CLLocationManagerDelegate{
         self.mapView.setRegion(reg, animated: true)
         geoCode(location: location)
     }
-    
-    
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
 }
 
+extension SelectLocationViewController:MKMapViewDelegate {
 
-
-extension SelectLocationViewController:MKMapViewDelegate{
-    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let location = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         geoCode(location: location)
     }
-    
+
     @IBAction func setLocationButtonPressed(_ sender: UIButton) {
 //        let location = CLLocation(latitude: mapView.centerCoordinate.latitude., longitude: mapView.centerCoordinate.longitude)
-        var latitudeText:String = "\(mapView.centerCoordinate.latitude)"
-        var longitudeText:String = "\(mapView.centerCoordinate.longitude)"
+        var latitudeText: String = "\(mapView.centerCoordinate.latitude)"
+        var longitudeText: String = "\(mapView.centerCoordinate.longitude)"
         self.delgate?.recieveLocation(latitude: latitudeText, longitude:longitudeText, addressString: self.address.text!)
         dismiss(animated: true, completion: nil)
     }

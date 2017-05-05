@@ -37,15 +37,15 @@ public enum Decimals: Int, NumberFormatter, NumberFormatterCustomLocaleAvailable
     public var modifier: String {
         return String(rawValue)
     }
-    
+
     /// Type enum
     public var type: NumberFormatterType {
         return .decimal
     }
-    
+
     /// NSNumberFormatter style
     public var style: Foundation.NumberFormatter.Style? {
         return .decimal
     }
-    
+
 }

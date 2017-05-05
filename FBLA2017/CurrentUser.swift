@@ -8,4 +8,4 @@
 
 import Foundation
 
-var currentUser:User=User()
+var currentUser: User = User()

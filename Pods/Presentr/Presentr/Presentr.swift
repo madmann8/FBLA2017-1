@@ -94,7 +94,7 @@ public class Presentr: NSObject {
 
     /// A custom background view to be added on top of the regular background view.
     public var customBackgroundView: UIView?
-    
+
     /// How the presented view controller should respond to keyboard presentation.
     public var keyboardTranslationType: KeyboardTranslationType = .none
 

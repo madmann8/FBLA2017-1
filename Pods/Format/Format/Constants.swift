@@ -8,7 +8,7 @@
 
 import Foundation
 
-//MARK: General number formatter keys
+// MARK: General number formatter keys
 
 /// General ordinal key
 let NumberFormatterOrdinalKey = "ordinal"
@@ -17,7 +17,7 @@ let NumberFormatterSpellOutKey = "spellout"
 /// General distance key
 let NumberFormatterDistanceKey = "distance"
 
-//MARK: Mass number formatter keys
+// MARK: Mass number formatter keys
 
 /// Mass generic key
 let MassFormatterGenericKey = "mass_generic"

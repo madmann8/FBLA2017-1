@@ -28,7 +28,7 @@ class BackgroundMapViewController: UIViewController, CAAnimationDelegate {
   private var lowPowerModeChanged: NotificationObserver<BackgroundMapViewController>?
 
   /// The coordinate to animate the map around.
-  var coordinate = CLLocationCoordinate2D(latitude: -33.8675, longitude: 151.2070) { // Sydney
+  var coordinate = CLLocationCoordinate2D(latitude: -33.867_5, longitude: 151.207_0) { // Sydney
     didSet {
       updateCoordinate()
     }

@@ -15,5 +15,4 @@ class UploadItemFormPhotoCellCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
-
 }

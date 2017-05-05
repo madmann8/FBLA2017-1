@@ -29,7 +29,7 @@ class PassthroughBackgroundView: UIView {
                 }
             }
         }
-        
+
         return view
     }
 

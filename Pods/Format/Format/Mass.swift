@@ -14,7 +14,7 @@ import Foundation
 public enum Mass: NumberFormatter {
     case generic // Mass of a generic object in kg. Display in current locale.
     case person // Mass of a person in kg. Display in current locale.
-    
+
     /// Modifier
     public var modifier: String {
         switch self {
@@ -24,12 +24,12 @@ public enum Mass: NumberFormatter {
             return MassFormatterPersonKey
         }
     }
-    
+
     /// Type enum
     public var type: NumberFormatterType {
         return .mass
     }
-    
+
     /// NSNumberFormatter style
     public var style: Foundation.NumberFormatter.Style? {
         return .none

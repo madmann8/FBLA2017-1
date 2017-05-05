@@ -6,7 +6,6 @@
 //  Copyright © 2017 Luke Mann. All rights reserved.
 //
 
-
 import UIKit
 import MapKit
 import CoreLocation
@@ -14,19 +13,18 @@ import ChameleonFramework
 import Device
 
 class MoreDetailsViewController: UIViewController {
-    var categorey:String?=nil
-    var name:String?=nil
-    var about:String?=nil
-    var latitudeString:String?=nil
-    var longitudeString:String?=nil
-    var addressString:String?=nil
-    var cents:Int?=nil
-    var condition:Int?=nil
-    var dollarString:String?=nil
-    var user:User?=nil
-    var profileImageView:UIImageView?=nil
-    
-    
+    var categorey: String?
+    var name: String?
+    var about: String?
+    var latitudeString: String?
+    var longitudeString: String?
+    var addressString: String?
+    var cents: Int?
+    var condition: Int?
+    var dollarString: String?
+    var user: User?
+    var profileImageView: UIImageView?
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -38,47 +36,43 @@ class MoreDetailsViewController: UIViewController {
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileButton: UIButton!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        
-        
+
     }
-    
-    
-    
-    func setupViews(){
-        
+
+    func setupViews() {
+
         if
-            let name=name,
+            let name = name,
             //            let category = categorey,
-            let about=about,
-            let latitude=latitudeString,
-            let longitude=longitudeString,
-            let dollars:String = dollarString,
-            let locationString=addressString,
-            let userName=user?.displayName,
-            let condition=condition{
-            titleLabel.text=name
+            let about = about,
+            let latitude = latitudeString,
+            let longitude = longitudeString,
+            let dollars: String = dollarString,
+            let locationString = addressString,
+            let userName = user?.displayName,
+            let condition = condition {
+            titleLabel.text = name
             costLabel.text="Asking Price: \(dollars)"
             //            categoryLabel.text=category
-            locationLabel.text=locationString
-            descriptionLabel.text=about
+            locationLabel.text = locationString
+            descriptionLabel.text = about
             ratingLabel.text="Condition:\(String(describing: condition))/5"
             var nameArr = userName.components(separatedBy: " ")
-            var firstName=nameArr[0]
+            var firstName = nameArr[0]
             var lastName=""
-            for i in 1..<nameArr.count{
-                lastName+=nameArr[i]
+            for i in 1..<nameArr.count {
+                lastName += nameArr[i]
             }
-            firstNameLabel.text=firstName
-            lastNameLabel.text=lastName
-            let latDouble=Double(latitude)
-            let longDouble=Double(longitude)
+            firstNameLabel.text = firstName
+            lastNameLabel.text = lastName
+            let latDouble = Double(latitude)
+            let longDouble = Double(longitude)
             let location = CLLocation(latitude: latDouble!, longitude: longDouble!)
-            let regionRadius: CLLocationDistance = 1000
+            let regionRadius: CLLocationDistance = 1_000
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                                       regionRadius * 2.0, regionRadius * 2.0)
             mapView.setRegion(coordinateRegion, animated: true)
@@ -86,53 +80,46 @@ class MoreDetailsViewController: UIViewController {
             information.coordinate = location.coordinate
             information.title = "Test Title!"
             information.subtitle = "Subtitle"
-            
+
             mapView.addAnnotation(information)
-            
+
             //            if let button=profilePicButton{
             //                self.profileButton=button
             //            }
-            
-            
+
         }
-        titleLabel.textColor=UIColor.flatWatermelonDark
-        categoryLabel.textColor=UIColor.flatWatermelonDark
-        ratingLabel.textColor=UIColor.flatWatermelonDark
-        costLabel.textColor=UIColor.flatWatermelonDark
-        descriptionLabel.textColor=UIColor.flatWatermelonDark
-        locationLabel.textColor=UIColor.flatWatermelonDark
-        firstNameLabel.textColor=UIColor.flatBlueDark
-        lastNameLabel.textColor=UIColor.flatBlueDark
+        titleLabel.textColor = UIColor.flatWatermelonDark
+        categoryLabel.textColor = UIColor.flatWatermelonDark
+        ratingLabel.textColor = UIColor.flatWatermelonDark
+        costLabel.textColor = UIColor.flatWatermelonDark
+        descriptionLabel.textColor = UIColor.flatWatermelonDark
+        locationLabel.textColor = UIColor.flatWatermelonDark
+        firstNameLabel.textColor = UIColor.flatBlueDark
+        lastNameLabel.textColor = UIColor.flatBlueDark
         profileImage.image = self.profileImageView?.image
         profileImage.layer.borderWidth = 1
         profileImage.layer.masksToBounds = false
         profileImage.layer.borderColor = UIColor.flatGrayDark.cgColor
-        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        profileImage.layer.cornerRadius = profileImage.frame.height / 2
         profileImage.clipsToBounds = true
-        let frame=mapView.frame
-        
+        let frame = mapView.frame
+
         switch Device.size() {
         case .screen4_7Inch:
-            mapView.frame=CGRect(x: 20, y: frame.minY, width: self.view.frame.width-50, height: 280)
+            mapView.frame = CGRect(x: 20, y: frame.minY, width: self.view.frame.width - 50, height: 280)
         case .screen5_5Inch:
-            mapView.frame=CGRect(x: 20, y: frame.minY, width: self.view.frame.width-50
-                , height: 330)
+            mapView.frame = CGRect(x: 20, y: frame.minY, width: self.view.frame.width - 50, height: 330)
         default:
-            mapView.frame=CGRect(x: 20, y: frame.minY, width: self.view.frame.width-20, height: 280)
-            
+            mapView.frame = CGRect(x: 20, y: frame.minY, width: self.view.frame.width - 20, height: 280)
+
         }
-        
-        
+
     }
-    
-    
-    
-    
+
     @IBAction func imageButtonPressed() {
         print("Here")
     }
-    
-    
+
     //    @IBAction func profileButtonPressed(_ sender: Any) {
     //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
     //
@@ -145,8 +132,5 @@ class MoreDetailsViewController: UIViewController {
     //    @IBAction func profileImageButtonPressed(_ sender: UIButton) {
     //
     //    }
-    
+
 }
-
-
-

@@ -9,19 +9,18 @@
 import UIKit
 
 class ImageViewController: UIViewController {
-    
-    var image:UIImage?=nil
+
+    var image: UIImage?
 
     @IBOutlet weak var imageView: UIImageView!
-    var nextItemDelegate:NextItemDelegate?=nil
- 
+    var nextItemDelegate: NextItemDelegate?
+
     override func viewDidLoad() {
-        self.imageView.image=self.image
+        self.imageView.image = self.image
     }
-    
+
     @IBAction func nextItemButtonPressed(_ sender: Any) {
         self.nextItemDelegate?.goToNextItem()
     }
-    
 
 }
