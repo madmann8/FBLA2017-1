@@ -24,15 +24,16 @@ class SelectLocationViewController: UIViewController {
     var locationManager: CLLocationManager!
     var previousAddress: String!
 
+    @IBOutlet weak var setLocationButton: UIButton!
     var delgate: SelectLocationProtocol?
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        setLocationButton.layer.cornerRadius = setLocationButton.frame.height / 2
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
         locationManager.requestLocation()
         geoCoder = CLGeocoder()
         self.mapView.delegate = self
@@ -76,6 +77,8 @@ extension SelectLocationViewController:CLLocationManagerDelegate {
         })
 
     }
+    
+    
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.first!
@@ -89,6 +92,7 @@ extension SelectLocationViewController:CLLocationManagerDelegate {
         print(error)
     }
 }
+
 
 extension SelectLocationViewController:MKMapViewDelegate {
 

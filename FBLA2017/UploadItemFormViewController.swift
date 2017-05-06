@@ -95,6 +95,7 @@ extension UploadItemFormViewController:ImagePickerDelegate {
             //            configuration.
             self.imagePickerController = ImagePickerController(configuration: configuration)
             self.imagePickerController.delegate = self
+            self.imagePickerController.imageLimit=1
             hasSetupImagePicker = true
         }
         present(imagePickerController, animated: true, completion: nil)
@@ -270,7 +271,7 @@ extension UploadItemFormViewController {
                     let activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
 
         itemRef.child("title").setValue(self.name)
-        itemRef.child("cents").setValue(self.cents)
+        itemRef.child("cents").setValue((self.cents)!)
         itemRef.child("about").setValue(self.about)
         itemRef.child("condition").setValue(self.condition)
         itemRef.child("locationString").setValue(self.locationString)
@@ -467,15 +468,9 @@ extension UIImage {
         case highest = 1
     }
 
-    /// Returns the data for the specified image in PNG format
-    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
-    /// - returns: A data object containing the PNG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
-    var png: Data? { return UIImagePNGRepresentation(self) }
+     var png: Data? { return UIImagePNGRepresentation(self) }
 
-    /// Returns the data for the specified image in JPEG format.
-    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
-    /// - returns: A data object containing the JPEG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
-    func jpeg(_ quality: JPEGQuality) -> Data? {
+     func jpeg(_ quality: JPEGQuality) -> Data? {
         return UIImageJPEGRepresentation(self, quality.rawValue)
     }
 }

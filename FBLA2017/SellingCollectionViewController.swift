@@ -13,6 +13,11 @@ final class SellingCollectionViewController: ImageCollectionViewController {
     
     var user:User?=nil
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refresh()
+    }
+
     override func loadCoverImages() {
         
         var ref: FIRDatabaseReference

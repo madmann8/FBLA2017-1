@@ -8,13 +8,13 @@ import UIKit
  import Hero
  import Device
 
- //ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
   class ImageCollectionViewController: UICollectionViewController {
 
     // MARK: - Properties
     fileprivate let reuseIdentifier = "ItemCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 2, left: 2, bottom: 5, right: 2)
 
+    private typealias imageAndIndex = (Int, UIImage)
     var coverImages = [UIImage]()
     var itemKeys=[String]()
     var coverImageKeys=[String]()
@@ -51,6 +51,7 @@ import UIKit
 
     }
 
+   
     var itemIndex = 0
 
     var currentView: UIView?
@@ -63,11 +64,6 @@ import UIKit
 
  extension ImageCollectionViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-
-        //                      self.collectionView?.reloadData()
-
-        //        textField.text = nil
-        //        textField.resignFirstResponder()
         return true
     }
  }
@@ -100,9 +96,13 @@ import UIKit
 
     func refresh() {
         self.collectionView?.reloadData()
-        coverImages.removeAll()
-        coverImageKeys.removeAll()
+        itemIndex=0
         activityIndicator = nil
+        coverImages.removeAll()
+        itemKeys.removeAll()
+        coverImageKeys.removeAll()
+        currentView = nil
+        firstDetailVC = nil
         loadCoverImages()
     }
 
@@ -145,7 +145,7 @@ import UIKit
                     if let path = snapshot.value as? String {
                         let coverImagePath = storage.reference(forURL: path)
                         coverImagePath.data(withMaxSize: 1 * 1_024 * 1_024) { data, error in
-                            if let error = error {
+                            if error != nil {
                                 //Might want to add this back but gets error when making item
 //                                ErrorGenerator.presentError(view: self, type: "Cover Images", error: error)
                             } else {
@@ -183,9 +183,8 @@ import UIKit
     }
 
     func generateImages(keyString: String, inImageView: Bool, coverImageKey: String) {
-        let activityIndicator = startActivityIndicator()
+        let activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.currentView!)
 
-        var images=[UIImage]()
         var name: String?=nil
         var about: String?=nil
         var categorey: String?=nil
@@ -220,7 +219,10 @@ import UIKit
         ref.child("imagePaths").observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 var i = 0
+                var images=[UIImage?]()
+
                 for snapshot in snapshots {
+                    images.append(nil)
                     if let path = snapshot.value as? String {
                         let imagePath = storage.reference(forURL: path)
                         imagePath.data(withMaxSize: 1 * 6_000 * 6_000) { data, error in
@@ -228,16 +230,13 @@ import UIKit
                                 ErrorGenerator.presentError(view: self, type: "Item Images", error: error)
                             } else {
                                 let image = UIImage(data: data!)
-                                images.append(image!)
+                                images[Int(snapshot.key)!] = image
                                 print(i)
                                 i += 1
                                 if i == snapshots.count {
 
                                     activityIndicator.stopAnimating()
-                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-
-                                    
                                     item.categorey=categorey
                                     item.name=name
                                     item.about=about
@@ -246,7 +245,7 @@ import UIKit
                                     item.addressString=addressString
                                     item.cents=cents
                                     item.condition=condition
-                                    item.images=images
+                                    item.images=images as? [UIImage]
                                     item.keyString=keyString
                                     item.coverImagePath=path
                                     item.user=user
@@ -257,7 +256,6 @@ import UIKit
 
                                     
                                     
-
                                     FIRDatabase.database().reference().child("coverImagePaths").child(coverImageKey).observe(.value, with: { (snapshot) in
 
                                                 if let path = snapshot.value as? String {
@@ -292,19 +290,6 @@ import UIKit
     }
  }
 
- extension ImageCollectionViewController {
-    func startActivityIndicator() -> NVActivityIndicatorView {
-        let cellWidth = Int(self.view.frame.width / CGFloat(4))
-        let cellHeight = Int(self.view.frame.height / CGFloat(8))
-        let x = Int(self.view.frame.width / 2) - cellWidth / 2
-        let y = Int(self.view.frame.height / 2) - cellWidth / 2
-        let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
-        let activityIndicator = NVActivityIndicatorView(frame: frame, type: .semiCircleSpin, color: UIColor.red, padding: nil)
-        activityIndicator.startAnimating()
-        currentView?.addSubview(activityIndicator)
-        return activityIndicator
-    }
- }
 
  extension ImageCollectionViewController:NextItemDelegate, DismissDelgate {
     func goToNextItem() {
@@ -326,9 +311,9 @@ import UIKit
         firstDetailVC?.dismiss(animated: false, completion: nil)
         if shouldReload {
             //TODO: Might want to call viewDidLoad() here
-             coverImages = [UIImage]()
-             itemKeys=[String]()
-             coverImageKeys=[String]()
+             coverImages.removeAll()
+             itemKeys.removeAll()
+             coverImageKeys.removeAll()
              currentView = nil
              firstDetailVC = nil
 
@@ -341,6 +326,7 @@ import UIKit
     func reload() {
         refresh()
     }
+    
  }
 
 extension String {

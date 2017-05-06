@@ -13,6 +13,12 @@ final class FavoritesCollectionViewController: ImageCollectionViewController {
     
       var user: User?
     
+    override func viewDidAppear(_ animated: Bool) {
+        activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
+        currentView = self.view
+        loadCoverImages()
+
+    }
     
     override func loadCoverImages() {
         

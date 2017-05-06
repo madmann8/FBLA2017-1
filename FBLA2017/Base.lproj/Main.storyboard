@@ -156,7 +156,7 @@
         <scene sceneID="ioN-8i-ABw">
             <objects>
                 <collectionViewController id="Hei-X5-zUt" customClass="ImageCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="tlf-oa-1iS">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tlf-oa-1iS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -289,7 +289,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSo-dT-pLI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bSo-dT-pLI">
                                 <rect key="frame" x="277" y="28" width="84" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -330,7 +330,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcF-ZI-Z8j">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vcF-ZI-Z8j">
                                 <rect key="frame" x="277" y="52" width="82" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -1305,13 +1305,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="twM-Dh-sUZ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                            </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QgB-pZ-BQ1">
                                 <rect key="frame" x="0.0" y="20" width="375" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZd-B1-dBg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZd-B1-dBg">
                                         <rect key="frame" x="24" y="21" width="327" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -1323,16 +1320,6 @@
                                     <constraint firstAttribute="height" constant="64" id="pHP-YP-z2F"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G54-hv-5lb">
-                                <rect key="frame" x="144" y="555" width="86" height="71"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="71" id="Q5B-zo-VUl"/>
-                                </constraints>
-                                <state key="normal" title="Set Location"/>
-                                <connections>
-                                    <action selector="setLocationButtonPressed:" destination="Abn-0l-EWB" eventType="touchUpInside" id="4EX-vv-CzH"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocationDrop" translatesAutoresizingMaskIntoConstraints="NO" id="qga-Zq-unV">
                                 <rect key="frame" x="165" y="311" width="45" height="45"/>
                                 <constraints>
@@ -1340,28 +1327,43 @@
                                     <constraint firstAttribute="height" constant="45" id="uWl-Hn-fX2"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SPj-sm-LRD">
+                                <rect key="frame" x="16" y="572" width="343" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20190328360000001" green="0.28701490159999998" blue="0.36788973209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Set Location">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99479166666666663" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="18" name="AvenirNext-DemiBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="setLocationButtonPressed:" destination="Abn-0l-EWB" eventType="touchUpInside" id="gJj-eg-kXa"/>
+                                    <action selector="soldButtonPressed" destination="y0u-Bh-ch7" eventType="touchUpInside" id="b1g-bh-RwL"/>
+                                    <action selector="submitButtonPressed" destination="BhZ-Ui-QSb" eventType="touchUpInside" id="VwW-cR-ySI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="twM-Dh-sUZ" secondAttribute="trailing" id="4tt-8l-EFd"/>
-                            <constraint firstItem="kTL-2w-5b4" firstAttribute="top" secondItem="twM-Dh-sUZ" secondAttribute="bottom" id="5PI-11-gU3"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="G54-hv-5lb" secondAttribute="bottom" constant="41" id="6cl-l1-QD9"/>
                             <constraint firstAttribute="trailing" secondItem="QgB-pZ-BQ1" secondAttribute="trailing" id="CpL-XG-lAv"/>
-                            <constraint firstItem="twM-Dh-sUZ" firstAttribute="leading" secondItem="Ews-40-BqH" secondAttribute="leading" id="GFn-BI-6mL"/>
                             <constraint firstItem="qga-Zq-unV" firstAttribute="centerX" secondItem="QgB-pZ-BQ1" secondAttribute="centerX" id="JKU-OK-0UM"/>
                             <constraint firstItem="QgB-pZ-BQ1" firstAttribute="leading" secondItem="Ews-40-BqH" secondAttribute="leading" id="N0U-Of-VmW"/>
                             <constraint firstItem="QgB-pZ-BQ1" firstAttribute="top" secondItem="PtO-An-mNb" secondAttribute="bottom" id="NNC-eV-Stf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IZd-B1-dBg" secondAttribute="trailing" constant="8" id="QIW-0Z-6yF"/>
                             <constraint firstItem="IZd-B1-dBg" firstAttribute="top" secondItem="PtO-An-mNb" secondAttribute="bottom" constant="21" id="a4a-OG-MYI"/>
-                            <constraint firstItem="G54-hv-5lb" firstAttribute="centerX" secondItem="qga-Zq-unV" secondAttribute="centerX" id="c5V-b5-maw"/>
                             <constraint firstItem="qga-Zq-unV" firstAttribute="centerY" secondItem="Ews-40-BqH" secondAttribute="centerY" id="j2C-gP-0Bh"/>
-                            <constraint firstItem="twM-Dh-sUZ" firstAttribute="top" secondItem="PtO-An-mNb" secondAttribute="bottom" id="q1h-S6-1MW"/>
                             <constraint firstItem="IZd-B1-dBg" firstAttribute="leading" secondItem="Ews-40-BqH" secondAttribute="leadingMargin" constant="8" id="rfp-BO-p6S"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="address" destination="IZd-B1-dBg" id="XJF-1N-HsK"/>
-                        <outlet property="mapView" destination="twM-Dh-sUZ" id="fNT-Ej-bnF"/>
+                        <outlet property="setLocationButton" destination="SPj-sm-LRD" id="QiT-G5-faK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISf-4l-dzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1448,7 +1450,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="pIp-dV-5Wz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="SellIcon" selectedImage="SellIcon" id="PCz-Z6-xQE"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BKR-FV-t1O">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKR-FV-t1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1654,7 +1656,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V1z-Qv-SqU" id="7VD-EA-GbI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJB-Du-TXD">
@@ -1990,7 +1992,7 @@
         <image name="ChatsIcon" width="25" height="25"/>
         <image name="FacbookIcon" width="300" height="300"/>
         <image name="HeartEmpty" width="100" height="100"/>
-        <image name="LocationDrop" width="100" height="100"/>
+        <image name="LocationDrop" width="75" height="75"/>
         <image name="ProfileIcon" width="25" height="25"/>
         <image name="ProfilePicture" width="512" height="512"/>
         <image name="RightArrow" width="32" height="32"/>

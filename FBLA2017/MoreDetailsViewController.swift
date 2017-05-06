@@ -39,12 +39,43 @@ class MoreDetailsViewController: UIViewController {
 
 
             titleLabel.text = item?.name
+        if let dollarString = item!.dollarString{
+                  costLabel.text="Asking Price: \(dollarString)"
+        }
+        else {
             costLabel.text="Asking Price: \(item?.dollarString)"
-            categoryLabel.text=item?.categorey
-            locationLabel.text = item?.addressString
-            descriptionLabel.text = item?.about
+
+        }
+        if let categorey = item!.categorey{
+            categoryLabel.text = categorey
+        }
+        else {
+            categoryLabel.text = item?.categorey
+            
+        }
+        if let condition = item!.condition{
+            ratingLabel.text="Condition:\(String(describing: condition))/5"
+        }
+        else {
             ratingLabel.text="Condition:\(String(describing: item?.condition))/5"
-            var nameArr = item?.user?.displayName.components(separatedBy: " ")
+            
+        }
+        
+        if let addressString = item!.addressString{
+            locationLabel.text = addressString
+        }
+        else {
+            locationLabel.text = item!.addressString
+            
+        }
+        if let about = item!.about{
+            descriptionLabel.text = about
+        }
+        else {
+            descriptionLabel.text = item?.about
+            
+        }
+                       var nameArr = item?.user?.displayName.components(separatedBy: " ")
             var firstName = nameArr?[0]
             var lastName=""
             for i in 1 ..< nameArr!.count {

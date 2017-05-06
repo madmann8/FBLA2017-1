@@ -125,11 +125,15 @@ class InfoContainerViewController: UIViewController {
 
         if hasLiked {
             favoriteButton.setImage(#imageLiteral(resourceName: "HeartEmpty"), for: .normal)
-            ref?.child("\(item?.keyString!)").removeValue()
+            if let keyString=item?.keyString{
+            ref?.child("\(keyString)").removeValue()
+            }
             hasLiked = false
         } else {
             favoriteButton.setImage(#imageLiteral(resourceName: "HeartFilled"), for: .normal)
-            ref?.child("\(item?.keyString!)").setValue((item?.coverImagePath!) as! String)
+            if let keyString=item?.keyString,let coverImagePath=item?.coverImagePath{
+            ref?.child("\(keyString)").setValue(coverImagePath)
+            }
             hasLiked = true
         }
 
