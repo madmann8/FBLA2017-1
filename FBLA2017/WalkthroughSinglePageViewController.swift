@@ -13,10 +13,18 @@ class WalkthroughSinglePageViewController: UIViewController {
 
     @IBOutlet weak var mainView: UIView!
     
+    var index:Int?=nil
+    
     var viewToLoad:UIView?=nil
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView=viewToLoad
+        
+        let tempView=UINib(nibName: "Slide\(index!)", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+        
+        self.mainView.addSubview(tempView)
+        
+mainView.backgroundColor=UIColor.blue
+        
 mainView.layer.cornerRadius=10
         mainView.clipsToBounds=true
         self.view.backgroundColor=UIColor.flatWatermelon

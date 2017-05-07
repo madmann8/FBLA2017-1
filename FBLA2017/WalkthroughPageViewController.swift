@@ -28,7 +28,6 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
     
-        var index=0
         
 //        let page2:UIViewController = storyboard.instantiateViewController(withIdentifier: "walkthrough")
 //        let page3:UIViewController = storyboard.instantiateViewController(withIdentifier: "walkthrough")
@@ -43,7 +42,7 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         
         for i in 1 ... 6 {
             let page:WalkthroughSinglePageViewController = storyboard.instantiateViewController(withIdentifier: "walkthrough") as! WalkthroughSinglePageViewController
-            page.viewToLoad=UINib(nibName: "Slide\(i)", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+            page.index=i
 pages.append(page)
 
         }
