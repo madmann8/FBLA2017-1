@@ -67,6 +67,7 @@ class ProfileViewController: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
         currentUser = User()
+        currentGroup = ""
 
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "Login") {
             UIApplication.shared.keyWindow?.rootViewController = viewController

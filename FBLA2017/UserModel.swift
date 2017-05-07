@@ -41,6 +41,7 @@ class User: NSObject {
     var hasLoaded = false
     var chatsCount = 0
     var chatsCountIncrementer = 0
+    var groupPath:String?=nil
 
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
@@ -49,6 +50,29 @@ class User: NSObject {
     var chatImageLoadedDelegate: ChatImageLoadedDelegate?
     var chatTableCanReloadDelegate: ChatsTableCanReloadDelegate?
     var hasLoadedDelegate: TableHasLoadedDelegate?
+    
+    public func loadGroup() {
+        if self.groupPath == nil {
+            var ref: FIRDatabaseReference!
+            ref = FIRDatabase.database().reference()
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                self.groupPath = value?["groupPath"] as? String ?? ""
+                currentGroup=self.groupPath
+                
+                // ...
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+
+        }
+        else{
+            FIRDatabase.database().reference().child("users").child("groupPath").setValue(self.groupPath)
+            currentGroup=self.groupPath
+        }
+    }
 
     public  func setupUser(id: String, isLoggedIn: Bool) {
               if id != ""{

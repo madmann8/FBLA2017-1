@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             } else {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-                let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
+                let viewController = storyboard.instantiateViewController(withIdentifier: "GroupVC")
                 UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
 
                 UIApplication.shared.keyWindow?.rootViewController = viewController

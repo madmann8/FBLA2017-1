@@ -21,6 +21,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     var stackVC: EmailStackViewController?
 
     @IBOutlet weak var submitButton: UIButton!
+    
+    var hasFailedLogin=false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         // ...
         handle = FIRAuth.auth()?.addStateDidChangeListener { (_, user) in
             if user != nil {
+                if !self.hasFailedLogin{
 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
@@ -42,7 +45,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                 UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
 
                 UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
 
+            }
+            else {
+                self.hasFailedLogin=true
             }
         }
 
@@ -103,7 +110,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                     return
                 }
 
-                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
+                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "GroupVC") {
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                     self.dismiss(animated: true, completion: nil)
                 }

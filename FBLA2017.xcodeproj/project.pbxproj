@@ -52,6 +52,8 @@
 		48D356471E99B3D100FBF6B3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D356461E99B3D100FBF6B3 /* TabBarController.swift */; };
 		48D5F3FD1EA7170500FD0526 /* ChatContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5F3FC1EA7170500FD0526 /* ChatContainerViewController.swift */; };
 		48DE95121E9EE62600583327 /* SBMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE95111E9EE62600583327 /* SBMaker.swift */; };
+		48F7803C1EBEA38D006C6465 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7803B1EBEA38D006C6465 /* GroupsTableViewController.swift */; };
+		48F7803E1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7803D1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift */; };
 		99569F140133A95F709CE436 /* Pods_FBLA2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40F4BFEA70DF778ECC2C0DA /* Pods_FBLA2017.framework */; };
 /* End PBXBuildFile section */
 
@@ -134,6 +136,8 @@
 		48D356461E99B3D100FBF6B3 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		48D5F3FC1EA7170500FD0526 /* ChatContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContainerViewController.swift; sourceTree = "<group>"; };
 		48DE95111E9EE62600583327 /* SBMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBMaker.swift; sourceTree = "<group>"; };
+		48F7803B1EBEA38D006C6465 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
+		48F7803D1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeGroupPopoverViewController.swift; sourceTree = "<group>"; };
 		7301597ADAFE4597967BF48A /* Pods-FBLA2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLA2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FBLA2017/Pods-FBLA2017.debug.xcconfig"; sourceTree = "<group>"; };
 		E40F4BFEA70DF778ECC2C0DA /* Pods_FBLA2017.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FBLA2017.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECB9E8B2282AE1B4EC0484B /* Pods-FBLA2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLA2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-FBLA2017/Pods-FBLA2017.release.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +273,8 @@
 			isa = PBXGroup;
 			children = (
 				48791EA51EBEA1A5004A7CF1 /* GroupsTableViewCell.swift */,
+				48F7803B1EBEA38D006C6465 /* GroupsTableViewController.swift */,
+				48F7803D1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift */,
 			);
 			name = Groups;
 			sourceTree = "<group>";
@@ -510,6 +516,7 @@
 				48624F4F1EAABF60008CE0E0 /* ItemModel.swift in Sources */,
 				4831098D1EA869B10069208C /* ChatsViewController.swift in Sources */,
 				48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */,
+				48F7803E1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift in Sources */,
 				48B07F0E1EA151FE0068709A /* LoginViewController.swift in Sources */,
 				48BD2F2D1E9FFC7300FDA557 /* InfoContainerViewController.swift in Sources */,
 				483F1F8F1EA08210000C5788 /* ItemChatViewController.swift in Sources */,
@@ -526,6 +533,7 @@
 				485A02201E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift in Sources */,
 				483109901EA86A060069208C /* ChatsTableViewController.swift in Sources */,
 				481DD8CD1E98354E005765AF /* AppDelegate.swift in Sources */,
+				48F7803C1EBEA38D006C6465 /* GroupsTableViewController.swift in Sources */,
 				4869245B1EA44C9000000052 /* OtherUserProfileViewController.swift in Sources */,
 				487527531EA01BDD0047E083 /* MoreDetailsViewController.swift in Sources */,
 				48DE95121E9EE62600583327 /* SBMaker.swift in Sources */,

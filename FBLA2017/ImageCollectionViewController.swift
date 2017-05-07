@@ -30,6 +30,7 @@ import UIKit
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentUser.loadGroup()
 
         activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
 
@@ -46,6 +47,7 @@ import UIKit
         default: layout.itemBlockSize = CGSize(width: 67, height: 67)
 
         }
+        
         currentUser.setupUser(id: (FIRAuth.auth()?.currentUser?.uid)!, isLoggedIn: true)
         loadCoverImages()
 
@@ -135,7 +137,7 @@ import UIKit
 
  extension ImageCollectionViewController {
     func loadCoverImages() {
-
+let group=currentGroup
         let ref = FIRDatabase.database().reference().child("coverImagePaths")
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in
