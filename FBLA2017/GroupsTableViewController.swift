@@ -131,8 +131,11 @@ class GroupsTableViewController: UITableViewController {
 }
     extension GroupsTableViewController:MakeGroupDelegate{
         func toMainView(){
+        
+            if let nameToUpload=nameToUpload{
             let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
             ref.setValue(nameToUpload)
+            }
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")

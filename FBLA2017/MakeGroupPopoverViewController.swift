@@ -19,7 +19,7 @@ class MakeGroupPopoverViewController: UIViewController {
     @IBOutlet weak var textBox: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        textBox.textAlignment = .right
+        textBox.textAlignment = .center
         textBox.adjustsFontForContentSizeCategory = true
         textBox.font = UIFont(name: "AvenirNext-Bold", size: 36)
         
