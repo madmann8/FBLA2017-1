@@ -31,7 +31,7 @@ class InfoContainerViewController: UIViewController {
     var dismissDelegate: DismissDelgate?
 
     var ref: FIRDatabaseReference =
-        FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
+        FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
 
 
     var activitityIndicator: NVActivityIndicatorView?
@@ -171,7 +171,7 @@ class InfoContainerViewController: UIViewController {
     }
 
     func removeItem(alertController: UIAlertController) {
-        let ref = FIRDatabase.database().reference()
+        let ref = FIRDatabase.database().reference().child(currentGroup)
 
         ref.child("users").child((item?.user!.uid)!).child("coverImages").observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {

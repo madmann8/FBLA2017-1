@@ -14,6 +14,8 @@ import FirebaseAuth
 class EmailStackViewController: UIViewController {
 
     var largeVC: UIViewController?
+    
+    var loggingIn = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +56,8 @@ class EmailStackViewController: UIViewController {
                 if let error = error {
                     ErrorGenerator.presentError(view: self.largeVC!, type: "Sign Up", error: error)
                 } else {
-                    let ref = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
-                    ref.setValue("\(self.nameTextView.text!)")
+//                    let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
+//                    ref.setValue("\(self.nameTextView.text!)")
                     self.largeVC?.performSegue(withIdentifier: "loginToGroups", sender: nil)
                     }
 
@@ -69,9 +71,19 @@ class EmailStackViewController: UIViewController {
 
                 } else {
                         self.largeVC?.performSegue(withIdentifier: "loginToGroups", sender: nil)
+                        self.loggingIn=true
 
 
                 }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loginToGroups" {
+            if !loggingIn{
+            let vc=segue.destination as! GroupsTableViewController
+            vc.nameToUpload = "\(self.nameTextView.text!)"
             }
         }
     }

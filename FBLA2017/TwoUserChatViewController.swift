@@ -21,7 +21,7 @@ class TwoUserChatViewController: UIViewController {
 
     var frame: CGRect?
 
-    lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference()
+    lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference().child(currentGroup)
 
     let imageURLNotSetKey = "NOTSET"
 
@@ -54,7 +54,7 @@ class TwoUserChatViewController: UIViewController {
                 } else {
                     chatPath = otherUID + LIUID
                 }
-                vc.channelRef = FIRDatabase.database().reference().child("chats").child("\(chatPath)")
+                vc.channelRef = FIRDatabase.database().reference().child(currentGroup).child("chats").child("\(chatPath)")
                 vc.userRef1 = userRef1
                 vc.userRef2 = userRef2
                 vc.loggedInUser = loggedInUser

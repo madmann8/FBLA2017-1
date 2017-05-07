@@ -10,12 +10,15 @@ import UIKit
 import FirebaseDatabase
 import ChameleonFramework
 import Presentr
+import FirebaseAuth
 
 class GroupsTableViewController: UITableViewController {
     
     var cells=[GroupsTableViewCell]()
     
     var currentSelectedCell:GroupsTableViewCell?=nil
+    
+    var nameToUpload:String?=nil
 
     @IBOutlet weak var chooseButton: UIButton!
     override func viewDidLoad() {
@@ -107,7 +110,12 @@ class GroupsTableViewController: UITableViewController {
     }
     @IBAction func chooseButtonPressed() {
         if currentSelectedCell != nil {
-        currentUser.groupPath=currentSelectedCell?.groupPath
+        currentUser.groupPath=(currentSelectedCell?.groupPath)!
+            currentUser.loadGroup()
+            let group=currentGroup
+            let group2=currentUser.groupPath
+            let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
+            ref.setValue(nameToUpload)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
@@ -123,6 +131,8 @@ class GroupsTableViewController: UITableViewController {
 }
     extension GroupsTableViewController:MakeGroupDelegate{
         func toMainView(){
+            let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
+            ref.setValue(nameToUpload)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")

@@ -62,14 +62,14 @@ class Item {
         var condition: Int?=nil
         var userID: String?=nil
 
-        let ref = FIRDatabase.database().reference().child("coverImagePaths").child(keyString)
+        let ref = FIRDatabase.database().reference().child(currentGroup).child("coverImagePaths").child(keyString)
         ref.observe(.value, with: {(snapshot) in
             if let value = snapshot.value as? String {
             self.coverImagePath = value
             }
         })
 
-        let ref1 = FIRDatabase.database().reference().child("items").child(keyString)
+        let ref1 = FIRDatabase.database().reference().child(currentGroup).child("items").child(keyString)
         let user = User()
 
         ref1.observe(.value, with: {(snapshot) in

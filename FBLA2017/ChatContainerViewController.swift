@@ -56,14 +56,14 @@ class ChatContainerViewController: UIViewController {
                 } else {
                     chatPath = otherUID + LIUID
                 }
-                let ref1 = FIRDatabase.database().reference().child("users").child(loginInUser.uid).child("directChats").child(chatPath)
-                let ref2 = FIRDatabase.database().reference().child("users").child((otherUser?.uid)!).child("directChats").child(chatPath)
+                let ref1 = FIRDatabase.database().reference().child(currentGroup).child("users").child(loginInUser.uid).child("directChats").child(chatPath)
+                let ref2 = FIRDatabase.database().reference().child(currentGroup).child("users").child((otherUser?.uid)!).child("directChats").child(chatPath)
                 vc.userRef1 = ref1
                 vc.userRef2 = ref2
                 vc.loggedInUser = loginInUser
                 vc.otherUser = otherUser
 
-                vc.channelRef = FIRDatabase.database().reference().child("chats").child("\(chatPath)")
+                vc.channelRef = FIRDatabase.database().reference().child(currentGroup).child("chats").child("\(chatPath)")
 
                 vc.messageRef = vc.channelRef?.child("messages")
 
@@ -71,7 +71,7 @@ class ChatContainerViewController: UIViewController {
         }
         if segue.identifier=="toGlobalChat"{
             if let vc: ItemChatViewController = segue.destination as! ItemChatViewController {
-                let ref = FIRDatabase.database().reference().child("users").child(currentUser.uid).child("itemChats").child(keyString!)
+                let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(currentUser.uid).child("itemChats").child(keyString!)
                 vc.chatRef = ref
                 vc.keyString = keyString
                 vc.senderId = currentUser.uid

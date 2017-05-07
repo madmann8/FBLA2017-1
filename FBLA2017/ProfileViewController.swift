@@ -137,7 +137,7 @@ extension ProfileViewController:ImagePickerDelegate {
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {}
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
     profileImageView.image = images.first
-        var storageRef = FIRStorage.storage().reference()
+        var storageRef = FIRStorage.storage().reference().child(currentGroup)
         var data = NSData()
         data = UIImageJPEGRepresentation(profileImageView.image!, 0.5)! as NSData
         // set upload path

@@ -22,7 +22,7 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
-    lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference()
+    lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference().child(currentGroup)
 
     let imageURLNotSetKey = "NOTSET"
 

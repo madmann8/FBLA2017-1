@@ -73,7 +73,7 @@ class OtherUserProfileViewController: UIViewController {
             } else {
                 chatPath = otherUID + LIUID
             }
-            vc.channelRef = FIRDatabase.database().reference().child("chats").child("\(chatPath)")
+            vc.channelRef = FIRDatabase.database().reference().child(currentGroup).child("chats").child("\(chatPath)")
             vc.loggedInUser = loginInUser
                 vc.otherUser = otherUser
             vc.messageRef = vc.channelRef?.child("messages")

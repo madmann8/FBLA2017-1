@@ -22,7 +22,7 @@ class ItemChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
-    lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference()
+    lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference().child(currentGroup)
 
     let imageURLNotSetKey = "NOTSET"
 
@@ -31,7 +31,7 @@ class ItemChatViewController: JSQMessagesViewController {
     var keyString: String?=nil {
         didSet {
             let notOptional: String = keyString ?? ""
-            self.channelRef = FIRDatabase.database().reference().child("items").child("\(notOptional)")
+            self.channelRef = FIRDatabase.database().reference().child(currentGroup).child("items").child("\(notOptional)")
             self.messageRef = channelRef?.child("messages")
 
         }

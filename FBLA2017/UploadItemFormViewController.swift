@@ -64,7 +64,7 @@ class UploadItemFormViewController: UIViewController {
         descriptionTextView.delegate = self
         descriptionTextView.contentInset = UIEdgeInsets(top: -4, left: -3, bottom: 0, right: 0)
         titleTextField.delegate = self
-        ref = FIRDatabase.database().reference()
+        ref = FIRDatabase.database().reference().child(currentGroup)
         selectedCell = 0
         titleTextField.textColor = UIColor.lightGray
         descriptionTextView.textColor = UIColor.lightGray

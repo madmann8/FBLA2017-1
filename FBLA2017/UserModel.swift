@@ -41,7 +41,7 @@ class User: NSObject {
     var hasLoaded = false
     var chatsCount = 0
     var chatsCountIncrementer = 0
-    var groupPath:String?=nil
+    var groupPath:String = "temp"
 
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
@@ -52,13 +52,13 @@ class User: NSObject {
     var hasLoadedDelegate: TableHasLoadedDelegate?
     
     public func loadGroup() {
-        if self.groupPath == nil {
-            self.groupPath = UserDefaults.standard.string(forKey: "currentUserGroup") ?? "❌"
+        if self.groupPath == "temp" {
+            self.groupPath = UserDefaults.standard.string(forKey: "currentUserGroup") ?? "temp"
             
             currentGroup=groupPath
             
 //            var ref: FIRDatabaseReference!
-//            ref = FIRDatabase.database().reference()
+//            ref = FIRDatabase.database().reference().child(currentGroup)
 //            let userID = FIRAuth.auth()?.currentUser?.uid
 //            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
 //                // Get user value
@@ -73,7 +73,7 @@ class User: NSObject {
 
         }
         else{
-//            FIRDatabase.database().reference().child("users").child("groupPath").setValue(self.groupPath)
+//            FIRDatabase.database().reference().child(currentGroup).child("users").child("groupPath").setValue(self.groupPath)
             UserDefaults.standard.set(self.groupPath, forKey: "currentUserGroup")
             currentGroup=self.groupPath
         }
@@ -96,7 +96,7 @@ class User: NSObject {
             displayName = display
         } else {
             var ref: FIRDatabaseReference!
-            ref = FIRDatabase.database().reference()
+            ref = FIRDatabase.database().reference().child(currentGroup)
             let userID = FIRAuth.auth()?.currentUser?.uid
             ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
@@ -144,16 +144,12 @@ extension User {
                     if userInfo.providerID=="password" {
 
                         var ref: FIRDatabaseReference!
-                        ref = FIRDatabase.database().reference().child("users").child(uid!)
+                        ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
                         ref.observeSingleEvent(of: .value, with: { (snapshot) in
                             // Get user value
                             let value = snapshot.value as? NSDictionary
 
-                            self.displayName = value?["displayName"] as? String ?? "❌"
-                            if self.displayName == "❌"{
-                                ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
-                                self.displayName = (FIRAuth.auth()?.currentUser?.displayName)!
-                            }
+
 
                             var imageURL = value?["imageURL"] as? String ?? "❌"
                             if imageURL == "❌"{
@@ -172,6 +168,7 @@ extension User {
                                 self.email = (FIRAuth.auth()?.currentUser?.email)!
                             }
 
+                            
                             let imagePathsSnapshot = snapshot.childSnapshot(forPath: "coverImages")
                             let favoritesPathSnapshot = snapshot.childSnapshot(forPath: "likedCoverImages")
                             if let coverArray = imagePathsSnapshot.value as? NSDictionary {
@@ -190,11 +187,19 @@ extension User {
                                     }
                                 }
                             }
+//                            self.displayName = value?["displayName"] as? String ?? "❌"
+                            if self.displayName == "❌"{
+                                ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
+                                self.displayName = (FIRAuth.auth()?.currentUser?.displayName)!
+                            }
                         }
+                            
                         )
+                        
+                        
                     } else {
                         var ref: FIRDatabaseReference!
-                        ref = FIRDatabase.database().reference().child("users").child(uid!)
+                        ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
                         ref.observeSingleEvent(of: .value, with: { (snapshot) in
                             // Get user value
                             let value = snapshot.value as? NSDictionary
@@ -239,7 +244,7 @@ extension User {
             var ref: FIRDatabaseReference!
             if let uid = uid {
                 if uid != ""{
-            ref = FIRDatabase.database().reference().child("users").child(uid)
+            ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid)
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
                 self.displayName = value?["displayName"] as? String ?? "❌"
@@ -327,7 +332,7 @@ extension User:CLLocationManagerDelegate {
 
     func  handleLocation(city: String, lat: String?, long: String?) {
         var ref: FIRDatabaseReference!
-        ref = FIRDatabase.database().reference().child("users").child(uid!)
+        ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -339,7 +344,7 @@ extension User:CLLocationManagerDelegate {
 
     func changeProfilePicture(downloadURL: String) {
         var ref: FIRDatabaseReference!
-        ref = FIRDatabase.database().reference().child("users").child(uid!)
+        ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
         ref.observeSingleEvent(of: .value, with: { (_) in
             ref.child("imageURL").setValue(downloadURL)
         })
@@ -351,8 +356,8 @@ extension User:UserDelegate {
     func getChatsCells(keyString: String) {
         var doneLoading = false
         var i = 0
-        let ref = FIRDatabase.database().reference().child("users").child(keyString).child("directChats")
-        let ref2 = FIRDatabase.database().reference().child("users").child(keyString).child("itemChats")
+        let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(keyString).child("directChats")
+        let ref2 = FIRDatabase.database().reference().child(currentGroup).child("users").child(keyString).child("itemChats")
 
         ref2.observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children {
@@ -373,7 +378,7 @@ extension User:UserDelegate {
             for child in snapshot.children {
                 let path: String = (child as AnyObject).key
             var date: String=""
-            let tempRef = FIRDatabase.database().reference().child("chats").child(path)
+            let tempRef = FIRDatabase.database().reference().child(currentGroup).child("chats").child(path)
             tempRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 let value = snapshot.value as? NSDictionary
@@ -422,7 +427,7 @@ extension User:UserDelegate {
 
                 for child in snapshot.children {
                     let path: String = (child as AnyObject).key
-                    let tempRef = FIRDatabase.database().reference().child("items").child(path)
+                    let tempRef = FIRDatabase.database().reference().child(currentGroup).child("items").child(path)
                     tempRef.observeSingleEvent(of: .value, with: { (snapshot) in
                         // Get user value
                         let value = snapshot.value as? NSDictionary
@@ -502,6 +507,10 @@ extension User {
                 let image = UIImage(data: data)
                 else { return }
             DispatchQueue.main.sync {
+
+                
+                
+                
                 self.profileImage = image
                 self.delegate?.imageLoaded(image: image, user: self, index: self.cellIndex)
                 self.chatImageLoadedDelegate?.chatUserImageLoaded()

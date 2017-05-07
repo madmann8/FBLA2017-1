@@ -138,7 +138,7 @@ import UIKit
  extension ImageCollectionViewController {
     func loadCoverImages() {
 let group=currentGroup
-        let ref = FIRDatabase.database().reference().child("coverImagePaths")
+        let ref = FIRDatabase.database().reference().child(currentGroup).child("coverImagePaths")
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -203,7 +203,7 @@ let group=currentGroup
         var condition: Int?=nil
         var userID: String?=nil
 
-        let ref = FIRDatabase.database().reference().child("items").child(keyString)
+        let ref = FIRDatabase.database().reference().child(currentGroup).child("items").child(keyString)
         let user = User()
         let item=Item()
 
@@ -264,7 +264,7 @@ let group=currentGroup
 
                                     
                                     
-                                    FIRDatabase.database().reference().child("coverImagePaths").child(coverImageKey).observe(.value, with: { (snapshot) in
+                                    FIRDatabase.database().reference().child(currentGroup).child("coverImagePaths").child(coverImageKey).observe(.value, with: { (snapshot) in
 
                                                 if let path = snapshot.value as? String {
                                                     item.coverImagePath = path
@@ -295,7 +295,7 @@ let group=currentGroup
             }
 
         })
-        let ref2 = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
+        let ref2 = FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
         ref2.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 var i = 0

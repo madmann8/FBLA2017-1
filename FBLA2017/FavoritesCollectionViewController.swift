@@ -34,8 +34,8 @@ final class FavoritesCollectionViewController: ImageCollectionViewController {
         
         var ref: FIRDatabaseReference
         if let user = user, let uid = user.uid {
-            ref = FIRDatabase.database().reference().child("users").child(uid).child("likedCoverImages")
-        } else { ref = FIRDatabase.database().reference().child("users").child((currentUser.uid)!).child("likedCoverImages")}
+            ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid).child("likedCoverImages")
+        } else { ref = FIRDatabase.database().reference().child(currentGroup).child("users").child((currentUser.uid)!).child("likedCoverImages")}
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {

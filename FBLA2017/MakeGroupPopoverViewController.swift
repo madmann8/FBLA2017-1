@@ -59,8 +59,9 @@ class MakeGroupPopoverViewController: UIViewController {
         if let text = textBox?.text {
             if !text.isEmpty {
             let ref=FIRDatabase.database().reference().child("groups")
-                ref.childByAutoId().setValue(textBox?.text)
-                currentUser.groupPath=ref.key
+                let groupRef = ref.childByAutoId()
+                groupRef.setValue(textBox?.text)
+                currentUser.groupPath=groupRef.key
             }
             else {
 //                let layer = self.view.layer as! SpringView
