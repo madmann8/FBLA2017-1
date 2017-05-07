@@ -40,7 +40,7 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
 //        pages.append(page3)
 //        pages.append(page4)
         
-        for i in 1 ... 6 {
+        for i in 1 ... 12 {
             let page:WalkthroughSinglePageViewController = storyboard.instantiateViewController(withIdentifier: "walkthrough") as! WalkthroughSinglePageViewController
             page.index=i
 pages.append(page)

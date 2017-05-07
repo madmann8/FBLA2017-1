@@ -23,7 +23,6 @@ class WalkthroughSinglePageViewController: UIViewController {
         
         self.mainView.addSubview(tempView)
         
-mainView.backgroundColor=UIColor.blue
         
 mainView.layer.cornerRadius=10
         mainView.clipsToBounds=true
