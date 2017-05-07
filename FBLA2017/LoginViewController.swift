@@ -43,7 +43,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                 loadViews()
             }
             else {
-                UserDefaults.standard.set(false, forKey: "hasLoadedWalkthrough")
+                UserDefaults.standard.set(true, forKey: "hasLoadedWalkthrough")
                 self.performSegue(withIdentifier: "loginToWalkthrough", sender: nil)
             }
         }
