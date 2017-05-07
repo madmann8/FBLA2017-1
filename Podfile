@@ -26,5 +26,5 @@ pod "Hero"
 pod 'QuiltView'
 pod "Device", '~> 3.0.1'
 pod 'SwiftLint'
-
+pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
 end

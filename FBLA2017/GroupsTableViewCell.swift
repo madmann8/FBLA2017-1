@@ -9,16 +9,19 @@
 import UIKit
 
 class GroupsTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var checkMark: UIImageView!
+    @IBOutlet weak var groupNameLabel: UILabel!
+    
+    var groupPath:String?=nil
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    var groupName:String?=nil
+    
+  
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
+    
+    
+    
 
 }

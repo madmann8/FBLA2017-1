@@ -56,11 +56,7 @@ class EmailStackViewController: UIViewController {
                 } else {
                     let ref = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
                     ref.setValue("\(self.nameTextView.text!)")
-                    if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
-                        UIApplication.shared.keyWindow?.rootViewController = viewController
-                        self.dismiss(animated: true, completion: nil)
-
-                    }
+                    self.largeVC?.performSegue(withIdentifier: "loginToGroups", sender: nil)
                     }
 
                 }
@@ -72,10 +68,8 @@ class EmailStackViewController: UIViewController {
                   ErrorGenerator.presentError(view: self.largeVC!, type: "Login", error: error)
 
                 } else {
-                    if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
-                        UIApplication.shared.keyWindow?.rootViewController = viewController
-                        self.dismiss(animated: true, completion: nil)
-                    }
+                        self.largeVC?.performSegue(withIdentifier: "loginToGroups", sender: nil)
+
 
                 }
             }
