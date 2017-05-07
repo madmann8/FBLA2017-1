@@ -577,6 +577,7 @@
                         <outlet property="signInButton" destination="nGI-8m-AH4" id="hNA-sM-JXs"/>
                         <outlet property="submitButton" destination="s0V-xy-R7x" id="UxA-Vs-5Or"/>
                         <segue destination="EWA-PA-DL2" kind="showDetail" identifier="loginToGroups" id="Kfc-CZ-NlV"/>
+                        <segue destination="V9k-MK-Ehy" kind="showDetail" identifier="loginToWalkthrough" id="Np3-yc-zb6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqL-Pz-HZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2163,6 +2164,126 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="41h-1N-R7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-373" y="-433"/>
+        </scene>
+        <!--Walkthrough Main View Controller-->
+        <scene sceneID="q1k-lh-UBp">
+            <objects>
+                <viewController id="V9k-MK-Ehy" customClass="WalkthroughMainViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G8I-71-p0t"/>
+                        <viewControllerLayoutGuide type="bottom" id="srm-oE-T2f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jUC-kE-aor">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYC-vM-Xwg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="M8m-PC-nRA" kind="embed" identifier="mainWTtoPages" id="o9a-LR-6Ih"/>
+                                </connections>
+                            </containerView>
+                            <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="h0E-nK-m00">
+                                <rect key="frame" x="0.0" y="530" width="375" height="137"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3rl-13-a08">
+                                        <rect key="frame" x="146" y="8" width="91" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </pageControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qBb-rb-ykb">
+                                        <rect key="frame" x="20" y="57" width="335" height="46"/>
+                                        <color key="backgroundColor" red="0.20190328360000001" green="0.28701490159999998" blue="0.36788973209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="pza-aJ-hqu"/>
+                                        </constraints>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Lets Go!">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.99479166666666663" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="18" name="AvenirNext-DemiBold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="DoneButtonPressed" destination="V9k-MK-Ehy" eventType="touchUpInside" id="O5q-vn-FuR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qBb-rb-ykb" secondAttribute="trailing" constant="20" id="1QT-a4-JAU"/>
+                                    <constraint firstAttribute="height" constant="137" id="8rG-Bg-DX8"/>
+                                    <constraint firstItem="qBb-rb-ykb" firstAttribute="leading" secondItem="h0E-nK-m00" secondAttribute="leading" constant="20" id="M4r-ay-Fd1"/>
+                                    <constraint firstItem="qBb-rb-ykb" firstAttribute="centerX" secondItem="h0E-nK-m00" secondAttribute="centerX" id="aZT-Qh-mJs"/>
+                                    <constraint firstAttribute="bottom" secondItem="qBb-rb-ykb" secondAttribute="bottom" constant="34" id="qnl-vl-Oad"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h0E-nK-m00" firstAttribute="leading" secondItem="jUC-kE-aor" secondAttribute="leading" id="1FD-K5-GU4"/>
+                            <constraint firstItem="iYC-vM-Xwg" firstAttribute="leading" secondItem="jUC-kE-aor" secondAttribute="leading" id="DXS-5B-jtb"/>
+                            <constraint firstItem="srm-oE-T2f" firstAttribute="top" secondItem="h0E-nK-m00" secondAttribute="bottom" id="QDp-hW-Kcd"/>
+                            <constraint firstItem="srm-oE-T2f" firstAttribute="top" secondItem="iYC-vM-Xwg" secondAttribute="bottom" id="bfI-BD-n8g"/>
+                            <constraint firstItem="iYC-vM-Xwg" firstAttribute="top" secondItem="jUC-kE-aor" secondAttribute="top" id="lag-Fz-Owx"/>
+                            <constraint firstAttribute="trailing" secondItem="h0E-nK-m00" secondAttribute="trailing" id="vqg-qj-p4n"/>
+                            <constraint firstAttribute="trailing" secondItem="iYC-vM-Xwg" secondAttribute="trailing" id="yz7-9x-ZfP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="qBb-rb-ykb" id="Kin-x4-iSd"/>
+                        <outlet property="pageIndicator" destination="3rl-13-a08" id="XfU-vM-UKQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lo7-b7-QSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5607" y="-803"/>
+        </scene>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="hsd-cX-neG">
+            <objects>
+                <pageViewController storyboardIdentifier="WalkthroughPageVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="M8m-PC-nRA" customClass="WalkthroughPageViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L2M-qf-Jve" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4823" y="-806"/>
+        </scene>
+        <!--Walkthrough Single Page View Controller-->
+        <scene sceneID="NJr-Ge-X3l">
+            <objects>
+                <viewController storyboardIdentifier="walkthrough" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ufp-nU-3jx" customClass="WalkthroughSinglePageViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oMr-81-2ZW"/>
+                        <viewControllerLayoutGuide type="bottom" id="4cw-xr-XPg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fmK-4l-qNW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7Z-Jl-YaV">
+                                <rect key="frame" x="37" y="102.5" width="301" height="392"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="392" id="AdG-ne-NcU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="w7Z-Jl-YaV" firstAttribute="leading" secondItem="fmK-4l-qNW" secondAttribute="leadingMargin" constant="21" id="GDr-N7-shG"/>
+                            <constraint firstItem="w7Z-Jl-YaV" firstAttribute="centerY" secondItem="fmK-4l-qNW" secondAttribute="centerY" constant="-35" id="LMD-Os-aHA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w7Z-Jl-YaV" secondAttribute="trailing" constant="21" id="RJ1-h2-ktc"/>
+                            <constraint firstItem="w7Z-Jl-YaV" firstAttribute="centerX" secondItem="fmK-4l-qNW" secondAttribute="centerX" id="pMC-JW-Y4a"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainView" destination="w7Z-Jl-YaV" id="8Dx-2P-GSo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p9x-rs-nIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4106" y="-804"/>
         </scene>
     </scenes>
     <resources>

@@ -25,6 +25,15 @@
 		483D9D391E9C5A8F00BFA619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483D9D381E9C5A8F00BFA619 /* CoreLocation.framework */; };
 		483D9D3B1E9C5A9500BFA619 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483D9D3A1E9C5A9500BFA619 /* MapKit.framework */; };
 		483F1F8F1EA08210000C5788 /* ItemChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */; };
+		4846C23C1EBF958A0014BC19 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846C23A1EBF958A0014BC19 /* WalkthroughPageViewController.swift */; };
+		4846C23D1EBF958A0014BC19 /* WalkthroughSinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846C23B1EBF958A0014BC19 /* WalkthroughSinglePageViewController.swift */; };
+		4846C23F1EBF95940014BC19 /* WalkthroughMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846C23E1EBF95940014BC19 /* WalkthroughMainViewController.swift */; };
+		4846C2471EBF95AB0014BC19 /* Slide1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4846C2411EBF95AB0014BC19 /* Slide1.xib */; };
+		4846C2481EBF95AB0014BC19 /* Slide6.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4846C2421EBF95AB0014BC19 /* Slide6.xib */; };
+		4846C2491EBF95AB0014BC19 /* Slide2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4846C2431EBF95AB0014BC19 /* Slide2.xib */; };
+		4846C24A1EBF95AB0014BC19 /* Slide5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4846C2441EBF95AB0014BC19 /* Slide5.xib */; };
+		4846C24B1EBF95AB0014BC19 /* Slide4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4846C2451EBF95AB0014BC19 /* Slide4.xib */; };
+		4846C24C1EBF95AB0014BC19 /* Slide3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4846C2461EBF95AB0014BC19 /* Slide3.xib */; };
 		48537FA11EB55C2E0095ECBA /* PopoverPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48537F9E1EB55B730095ECBA /* PopoverPicker.framework */; };
 		48537FA21EB55C2E0095ECBA /* PopoverPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48537F9E1EB55B730095ECBA /* PopoverPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		485A02201E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */; };
@@ -109,6 +118,15 @@
 		483D9D381E9C5A8F00BFA619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		483D9D3A1E9C5A9500BFA619 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemChatViewController.swift; sourceTree = "<group>"; };
+		4846C23A1EBF958A0014BC19 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
+		4846C23B1EBF958A0014BC19 /* WalkthroughSinglePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughSinglePageViewController.swift; sourceTree = "<group>"; };
+		4846C23E1EBF95940014BC19 /* WalkthroughMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughMainViewController.swift; sourceTree = "<group>"; };
+		4846C2411EBF95AB0014BC19 /* Slide1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide1.xib; sourceTree = "<group>"; };
+		4846C2421EBF95AB0014BC19 /* Slide6.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide6.xib; sourceTree = "<group>"; };
+		4846C2431EBF95AB0014BC19 /* Slide2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide2.xib; sourceTree = "<group>"; };
+		4846C2441EBF95AB0014BC19 /* Slide5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide5.xib; sourceTree = "<group>"; };
+		4846C2451EBF95AB0014BC19 /* Slide4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide4.xib; sourceTree = "<group>"; };
+		4846C2461EBF95AB0014BC19 /* Slide3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide3.xib; sourceTree = "<group>"; };
 		48537F991EB55B720095ECBA /* PopoverPicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PopoverPicker.xcodeproj; path = PopoverPicker/PopoverPicker.xcodeproj; sourceTree = "<group>"; };
 		485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPricePopoverViewController.swift; sourceTree = "<group>"; };
 		48624F4E1EAABF60008CE0E0 /* ItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
@@ -211,6 +229,7 @@
 		481DD8CB1E98354E005765AF /* FBLA2017 */ = {
 			isa = PBXGroup;
 			children = (
+				4880E5EE1EBF950500062FCD /* Walkthrough */,
 				48791EA41EBEA17E004A7CF1 /* Groups */,
 				489BA6741EBBA37000506F28 /* FBLA2017.entitlements */,
 				481DD8CC1E98354E005765AF /* AppDelegate.swift */,
@@ -240,6 +259,19 @@
 				48BA58F61EA87E130099E932 /* ChatsTableViewCell.xib */,
 			);
 			name = Chats;
+			sourceTree = "<group>";
+		};
+		4846C2401EBF959C0014BC19 /* Slides */ = {
+			isa = PBXGroup;
+			children = (
+				4846C2411EBF95AB0014BC19 /* Slide1.xib */,
+				4846C2421EBF95AB0014BC19 /* Slide6.xib */,
+				4846C2431EBF95AB0014BC19 /* Slide2.xib */,
+				4846C2441EBF95AB0014BC19 /* Slide5.xib */,
+				4846C2451EBF95AB0014BC19 /* Slide4.xib */,
+				4846C2461EBF95AB0014BC19 /* Slide3.xib */,
+			);
+			name = Slides;
 			sourceTree = "<group>";
 		};
 		48537F9A1EB55B720095ECBA /* Products */ = {
@@ -277,6 +309,17 @@
 				48F7803D1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift */,
 			);
 			name = Groups;
+			sourceTree = "<group>";
+		};
+		4880E5EE1EBF950500062FCD /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				4846C2401EBF959C0014BC19 /* Slides */,
+				4846C23A1EBF958A0014BC19 /* WalkthroughPageViewController.swift */,
+				4846C23E1EBF95940014BC19 /* WalkthroughMainViewController.swift */,
+				4846C23B1EBF958A0014BC19 /* WalkthroughSinglePageViewController.swift */,
+			);
+			name = Walkthrough;
 			sourceTree = "<group>";
 		};
 		488802411EAD39C800BCB9D4 /* Models */ = {
@@ -441,10 +484,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4846C24A1EBF95AB0014BC19 /* Slide5.xib in Resources */,
 				48BA58F81EA87E130099E932 /* ChatsTableViewCell.xib in Resources */,
+				4846C2471EBF95AB0014BC19 /* Slide1.xib in Resources */,
+				4846C2481EBF95AB0014BC19 /* Slide6.xib in Resources */,
 				481DD8D91E98354E005765AF /* LaunchScreen.storyboard in Resources */,
+				4846C24C1EBF95AB0014BC19 /* Slide3.xib in Resources */,
 				483109921EA86E2E0069208C /* GoogleService-Info.plist in Resources */,
 				481DD8D61E98354E005765AF /* Assets.xcassets in Resources */,
+				4846C2491EBF95AB0014BC19 /* Slide2.xib in Resources */,
+				4846C24B1EBF95AB0014BC19 /* Slide4.xib in Resources */,
 				481DD8D41E98354E005765AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +563,7 @@
 				48BD2F291E9FFAD400FDA557 /* ImageViewController.swift in Sources */,
 				4819C1791EA2C9A1000853F7 /* ProfileViewController.swift in Sources */,
 				48624F4F1EAABF60008CE0E0 /* ItemModel.swift in Sources */,
+				4846C23D1EBF958A0014BC19 /* WalkthroughSinglePageViewController.swift in Sources */,
 				4831098D1EA869B10069208C /* ChatsViewController.swift in Sources */,
 				48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */,
 				48F7803E1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift in Sources */,
@@ -525,6 +575,7 @@
 				481A8EE61EAEDBED004993B9 /* ActivityIndicatorLoader.swift in Sources */,
 				4869245F1EA4561E00000052 /* TwoUserChatViewController.swift in Sources */,
 				486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */,
+				4846C23C1EBF958A0014BC19 /* WalkthroughPageViewController.swift in Sources */,
 				481DD8D11E98354E005765AF /* SecondViewController.swift in Sources */,
 				489473521EA3129000949659 /* LogOutViewController.swift in Sources */,
 				4819C1771EA2B015000853F7 /* EmailStackViewController.swift in Sources */,
@@ -541,6 +592,7 @@
 				48D5F3FD1EA7170500FD0526 /* ChatContainerViewController.swift in Sources */,
 				488802401EAD39A800BCB9D4 /* FontList.swift in Sources */,
 				4819C1841EA2D4D4000853F7 /* SellingCollectionViewController.swift in Sources */,
+				4846C23F1EBF95940014BC19 /* WalkthroughMainViewController.swift in Sources */,
 				48CD950A1EACEF110051C4EC /* ErrorGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

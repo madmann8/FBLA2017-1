@@ -45,7 +45,7 @@ class FirstContainerViewController: PulleyViewController {
         self.drawerContentContainerView = self.secondaryView
         if segue.identifier=="toSecondContainer"{
             if let middle: InfoContainerViewController = segue.destination as? InfoContainerViewController {
-                middle.item=item
+                middle.item = item
                 middle.nextItemDelegate = self
                 middle.dismissDelegate = self
                 self.userDelegate = middle
@@ -58,7 +58,7 @@ class FirstContainerViewController: PulleyViewController {
         }
         if segue.identifier=="containerToChat"{
             if let vc: ChatContainerViewController = segue.destination as? ChatContainerViewController {
-                
+
                 vc.keyString = self.item?.keyString
                 vc.otherUser = self.item?.user
                 let frame = self.view.frame

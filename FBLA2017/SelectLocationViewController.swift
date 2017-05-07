@@ -77,8 +77,6 @@ extension SelectLocationViewController:CLLocationManagerDelegate {
         })
 
     }
-    
-    
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.first!
@@ -92,7 +90,6 @@ extension SelectLocationViewController:CLLocationManagerDelegate {
         print(error)
     }
 }
-
 
 extension SelectLocationViewController:MKMapViewDelegate {
 

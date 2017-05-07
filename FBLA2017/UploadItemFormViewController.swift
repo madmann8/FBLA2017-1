@@ -95,7 +95,7 @@ extension UploadItemFormViewController:ImagePickerDelegate {
             //            configuration.
             self.imagePickerController = ImagePickerController(configuration: configuration)
             self.imagePickerController.delegate = self
-            self.imagePickerController.imageLimit=1
+            self.imagePickerController.imageLimit = 1
             hasSetupImagePicker = true
         }
         present(imagePickerController, animated: true, completion: nil)

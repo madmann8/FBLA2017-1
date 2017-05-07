@@ -41,7 +41,7 @@ class User: NSObject {
     var hasLoaded = false
     var chatsCount = 0
     var chatsCountIncrementer = 0
-    var groupPath:String = "temp"
+    var groupPath: String = "temp"
 
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
@@ -50,13 +50,13 @@ class User: NSObject {
     var chatImageLoadedDelegate: ChatImageLoadedDelegate?
     var chatTableCanReloadDelegate: ChatsTableCanReloadDelegate?
     var hasLoadedDelegate: TableHasLoadedDelegate?
-    
+
     public func loadGroup() {
         if self.groupPath == "temp" {
             self.groupPath = UserDefaults.standard.string(forKey: "currentUserGroup") ?? "temp"
-            
-            currentGroup=groupPath
-            
+
+            currentGroup = groupPath
+
 //            var ref: FIRDatabaseReference!
 //            ref = FIRDatabase.database().reference().child(currentGroup)
 //            let userID = FIRAuth.auth()?.currentUser?.uid
@@ -71,13 +71,12 @@ class User: NSObject {
 //                print(error.localizedDescription)
 //            }
 
-        }
-        else{
+        } else {
 //            FIRDatabase.database().reference().child(currentGroup).child("users").child("groupPath").setValue(self.groupPath)
             UserDefaults.standard.set(self.groupPath, forKey: "currentUserGroup")
-            currentGroup=self.groupPath
+            currentGroup = self.groupPath
         }
-        
+
     }
 
     public  func setupUser(id: String, isLoggedIn: Bool) {
@@ -149,8 +148,6 @@ extension User {
                             // Get user value
                             let value = snapshot.value as? NSDictionary
 
-
-
                             var imageURL = value?["imageURL"] as? String ?? "❌"
                             if imageURL == "❌"{
                                 ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
@@ -168,7 +165,6 @@ extension User {
                                 self.email = (FIRAuth.auth()?.currentUser?.email)!
                             }
 
-                            
                             let imagePathsSnapshot = snapshot.childSnapshot(forPath: "coverImages")
                             let favoritesPathSnapshot = snapshot.childSnapshot(forPath: "likedCoverImages")
                             if let coverArray = imagePathsSnapshot.value as? NSDictionary {
@@ -193,10 +189,9 @@ extension User {
                                 self.displayName = (FIRAuth.auth()?.currentUser?.displayName)!
                             }
                         }
-                            
+
                         )
-                        
-                        
+
                     } else {
                         var ref: FIRDatabaseReference!
                         ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
@@ -508,9 +503,6 @@ extension User {
                 else { return }
             DispatchQueue.main.sync {
 
-                
-                
-                
                 self.profileImage = image
                 self.delegate?.imageLoaded(image: image, user: self, index: self.cellIndex)
                 self.chatImageLoadedDelegate?.chatUserImageLoaded()

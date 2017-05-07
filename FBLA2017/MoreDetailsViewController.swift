@@ -15,7 +15,7 @@ import Device
 class MoreDetailsViewController: UIViewController {
 
     var profileImageView: UIImageView?
-    var item:Item?=nil
+    var item: Item?
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
@@ -37,43 +37,37 @@ class MoreDetailsViewController: UIViewController {
 
     func setupViews() {
 
-
             titleLabel.text = item?.name
-        if let dollarString = item!.dollarString{
+        if let dollarString = item!.dollarString {
                   costLabel.text="Asking Price: \(dollarString)"
-        }
-        else {
+        } else {
             costLabel.text="Asking Price: \(item?.dollarString)"
 
         }
-        if let categorey = item!.categorey{
+        if let categorey = item!.categorey {
             categoryLabel.text = categorey
-        }
-        else {
+        } else {
             categoryLabel.text = item?.categorey
-            
+
         }
-        if let condition = item!.condition{
+        if let condition = item!.condition {
             ratingLabel.text="Condition:\(String(describing: condition))/5"
-        }
-        else {
+        } else {
             ratingLabel.text="Condition:\(String(describing: item?.condition))/5"
-            
+
         }
-        
-        if let addressString = item!.addressString{
+
+        if let addressString = item!.addressString {
             locationLabel.text = addressString
-        }
-        else {
+        } else {
             locationLabel.text = item!.addressString
-            
+
         }
-        if let about = item!.about{
+        if let about = item!.about {
             descriptionLabel.text = about
-        }
-        else {
+        } else {
             descriptionLabel.text = item?.about
-            
+
         }
                        var nameArr = item?.user?.displayName.components(separatedBy: " ")
             var firstName = nameArr?[0]

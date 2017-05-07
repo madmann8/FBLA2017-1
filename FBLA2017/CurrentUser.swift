@@ -10,4 +10,4 @@ import Foundation
 
 var currentUser: User = User()
 
-var currentGroup=currentUser.groupPath
+var currentGroup = currentUser.groupPath

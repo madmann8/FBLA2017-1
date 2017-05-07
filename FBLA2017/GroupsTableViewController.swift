@@ -13,12 +13,12 @@ import Presentr
 import FirebaseAuth
 
 class GroupsTableViewController: UITableViewController {
-    
+
     var cells=[GroupsTableViewCell]()
-    
-    var currentSelectedCell:GroupsTableViewCell?=nil
-    
-    var nameToUpload:String?=nil
+
+    var currentSelectedCell: GroupsTableViewCell?
+
+    var nameToUpload: String?
 
     @IBOutlet weak var chooseButton: UIButton!
     override func viewDidLoad() {
@@ -26,7 +26,6 @@ class GroupsTableViewController: UITableViewController {
         chooseButton.setTitleColor(UIColor.flatNavyBlueDark, for: .normal)
         loadCells()
 
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -54,51 +53,48 @@ class GroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sourceCell = cells[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for:indexPath) as! GroupsTableViewCell
-        cell.groupName=sourceCell.groupName
-        cell.groupPath=sourceCell.groupPath
-        cell.groupNameLabel.text=cell.groupName
+        cell.groupName = sourceCell.groupName
+        cell.groupPath = sourceCell.groupPath
+        cell.groupNameLabel.text = cell.groupName
         cells[indexPath.row]=cell
-
 
        return cells[indexPath.row]
     }
-    
-    func loadCells(){
-        let ref=FIRDatabase.database().reference().child("groups")
+
+    func loadCells() {
+        let ref = FIRDatabase.database().reference().child("groups")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                let maxCells=snapshots.count
+                let maxCells = snapshots.count
                 for snapshot in snapshots {
-                if let path = snapshot.key as? String, let name=snapshot.value as? String {
-                    let cell=GroupsTableViewCell()
-                    cell.groupPath=path
-                    cell.groupName=name
+                if let path = snapshot.key as? String, let name = snapshot.value as? String {
+                    let cell = GroupsTableViewCell()
+                    cell.groupPath = path
+                    cell.groupName = name
                     self.cells.append(cell)
-                    if self.cells.count>=maxCells{
+                    if self.cells.count >= maxCells {
                         self.refreshTable()
                     }
                     }
                 }
             }
 
-
-            
             // ...
         }) { (error) in
             ErrorGenerator.presentError(view: self, type: "Groups", error: error)
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell=cells[indexPath.row]
-        cell.checkMark.isHidden=false
+        let cell = cells[indexPath.row]
+        cell.checkMark.isHidden = false
         if cell != currentSelectedCell {
-        currentSelectedCell?.checkMark.isHidden=true
-        currentSelectedCell=cell
+        currentSelectedCell?.checkMark.isHidden = true
+        currentSelectedCell = cell
         }}
-    
-    func refreshTable(){
+
+    func refreshTable() {
         self.tableView.reloadData()
         viewDidAppear(false)
     }
@@ -110,37 +106,35 @@ class GroupsTableViewController: UITableViewController {
     }
     @IBAction func chooseButtonPressed() {
         if currentSelectedCell != nil {
-        currentUser.groupPath=(currentSelectedCell?.groupPath)!
+        currentUser.groupPath = (currentSelectedCell?.groupPath)!
             currentUser.loadGroup()
-            let group=currentGroup
-            let group2=currentUser.groupPath
+            let group = currentGroup
+            let group2 = currentUser.groupPath
             let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
             ref.setValue(nameToUpload)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
+
             let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
             UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
-            
+
             UIApplication.shared.keyWindow?.rootViewController = viewController
 
-            
         }
-        
-        
+
     }
 }
-    extension GroupsTableViewController:MakeGroupDelegate{
-        func toMainView(){
-        
-            if let nameToUpload=nameToUpload{
+    extension GroupsTableViewController:MakeGroupDelegate {
+        func toMainView() {
+
+            if let nameToUpload = nameToUpload {
             let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
             ref.setValue(nameToUpload)
             }
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
+
             let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
             UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
-            
+
             UIApplication.shared.keyWindow?.rootViewController = viewController
 
         }
@@ -148,16 +142,14 @@ class GroupsTableViewController: UITableViewController {
             let width = ModalSize.fluid(percentage: 0.7)
             let height = ModalSize.fluid(percentage: 0.3)
             let center = ModalCenterPosition.center
-            
+
             let presentationType = PresentationType.custom(width: width, height: height, center: center
             )
             let dynamicSizePresenter = Presentr(presentationType: presentationType)
             let dynamicVC = storyboard!.instantiateViewController(withIdentifier: "MakeGroup") as! MakeGroupPopoverViewController
             dynamicVC.delegate = self
             customPresentViewController(dynamicSizePresenter, viewController: dynamicVC, animated: true, completion: nil)
-                
+
                }
 
     }
-    
-

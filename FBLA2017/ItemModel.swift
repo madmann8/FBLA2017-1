@@ -22,8 +22,8 @@ class Item {
     var latitudeString: String?
     var longitudeString: String?
     var addressString: String?
-    var cents: Int?{
-        didSet{
+    var cents: Int? {
+        didSet {
             self.dollarString=""
             let num: Double = Double(cents!) / 100.0
             let formatter = NumberFormatter()
@@ -42,8 +42,8 @@ class Item {
     var user: User?
     var uid: String?
     var deleted: Bool = false
-    var dollarString:String?
-    var hasLiked:Bool=false
+    var dollarString: String?
+    var hasLiked: Bool = false
 
     var delegate: ItemDelegate?
 

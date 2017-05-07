@@ -26,13 +26,11 @@ class InfoContainerViewController: UIViewController {
     var item: Item?
     var tempUserImage: UIImage?
 
-
     var nextItemDelegate: NextItemDelegate?
     var dismissDelegate: DismissDelgate?
 
     var ref: FIRDatabaseReference =
         FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
-
 
     var activitityIndicator: NVActivityIndicatorView?
 
@@ -43,7 +41,6 @@ class InfoContainerViewController: UIViewController {
         setupViews()
 
         item?.user?.delegate = self
-
 
         if (item?.user?.uid == currentUser.uid) {
             soldButton.isHidden = false
@@ -60,7 +57,7 @@ class InfoContainerViewController: UIViewController {
     }
 
     func setupViews() {
-        if (item?.hasLiked)!{
+        if (item?.hasLiked)! {
             favoriteButton.setImage(#imageLiteral(resourceName: "HeartFilled"), for: .normal)
         }
         if let tempUserImage = self.tempUserImage {
@@ -96,7 +93,7 @@ class InfoContainerViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "detailTop") as! MoreDetailsViewController
         vc.profileImageView = profileImage
-        vc.item=self.item
+        vc.item = self.item
 
         let sizeToSubtract = moreInfoButtonToTopConstraint.constant * (-1.4)
         let newFrame = CGRect(x: vc.view.frame.minX, y: vc.view.frame.minY, width: vc.view.frame.width - 10, height: vc.view.frame.height - sizeToSubtract)
@@ -112,13 +109,13 @@ class InfoContainerViewController: UIViewController {
 
         if (item?.hasLiked)! {
             favoriteButton.setImage(#imageLiteral(resourceName: "HeartEmpty"), for: .normal)
-            if let keyString=item?.keyString{
+            if let keyString = item?.keyString {
            ref.child("\(keyString)").removeValue()
             }
             item?.hasLiked = false
         } else {
             favoriteButton.setImage(#imageLiteral(resourceName: "HeartFilled"), for: .normal)
-            if let keyString=item?.keyString,let coverImagePath=item?.coverImagePath{
+            if let keyString = item?.keyString, let coverImagePath = item?.coverImagePath {
             ref.child("\(keyString)").setValue(coverImagePath)
             }
             item?.hasLiked = true

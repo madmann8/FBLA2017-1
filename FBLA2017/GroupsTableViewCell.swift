@@ -9,19 +9,12 @@
 import UIKit
 
 class GroupsTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var checkMark: UIImageView!
     @IBOutlet weak var groupNameLabel: UILabel!
-    
-    var groupPath:String?=nil
 
-    var groupName:String?=nil
-    
-  
+    var groupPath: String?
 
-
-    
-    
-    
+    var groupName: String?
 
 }

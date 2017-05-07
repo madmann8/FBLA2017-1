@@ -10,28 +10,26 @@ import Device
 
 //ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
 final class SellingCollectionViewController: ImageCollectionViewController {
-    
-    var user:User?=nil
-    
-    var shouldRefresh=false
 
-    
+    var user: User?
+
+    var shouldRefresh = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if shouldRefresh{
+        if shouldRefresh {
             self.refresher.beginRefreshing()
             refresh()
         }
-        shouldRefresh=true
-        
-        
+        shouldRefresh = true
+
     }
     override func loadCoverImages() {
-        
+
         var ref: FIRDatabaseReference
         if let user = user, let uid = user.uid {
             ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid).child("coverImages")
@@ -62,13 +60,12 @@ final class SellingCollectionViewController: ImageCollectionViewController {
                                 }
                             }
                         }
-                        
+
                     }
                 }
             }
-            
+
         })
     }
 
-    
 }

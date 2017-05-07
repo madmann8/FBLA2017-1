@@ -14,7 +14,7 @@ import FirebaseAuth
 class EmailStackViewController: UIViewController {
 
     var largeVC: UIViewController?
-    
+
     var loggingIn = false
 
     override func viewDidLoad() {
@@ -71,18 +71,17 @@ class EmailStackViewController: UIViewController {
 
                 } else {
                         self.largeVC?.performSegue(withIdentifier: "loginToGroups", sender: nil)
-                        self.loggingIn=true
-
+                        self.loggingIn = true
 
                 }
             }
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loginToGroups" {
-            if !loggingIn{
-            let vc=segue.destination as! GroupsTableViewController
+            if !loggingIn {
+            let vc = segue.destination as! GroupsTableViewController
             vc.nameToUpload = "\(self.nameTextView.text!)"
             }
         }

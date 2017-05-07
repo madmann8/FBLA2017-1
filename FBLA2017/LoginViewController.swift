@@ -19,41 +19,37 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     var handle: FIRAuthStateDidChangeListenerHandle?
 
     var stackVC: EmailStackViewController?
+    
+    var hasLoaded = false
+
 
     @IBOutlet weak var submitButton: UIButton!
-    
-    var hasFailedLogin=false
+
+    var hasFailedLogin = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         submitButton.layer.cornerRadius = submitButton.frame.height / 2
-
         GIDSignIn.sharedInstance().uiDelegate = self
         signInButton.colorScheme = .dark
-//        GIDSignIn.sharedInstance().signIn()
 
-        // TODO(developer) Configure the sign-in button look/feel
-        // ...
-        handle = FIRAuth.auth()?.addStateDidChangeListener { (_, user) in
-            if user != nil {
-                if !self.hasFailedLogin{
-
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-                let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
-                UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
-
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
-
-            }
-            else {
-                self.hasFailedLogin=true
-            }
-        }
 
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if !hasLoaded{
+            if UserDefaults.standard.bool(forKey: "hasLoadedWalkthrough") {
+                loadViews()
+            }
+            else {
+                UserDefaults.standard.set(false, forKey: "hasLoadedWalkthrough")
+                self.performSegue(withIdentifier: "loginToWalkthrough", sender: nil)
+            }
+        }
+        hasLoaded=true
+    }
+    
 
     @IBAction func emailSwitchChanged(_ sender: UISegmentedControl) {
         stackVC?.updateVisible(signUp: sender.selectedSegmentIndex == 1)
@@ -68,6 +64,30 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     @IBAction func submitButtonPressed() {
         stackVC?.upload()
 
+    }
+    
+    func loadViews() {
+
+        //        GIDSignIn.sharedInstance().signIn()
+        
+        // TODO(developer) Configure the sign-in button look/feel
+        // ...
+        handle = FIRAuth.auth()?.addStateDidChangeListener { (_, user) in
+            if user != nil {
+                if !self.hasFailedLogin {
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
+                    UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+                    
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+                
+            } else {
+                self.hasFailedLogin = true
+            }
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

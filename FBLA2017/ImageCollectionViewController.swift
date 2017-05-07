@@ -47,13 +47,12 @@ import UIKit
         default: layout.itemBlockSize = CGSize(width: 67, height: 67)
 
         }
-        
+
         currentUser.setupUser(id: (FIRAuth.auth()?.currentUser?.uid)!, isLoggedIn: true)
         loadCoverImages()
 
     }
 
-   
     var itemIndex = 0
 
     var currentView: UIView?
@@ -98,7 +97,7 @@ import UIKit
 
     func refresh() {
         self.collectionView?.reloadData()
-        itemIndex=0
+        itemIndex = 0
         activityIndicator = nil
         coverImages.removeAll()
         itemKeys.removeAll()
@@ -137,7 +136,7 @@ import UIKit
 
  extension ImageCollectionViewController {
     func loadCoverImages() {
-let group=currentGroup
+let group = currentGroup
         let ref = FIRDatabase.database().reference().child(currentGroup).child("coverImagePaths")
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in
@@ -185,11 +184,10 @@ let group=currentGroup
     }
 
     func generateImages(keyString: String, inImageView: Bool, coverImageKey: String) {
-        let activityIndicator:NVActivityIndicatorView
-        if (self.currentView != nil)  {
+        let activityIndicator: NVActivityIndicatorView
+        if (self.currentView != nil) {
          activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.currentView!)
-        }
-        else {
+        } else {
             activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
         }
 
@@ -205,7 +203,7 @@ let group=currentGroup
 
         let ref = FIRDatabase.database().reference().child(currentGroup).child("items").child(keyString)
         let user = User()
-        let item=Item()
+        let item = Item()
 
         ref.observe(.value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -245,25 +243,23 @@ let group=currentGroup
 
                                     activityIndicator.stopAnimating()
 
-                                    item.categorey=categorey
-                                    item.name=name
-                                    item.about=about
-                                    item.latitudeString=latitudeString
-                                    item.longitudeString=longitudeString
-                                    item.addressString=addressString
-                                    item.cents=cents
-                                    item.condition=condition
-                                    item.images=images as? [UIImage]
-                                    item.keyString=keyString
-                                    item.coverImagePath=path
-                                    item.user=user
+                                    item.categorey = categorey
+                                    item.name = name
+                                    item.about = about
+                                    item.latitudeString = latitudeString
+                                    item.longitudeString = longitudeString
+                                    item.addressString = addressString
+                                    item.cents = cents
+                                    item.condition = condition
+                                    item.images = images as? [UIImage]
+                                    item.keyString = keyString
+                                    item.coverImagePath = path
+                                    item.user = user
                                     middle.nextItemDelegate = self
                                     middle.dismissDelegate = self
                                     user.delegate = middle
-                                    middle.item=item
+                                    middle.item = item
 
-                                    
-                                    
                                     FIRDatabase.database().reference().child(currentGroup).child("coverImagePaths").child(coverImageKey).observe(.value, with: { (snapshot) in
 
                                                 if let path = snapshot.value as? String {
@@ -306,15 +302,14 @@ let group=currentGroup
                         if path == keyString {
                             item.hasLiked = true
                         }
-                        
+
                     }
                 }
             }
-            
+
         })
     }
  }
-
 
  extension ImageCollectionViewController:NextItemDelegate, DismissDelgate {
     func goToNextItem() {
@@ -351,7 +346,7 @@ let group=currentGroup
     func reload() {
         refresh()
     }
-    
+
  }
 
 extension String {
@@ -366,7 +361,6 @@ extension String {
         let startIndex = self.characters.index(self.startIndex, offsetBy: start)
         let endIndex = self.characters.index(self.startIndex, offsetBy: end)
         let range = startIndex..<endIndex
-        
+
         return self.substring(with: range)
     }}
-
