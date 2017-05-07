@@ -183,7 +183,13 @@ import UIKit
     }
 
     func generateImages(keyString: String, inImageView: Bool, coverImageKey: String) {
-        let activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.currentView!)
+        let activityIndicator:NVActivityIndicatorView
+        if (self.currentView != nil)  {
+         activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.currentView!)
+        }
+        else {
+            activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
+        }
 
         var name: String?=nil
         var about: String?=nil
@@ -286,6 +292,23 @@ import UIKit
                 }
             }
 
+        })
+        let ref2 = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
+        ref2.observe(.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                var i = 0
+                for snapshot in snapshots {
+                    if let path = snapshot.key as? String {
+                        print("Local path\(keyString)")
+                        print(path)
+                        if path == keyString {
+                            item.hasLiked = true
+                        }
+                        
+                    }
+                }
+            }
+            
         })
     }
  }

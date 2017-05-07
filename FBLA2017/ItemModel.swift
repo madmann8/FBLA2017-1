@@ -43,6 +43,7 @@ class Item {
     var uid: String?
     var deleted: Bool = false
     var dollarString:String?
+    var hasLiked:Bool=false
 
     var delegate: ItemDelegate?
 
@@ -124,6 +125,8 @@ class Item {
             }
 
         })
+
         }
+
     }
     }

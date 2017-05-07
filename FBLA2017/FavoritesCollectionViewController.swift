@@ -13,10 +13,20 @@ final class FavoritesCollectionViewController: ImageCollectionViewController {
     
       var user: User?
     
+    var shouldRefresh=false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
-        currentView = self.view
-        loadCoverImages()
+        super.viewDidAppear(animated)
+        if shouldRefresh{
+       self.refresher.beginRefreshing()
+        refresh()
+        }
+        shouldRefresh=true
+
 
     }
     

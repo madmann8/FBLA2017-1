@@ -24,14 +24,14 @@ protocol DismissDelgate {
 class InfoContainerViewController: UIViewController {
 
     var item: Item?
-    var hasLiked = false
     var tempUserImage: UIImage?
 
 
     var nextItemDelegate: NextItemDelegate?
     var dismissDelegate: DismissDelgate?
 
-    var ref: FIRDatabaseReference?
+    var ref: FIRDatabaseReference =
+        FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
 
 
     var activitityIndicator: NVActivityIndicatorView?
@@ -43,23 +43,7 @@ class InfoContainerViewController: UIViewController {
         setupViews()
 
         item?.user?.delegate = self
-        ref = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
-        ref?.observe(.value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                var i = 0
-                for snapshot in snapshots {
-                    if let path = snapshot.key as? String {
-                        print("Local path\(self.item?.keyString!)")
-                        print(path)
-                        if path == self.item?.keyString {
-                            self.hasLiked = true
-                        }
 
-                    }
-                }
-            }
-
-        })
 
         if (item?.user?.uid == currentUser.uid) {
             soldButton.isHidden = false
@@ -76,6 +60,9 @@ class InfoContainerViewController: UIViewController {
     }
 
     func setupViews() {
+        if (item?.hasLiked)!{
+            favoriteButton.setImage(#imageLiteral(resourceName: "HeartFilled"), for: .normal)
+        }
         if let tempUserImage = self.tempUserImage {
             self.profileImage.image = tempUserImage
         } else {
@@ -123,18 +110,18 @@ class InfoContainerViewController: UIViewController {
     }
     @IBAction func likeButtonPressed() {
 
-        if hasLiked {
+        if (item?.hasLiked)! {
             favoriteButton.setImage(#imageLiteral(resourceName: "HeartEmpty"), for: .normal)
             if let keyString=item?.keyString{
-            ref?.child("\(keyString)").removeValue()
+           ref.child("\(keyString)").removeValue()
             }
-            hasLiked = false
+            item?.hasLiked = false
         } else {
             favoriteButton.setImage(#imageLiteral(resourceName: "HeartFilled"), for: .normal)
             if let keyString=item?.keyString,let coverImagePath=item?.coverImagePath{
-            ref?.child("\(keyString)").setValue(coverImagePath)
+            ref.child("\(keyString)").setValue(coverImagePath)
             }
-            hasLiked = true
+            item?.hasLiked = true
         }
 
     }

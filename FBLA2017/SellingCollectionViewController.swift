@@ -13,11 +13,23 @@ final class SellingCollectionViewController: ImageCollectionViewController {
     
     var user:User?=nil
     
+    var shouldRefresh=false
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        refresh()
+        if shouldRefresh{
+            self.refresher.beginRefreshing()
+            refresh()
+        }
+        shouldRefresh=true
+        
+        
     }
-
     override func loadCoverImages() {
         
         var ref: FIRDatabaseReference
