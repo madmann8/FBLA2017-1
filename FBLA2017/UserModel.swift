@@ -53,25 +53,31 @@ class User: NSObject {
     
     public func loadGroup() {
         if self.groupPath == nil {
-            var ref: FIRDatabaseReference!
-            ref = FIRDatabase.database().reference()
-            let userID = FIRAuth.auth()?.currentUser?.uid
-            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                self.groupPath = value?["groupPath"] as? String ?? ""
-                currentGroup=self.groupPath
-                
-                // ...
-            }) { (error) in
-                print(error.localizedDescription)
-            }
+            self.groupPath = UserDefaults.standard.string(forKey: "currentUserGroup") ?? "❌"
+            
+            currentGroup=groupPath
+            
+//            var ref: FIRDatabaseReference!
+//            ref = FIRDatabase.database().reference()
+//            let userID = FIRAuth.auth()?.currentUser?.uid
+//            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+//                // Get user value
+//                let value = snapshot.value as? NSDictionary
+//                self.groupPath = value?["groupPath"] as? String ?? ""
+//                currentGroup=self.groupPath
+//                
+//                // ...
+//            }) { (error) in
+//                print(error.localizedDescription)
+//            }
 
         }
         else{
-            FIRDatabase.database().reference().child("users").child("groupPath").setValue(self.groupPath)
+//            FIRDatabase.database().reference().child("users").child("groupPath").setValue(self.groupPath)
+            UserDefaults.standard.set(self.groupPath, forKey: "currentUserGroup")
             currentGroup=self.groupPath
         }
+        
     }
 
     public  func setupUser(id: String, isLoggedIn: Bool) {

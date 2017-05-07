@@ -66,6 +66,7 @@ class ProfileViewController: UIViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
+        UserDefaults.standard.removeObject(forKey: "currentUserGroup")
         currentUser = User()
         currentGroup = ""
 
