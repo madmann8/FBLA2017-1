@@ -8,41 +8,38 @@
 
 import UIKit
 
-
 protocol WalkthroughDismissedDelegate {
     func walkthroughDismissed()
 }
 
-class WalkthroughMainViewController: UIViewController,UIPageViewControllerDelegate,PageControlDelegate {
+class WalkthroughMainViewController: UIViewController, UIPageViewControllerDelegate, PageControlDelegate {
 
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var pageIndicator: UIPageControl!
-    
+
     var pages = [UIViewController]()
-    
-    var delegate:WalkthroughDismissedDelegate?=nil
-    
+
+    var delegate: WalkthroughDismissedDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        doneButton.layer.cornerRadius=doneButton.layer.frame.height/2
-        
-     
+        doneButton.layer.cornerRadius = doneButton.layer.frame.height / 2
+
         // Do any additional setup after loading the view.
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier ==  "mainWTtoPages" {
         let vc = segue.destination as! WalkthroughPageViewController
-                vc.pageControlDelegate=self
-            
+                vc.pageControlDelegate = self
+
         }
     }
-    
-    func update(count: Int, index: Int) {
-        self.pageIndicator.currentPage=index
-        self.pageIndicator.numberOfPages=count
-    }
 
+    func update(count: Int, index: Int) {
+        self.pageIndicator.currentPage = index
+        self.pageIndicator.numberOfPages = count
+    }
 
     /*
     // MARK: - Navigation

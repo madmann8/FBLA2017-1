@@ -89,6 +89,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PermissionScope.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FBLA2017.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -162,7 +167,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6DF75F5BB8378E4F4DE06302051E3B1F</key>
+		<key>70588188BB1BBECD16A968DFAD65E5E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,22 +177,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>797CA551743850C4ACA70524CB750569</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>80A1AAD476BC6D0D87976DE91984E49D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8939CB402E73CA51F0A7F51715DCF078</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>90DB6415B63F6D02256DE99701ACA2CB</key>
+		<key>932F047C7B29C5059FD8413B69B3B702</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>9419259E5586C510495CC1461979875C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9EE9C2A0C650F674191A457119043B6B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -217,12 +227,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF623BF050D4FE82238D2BCF74303D68</key>
+		<key>D973DBB3FF803A3BAC3F870E70F87628</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DFFC2A3196C95DF1780EFC8EA4D6E53A</key>
+		<key>EEB2D3DBC4E45DCF13B5C7E2684C27D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

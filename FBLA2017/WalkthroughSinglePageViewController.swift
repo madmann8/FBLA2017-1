@@ -12,22 +12,21 @@ import ChameleonFramework
 class WalkthroughSinglePageViewController: UIViewController {
 
     @IBOutlet weak var mainView: UIView!
-    
-    var index:Int?=nil
-    
-    var viewToLoad:UIView?=nil
+
+    var index: Int?
+
+    var viewToLoad: UIView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let tempView=UINib(nibName: "Slide\(index!)", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
-        
+
+        let tempView = UINib(nibName: "Slide\(index!)", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+
         self.mainView.addSubview(tempView)
-        
-        
-mainView.layer.cornerRadius=10
-        mainView.clipsToBounds=true
-        self.view.backgroundColor=UIColor.flatWatermelon
-        
+
+mainView.layer.cornerRadius = 10
+        mainView.clipsToBounds = true
+        self.view.backgroundColor = UIColor.flatWatermelon
+
         // Do any additional setup after loading the view.
     }
 
@@ -35,7 +34,6 @@ mainView.layer.cornerRadius=10
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

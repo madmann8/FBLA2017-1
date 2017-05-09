@@ -72,6 +72,7 @@ PODS:
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - NVActivityIndicatorView (3.6.0)
+  - PermissionScope (1.1.1)
   - Popover (1.0.5)
   - Presentr (1.2.3)
   - Pulley (1.3.1)
@@ -96,6 +97,7 @@ DEPENDENCIES:
   - ImagePicker
   - JSQMessagesViewController
   - NVActivityIndicatorView
+  - PermissionScope
   - Popover
   - Presentr
   - Pulley
@@ -136,12 +138,13 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   NVActivityIndicatorView: c7c1c4300b418bd9ed06459e78d4df859ddbe31f
+  PermissionScope: a30c16e015779ba27c97c124e7539e27b5829de2
   Popover: f31b0ef6f43192256e6fcf13a0ce10f01c803159
   Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
   Pulley: 99a45ad8aba14dafb2c6f4f16cb9667eb41c0919
   QuiltView: 991e9710b432946b04bcd5721ee4b14175fa0292
   SwiftLint: b467d08f5b25dc3b3cfed243d8e1b74b91714c67
 
-PODFILE CHECKSUM: 2d70c24800bb380d33f26a25cdef874ed2f3e270
+PODFILE CHECKSUM: 0be75e838f03fbfa489a1dc887b95d0786e00b70
 
 COCOAPODS: 1.2.0

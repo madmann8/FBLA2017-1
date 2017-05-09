@@ -282,7 +282,6 @@ extension User:CLLocationManagerDelegate {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
     }

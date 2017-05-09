@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Yard Sale</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -39,6 +41,8 @@
 	<string>209291999557902</string>
 	<key>FacebookDisplayName</key>
 	<string>Yard Sale</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -49,11 +53,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Item Photos</string>
+	<string>Photos of Items</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Suggest item locations</string>
+	<string>Find Item Locations</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Item Photos</string>
+	<string>Photos of Items</string>
 	<key>NSPrefPaneIconFile</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>

@@ -7,6 +7,8 @@ import UIKit
  import QuiltView
  import Hero
  import Device
+import PermissionScope
+import ChameleonFramework
 
   class ImageCollectionViewController: UICollectionViewController {
 
@@ -51,6 +53,35 @@ import UIKit
         currentUser.setupUser(id: (FIRAuth.auth()?.currentUser?.uid)!, isLoggedIn: true)
         loadCoverImages()
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if !UserDefaults.standard.bool(forKey: "hasAskedPermissions"){
+//        if 1 == 1 {
+            UserDefaults.standard.set(true, forKey:  "hasAskedPermissions")
+            let permissionView = PermissionScope()
+
+            permissionView.buttonFont = UIFont(name: "AvenirNext-DemiBold", size: 15)!
+            permissionView.labelFont = UIFont(name: "AvenirNext-Regular", size: 15)!
+            permissionView.headerLabel.text = "First, permissions"
+            permissionView.bodyLabel.text = "Just tap a button below to get started"
+            permissionView.bodyLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)!
+            permissionView.headerLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 21)!
+            permissionView.permissionLabelColor = UIColor.flatNavyBlueDark
+            permissionView.permissionButtonTextColor = UIColor.flatNavyBlueDark
+            permissionView.permissionButtonBorderColor = UIColor.flatNavyBlueDark
+permissionView.closeButton.setTitle("", for: .normal)
+            permissionView.authorizedButtonColor = UIColor.flatNavyBlueDark
+            permissionView.addPermission(LocationWhileInUsePermission(),
+                                 message: "We use this to show item location")
+            permissionView.addPermission(CameraPermission(),
+                                 message: "We use this to take pictures of items as well as set profile images")
+            permissionView.addPermission(PhotosPermission(),
+                                 message: "We use this to find pictures of items and find profile images")
+                        permissionView.show()
+
+
+        }
     }
 
     var itemIndex = 0

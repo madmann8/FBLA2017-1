@@ -19,9 +19,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     var handle: FIRAuthStateDidChangeListenerHandle?
 
     var stackVC: EmailStackViewController?
-    
-    var hasLoaded = false
 
+    var hasLoaded = false
 
     @IBOutlet weak var submitButton: UIButton!
 
@@ -34,22 +33,19 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
         signInButton.colorScheme = .dark
 
-
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
-        if !hasLoaded{
+        if !hasLoaded {
             if UserDefaults.standard.bool(forKey: "hasLoadedWalkthrough") {
                 loadViews()
-            }
-            else {
+            } else {
                 UserDefaults.standard.set(true, forKey: "hasLoadedWalkthrough")
                 self.performSegue(withIdentifier: "loginToWalkthrough", sender: nil)
             }
         }
-        hasLoaded=true
+        hasLoaded = true
     }
-    
 
     @IBAction func emailSwitchChanged(_ sender: UISegmentedControl) {
         stackVC?.updateVisible(signUp: sender.selectedSegmentIndex == 1)
@@ -65,25 +61,20 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         stackVC?.upload()
 
     }
-    
-    func loadViews() {
 
-        //        GIDSignIn.sharedInstance().signIn()
-        
-        // TODO(developer) Configure the sign-in button look/feel
-        // ...
+    func loadViews() {
         handle = FIRAuth.auth()?.addStateDidChangeListener { (_, user) in
             if user != nil {
                 if !self.hasFailedLogin {
-                    
+
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    
+
                     let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
                     UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
-                    
+
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
-                
+
             } else {
                 self.hasFailedLogin = true
             }
@@ -98,7 +89,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         }
     }
     @IBAction func googleSignInButtonPressed() {
-//        GIDSignIn.sharedInstance().signIn()
 
     }
 

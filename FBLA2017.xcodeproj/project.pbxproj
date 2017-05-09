@@ -50,7 +50,6 @@
 		489473521EA3129000949659 /* LogOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489473511EA3129000949659 /* LogOutViewController.swift */; };
 		48ABFAA61EBFC35100B8715E /* Slide7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABFAA51EBFC35100B8715E /* Slide7.xib */; };
 		48ABFAA81EBFC4B700B8715E /* Slide8.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABFAA71EBFC4B700B8715E /* Slide8.xib */; };
-		48ABFAAB1EBFC66B00B8715E /* WhyFBLAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABFAAA1EBFC66B00B8715E /* WhyFBLAViewController.swift */; };
 		48ABFAAD1EBFC9AE00B8715E /* Slide9.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABFAAC1EBFC9AE00B8715E /* Slide9.xib */; };
 		48ABFAAF1EBFC9BA00B8715E /* Slide10.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABFAAE1EBFC9BA00B8715E /* Slide10.xib */; };
 		48ABFAB11EBFC9C300B8715E /* Slide11.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABFAB01EBFC9C300B8715E /* Slide11.xib */; };
@@ -150,7 +149,6 @@
 		489BA6741EBBA37000506F28 /* FBLA2017.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = FBLA2017.entitlements; sourceTree = "<group>"; };
 		48ABFAA51EBFC35100B8715E /* Slide7.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide7.xib; sourceTree = "<group>"; };
 		48ABFAA71EBFC4B700B8715E /* Slide8.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide8.xib; sourceTree = "<group>"; };
-		48ABFAAA1EBFC66B00B8715E /* WhyFBLAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhyFBLAViewController.swift; sourceTree = "<group>"; };
 		48ABFAAC1EBFC9AE00B8715E /* Slide9.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide9.xib; sourceTree = "<group>"; };
 		48ABFAAE1EBFC9BA00B8715E /* Slide10.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide10.xib; sourceTree = "<group>"; };
 		48ABFAB01EBFC9C300B8715E /* Slide11.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide11.xib; sourceTree = "<group>"; };
@@ -275,7 +273,7 @@
 			name = Chats;
 			sourceTree = "<group>";
 		};
-		4846C2401EBF959C0014BC19 /* Slides */ = {
+		4846C2401EBF959C0014BC19 /* WalkthroughSlides */ = {
 			isa = PBXGroup;
 			children = (
 				4846C2411EBF95AB0014BC19 /* Slide1.xib */,
@@ -291,7 +289,7 @@
 				48ABFAB01EBFC9C300B8715E /* Slide11.xib */,
 				48ABFAB21EBFC9CE00B8715E /* Slide12.xib */,
 			);
-			name = Slides;
+			name = WalkthroughSlides;
 			sourceTree = "<group>";
 		};
 		48537F9A1EB55B720095ECBA /* Products */ = {
@@ -334,11 +332,10 @@
 		4880E5EE1EBF950500062FCD /* Walkthrough */ = {
 			isa = PBXGroup;
 			children = (
-				4846C2401EBF959C0014BC19 /* Slides */,
+				4846C2401EBF959C0014BC19 /* WalkthroughSlides */,
 				4846C23A1EBF958A0014BC19 /* WalkthroughPageViewController.swift */,
 				4846C23E1EBF95940014BC19 /* WalkthroughMainViewController.swift */,
 				4846C23B1EBF958A0014BC19 /* WalkthroughSinglePageViewController.swift */,
-				48ABFAAA1EBFC66B00B8715E /* WhyFBLAViewController.swift */,
 			);
 			name = Walkthrough;
 			sourceTree = "<group>";
@@ -592,7 +589,6 @@
 				48624F4F1EAABF60008CE0E0 /* ItemModel.swift in Sources */,
 				4846C23D1EBF958A0014BC19 /* WalkthroughSinglePageViewController.swift in Sources */,
 				4831098D1EA869B10069208C /* ChatsViewController.swift in Sources */,
-				48ABFAAB1EBFC66B00B8715E /* WhyFBLAViewController.swift in Sources */,
 				48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */,
 				48F7803E1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift in Sources */,
 				48B07F0E1EA151FE0068709A /* LoginViewController.swift in Sources */,
