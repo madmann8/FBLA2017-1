@@ -19,7 +19,7 @@ import PopoverPicker
     fileprivate let sectionInsets = UIEdgeInsets(top: 2, left: 2, bottom: 5, right: 2)
 
     private typealias imageAndIndex = (Int, UIImage)
-    var coverImages = [UIImage]()
+    var coverImages = [UIImage?]()
     var itemKeys=[String]()
     var coverImageKeys=[String]()
     var categories = [String]()
@@ -34,6 +34,10 @@ import PopoverPicker
     var readyToLoad = true
     
     var loadingImages=true
+    
+    @IBOutlet weak var filterButton: UIButton!
+    
+    var originalImages = [UIImage?]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +47,11 @@ import PopoverPicker
         
         collectionView?.emptyDataSetSource = self
         collectionView?.emptyDataSetDelegate = self
-//        collectionView.tableFooterView = UIView()
         
+        if let _ = self.filterButton{
 
+        self.filterButton.titleLabel?.textAlignment = .right
+        }
         activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
 
         self.refresher.addTarget(self, action: #selector(ImageCollectionViewController.refresh), for: .valueChanged)
@@ -105,6 +111,7 @@ permissionView.closeButton.setTitle("", for: .normal)
     @IBAction func filterButtonPressed() {
         let popoverView = PickerDialog.getPicker()
         let pickerData = [
+            ["value": "Any", "display": "Any"],
             ["value": "School Supplies", "display": "School Supplies"],
             ["value": "Electronics", "display": "Electronics"],
             ["value": "Home and Garden", "display": "Home and Garden"],
@@ -116,25 +123,31 @@ permissionView.closeButton.setTitle("", for: .normal)
         popoverView.show("Select Category", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", options: pickerData, selected:  "School Supplies") {
             (value) -> Void in
             
+            self.filterButton.setTitle(value, for: .normal)
             self.filterItems(category: value)
-            
-//            self.categoryButton.setTitle(value, for: .normal)
-//            self.categoryButton.setTitleColor(UIColor.black, for: .normal)
-//            self.category = value
+
         }
 
     }
     
     func filterItems(category:String){
+        if category == "Any" || category == "Filter"{
+            coverImages=originalImages
+            collectionView?.reloadData()
+            return
+        }
+        coverImages=originalImages
         if !loadingImages {
             var i = 0
-            for indexedCat in self.categories{
-                if indexedCat == category {
-                    
+            for cat in categories{
+                if cat != category{
+                    coverImages[i]=nil
                 }
+                i+=1
             }
-            
         }
+        coverImages = coverImages.filter { $0 != nil }.map { $0! }
+        collectionView?.reloadData()
     }
  }
 
@@ -194,9 +207,9 @@ permissionView.closeButton.setTitle("", for: .normal)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         let photo = coverImages[indexPath.row]
-        let height = photo.size.height
-        let width = photo.size.width
-        let dynamicHeightRatio = height / width
+        let height = photo?.size.height
+        let width = photo?.size.width
+        let dynamicHeightRatio = height! / width!
 
         print(widthPerItem * dynamicHeightRatio)
         return CGSize(width: 2, height: 2 * dynamicHeightRatio)
@@ -237,12 +250,12 @@ extension ImageCollectionViewController:CategoryLoadedDelegate{
                                     self.coverImageKeys.append((snapshot.key as? String)!)
                                 }
                                 i += 1
-                                if i == snapshots.count || i==200{
-                                    
+                                if i == snapshots.count {
+                                    self.originalImages=self.coverImages
                                     self.activityIndicator?.stopAnimating()
                                     self.refresher.endRefreshing()
                                     self.loadingImages=false
-                                    self.collectionView?.reloadData()
+                                    self.filterItems(category: (self.filterButton.titleLabel?.text)!)
                                 }
                             }
                         }
@@ -449,13 +462,26 @@ extension ImageCollectionViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDel
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         if !loadingImages{
 
-        return NSAttributedString(string: "It doesnt look like there are any items here", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-Regular", size: 17) as Any])
+        return NSAttributedString(string: "It doesn't look like there are any items here", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-Regular", size: 17) as Any])
         }
         else {
             return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
         }
     }
     
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+        if !loadingImages{
+            return NSAttributedString(string: "Press Here To Refresh", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 25) as Any])
+        }
+        else {
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        }
+
+    }
+    
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
+        refresh()
+    }
     
     
 }
