@@ -11,6 +11,7 @@ import PermissionScope
 import ChameleonFramework
 import DZNEmptyDataSet
 import PopoverPicker
+import Instructions
 
   class ImageCollectionViewController: UICollectionViewController {
 
@@ -24,6 +25,9 @@ import PopoverPicker
     var coverImageKeys=[String]()
     var categories = [String]()
     fileprivate let itemsPerRow: CGFloat = 3
+    
+    let walkthroughController = CoachMarksController()
+
 
     var nextItemDelegate: NextItemDelegate?
 
@@ -51,6 +55,7 @@ import PopoverPicker
 
         self.filterButton.titleLabel?.textAlignment = .right
         }
+        self.walkthroughController.dataSource=self
         activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
 
         self.refresher.addTarget(self, action: #selector(ImageCollectionViewController.refresh), for: .valueChanged)
@@ -73,6 +78,8 @@ import PopoverPicker
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.walkthroughController.startOn(self)
+
         if !UserDefaults.standard.bool(forKey: "hasAskedPermissions"){
 //        if 1 == 1 {
             UserDefaults.standard.set(true, forKey:  "hasAskedPermissions")
@@ -484,6 +491,38 @@ extension ImageCollectionViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDel
     
     
 }
+
+
+
+extension ImageCollectionViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int{
+    return 1
+    }
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                              coachMarkAt index: Int) -> CoachMark {
+        return coachMarksController.helper.makeCoachMark(for: self.filterButton)
+    }
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let view = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        view.bodyView.hintLabel.text = "Tap this button to filter items"
+        view.bodyView.hintLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)!
+        view.bodyView.nextLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 16)!
+//        UIFont(name: "AvenirNext-Regular", size: 15)!
+        view.bodyView.nextLabel.text = "Ok!"
+        
+        return (bodyView: view.bodyView, arrowView: view.arrowView)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.walkthroughController.stop(immediately: true)
+    }
+}
+
+
+
+
+
 
 extension String {
     func substring(start: Int, end: Int) -> String {

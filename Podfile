@@ -28,5 +28,6 @@ pod "Device", '~> 3.0.1'
 pod 'SwiftLint'
 pod 'PermissionScope'
 pod 'DZNEmptyDataSet'
+pod 'Instructions', :git => 'https://github.com/ephread/Instructions.git'
 
 end

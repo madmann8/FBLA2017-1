@@ -12,6 +12,7 @@ import CoreLocation
 import ImagePicker
 import FirebaseStorage
 import FirebaseDatabase
+import Instructions
 
 class OtherUserProfileViewController: UIViewController {
 
@@ -21,12 +22,19 @@ class OtherUserProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var exitButtton: UIButton!
+    
+    @IBOutlet weak var imageSwitch: UISegmentedControl!
+    
+    
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
     var loginInUser: User?
     var otherUser: User?
     var loadOtherChat = false
     var hasLoaded = false
+    
+    let walkthroughController = CoachMarksController()
+
 
     @IBAction func sellingOrFavoritesToggle(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
@@ -39,6 +47,8 @@ class OtherUserProfileViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        walkthroughController.dataSource=self
+
         self.loginInUser = currentUser
         profileImageView.image = otherUser?.profileImage
         nameLabel.text = otherUser?.displayName
@@ -54,6 +64,8 @@ class OtherUserProfileViewController: UIViewController {
 
     }
     override func viewDidAppear(_ animated: Bool) {
+        self.walkthroughController.startOn(self)
+
         super.viewDidAppear(animated)
         if loadOtherChat && !hasLoaded {
             self.performSegue(withIdentifier: "toChat", sender: nil)
@@ -94,4 +106,31 @@ class OtherUserProfileViewController: UIViewController {
         }
     }
 
+}
+
+extension OtherUserProfileViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int{
+        return 1
+    }
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                              coachMarkAt index: Int) -> CoachMark {
+        return coachMarksController.helper.makeCoachMark(for: self.imageSwitch)
+    }
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let view = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        view.bodyView.hintLabel.text = "Use this to switch between viewing items the user has favorited and items the user is selling"
+        view.bodyView.hintLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)!
+        view.bodyView.nextLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 16)!
+        //        UIFont(name: "AvenirNext-Regular", size: 15)!
+        view.bodyView.nextLabel.text = "Ok!"
+        
+        return (bodyView: view.bodyView, arrowView: view.arrowView)
+    }
+    
+
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.walkthroughController.stop(immediately: true)
+    }
 }

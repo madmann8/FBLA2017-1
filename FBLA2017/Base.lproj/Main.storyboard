@@ -2021,6 +2021,7 @@
                         <outlet property="cityLabel" destination="hge-Ff-G0l" id="9JC-TL-R6z"/>
                         <outlet property="exitButtton" destination="CF9-Cx-Lr4" id="83U-tQ-CJG"/>
                         <outlet property="favoritesContainerView" destination="vzC-0V-5rh" id="wO6-Eh-aRt"/>
+                        <outlet property="imageSwitch" destination="RKN-Sl-xX4" id="YvP-4b-d25"/>
                         <outlet property="nameLabel" destination="zMi-Ig-Znq" id="wAu-oD-JCq"/>
                         <outlet property="profileImageView" destination="prW-Cd-Ma1" id="kwc-KS-PQ2"/>
                         <outlet property="sellingContainerView" destination="kHp-zS-a8q" id="QjF-bb-xBq"/>
@@ -2039,17 +2040,17 @@
                         <viewControllerLayoutGuide type="bottom" id="0NM-W6-SOT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3c3-a5-4Dq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="631"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ita-JY-4SM">
-                                <rect key="frame" x="0.0" y="35" width="375" height="596"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="612"/>
                                 <connections>
                                     <segue destination="R7S-Lc-3ma" kind="embed" identifier="toContainedChat" id="qrA-95-1yX"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0w-yu-kuW">
-                                <rect key="frame" x="16" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="16" y="20" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="bqI-5h-eTX"/>
                                     <constraint firstAttribute="width" constant="30" id="uEh-B3-jwa"/>
@@ -2090,7 +2091,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0cj-Gg-umE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uV3-2i-BlZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="596"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2326,8 +2327,8 @@
         <image name="userChatIcon" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6U7-sS-Rca"/>
-        <segue reference="gFJ-Ib-shz"/>
+        <segue reference="bRa-Be-ak4"/>
         <segue reference="zHW-XZ-tjJ"/>
+        <segue reference="gFJ-Ib-shz"/>
     </inferredMetricsTieBreakers>
 </document>

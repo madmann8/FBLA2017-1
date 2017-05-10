@@ -69,6 +69,9 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.9)
   - Hero (0.3.6)
   - ImagePicker (2.1.1)
+  - Instructions (0.5.0):
+    - Instructions/Core (= 0.5.0)
+  - Instructions/Core (0.5.0)
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
@@ -97,6 +100,7 @@ DEPENDENCIES:
   - GSMessages
   - Hero
   - ImagePicker
+  - Instructions (from `https://github.com/ephread/Instructions.git`)
   - JSQMessagesViewController
   - NVActivityIndicatorView
   - PermissionScope
@@ -109,11 +113,16 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   ChameleonFramework:
     :git: https://github.com/ViccAlexander/Chameleon.git
+  Instructions:
+    :git: https://github.com/ephread/Instructions.git
 
 CHECKOUT OPTIONS:
   ChameleonFramework:
     :commit: acc480fbe023c6e5fe40f68593f4a70a8c4c7ad5
     :git: https://github.com/ViccAlexander/Chameleon.git
+  Instructions:
+    :commit: e8b448d108908d9bb47f5d1b00f57fcc0d77e6f3
+    :git: https://github.com/ephread/Instructions.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -138,6 +147,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   ImagePicker: fe4c699abb56ff03994fa98d8b02e3883ee118be
+  Instructions: 6976f674ce788aefec475be6f18500572f1645d4
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   NVActivityIndicatorView: c7c1c4300b418bd9ed06459e78d4df859ddbe31f
@@ -148,6 +158,6 @@ SPEC CHECKSUMS:
   QuiltView: 991e9710b432946b04bcd5721ee4b14175fa0292
   SwiftLint: b467d08f5b25dc3b3cfed243d8e1b74b91714c67
 
-PODFILE CHECKSUM: 51f0ecead5c80d2d55b9681d10e97705ad4e43c1
+PODFILE CHECKSUM: 7388c8330d936949331f4cfc3c7d4522f4665357
 
 COCOAPODS: 1.2.0

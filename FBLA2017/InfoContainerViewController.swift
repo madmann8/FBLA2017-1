@@ -12,6 +12,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import NVActivityIndicatorView
 import ChameleonFramework
+import Instructions
 
 protocol NextItemDelegate {
     func goToNextItem()
@@ -25,6 +26,8 @@ class InfoContainerViewController: UIViewController {
 
     var item: Item?
     var tempUserImage: UIImage?
+    
+    let walkthroughController = CoachMarksController()
 
     var nextItemDelegate: NextItemDelegate?
     var dismissDelegate: DismissDelgate?
@@ -39,6 +42,8 @@ class InfoContainerViewController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
+        
+        walkthroughController.dataSource=self
 
         item?.user?.delegate = self
 
@@ -218,4 +223,34 @@ extension InfoContainerViewController:UserDelegate {
 
     }
 
+}
+
+
+extension InfoContainerViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int{
+        return 1
+    }
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                              coachMarkAt index: Int) -> CoachMark {
+        return coachMarksController.helper.makeCoachMark(for: self.profileImage)
+    }
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let view = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        view.bodyView.hintLabel.text = "Tap this to view the seller's profile"
+        view.bodyView.hintLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)!
+        view.bodyView.nextLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 16)!
+        //        UIFont(name: "AvenirNext-Regular", size: 15)!
+        view.bodyView.nextLabel.text = "Ok!"
+        
+        return (bodyView: view.bodyView, arrowView: view.arrowView)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        self.walkthroughController.startOn(self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.walkthroughController.stop(immediately: true)
+    }
 }
