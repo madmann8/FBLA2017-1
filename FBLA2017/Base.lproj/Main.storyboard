@@ -656,7 +656,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" width="200" style="plain" id="kAZ-Rp-BCU">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5xH-MT-iWi">
-                                <rect key="frame" x="156" y="7" width="200" height="30"/>
+                                <rect key="frame" x="159" y="7" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                 <state key="normal" title="Choose"/>
@@ -690,23 +690,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="crn-JV-pqt" userLabel="Global">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crn-JV-pqt" userLabel="Global">
                                 <rect key="frame" x="0.0" y="36" width="375" height="631"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="6oi-yG-fPs" kind="embed" identifier="toGlobalChat" id="IA3-Dh-8jH"/>
                                 </connections>
                             </containerView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQz-u4-BK4" userLabel="DMs">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQz-u4-BK4" userLabel="DMs">
                                 <rect key="frame" x="0.0" y="36" width="375" height="631"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="BIZ-Uc-qFs" kind="embed" identifier="toDirectChat" id="6U7-sS-Rca"/>
                                 </connections>
                             </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EA4-X8-UgO">
-                                <rect key="frame" x="77" y="3" width="216" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EA4-X8-UgO">
+                                <rect key="frame" x="82" y="3" width="211" height="29"/>
                                 <segments>
                                     <segment title="Item"/>
                                     <segment title="Seller"/>
@@ -717,6 +714,19 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jQz-u4-BK4" firstAttribute="leading" secondItem="crn-JV-pqt" secondAttribute="leading" id="5SL-9F-Lkf"/>
+                            <constraint firstItem="EA4-X8-UgO" firstAttribute="leading" secondItem="63V-Dj-ceu" secondAttribute="leadingMargin" constant="66" id="J1U-eR-stC"/>
+                            <constraint firstItem="zTL-BX-w7Q" firstAttribute="top" secondItem="jQz-u4-BK4" secondAttribute="bottom" id="Mg4-FO-A2s"/>
+                            <constraint firstItem="jQz-u4-BK4" firstAttribute="trailing" secondItem="crn-JV-pqt" secondAttribute="trailing" id="Q9L-f4-bMS"/>
+                            <constraint firstItem="crn-JV-pqt" firstAttribute="top" secondItem="jQz-u4-BK4" secondAttribute="top" id="Sv4-R9-5JQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EA4-X8-UgO" secondAttribute="trailing" constant="66" id="XjN-tU-m3A"/>
+                            <constraint firstItem="crn-JV-pqt" firstAttribute="bottom" secondItem="zTL-BX-w7Q" secondAttribute="top" id="c8k-3K-cdy"/>
+                            <constraint firstItem="EA4-X8-UgO" firstAttribute="top" secondItem="7kv-bQ-Mbh" secondAttribute="bottom" constant="3" id="fjo-Kf-uZO"/>
+                            <constraint firstAttribute="trailing" secondItem="jQz-u4-BK4" secondAttribute="trailing" id="hLZ-CM-cPv"/>
+                            <constraint firstItem="jQz-u4-BK4" firstAttribute="leading" secondItem="63V-Dj-ceu" secondAttribute="leading" id="l6T-Qg-3EX"/>
+                            <constraint firstItem="jQz-u4-BK4" firstAttribute="top" secondItem="EA4-X8-UgO" secondAttribute="bottom" constant="5" id="q8j-T7-jw9"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="chatSwitch" destination="EA4-X8-UgO" id="AyV-bP-Nyk"/>
@@ -2029,17 +2039,17 @@
                         <viewControllerLayoutGuide type="bottom" id="0NM-W6-SOT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3c3-a5-4Dq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="631"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ita-JY-4SM">
-                                <rect key="frame" x="0.0" y="55" width="375" height="612"/>
+                                <rect key="frame" x="0.0" y="35" width="375" height="596"/>
                                 <connections>
                                     <segue destination="R7S-Lc-3ma" kind="embed" identifier="toContainedChat" id="qrA-95-1yX"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0w-yu-kuW">
-                                <rect key="frame" x="16" y="20" width="30" height="30"/>
+                                <rect key="frame" x="16" y="0.0" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="bqI-5h-eTX"/>
                                     <constraint firstAttribute="width" constant="30" id="uEh-B3-jwa"/>
@@ -2080,7 +2090,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0cj-Gg-umE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uV3-2i-BlZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="596"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2316,8 +2326,8 @@
         <image name="userChatIcon" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zHW-XZ-tjJ"/>
-        <segue reference="bRa-Be-ak4"/>
+        <segue reference="6U7-sS-Rca"/>
         <segue reference="gFJ-Ib-shz"/>
+        <segue reference="zHW-XZ-tjJ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -122,6 +122,9 @@ class Item {
 
                     }
                 }
+                if snapshots.count == 0 {
+                    self.delegate?.doneLoading(item: self)
+                }
             }
 
         })

@@ -45,8 +45,7 @@ import PopoverPicker
         
         currentUser.loadGroup()
         
-        collectionView?.emptyDataSetSource = self
-        collectionView?.emptyDataSetDelegate = self
+
         
         if let _ = self.filterButton{
 

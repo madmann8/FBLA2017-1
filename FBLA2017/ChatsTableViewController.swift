@@ -17,6 +17,8 @@ protocol ClearCellDelegate {
 import UIKit
 import NVActivityIndicatorView
 import ChameleonFramework
+import DZNEmptyDataSet
+
 //Outlets cause an error, need to define delegate/datasource
 class ChatsTableViewController: UITableViewController, TableHasLoadedDelegate {
 
@@ -34,6 +36,9 @@ class ChatsTableViewController: UITableViewController, TableHasLoadedDelegate {
 
     var readyToLoad = true
 
+    
+    var loading=true
+    
 var refresher = UIRefreshControl()
 
     override func viewDidAppear(_ animated: Bool) {
@@ -51,6 +56,9 @@ var refresher = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView?.emptyDataSetSource = self
+        tableView?.emptyDataSetDelegate = self
+        tableView?.tableFooterView = UIView()
         currentUser.hasLoadedDelegate = self
 //        refreshData()
 refresher.addTarget(self, action:#selector(refreshData), for: .valueChanged)
@@ -243,6 +251,8 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate, ChatsTableCanRel
     }
 
     func refreshData() {
+        activityIndicator?.startAnimating()
+        loading=true
         if readyToLoad {
         readyToLoad = false
              currentUser.chatTableCanReloadDelegate = self
@@ -251,6 +261,7 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate, ChatsTableCanRel
         }
     }
     func refreshChats() {
+        loading=false
 
         loadCells = true
         self.itemCells.removeAll()
@@ -274,12 +285,45 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate, ChatsTableCanRel
         cellsToClear.removeAll()
         self.tableView.reloadData()
         readyToLoad = true
-//
 self.activityIndicator?.stopAnimating()
         refresher.endRefreshing()
-
-//
         self.viewWillAppear(true)
           }
 
     }
+
+extension ChatsTableViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        if !loading{
+            return NSAttributedString(string: "Huh", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        }
+        else {
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        }
+    }
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        if !loading{
+            
+            return NSAttributedString(string: "It doesn't look like there are any items here", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-Regular", size: 17) as Any])
+        }
+        else {
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        }
+    }
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+        if !loading{
+            return NSAttributedString(string: "Press Here To Refresh", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 25) as Any])
+        }
+        else {
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        }
+        
+    }
+    
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
+        refreshData()
+    }
+    
+    
+}
