@@ -63,6 +63,11 @@ final class SellingCollectionViewController: ImageCollectionViewController {
 
                     }
                 }
+                if snapshots.count == 0 {
+                    self.activityIndicator?.stopAnimating()
+                    self.refresher.endRefreshing()
+                }
+
             }
 
         })

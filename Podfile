@@ -27,5 +27,6 @@ pod 'QuiltView'
 pod "Device", '~> 3.0.1'
 pod 'SwiftLint'
 pod 'PermissionScope'
+pod 'DZNEmptyDataSet'
 
 end

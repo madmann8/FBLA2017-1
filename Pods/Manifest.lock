@@ -10,6 +10,7 @@ PODS:
     - ChameleonFramework/Default
   - Device (3.0.1)
   - DropDown (2)
+  - DZNEmptyDataSet (1.8.1)
   - FBSDKCoreKit (4.21.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.21.0):
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - Device (~> 3.0.1)
   - DropDown
+  - DZNEmptyDataSet
   - FBSDKCoreKit
   - FBSDKLoginKit
   - Firebase/Auth
@@ -118,6 +120,7 @@ SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Device: c793851589633bc515b65e08a2b5a223bc87c45a
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FBSDKCoreKit: 8a372ab194b5c7c26355c1920ef52dbeb44bc222
   FBSDKLoginKit: a1a5f4b4ac445823a020fbeeaf5f03714a67ff9c
   Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
@@ -145,6 +148,6 @@ SPEC CHECKSUMS:
   QuiltView: 991e9710b432946b04bcd5721ee4b14175fa0292
   SwiftLint: b467d08f5b25dc3b3cfed243d8e1b74b91714c67
 
-PODFILE CHECKSUM: 0be75e838f03fbfa489a1dc887b95d0786e00b70
+PODFILE CHECKSUM: 51f0ecead5c80d2d55b9681d10e97705ad4e43c1
 
 COCOAPODS: 1.2.0

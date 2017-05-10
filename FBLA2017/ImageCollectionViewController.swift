@@ -9,6 +9,7 @@ import UIKit
  import Device
 import PermissionScope
 import ChameleonFramework
+import DZNEmptyDataSet
 
   class ImageCollectionViewController: UICollectionViewController {
 
@@ -32,7 +33,14 @@ import ChameleonFramework
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         currentUser.loadGroup()
+        
+        collectionView?.emptyDataSetSource = self
+        collectionView?.emptyDataSetDelegate = self
+//        collectionView.tableFooterView = UIView()
+        
 
         activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
 
@@ -167,7 +175,6 @@ permissionView.closeButton.setTitle("", for: .normal)
 
  extension ImageCollectionViewController {
     func loadCoverImages() {
-let group = currentGroup
         let ref = FIRDatabase.database().reference().child(currentGroup).child("coverImagePaths")
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in
@@ -197,6 +204,10 @@ let group = currentGroup
                         }
 
                     }
+                }
+                if snapshots.count == 0 {
+                    self.activityIndicator?.stopAnimating()
+                    self.refresher.endRefreshing()
                 }
             }
 
@@ -377,8 +388,19 @@ let group = currentGroup
     func reload() {
         refresh()
     }
-
  }
+
+extension ImageCollectionViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "Huh", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+    }
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "It doesnt look like there are any items here", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-Regular", size: 17) as Any])
+    }
+    
+    
+    
+}
 
 extension String {
     func substring(start: Int, end: Int) -> String {
@@ -395,3 +417,39 @@ extension String {
 
         return self.substring(with: range)
     }}
+
+
+
+
+// From: http://stackoverflow.com/questions/32612760/resize-image-without-losing-quality
+struct CommonUtils {
+    static func imageWithImage(image: UIImage, scaleToSize newSize: CGSize, isAspectRation aspect: Bool) -> UIImage{
+        
+        let originRatio = image.size.width / image.size.height;//CGFloat
+        let newRatio = newSize.width / newSize.height;
+        
+        var sz: CGSize = CGSize.zero
+        
+        if (!aspect) {
+            sz = newSize
+        }else {
+            if (originRatio < newRatio) {
+                sz.height = newSize.height
+                sz.width = newSize.height * originRatio
+            }else {
+                sz.width = newSize.width
+                sz.height = newSize.width / originRatio
+            }
+        }
+        let scale: CGFloat = 1.0
+        
+        sz.width /= scale
+        sz.height /= scale
+        UIGraphicsBeginImageContextWithOptions(sz, false, scale)
+        image.draw(in: CGRect(x: 0, y: 0, width: sz.width, height: sz.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+}
+

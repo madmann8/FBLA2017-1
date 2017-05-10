@@ -64,6 +64,11 @@ final class FavoritesCollectionViewController: ImageCollectionViewController {
 
                     }
                 }
+                if snapshots.count == 0 {
+                    self.activityIndicator?.stopAnimating()
+                    self.refresher.endRefreshing()
+                }
+
             }
 
         })
