@@ -43,6 +43,8 @@ class UploadItemFormViewController: UIViewController {
     var ref: FIRDatabaseReference!
 
     var delegate: UploadFinishedDelegate?
+    
+    var categories=[String]()
 
     var imagePickerController = ImagePickerController()
     var hasSetupImagePicker = false
@@ -165,7 +167,6 @@ extension UploadItemFormViewController:EnterPriceDelegate {
         )
         let dynamicSizePresenter = Presentr(presentationType: presentationType)
         let dynamicVC = storyboard!.instantiateViewController(withIdentifier: "DynamicViewController") as! EnterPricePopoverViewController
-        //        rdynamicSizePresenter.presentationType = .popup
         dynamicVC.delegate = self
         customPresentViewController(dynamicSizePresenter, viewController: dynamicVC, animated: true, completion: nil)
 
@@ -227,7 +228,7 @@ extension UploadItemFormViewController {
             ["value": "Other", "display": "Other"],
 
         ]
-        popoverView.show("Select Category", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", options: pickerData, selected:  "kilometer") {
+        popoverView.show("Select Category", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", options: pickerData, selected:  "School Supplies") {
             (value) -> Void in
 
             self.categoryButton.setTitle(value, for: .normal)

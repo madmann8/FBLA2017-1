@@ -10,6 +10,7 @@ import UIKit
 import PermissionScope
 import ChameleonFramework
 import DZNEmptyDataSet
+import PopoverPicker
 
   class ImageCollectionViewController: UICollectionViewController {
 
@@ -21,6 +22,7 @@ import DZNEmptyDataSet
     var coverImages = [UIImage]()
     var itemKeys=[String]()
     var coverImageKeys=[String]()
+    var categories = [String]()
     fileprivate let itemsPerRow: CGFloat = 3
 
     var nextItemDelegate: NextItemDelegate?
@@ -30,6 +32,8 @@ import DZNEmptyDataSet
     var activityIndicator: NVActivityIndicatorView?
 
     var readyToLoad = true
+    
+    var loadingImages=true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +102,40 @@ permissionView.closeButton.setTitle("", for: .normal)
     var currentVC: UIViewController?
     var firstDetailVC: UIViewController?
 
+    @IBAction func filterButtonPressed() {
+        let popoverView = PickerDialog.getPicker()
+        let pickerData = [
+            ["value": "School Supplies", "display": "School Supplies"],
+            ["value": "Electronics", "display": "Electronics"],
+            ["value": "Home and Garden", "display": "Home and Garden"],
+            ["value": "Clothing", "display": "Clothing"],
+            ["value": "Sports and Games", "display": "Sports and Games"],
+            ["value": "Other", "display": "Other"],
+            
+            ]
+        popoverView.show("Select Category", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", options: pickerData, selected:  "School Supplies") {
+            (value) -> Void in
+            
+            self.filterItems(category: value)
+            
+//            self.categoryButton.setTitle(value, for: .normal)
+//            self.categoryButton.setTitleColor(UIColor.black, for: .normal)
+//            self.category = value
+        }
+
+    }
+    
+    func filterItems(category:String){
+        if !loadingImages {
+            var i = 0
+            for indexedCat in self.categories{
+                if indexedCat == category {
+                    
+                }
+            }
+            
+        }
+    }
  }
 
  // MARK: - Private
@@ -135,6 +173,7 @@ permissionView.closeButton.setTitle("", for: .normal)
     }
 
     func refresh() {
+        loadingImages=true
         self.collectionView?.reloadData()
         itemIndex = 0
         activityIndicator = nil
@@ -161,17 +200,19 @@ permissionView.closeButton.setTitle("", for: .normal)
 
         print(widthPerItem * dynamicHeightRatio)
         return CGSize(width: 2, height: 2 * dynamicHeightRatio)
-        //        return CGSizeMake(100, 100)
     }
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForItemAtIndexPath indexPath: IndexPath) -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
-    //
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    //        return sectionInsets.left
-    //    }
+
  }
+
+extension ImageCollectionViewController:CategoryLoadedDelegate{
+    func loaded(category: ItemCategory) {
+        categories[category.index!] = category.category!
+    }
+}
 
  extension ImageCollectionViewController {
     func loadCoverImages() {
@@ -192,12 +233,15 @@ permissionView.closeButton.setTitle("", for: .normal)
                                 self.coverImages.append(image!)
                                 if let extractedKey: String?=path.substring(start: 44, end: 64) {
                                     self.itemKeys.append(extractedKey!)
+                                    Item.getCategory(key: extractedKey!, index: i, delegate: self)
                                     self.coverImageKeys.append((snapshot.key as? String)!)
                                 }
                                 i += 1
-                                if i == snapshots.count {
+                                if i == snapshots.count || i==200{
+                                    
                                     self.activityIndicator?.stopAnimating()
                                     self.refresher.endRefreshing()
+                                    self.loadingImages=false
                                     self.collectionView?.reloadData()
                                 }
                             }
@@ -205,9 +249,12 @@ permissionView.closeButton.setTitle("", for: .normal)
 
                     }
                 }
+                self.categories = [String](repeating: "", count:snapshots.count)
                 if snapshots.count == 0 {
                     self.activityIndicator?.stopAnimating()
                     self.refresher.endRefreshing()
+                    self.loadingImages=false
+                    self.collectionView?.reloadData()
                 }
             }
 
@@ -392,10 +439,21 @@ permissionView.closeButton.setTitle("", for: .normal)
 
 extension ImageCollectionViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        if !loadingImages{
         return NSAttributedString(string: "Huh", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        }
+        else {
+                    return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        }
     }
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        if !loadingImages{
+
         return NSAttributedString(string: "It doesnt look like there are any items here", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-Regular", size: 17) as Any])
+        }
+        else {
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        }
     }
     
     

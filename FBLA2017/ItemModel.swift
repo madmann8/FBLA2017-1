@@ -129,4 +129,27 @@ class Item {
         }
 
     }
+    
+    static func getCategory(key:String, index:Int, delegate:CategoryLoadedDelegate) {
+        var category = ItemCategory(category: nil, index: nil)
+        let ref = FIRDatabase.database().reference().child(currentGroup).child("items").child(key)
+        ref.observe(.value, with: {(snapshot) in
+            let value = snapshot.value as? NSDictionary
+            category.category = value?["category"] as? String ?? ""
+            category.index=index
+            delegate.loaded(category:category)
+
+        })
     }
+}
+
+
+protocol CategoryLoadedDelegate{
+    func loaded(category: ItemCategory)
+}
+
+struct ItemCategory{
+    
+    var category: String?
+    var index:Int?
+}
