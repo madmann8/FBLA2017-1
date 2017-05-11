@@ -159,6 +159,8 @@ extension UploadItemFormViewController:UITextViewDelegate {
 
 extension UploadItemFormViewController:EnterPriceDelegate {
     @IBAction func priceButtonPressed(_ sender: UIButton) {
+        descriptionTextView.resignFirstResponder()
+        titleTextField.resignFirstResponder()
         let width = ModalSize.fluid(percentage: 0.7)
         let height = ModalSize.fluid(percentage: 0.3)
         let center = ModalCenterPosition.center

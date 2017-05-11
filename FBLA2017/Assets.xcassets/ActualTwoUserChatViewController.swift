@@ -31,10 +31,17 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
 
     var loggedInUser: User?
     var otherUser: User?
+    
+    var textViewToDismiss:UITextView?=nil
 
     var messageRef: FIRDatabaseReference?
     var channelRef: FIRDatabaseReference?
     private var newMessageRefHandle: FIRDatabaseHandle?
+    
+    func viewDismissed(){
+        self.textViewToDismiss?.resignFirstResponder()
+        
+    }
 
     lazy var userIsTypingRef: FIRDatabaseReference =
         self.channelRef!.child("typingIndicator").child(self.senderId) // 1
@@ -79,7 +86,7 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
         let itemRef = messageRef?.childByAutoId()
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
+        formatter.dateFormat = "MMM d, h:mm a"
         let dateResult = formatter.string(from: date)
         let messageItem = [
             "senderId": senderId!,
@@ -201,6 +208,11 @@ extension ActualTwoUserChatViewController {
         super.textViewDidChange(textView)
         isTyping = textView.text != ""
     }
+    
+    override func textViewDidBeginEditing(_ textView: UITextView) {
+        self.textViewToDismiss = textView
+    }
+
     func observeTyping() {
         let typingIndicatorRef = channelRef!.child("typingIndicator")
         userIsTypingRef = typingIndicatorRef.child(senderId)

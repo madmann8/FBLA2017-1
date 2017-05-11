@@ -27,6 +27,7 @@ class ItemChatViewController: JSQMessagesViewController {
     let imageURLNotSetKey = "NOTSET"
 
     var chatRef: FIRDatabaseReference?
+    
 
     var keyString: String?=nil {
         didSet {
@@ -35,6 +36,12 @@ class ItemChatViewController: JSQMessagesViewController {
             self.messageRef = channelRef?.child("messages")
 
         }
+    }
+    
+    var textViewToDismiss: UITextView? = nil
+    
+    func viewDismissed() {
+        self.textViewToDismiss?.resignFirstResponder()
     }
 
     var messageRef: FIRDatabaseReference?
@@ -85,7 +92,7 @@ class ItemChatViewController: JSQMessagesViewController {
         let itemRef = messageRef?.childByAutoId()
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
+        formatter.dateFormat = "MMM d, h:mm a"
         let dateResult = formatter.string(from: date)
         let messageItem = [
             "senderId": senderId!,
@@ -199,6 +206,9 @@ extension ItemChatViewController {
     override func textViewDidChange(_ textView: UITextView) {
         super.textViewDidChange(textView)
         isTyping = textView.text != ""
+    }
+    override func textViewDidBeginEditing(_ textView: UITextView) {
+        self.textViewToDismiss = textView
     }
     func observeTyping() {
         let typingIndicatorRef = channelRef!.child("typingIndicator")

@@ -41,6 +41,7 @@ class InfoContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        pageControl.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI / 2))
         setupViews()
         
         walkthroughController.dataSource=self
@@ -142,6 +143,7 @@ class InfoContainerViewController: UIViewController {
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var soldButton: UIButton!
     @IBOutlet weak var conditionTitleLabel: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
 
     @IBAction func profileButtonPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

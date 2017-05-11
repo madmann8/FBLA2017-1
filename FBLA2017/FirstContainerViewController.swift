@@ -23,6 +23,10 @@ class FirstContainerViewController: PulleyViewController {
 
     @IBOutlet weak var primaryView: UIView!
     @IBOutlet weak var secondaryView: UIView!
+    
+    var viewToDismiss:ChatContainerViewController?=nil
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +62,7 @@ class FirstContainerViewController: PulleyViewController {
         }
         if segue.identifier=="containerToChat"{
             if let vc: ChatContainerViewController = segue.destination as? ChatContainerViewController {
-
+                viewToDismiss = vc
                 vc.keyString = self.item?.keyString
                 vc.otherUser = self.item?.user
                 let frame = self.view.frame
@@ -72,6 +76,8 @@ class FirstContainerViewController: PulleyViewController {
 
 }
 
+
+
 extension FirstContainerViewController:PulleyDrawerViewControllerDelegate {
     func partialRevealDrawerHeight() -> CGFloat {
         //
@@ -84,8 +90,12 @@ extension FirstContainerViewController:PulleyDrawerViewControllerDelegate {
     }
 
     func supportedDrawerPositions() -> [PulleyPosition] {
-        return [.collapsed, .open, .closed
+        return [.open, .closed
         ]
+    }
+    
+    func drawerPositionDidChange(drawer: PulleyViewController) {
+            viewToDismiss?.viewDismissed()
     }
 
 }

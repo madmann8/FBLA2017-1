@@ -129,7 +129,7 @@ permissionView.closeButton.setTitle("", for: .normal)
             ["value": "Other", "display": "Other"],
             
             ]
-        popoverView.show("Select Category", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", options: pickerData, selected:  "School Supplies") {
+        popoverView.show("Select Category", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", options: pickerData, selected:  "Any") {
             (value) -> Void in
             
             self.filterButton.setTitle(value, for: .normal)

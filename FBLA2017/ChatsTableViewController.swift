@@ -304,7 +304,7 @@ extension ChatsTableViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDelegate
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         if !loading{
             
-            return NSAttributedString(string: "It doesn't look like there are any items here", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-Regular", size: 17) as Any])
+            return NSAttributedString(string: "It doesn't look like there are any chats here, either contribute to chats on items or start a chat with another user.", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-Regular", size: 17) as Any])
         }
         else {
             return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
