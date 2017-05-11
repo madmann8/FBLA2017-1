@@ -63,7 +63,7 @@ final class SellingCollectionViewController: ImageCollectionViewController {
                                     self.activityIndicator?.stopAnimating()
                                     self.refresher.endRefreshing()
                                     self.loadingImages=false
-                                    self.filterItems(category: (self.filterButton.titleLabel?.text)!)
+                                    self.filterItems(category: ("Any"))
                                 }
                             }
                         }
