@@ -16,6 +16,8 @@ class PageViewController: UIPageViewController {
     var currentPageIndex = 0
     var index = 0
 
+    var pageControl:UIPageControl?=nil
+    
     lazy var orderedViewControllers: [UIViewController] = []
 
     var nextItemDelegate: NextItemDelegate?
@@ -23,11 +25,14 @@ class PageViewController: UIPageViewController {
     override func viewDidLoad() {
         self.gestureRecognizers.first?.cancelsTouchesInView = true
         self.dataSource = self
+        self.delegate = self
         if !(images?.isEmpty)! {
             for image in images! {
                 makeAndAppeadVC(image: image)
             }
         }
+        pageControl?.numberOfPages = orderedViewControllers.count
+
         setViewControllers([orderedViewControllers.first!], direction: .forward, animated: true, completion: nil)
     }
 
@@ -41,7 +46,7 @@ class PageViewController: UIPageViewController {
 
 }
 
-extension PageViewController: UIPageViewControllerDataSource {
+extension PageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
     // MARK: Data source functions.
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -83,6 +88,15 @@ extension PageViewController: UIPageViewControllerDataSource {
         }
 
         return orderedViewControllers[nextIndex]
+    }
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed && finished {
+            if let currentVC = pageViewController.viewControllers?.last {
+                let pos = orderedViewControllers.index(of: currentVC)
+                pageControl?.currentPage=pos!
+                pageControl?.numberOfPages=orderedViewControllers.count
+            }
+        }
     }
 }
 

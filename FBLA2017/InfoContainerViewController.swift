@@ -92,6 +92,7 @@ class InfoContainerViewController: UIViewController {
             let pageDesitnation = segue.destination as! PageViewController
             pageDesitnation.images = self.item?.images
             titleLabel.text = item?.name
+            pageDesitnation.pageControl = self.pageControl
             pageDesitnation.nextItemDelegate = self
 
         }
