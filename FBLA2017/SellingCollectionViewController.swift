@@ -7,6 +7,7 @@ import CoreLocation
 import QuiltView
 import Hero
 import Device
+import Instructions
 
 //ISSUE: WHEN LOADING COVER IMAGES, THE NUMBER OF THEM IS LOADED, NOT IN ORDER SO THERE ARE DIPLICATES AND SOME ARE MISSING
 final class SellingCollectionViewController: ImageCollectionViewController {
@@ -27,6 +28,10 @@ final class SellingCollectionViewController: ImageCollectionViewController {
         }
         shouldRefresh = true
 
+    }
+    
+    override func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int{
+        return 0
     }
     override func loadCoverImages() {
 
@@ -54,9 +59,11 @@ final class SellingCollectionViewController: ImageCollectionViewController {
                                 }
                                 i += 1
                                 if i == snapshots.count {
+                                    self.originalImages=self.coverImages
                                     self.activityIndicator?.stopAnimating()
                                     self.refresher.endRefreshing()
-                                    self.collectionView?.reloadData()
+                                    self.loadingImages=false
+                                    self.filterItems(category: (self.filterButton.titleLabel?.text)!)
                                 }
                             }
                         }
@@ -66,6 +73,8 @@ final class SellingCollectionViewController: ImageCollectionViewController {
                 if snapshots.count == 0 {
                     self.activityIndicator?.stopAnimating()
                     self.refresher.endRefreshing()
+                    self.loadingImages=false
+                    self.collectionView?.reloadData()
                 }
 
             }

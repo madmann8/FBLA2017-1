@@ -46,6 +46,8 @@ class InfoContainerViewController: UIViewController {
         walkthroughController.dataSource=self
 
         item?.user?.delegate = self
+        
+        let u = currentUser.uid
 
         if (item?.user?.uid == currentUser.uid) {
             soldButton.isHidden = false
@@ -247,7 +249,10 @@ extension InfoContainerViewController: CoachMarksControllerDataSource, CoachMark
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        self.walkthroughController.startOn(self)
+        if !UserDefaults.standard.bool(forKey: "ItemWalkthroughHasLoaded"){
+            self.walkthroughController.startOn(self)
+            UserDefaults.standard.set(true, forKey: "ItemWalkthroughHasLoaded")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

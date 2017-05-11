@@ -328,6 +328,7 @@ extension User:CLLocationManagerDelegate {
 
     func  handleLocation(city: String, lat: String?, long: String?) {
         var ref: FIRDatabaseReference!
+        if currentGroup != "" {
         ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
@@ -336,6 +337,7 @@ extension User:CLLocationManagerDelegate {
             ref.child("locationString").setValue(self.city)
 
         })
+        }
     }
 
     func changeProfilePicture(downloadURL: String) {

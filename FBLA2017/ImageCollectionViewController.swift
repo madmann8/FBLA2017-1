@@ -49,7 +49,8 @@ import Instructions
         
         currentUser.loadGroup()
         
-
+        collectionView?.emptyDataSetSource = self
+        collectionView?.emptyDataSetDelegate = self
         
         if let _ = self.filterButton{
 
@@ -78,8 +79,11 @@ import Instructions
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.walkthroughController.startOn(self)
-
+        if !UserDefaults.standard.bool(forKey: "BrowseWalkthroughHasLoaded"){
+            self.walkthroughController.startOn(self)
+            UserDefaults.standard.set(true, forKey: "BrowseWalkthroughHasLoaded")
+        }
+        
         if !UserDefaults.standard.bool(forKey: "hasAskedPermissions"){
 //        if 1 == 1 {
             UserDefaults.standard.set(true, forKey:  "hasAskedPermissions")
@@ -103,7 +107,6 @@ permissionView.closeButton.setTitle("", for: .normal)
             permissionView.addPermission(PhotosPermission(),
                                  message: "We use this to find pictures of items and find profile images")
                         permissionView.show()
-
 
         }
     }
@@ -155,6 +158,10 @@ permissionView.closeButton.setTitle("", for: .normal)
         coverImages = coverImages.filter { $0 != nil }.map { $0! }
         collectionView?.reloadData()
     }
+    
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int{
+        return 1
+    }
  }
 
  // MARK: - Private
@@ -195,7 +202,8 @@ permissionView.closeButton.setTitle("", for: .normal)
         loadingImages=true
         self.collectionView?.reloadData()
         itemIndex = 0
-        activityIndicator = nil
+//        activityIndicator = nil
+        activityIndicator?.startAnimating()
         coverImages.removeAll()
         itemKeys.removeAll()
         coverImageKeys.removeAll()
@@ -495,9 +503,7 @@ extension ImageCollectionViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDel
 
 
 extension ImageCollectionViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate{
-    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int{
-    return 1
-    }
+
     func coachMarksController(_ coachMarksController: CoachMarksController,
                               coachMarkAt index: Int) -> CoachMark {
         return coachMarksController.helper.makeCoachMark(for: self.filterButton)

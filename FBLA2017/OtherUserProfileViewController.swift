@@ -64,7 +64,11 @@ class OtherUserProfileViewController: UIViewController {
 
     }
     override func viewDidAppear(_ animated: Bool) {
-        self.walkthroughController.startOn(self)
+        if !UserDefaults.standard.bool(forKey: "OtherUserWalkthroughHasLoaded"){
+            self.walkthroughController.startOn(self)
+            UserDefaults.standard.set(true, forKey: "OtherUserWalkthroughHasLoaded")
+        }
+
 
         super.viewDidAppear(animated)
         if loadOtherChat && !hasLoaded {

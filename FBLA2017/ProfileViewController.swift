@@ -11,7 +11,7 @@ import FirebaseAuth
 import CoreLocation
 import ImagePicker
 import FirebaseStorage
-
+import Instructions
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileImageView: UIImageView!
@@ -22,6 +22,8 @@ class ProfileViewController: UIViewController {
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
     var user: User?
+    
+    let walkthroughController = CoachMarksController()
 
     var readyToLoad = true
 
@@ -51,6 +53,8 @@ class ProfileViewController: UIViewController {
         profileImageView.clipsToBounds = true
         cityLabel.textColor = UIColor.flatWatermelonDark
         nameLabel.textColor = UIColor.flatWatermelonDark
+        walkthroughController.dataSource=self
+
 
     }
 
@@ -168,3 +172,37 @@ extension ProfileViewController:ImagePickerDelegate {
         present(imagePickerController, animated: true, completion: nil)
 }
 }
+
+extension ProfileViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int{
+        return 1
+    }
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                              coachMarkAt index: Int) -> CoachMark {
+        return coachMarksController.helper.makeCoachMark(for: self.profileImageView)
+    }
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let view = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        view.bodyView.hintLabel.text = "Tap here to change your Yard Sale profile image"
+        view.bodyView.hintLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)!
+        view.bodyView.nextLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 16)!
+        //        UIFont(name: "AvenirNext-Regular", size: 15)!
+        view.bodyView.nextLabel.text = "Ok!"
+        
+        return (bodyView: view.bodyView, arrowView: view.arrowView)
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if !UserDefaults.standard.bool(forKey: "ProfileWalkthroughHasLoaded"){
+            self.walkthroughController.startOn(self)
+            UserDefaults.standard.set(true, forKey: "ProfileWalkthroughHasLoaded")
+        }    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.walkthroughController.stop(immediately: true)
+    }
+}
+
