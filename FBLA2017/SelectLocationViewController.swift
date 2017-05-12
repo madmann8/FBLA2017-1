@@ -27,8 +27,8 @@ class SelectLocationViewController: UIViewController {
 
     @IBOutlet weak var setLocationButton: UIButton!
     var delgate: SelectLocationProtocol?
-    
-    var activitiyIndicator:NVActivityIndicatorView? = nil
+
+    var activitiyIndicator: NVActivityIndicatorView?
 
     override func viewDidLoad() {
 
@@ -48,7 +48,7 @@ class SelectLocationViewController: UIViewController {
 
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         activitiyIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
     }
@@ -112,8 +112,8 @@ extension SelectLocationViewController:MKMapViewDelegate {
 
     @IBAction func setLocationButtonPressed(_ sender: UIButton) {
 //        let location = CLLocation(latitude: mapView.centerCoordinate.latitude., longitude: mapView.centerCoordinate.longitude)
-        var latitudeText: String = "\(mapView.centerCoordinate.latitude)"
-        var longitudeText: String = "\(mapView.centerCoordinate.longitude)"
+        let latitudeText: String = "\(mapView.centerCoordinate.latitude)"
+        let longitudeText: String = "\(mapView.centerCoordinate.longitude)"
         self.delgate?.recieveLocation(latitude: latitudeText, longitude:longitudeText, addressString: self.address.text!)
         dismiss(animated: true, completion: nil)
     }

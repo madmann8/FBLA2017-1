@@ -37,8 +37,8 @@ class PageViewController: UIPageViewController {
     }
 
     func makeAndAppeadVC(image: UIImage) {
-        var pageStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var VC: ImageViewController = pageStoryboard.instantiateViewController(withIdentifier: "sbImage") as! ImageViewController
+        let pageStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let VC: ImageViewController = pageStoryboard.instantiateViewController(withIdentifier: "sbImage") as! ImageViewController
         VC.image = image
         VC.nextItemDelegate = self
         orderedViewControllers.append(VC)

@@ -99,7 +99,6 @@ class OtherUserProfileViewController: UIViewController {
              let vc = segue.destination as! SellingCollectionViewController
             vc.frameToLoad = self.favoritesContainerView.frame
             vc.user = self.otherUser
-            
 
         }
         if segue.identifier=="toFavorites"{
@@ -107,11 +106,8 @@ class OtherUserProfileViewController: UIViewController {
             vc.frameToLoad = self.sellingContainerView.frame
             vc.user = self.otherUser
 
-
         }
     }
-    
-
 
 }
 

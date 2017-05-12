@@ -108,8 +108,7 @@ class GroupsTableViewController: UITableViewController {
         if currentSelectedCell != nil {
         currentUser.groupPath = (currentSelectedCell?.groupPath)!
             currentUser.loadGroup()
-            let group = currentGroup
-            let group2 = currentUser.groupPath
+
             let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
             ref.setValue(nameToUpload)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

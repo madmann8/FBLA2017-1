@@ -200,7 +200,6 @@ permissionView.closeButton.setTitle("", for: .normal)
         loadingImages = true
         self.collectionView?.reloadData()
         itemIndex = 0
-//        activityIndicator = nil
         activityIndicator?.startAnimating()
         coverImages.removeAll()
         itemKeys.removeAll()
@@ -256,9 +255,9 @@ extension ImageCollectionViewController:CategoryLoadedDelegate {
                             } else {
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
-                                if let extractedKey: String?=path.substring(start: 44, end: 64) {
-                                    self.itemKeys.append(extractedKey!)
-                                    Item.getCategory(key: extractedKey!, index: i, delegate: self)
+                                if let extractedKey: String = path.substring(start: 44, end: 64) {
+                                    self.itemKeys.append(extractedKey)
+                                    Item.getCategory(key: extractedKey, index: i, delegate: self)
                                     self.coverImageKeys.append((snapshot.key as? String)!)
                                 }
                                 i += 1
@@ -408,7 +407,6 @@ extension ImageCollectionViewController:CategoryLoadedDelegate {
         let ref2 = FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("likedCoverImages")
         ref2.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                var i = 0
                 for snapshot in snapshots {
                     if let path = snapshot.key as? String {
                         print("Local path\(keyString)")

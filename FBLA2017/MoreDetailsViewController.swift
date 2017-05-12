@@ -41,7 +41,7 @@ class MoreDetailsViewController: UIViewController {
         if let dollarString = item!.dollarString {
                   costLabel.text="Asking Price: \(dollarString)"
         } else {
-            costLabel.text="Asking Price: \(item?.dollarString)"
+            costLabel.text="Asking Price: \(String(describing: item?.dollarString))"
 
         }
         if let categorey = item!.categorey {
@@ -70,7 +70,7 @@ class MoreDetailsViewController: UIViewController {
 
         }
                        var nameArr = item?.user?.displayName.components(separatedBy: " ")
-            var firstName = nameArr?[0]
+            let firstName = nameArr?[0]
             var lastName=""
             for i in 1 ..< nameArr!.count {
                 lastName += (nameArr?[i])!
@@ -85,7 +85,7 @@ class MoreDetailsViewController: UIViewController {
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                                       regionRadius * 2.0, regionRadius * 2.0)
             mapView.setRegion(coordinateRegion, animated: true)
-            var information = MKPointAnnotation()
+            let information = MKPointAnnotation()
             information.coordinate = location.coordinate
             information.title = item?.name
             information.subtitle = "Seller Location"

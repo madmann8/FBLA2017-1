@@ -94,7 +94,7 @@ class Item {
                     if let path = snapshot.value as? String {
                         let imagePath = storage.reference(forURL: path)
                         imagePath.data(withMaxSize: 1 * 6_000 * 6_000) { data, error in
-                            if let error = error {
+                            if error != nil {
                                 // Uh-oh, an error occurred!
                             } else {
                                 let image = UIImage(data: data!)

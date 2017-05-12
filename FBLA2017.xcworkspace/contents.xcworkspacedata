@@ -4,7 +4,11 @@
    <FileRef
       location = "group:FBLA2017.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "Frameworks">
+      <FileRef
+         location = "group:Pods/Pods.xcodeproj">
+      </FileRef>
+   </Group>
 </Workspace>

@@ -41,7 +41,7 @@ class ChatsTableViewCell: UITableViewCell {
 
     var tableViewDelegate: ChatsTableViewLoadedDelgate?=nil {
         didSet {
-            if let img = self.img {
+            if self.img != nil {
                 if !hasLoaded {
                 self.tableViewDelegate?.cellLoaded()
                     hasLoaded = true
@@ -110,7 +110,7 @@ extension ChatsTableViewCell:UserDelegate, TranferDelegate {
         let path = self.coverImagePath!
             let coverImagePath = storage.reference(forURL: path)
             coverImagePath.data(withMaxSize: 1 * 1_024 * 1_024) { data, error in
-                if let error = error {
+                if error != nil {
                     // Uh-oh, an error occurred!
                 } else {
                     let image = UIImage(data: data!)

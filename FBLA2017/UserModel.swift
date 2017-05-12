@@ -166,7 +166,6 @@ extension User {
                             }
 
                             let imagePathsSnapshot = snapshot.childSnapshot(forPath: "coverImages")
-                            let favoritesPathSnapshot = snapshot.childSnapshot(forPath: "likedCoverImages")
                             if let coverArray = imagePathsSnapshot.value as? NSDictionary {
                                 if (coverArray.count) > 0 {
                                     for kv in coverArray {
@@ -209,7 +208,7 @@ extension User {
                                 ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
                                 imageURL="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
                             } else {
-                                var imageURL2 = value?["imageURL"] as? String ?? "❌"
+                                let imageURL2 = value?["imageURL"] as? String ?? "❌"
                                 if imageURL2 == "❌"{
                                     ref.child("imageURL").setValue(imageURL)
                                     self.downloadedFrom(link: imageURL)
@@ -247,7 +246,6 @@ extension User {
                 self.downloadedFrom(link: imageURL)
                 self.email = value?["email"] as? String ?? "❌"
                 let imagePathsSnapshot = snapshot.childSnapshot(forPath: "coverImages")
-                let favoritesPathSnapshot = snapshot.childSnapshot(forPath: "likedCoverImages")
                 if let coverArray = imagePathsSnapshot.value as? NSDictionary {
                     if (coverArray.count) > 0 {
                         for kv in coverArray {
@@ -328,9 +326,8 @@ extension User:CLLocationManagerDelegate {
         var ref: FIRDatabaseReference!
         if currentGroup != "" {
         ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.observeSingleEvent(of: .value, with: { (_) in
             // Get user value
-            let value = snapshot.value as? NSDictionary
             self.city = city
             ref.child("locationString").setValue(self.city)
 
@@ -351,16 +348,14 @@ extension User:CLLocationManagerDelegate {
 extension User:UserDelegate {
     func getChatsCells(keyString: String) {
         var doneLoading = false
-        var i = 0
+        let i = 0
         let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(keyString).child("directChats")
         let ref2 = FIRDatabase.database().reference().child(currentGroup).child("users").child(keyString).child("itemChats")
-
-        var tempCount = 0
 
         var hasLoadedFirst = false
 
         ref2.observeSingleEvent(of: .value, with: { (snapshot) in
-            for child in snapshot.children {
+            for _ in snapshot.children {
                 self.chatsCount += 1
             }
             if hasLoadedFirst {
@@ -373,7 +368,7 @@ extension User:UserDelegate {
         })
 
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            for child in snapshot.children {
+            for _ in snapshot.children {
                 self.chatsCount += 1
             }
             if hasLoadedFirst {
@@ -387,7 +382,7 @@ extension User:UserDelegate {
 
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+            if snapshot.children.allObjects is [FIRDataSnapshot] {
 
             for child in snapshot.children {
                 let path: String = (child as AnyObject).key
@@ -400,7 +395,7 @@ extension User:UserDelegate {
                 let user1 = value?["user1"] as? String ?? ""
                 let user2 = value?["user2"] as? String ?? ""
                 let cell = ChatsTableViewCell()
-                var tempUser = User()
+                let tempUser = User()
                 tempUser.delegate = cell
                 tempUser.chatImageLoadedDelegate = self
                 tempUser.cellIndex = i
@@ -434,10 +429,9 @@ extension User:UserDelegate {
             print(error.localizedDescription)
         }
 
-        var e = 0
         ref2.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+            if snapshot.children.allObjects is [FIRDataSnapshot] {
 
                 for child in snapshot.children {
                     let path: String = (child as AnyObject).key

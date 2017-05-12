@@ -48,8 +48,6 @@ class InfoContainerViewController: UIViewController {
 
         item?.user?.delegate = self
 
-        let u = currentUser.uid
-
         if (item?.user?.uid == currentUser.uid) {
             soldButton.isHidden = false
             soldButton.layer.cornerRadius = soldButton.frame.height / 2

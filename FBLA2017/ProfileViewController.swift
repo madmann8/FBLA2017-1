@@ -79,17 +79,17 @@ class ProfileViewController: UIViewController {
         }
 
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profileToFavorites" {
-             let vc:FavoritesCollectionViewController = segue.destination as! FavoritesCollectionViewController
+             let vc: FavoritesCollectionViewController = segue.destination as! FavoritesCollectionViewController
                 vc.frameToLoad = self.favoritesContainerView.frame
-            
+
         }
         if segue.identifier == "profileToSelling" {
-            let vc:SellingCollectionViewController = segue.destination as! SellingCollectionViewController
+            let vc: SellingCollectionViewController = segue.destination as! SellingCollectionViewController
             vc.frameToLoad = self.sellingContainerView.frame
-            
+
         }
     }
 
@@ -153,7 +153,7 @@ extension ProfileViewController:ImagePickerDelegate {
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {}
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
     profileImageView.image = images.first
-        var storageRef = FIRStorage.storage().reference().child(currentGroup)
+        let storageRef = FIRStorage.storage().reference().child(currentGroup)
         var data = NSData()
         data = UIImageJPEGRepresentation(profileImageView.image!, 0.5)! as NSData
         // set upload path

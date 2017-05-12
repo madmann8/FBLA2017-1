@@ -244,10 +244,6 @@ extension UploadItemFormViewController {
 extension UploadItemFormViewController {
     @IBAction func uploadButtonPressed(_ sender: UIButton) {
         let cellWidth = Int(self.view.frame.width / CGFloat(4))
-        let cellHeight = Int(self.view.frame.height / CGFloat(8))
-        let x = Int(self.view.frame.width / 2) - cellWidth / 2
-        let y = Int(self.view.frame.height / 2) - cellWidth / 2
-        let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
 
         var missingData = false
         if (images[0]==nil || name == nil || cents == nil || about == nil || condition == nil || locationString == nil || category == nil) {
@@ -302,7 +298,7 @@ extension UploadItemFormViewController {
             i += 1
             let imageData = image?.jpeg(.medium)
             _ = imageNumberRef.put(imageData!, metadata: nil) { (metadata, _) in
-                guard let metadata = metadata else {
+                guard metadata != nil else {
 
                     return
                 }
@@ -356,7 +352,7 @@ class ImageCollectionViewCell: UICollectionViewCell, ImagePickerDelegate {
             var filledImages = 0
             if let images: [UIImage?]=parent?.images {
                 for i in 0..<images.count {
-                    if let image = images[i] {
+                    if images[i] != nil {
                         filledImages += 1
                     }
                 }
@@ -378,7 +374,7 @@ class ImageCollectionViewCell: UICollectionViewCell, ImagePickerDelegate {
                 var filledImages = 0
                 if let images: [UIImage?]=parent?.images {
                     for i in 0..<images.count {
-                        if let image = images[i] {
+                        if images[i] != nil {
                             filledImages += 1
                         }
                     }

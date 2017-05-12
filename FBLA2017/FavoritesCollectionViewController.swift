@@ -15,20 +15,18 @@ final class FavoritesCollectionViewController: ImageCollectionViewController {
       var user: User?
 
     var shouldRefresh = false
-    
-    var frameToLoad:CGRect?=nil
+
+    var frameToLoad: CGRect?
 
     override func viewDidLoad() {
 
 self.collectionView?.autoresizingMask = UIViewAutoresizing.flexibleHeight
-        self.view.frame=CGRect(x: 0, y: 0, width: (frameToLoad?.width)!, height: (frameToLoad?.height)!)
+        self.view.frame = CGRect(x: 0, y: 0, width: (frameToLoad?.width)!, height: (frameToLoad?.height)!)
 
         super.viewDidLoad()
 
     }
 
-    
-    
     override func viewDidAppear(_ animated: Bool) {
 
         super.viewDidAppear(animated)
@@ -37,7 +35,6 @@ self.collectionView?.autoresizingMask = UIViewAutoresizing.flexibleHeight
         refresh()
         }
         shouldRefresh = true
-
 
     }
 
@@ -58,14 +55,14 @@ self.collectionView?.autoresizingMask = UIViewAutoresizing.flexibleHeight
                     if let path = snapshot.value as? String {
                         let coverImagePath = storage.reference(forURL: path)
                         coverImagePath.data(withMaxSize: 1 * 1_024 * 1_024) { data, error in
-                            if let error = error {
+                            if error != nil {
                                 //Might want to add this back but gets error when making item
                                 //                                ErrorGenerator.presentError(view: self, type: "Cover Images", error: error)
                             } else {
                                 let image = UIImage(data: data!)
                                 self.coverImages.append(image!)
-                                if let extractedKey: String?=path.substring(start: 44, end: 64) {
-                                    self.itemKeys.append(extractedKey!)
+                                if let extractedKey: String = path.substring(start: 44, end: 64) {
+                                    self.itemKeys.append(extractedKey)
                                     self.coverImageKeys.append((snapshot.key as? String)!)
                                 }
                                 i += 1

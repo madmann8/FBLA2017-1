@@ -84,7 +84,7 @@ class ChatContainerViewController: UIViewController {
             }
         }
         if segue.identifier=="toGlobalChat"{
-            if let vc: ItemChatViewController = segue.destination as! ItemChatViewController {
+            if let vc: ItemChatViewController = segue.destination as? ItemChatViewController {
                 vc.pulley = pulley
                 self.globalChatView = vc
                 let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(currentUser.uid).child("itemChats").child(keyString!)
