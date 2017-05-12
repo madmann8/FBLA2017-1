@@ -14,6 +14,7 @@ import JSQMessagesViewController
 import Photos
 import ImagePicker
 import FirebaseAuth
+import Pulley
 
 class ActualTwoUserChatViewController: JSQMessagesViewController {
 
@@ -38,6 +39,11 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
     var channelRef: FIRDatabaseReference?
     private var newMessageRefHandle: FIRDatabaseHandle?
     
+    var pulley:FirstContainerViewController?=nil {
+        didSet {
+            pulley?.sellerChatDelegate = self
+        }
+    }
     func viewDismissed(){
         self.textViewToDismiss?.resignFirstResponder()
         
@@ -325,4 +331,16 @@ extension ActualTwoUserChatViewController:ImagePickerDelegate {
         }
     }
 
+}
+
+extension ActualTwoUserChatViewController:PulleyDelegate {
+    func drawerPositionDidChange(drawer: PulleyViewController) {
+        if drawer.drawerPosition != .open{
+            self.inputToolbar?.isHidden=true
+        }
+        else {
+            self.inputToolbar?.isHidden=false
+
+        }
+    }
 }

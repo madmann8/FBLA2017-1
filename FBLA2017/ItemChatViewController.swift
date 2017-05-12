@@ -14,40 +14,50 @@ import JSQMessagesViewController
 import Photos
 import ImagePicker
 import FirebaseAuth
+import Pulley
 
 class ItemChatViewController: JSQMessagesViewController {
-
+    
     var frame: CGRect?
-
+    
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference().child(currentGroup)
-
+    
     let imageURLNotSetKey = "NOTSET"
-
+    
     var chatRef: FIRDatabaseReference?
     
-
+    
     var keyString: String?=nil {
         didSet {
             let notOptional: String = keyString ?? ""
             self.channelRef = FIRDatabase.database().reference().child(currentGroup).child("items").child("\(notOptional)")
             self.messageRef = channelRef?.child("messages")
-
+            
         }
     }
     
     var textViewToDismiss: UITextView? = nil
     
+    var pulley:FirstContainerViewController?=nil{
+        didSet{
+            pulley?.itemChatDelegate = self
+        }
+    }
+    
+    
+    
+    
     func viewDismissed() {
         self.textViewToDismiss?.resignFirstResponder()
     }
-
+    
     var messageRef: FIRDatabaseReference?
     var channelRef: FIRDatabaseReference?
     private var newMessageRefHandle: FIRDatabaseHandle?
-
+    
     lazy var userIsTypingRef: FIRDatabaseReference =
         self.channelRef!.child("typingIndicator").child(self.senderId) // 1
     private var localTyping = false // 2
@@ -63,30 +73,30 @@ class ItemChatViewController: JSQMessagesViewController {
     }
     lazy var usersTypingQuery: FIRDatabaseQuery =
         self.channelRef!.child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
-
+    
     var photoMessageMap = [String: JSQPhotoMediaItem]()
     var updatedMessageRefHandle: FIRDatabaseHandle?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         observeMessages()
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.view.frame = self.frame ?? self.view.frame
         observeTyping()
-
+        
     }
-
+    
     private func addMessage(withId id: String, name: String, text: String) {
         if let message = JSQMessage(senderId: id, displayName: name, text: text) {
             messages.append(message)
         }
     }
-
+    
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         chatRef?.setValue("👍")
         let itemRef = messageRef?.childByAutoId()
@@ -105,23 +115,23 @@ class ItemChatViewController: JSQMessagesViewController {
         isTyping = false
         finishSendingMessage()
     }
-
+    
     deinit {
         if let refHandle = newMessageRefHandle {
             messageRef?.removeObserver(withHandle: refHandle)
         }
-
+        
         if let refHandle = updatedMessageRefHandle {
             messageRef?.removeObserver(withHandle: refHandle)
         }
     }
-
+    
     private func observeMessages() {
         let messagesQuery = messageRef?.queryLimited(toLast: 25)
-
+        
         newMessageRefHandle = messagesQuery?.observe(.childAdded, with: { (snapshot) -> Void in
             let messageData = snapshot.value as! Dictionary<String, String>
-
+            
             if let id = messageData["senderId"] as String!, let name = messageData["senderName"] as String!, let text = messageData["text"] as String!, text.characters.count > 0 {
                 self.addMessage(withId: id, name: name, text: text)
                 self.finishReceivingMessage()
@@ -139,11 +149,11 @@ class ItemChatViewController: JSQMessagesViewController {
             } else {
                 print("Error! Could not decode message data😒" )
             }
-    })
+        })
         updatedMessageRefHandle = messageRef?.observe(.childChanged, with: { (snapshot) in
             let key = snapshot.key
             let messageData = snapshot.value as! Dictionary<String, String> // 1
-
+            
             if let photoURL = messageData["photoURL"] as String! { // 2
                 // The photo has been updated.
                 if let mediaItem = self.photoMessageMap[key] { // 3
@@ -156,25 +166,25 @@ class ItemChatViewController: JSQMessagesViewController {
 
 //Appearnces
 extension ItemChatViewController {
-
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.item]
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
-
+    
     func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.flatNavyBlue)
     }
-
+    
     func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.flatWatermelon)
     }
-
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item] // 1
         if message.senderId == senderId { // 2
@@ -183,15 +193,15 @@ extension ItemChatViewController {
             return incomingBubbleImageView
         }
     }
-
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         return nil
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
-
+        
         if message.senderId == senderId {
             cell.textView?.textColor = UIColor.white
         } else {
@@ -228,37 +238,37 @@ extension ItemChatViewController {
 extension ItemChatViewController:ImagePickerDelegate {
     func sendPhotoMessage() -> String? {
         let itemRef = messageRef?.childByAutoId()
-
+        
         let messageItem = [
             "photoURL": imageURLNotSetKey,
             "senderId": senderId!,
             ]
-
+        
         itemRef?.setValue(messageItem)
-
+        
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
-
+        
         finishSendingMessage()
         return itemRef?.key
     }
-
+    
     override func didPressAccessoryButton(_ sender: UIButton) {
         let picker = ImagePickerController()
         picker.imageLimit = 1
         picker.delegate = self
-
+        
         present(picker, animated: true, completion:nil)
     }
-
+    
     func setImageURL(_ url: String, forPhotoMessageWithKey key: String) {
         let itemRef = messageRef?.child(key)
         itemRef?.updateChildValues(["photoURL": url])
     }
-
+    
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {}
-
+    
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-
+        
         if let key = sendPhotoMessage() {
             // 3
             let imageData = UIImageJPEGRepresentation(images[0], 0.5)
@@ -278,42 +288,42 @@ extension ItemChatViewController:ImagePickerDelegate {
             }
         }
         imagePicker.dismiss(animated: true, completion:nil)
-
+        
     }
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {    imagePicker.dismiss(animated: true, completion:nil)
     }
-
+    
     func addPhotoMessage(withId id: String, key: String, mediaItem: JSQPhotoMediaItem) {
         if let message = JSQMessage(senderId: id, displayName: "", media: mediaItem) {
             messages.append(message)
-
+            
             if (mediaItem.image == nil) {
                 photoMessageMap[key] = mediaItem
             }
-
+            
             collectionView.reloadData()
         }
     }
-
+    
     func fetchImageDataAtURL(_ photoURL: String, forMediaItem mediaItem: JSQPhotoMediaItem, clearsPhotoMessageMapOnSuccessForKey key: String?) {
         let storageRef = FIRStorage.storage().reference(forURL: photoURL)
-
+        
         storageRef.data(withMaxSize: INT64_MAX) { (data, error) in
             if let error = error {
                 print("Error downloading image data: \(error)")
                 return
             }
-
+            
             storageRef.metadata(completion: { (_, metadataErr) in
                 if let error = metadataErr {
                     print("Error downloading metadata: \(error)")
                     return
                 }
-
+                
                 mediaItem.image = UIImage(data: data!)
-
+                
                 self.collectionView.reloadData()
-
+                
                 guard key != nil else {
                     return
                 }
@@ -321,5 +331,20 @@ extension ItemChatViewController:ImagePickerDelegate {
             })
         }
     }
+    
+}
 
+extension ItemChatViewController:PulleyDelegate {
+    func drawerPositionDidChange(drawer: PulleyViewController) {
+        if drawer.drawerPosition != .open{
+            self.inputToolbar?.isHidden=true
+        }
+        else {
+            self.inputToolbar?.isHidden=false
+            self.textViewToDismiss?.becomeFirstResponder()
+
+        }
+        
+    }
+    
 }

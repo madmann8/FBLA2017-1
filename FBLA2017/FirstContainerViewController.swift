@@ -26,7 +26,9 @@ class FirstContainerViewController: PulleyViewController {
     
     var viewToDismiss:ChatContainerViewController?=nil
     
-    
+    var itemChatDelegate:PulleyDelegate?=nil
+    var sellerChatDelegate:PulleyDelegate?=nil
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +64,7 @@ class FirstContainerViewController: PulleyViewController {
         }
         if segue.identifier=="containerToChat"{
             if let vc: ChatContainerViewController = segue.destination as? ChatContainerViewController {
+                vc.pulley=self
                 viewToDismiss = vc
                 vc.keyString = self.item?.keyString
                 vc.otherUser = self.item?.user
@@ -95,6 +98,9 @@ extension FirstContainerViewController:PulleyDrawerViewControllerDelegate {
     }
     
     func drawerPositionDidChange(drawer: PulleyViewController) {
+        itemChatDelegate?.drawerPositionDidChange!(drawer: drawer)
+        sellerChatDelegate?.drawerPositionDidChange!(drawer: drawer)
+
             viewToDismiss?.viewDismissed()
     }
 

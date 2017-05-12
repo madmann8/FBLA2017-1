@@ -14,6 +14,7 @@ import JSQMessagesViewController
 import Photos
 import ImagePicker
 import FirebaseAuth
+import Pulley
 
 class TwoUserChatViewController: UIViewController {
 
@@ -35,6 +36,9 @@ class TwoUserChatViewController: UIViewController {
     
     var chatVC:ActualTwoUserChatViewController?=nil
     
+    var pulley: FirstContainerViewController?
+
+    
     func viewDismissed() {
         chatVC?.viewDismissed()
     }
@@ -51,6 +55,7 @@ class TwoUserChatViewController: UIViewController {
         if segue.identifier=="toContainedChat"{
             if let vc = segue.destination as? ActualTwoUserChatViewController {
                 self.chatVC=vc
+                vc.pulley=pulley
                 vc.senderId = currentUser.uid
                 vc.senderDisplayName = currentUser.displayName
                 let LIUID: String = (loggedInUser?.uid)!
@@ -74,3 +79,5 @@ class TwoUserChatViewController: UIViewController {
  }
 
 }
+
+

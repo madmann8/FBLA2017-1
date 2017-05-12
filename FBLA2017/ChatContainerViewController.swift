@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Pulley
 import FirebaseAuth
 import FirebaseDatabase
 
@@ -38,6 +39,8 @@ class ChatContainerViewController: UIViewController {
     
     var globalChatView: ItemChatViewController? = nil
     
+    var pulley:FirstContainerViewController?=nil
+    
     func viewDismissed() {
         directChatView?.viewDismissed()
         globalChatView?.viewDismissed()
@@ -60,6 +63,7 @@ class ChatContainerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="toDirectChat"{
             if let vc = segue.destination as? TwoUserChatViewController {
+                vc.pulley=pulley
                 self.directChatView = vc
                                let LIUID: String = (loginInUser.uid)!
                 let otherUID: String = (otherUser?.uid)!
@@ -84,6 +88,7 @@ class ChatContainerViewController: UIViewController {
         }
         if segue.identifier=="toGlobalChat"{
             if let vc: ItemChatViewController = segue.destination as! ItemChatViewController {
+                vc.pulley=pulley
                 self.globalChatView = vc
                 let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(currentUser.uid).child("itemChats").child(keyString!)
                 vc.chatRef = ref
