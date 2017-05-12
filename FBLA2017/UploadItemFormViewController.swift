@@ -466,7 +466,7 @@ extension UIImage {
     enum JPEGQuality: CGFloat {
         case lowest = 0
         case low = 0.25
-        case medium = 0.7
+        case medium = 0.55
         case high = 0.75
         case highest = 1
     }

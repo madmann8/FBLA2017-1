@@ -232,6 +232,9 @@ extension InfoContainerViewController:UserDelegate {
 
 extension InfoContainerViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate {
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        if (item?.user?.uid == currentUser.uid) {
+            return 0
+        }
         return 1
     }
     func coachMarksController(_ coachMarksController: CoachMarksController,

@@ -23,7 +23,7 @@ class ItemChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
-    lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference().child(currentGroup)
+    lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference()
 
     let imageURLNotSetKey = "NOTSET"
 

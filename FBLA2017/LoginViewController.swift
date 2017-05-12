@@ -37,7 +37,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         if !hasLoaded {
-            if !UserDefaults.standard.bool(forKey: "hasLoadedWalkthrough") {
+            if UserDefaults.standard.bool(forKey: "hasLoadedWalkthrough") {
                 loadViews()
             } else {
                 UserDefaults.standard.set(true, forKey: "hasLoadedWalkthrough")
