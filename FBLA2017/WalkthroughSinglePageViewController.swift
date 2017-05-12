@@ -14,14 +14,23 @@ class WalkthroughSinglePageViewController: UIViewController {
     @IBOutlet weak var mainView: UIView!
 
     var index: Int?
+    
+    var nibView:UIView? = nil
 
     var viewToLoad: UIView?
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let tempView = UINib(nibName: "Slide\(index!)", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+         nibView = UINib(nibName: "Slide\(index!)", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
 
-        self.mainView.addSubview(tempView)
+        
+        self.mainView.addSubview(nibView!)
+
+        nibView?.frame = CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height)
+
+        
+//        self.mainView.layoutIfNeeded()
+        
 
 mainView.layer.cornerRadius = 10
         mainView.clipsToBounds = true
@@ -33,6 +42,9 @@ mainView.layer.cornerRadius = 10
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
     }
 
     /*

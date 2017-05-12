@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import NVActivityIndicatorView
 
 protocol SelectLocationProtocol {
     func recieveLocation(latitude: String, longitude: String, addressString: String)
@@ -26,6 +27,8 @@ class SelectLocationViewController: UIViewController {
 
     @IBOutlet weak var setLocationButton: UIButton!
     var delgate: SelectLocationProtocol?
+    
+    var activitiyIndicator:NVActivityIndicatorView? = nil
 
     override func viewDidLoad() {
 
@@ -45,12 +48,16 @@ class SelectLocationViewController: UIViewController {
 
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        activitiyIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
+    }
 
 }
 
 extension SelectLocationViewController:CLLocationManagerDelegate {
     func geoCode(location: CLLocation!) {
-        geoCoder.cancelGeocode()
+//        geoCoder.cancelGeocode()
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (data, _) -> Void in
             guard let placeMarks = data as [CLPlacemark]! else {
                 return
@@ -62,15 +69,20 @@ extension SelectLocationViewController:CLLocationManagerDelegate {
                 let address: String? = addrList[1]
                 self.address.text = address
                 self.previousAddress = address
+                self.activitiyIndicator?.stopAnimating()
             } else {
                 if !addrList.isEmpty {
                     let address: String? = addrList[0]
                     self.address.text = address
                     self.previousAddress = address
+                    self.activitiyIndicator?.stopAnimating()
+
                 } else {
                     let address="Unknown Location"
                     self.address.text = address
                     self.previousAddress = address
+                    self.activitiyIndicator?.stopAnimating()
+
                 }
 
             }
