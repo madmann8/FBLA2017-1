@@ -36,9 +36,8 @@ class ChatsTableViewController: UITableViewController, TableHasLoadedDelegate {
 
     var readyToLoad = true
 
-    
-    var loading=true
-    
+    var loading = true
+
 var refresher = UIRefreshControl()
 
     override func viewDidAppear(_ animated: Bool) {
@@ -252,7 +251,7 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate, ChatsTableCanRel
 
     func refreshData() {
         activityIndicator?.startAnimating()
-        loading=true
+        loading = true
         if readyToLoad {
         readyToLoad = false
              currentUser.chatTableCanReloadDelegate = self
@@ -261,7 +260,7 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate, ChatsTableCanRel
         }
     }
     func refreshChats() {
-        loading=false
+        loading = false
 
         loadCells = true
         self.itemCells.removeAll()
@@ -292,38 +291,34 @@ self.activityIndicator?.stopAnimating()
 
     }
 
-extension ChatsTableViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
+extension ChatsTableViewController:DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        if !loading{
-            return NSAttributedString(string: "Huh", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
-        }
-        else {
-            return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        if !loading {
+            return NSAttributedString(string: "Huh", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        } else {
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
         }
     }
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        if !loading{
-            
-            return NSAttributedString(string: "It doesn't look like there are any chats here, either contribute to chats on items or start a chat with another user.", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-Regular", size: 17) as Any])
-        }
-        else {
-            return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        if !loading {
+
+            return NSAttributedString(string: "It doesn't look like there are any chats here, either contribute to chats on items or start a chat with another user.", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-Regular", size: 17) as Any])
+        } else {
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
         }
     }
-    
+
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-        if !loading{
-            return NSAttributedString(string: "Press Here To Refresh", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 25) as Any])
+        if !loading {
+            return NSAttributedString(string: "Press Here To Refresh", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 25) as Any])
+        } else {
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
         }
-        else {
-            return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
-        }
-        
+
     }
-    
+
     func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
         refreshData()
     }
-    
-    
+
 }

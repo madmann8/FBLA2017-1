@@ -43,7 +43,7 @@ class UploadItemFormViewController: UIViewController {
     var ref: FIRDatabaseReference!
 
     var delegate: UploadFinishedDelegate?
-    
+
     var categories=[String]()
 
     var imagePickerController = ImagePickerController()

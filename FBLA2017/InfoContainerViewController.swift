@@ -26,7 +26,7 @@ class InfoContainerViewController: UIViewController {
 
     var item: Item?
     var tempUserImage: UIImage?
-    
+
     let walkthroughController = CoachMarksController()
 
     var nextItemDelegate: NextItemDelegate?
@@ -43,11 +43,11 @@ class InfoContainerViewController: UIViewController {
 
         pageControl.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI / 2))
         setupViews()
-        
-        walkthroughController.dataSource=self
+
+        walkthroughController.dataSource = self
 
         item?.user?.delegate = self
-        
+
         let u = currentUser.uid
 
         if (item?.user?.uid == currentUser.uid) {
@@ -230,9 +230,8 @@ extension InfoContainerViewController:UserDelegate {
 
 }
 
-
-extension InfoContainerViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate{
-    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int{
+extension InfoContainerViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate {
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
         return 1
     }
     func coachMarksController(_ coachMarksController: CoachMarksController,
@@ -241,23 +240,23 @@ extension InfoContainerViewController: CoachMarksControllerDataSource, CoachMark
     }
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
         let view = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
-        
+
         view.bodyView.hintLabel.text = "Tap this to view the seller's profile"
         view.bodyView.hintLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)!
         view.bodyView.nextLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 16)!
         //        UIFont(name: "AvenirNext-Regular", size: 15)!
         view.bodyView.nextLabel.text = "Ok!"
-        
+
         return (bodyView: view.bodyView, arrowView: view.arrowView)
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if !UserDefaults.standard.bool(forKey: "ItemWalkthroughHasLoaded"){
+        if !UserDefaults.standard.bool(forKey: "ItemWalkthroughHasLoaded") {
             self.walkthroughController.startOn(self)
             UserDefaults.standard.set(true, forKey: "ItemWalkthroughHasLoaded")
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         self.walkthroughController.stop(immediately: true)
     }

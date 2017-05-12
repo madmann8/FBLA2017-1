@@ -26,8 +26,6 @@ protocol ChatsTableCanReloadDelegate {
 }
 
 class User: NSObject {
-    
-    
 
     var uid: String!
     var displayName: String!
@@ -357,10 +355,10 @@ extension User:UserDelegate {
         let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(keyString).child("directChats")
         let ref2 = FIRDatabase.database().reference().child(currentGroup).child("users").child(keyString).child("itemChats")
 
-        var tempCount=0
-        
-        var hasLoadedFirst=false
-        
+        var tempCount = 0
+
+        var hasLoadedFirst = false
+
         ref2.observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children {
                 self.chatsCount += 1
@@ -369,9 +367,8 @@ extension User:UserDelegate {
                 if !snapshot.hasChildren() {
                     self.chatTableCanReloadDelegate?.refreshChats()
                 }
-            }
-            else {
-                hasLoadedFirst=true
+            } else {
+                hasLoadedFirst = true
             }
         })
 
@@ -383,9 +380,8 @@ extension User:UserDelegate {
                 if !snapshot.hasChildren() {
                     self.chatTableCanReloadDelegate?.refreshChats()
                 }
-            }
-            else {
-                hasLoadedFirst=true
+            } else {
+                hasLoadedFirst = true
             }
         })
 

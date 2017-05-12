@@ -20,8 +20,6 @@ class ChatContainerViewController: UIViewController {
     var loginInUser = currentUser
 
     var otherUser: User?
-    
-    
 
     @IBOutlet weak var chatSwitch: UISegmentedControl!
 
@@ -33,14 +31,13 @@ class ChatContainerViewController: UIViewController {
         self.view.frame = self.frame!
 
     }
-    
-    var directChatView: TwoUserChatViewController? = nil
-        
-    
-    var globalChatView: ItemChatViewController? = nil
-    
-    var pulley:FirstContainerViewController?=nil
-    
+
+    var directChatView: TwoUserChatViewController?
+
+    var globalChatView: ItemChatViewController?
+
+    var pulley: FirstContainerViewController?
+
     func viewDismissed() {
         directChatView?.viewDismissed()
         globalChatView?.viewDismissed()
@@ -63,7 +60,7 @@ class ChatContainerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="toDirectChat"{
             if let vc = segue.destination as? TwoUserChatViewController {
-                vc.pulley=pulley
+                vc.pulley = pulley
                 self.directChatView = vc
                                let LIUID: String = (loginInUser.uid)!
                 let otherUID: String = (otherUser?.uid)!
@@ -88,7 +85,7 @@ class ChatContainerViewController: UIViewController {
         }
         if segue.identifier=="toGlobalChat"{
             if let vc: ItemChatViewController = segue.destination as! ItemChatViewController {
-                vc.pulley=pulley
+                vc.pulley = pulley
                 self.globalChatView = vc
                 let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(currentUser.uid).child("itemChats").child(keyString!)
                 vc.chatRef = ref

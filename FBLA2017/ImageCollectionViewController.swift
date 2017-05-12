@@ -25,9 +25,8 @@ import Instructions
     var coverImageKeys=[String]()
     var categories = [String]()
     fileprivate let itemsPerRow: CGFloat = 3
-    
-    let walkthroughController = CoachMarksController()
 
+    let walkthroughController = CoachMarksController()
 
     var nextItemDelegate: NextItemDelegate?
 
@@ -36,27 +35,26 @@ import Instructions
     var activityIndicator: NVActivityIndicatorView?
 
     var readyToLoad = true
-    
-    var loadingImages=true
-    
+
+    var loadingImages = true
+
     @IBOutlet weak var filterButton: UIButton!
-    
+
     var originalImages = [UIImage?]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         currentUser.loadGroup()
-        
+
         collectionView?.emptyDataSetSource = self
         collectionView?.emptyDataSetDelegate = self
-        
-        if let _ = self.filterButton{
+
+        if let _ = self.filterButton {
 
         self.filterButton.titleLabel?.textAlignment = .right
         }
-        self.walkthroughController.dataSource=self
+        self.walkthroughController.dataSource = self
         activityIndicator = ActivityIndicatorLoader.startActivityIndicator(view: self.view)
 
         self.refresher.addTarget(self, action: #selector(ImageCollectionViewController.refresh), for: .valueChanged)
@@ -77,14 +75,14 @@ import Instructions
         loadCoverImages()
 
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
-        if !UserDefaults.standard.bool(forKey: "BrowseWalkthroughHasLoaded"){
+        if !UserDefaults.standard.bool(forKey: "BrowseWalkthroughHasLoaded") {
             self.walkthroughController.startOn(self)
             UserDefaults.standard.set(true, forKey: "BrowseWalkthroughHasLoaded")
         }
-        
-        if !UserDefaults.standard.bool(forKey: "hasAskedPermissions"){
+
+        if !UserDefaults.standard.bool(forKey: "hasAskedPermissions") {
 //        if 1 == 1 {
             UserDefaults.standard.set(true, forKey:  "hasAskedPermissions")
             let permissionView = PermissionScope()
@@ -127,39 +125,39 @@ permissionView.closeButton.setTitle("", for: .normal)
             ["value": "Clothing", "display": "Clothing"],
             ["value": "Sports and Games", "display": "Sports and Games"],
             ["value": "Other", "display": "Other"],
-            
+
             ]
         popoverView.show("Select Category", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", options: pickerData, selected:  "Any") {
             (value) -> Void in
-            
+
             self.filterButton.setTitle(value, for: .normal)
             self.filterItems(category: value)
 
         }
 
     }
-    
-    func filterItems(category:String){
+
+    func filterItems(category: String) {
         if category == "Any" || category == "Filter"{
-            coverImages=originalImages
+            coverImages = originalImages
             collectionView?.reloadData()
             return
         }
-        coverImages=originalImages
+        coverImages = originalImages
         if !loadingImages {
             var i = 0
-            for cat in categories{
-                if cat != category{
+            for cat in categories {
+                if cat != category {
                     coverImages[i]=nil
                 }
-                i+=1
+                i += 1
             }
         }
         coverImages = coverImages.filter { $0 != nil }.map { $0! }
         collectionView?.reloadData()
     }
-    
-    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int{
+
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
         return 1
     }
  }
@@ -199,7 +197,7 @@ permissionView.closeButton.setTitle("", for: .normal)
     }
 
     func refresh() {
-        loadingImages=true
+        loadingImages = true
         self.collectionView?.reloadData()
         itemIndex = 0
 //        activityIndicator = nil
@@ -235,7 +233,7 @@ permissionView.closeButton.setTitle("", for: .normal)
 
  }
 
-extension ImageCollectionViewController:CategoryLoadedDelegate{
+extension ImageCollectionViewController:CategoryLoadedDelegate {
     func loaded(category: ItemCategory) {
         categories[category.index!] = category.category!
     }
@@ -265,10 +263,10 @@ extension ImageCollectionViewController:CategoryLoadedDelegate{
                                 }
                                 i += 1
                                 if i == snapshots.count {
-                                    self.originalImages=self.coverImages
+                                    self.originalImages = self.coverImages
                                     self.activityIndicator?.stopAnimating()
                                     self.refresher.endRefreshing()
-                                    self.loadingImages=false
+                                    self.loadingImages = false
                                     self.filterItems(category: (self.filterButton.titleLabel?.text)!)
                                 }
                             }
@@ -280,7 +278,7 @@ extension ImageCollectionViewController:CategoryLoadedDelegate{
                 if snapshots.count == 0 {
                     self.activityIndicator?.stopAnimating()
                     self.refresher.endRefreshing()
-                    self.loadingImages=false
+                    self.loadingImages = false
                     self.collectionView?.reloadData()
                 }
             }
@@ -464,45 +462,39 @@ extension ImageCollectionViewController:CategoryLoadedDelegate{
     }
  }
 
-extension ImageCollectionViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
+extension ImageCollectionViewController:DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        if !loadingImages{
-        return NSAttributedString(string: "Huh", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
-        }
-        else {
-                    return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        if !loadingImages {
+        return NSAttributedString(string: "Huh", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        } else {
+                    return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
         }
     }
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        if !loadingImages{
+        if !loadingImages {
 
-        return NSAttributedString(string: "It doesn't look like there are any items here", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-Regular", size: 17) as Any])
-        }
-        else {
-            return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        return NSAttributedString(string: "It doesn't look like there are any items here", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-Regular", size: 17) as Any])
+        } else {
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
         }
     }
-    
+
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-        if !loadingImages{
-            return NSAttributedString(string: "Press Here To Refresh", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 25) as Any])
-        }
-        else {
-            return NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+        if !loadingImages {
+            return NSAttributedString(string: "Press Here To Refresh", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 25) as Any])
+        } else {
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
         }
 
     }
-    
+
     func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
         refresh()
     }
-    
-    
+
 }
 
-
-
-extension ImageCollectionViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+extension ImageCollectionViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate {
 
     func coachMarksController(_ coachMarksController: CoachMarksController,
                               coachMarkAt index: Int) -> CoachMark {
@@ -510,25 +502,20 @@ extension ImageCollectionViewController: CoachMarksControllerDataSource, CoachMa
     }
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
         let view = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
-        
+
         view.bodyView.hintLabel.text = "Tap this button to filter items"
         view.bodyView.hintLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)!
         view.bodyView.nextLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 16)!
 //        UIFont(name: "AvenirNext-Regular", size: 15)!
         view.bodyView.nextLabel.text = "Ok!"
-        
+
         return (bodyView: view.bodyView, arrowView: view.arrowView)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         self.walkthroughController.stop(immediately: true)
     }
 }
-
-
-
-
-
 
 extension String {
     func substring(start: Int, end: Int) -> String {
@@ -546,31 +533,28 @@ extension String {
         return self.substring(with: range)
     }}
 
-
-
-
 // From: http://stackoverflow.com/questions/32612760/resize-image-without-losing-quality
 struct CommonUtils {
-    static func imageWithImage(image: UIImage, scaleToSize newSize: CGSize, isAspectRation aspect: Bool) -> UIImage{
-        
+    static func imageWithImage(image: UIImage, scaleToSize newSize: CGSize, isAspectRation aspect: Bool) -> UIImage {
+
         let originRatio = image.size.width / image.size.height;//CGFloat
-        let newRatio = newSize.width / newSize.height;
-        
+        let newRatio = newSize.width / newSize.height
+
         var sz: CGSize = CGSize.zero
-        
+
         if (!aspect) {
             sz = newSize
-        }else {
+        } else {
             if (originRatio < newRatio) {
                 sz.height = newSize.height
                 sz.width = newSize.height * originRatio
-            }else {
+            } else {
                 sz.width = newSize.width
                 sz.height = newSize.width / originRatio
             }
         }
         let scale: CGFloat = 1.0
-        
+
         sz.width /= scale
         sz.height /= scale
         UIGraphicsBeginImageContextWithOptions(sz, false, scale)
@@ -580,4 +564,3 @@ struct CommonUtils {
         return newImage!
     }
 }
-

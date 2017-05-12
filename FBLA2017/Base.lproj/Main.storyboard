@@ -75,7 +75,7 @@
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q84-FF-9bt" userLabel="Favorites Container View">
                                 <rect key="frame" x="0.0" y="282" width="375" height="336"/>
                                 <connections>
-                                    <segue destination="cLw-gN-Vbq" kind="embed" id="BWZ-ea-6a7"/>
+                                    <segue destination="cLw-gN-Vbq" kind="embed" identifier="profileToFavorites" id="BWZ-ea-6a7"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffG-QR-OkP">
@@ -156,7 +156,7 @@
         <scene sceneID="ioN-8i-ABw">
             <objects>
                 <collectionViewController id="Hei-X5-zUt" customClass="ImageCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="tlf-oa-1iS">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tlf-oa-1iS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -987,7 +987,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrY-Gw-eKo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Browse" image="BrowseIcon" selectedImage="BrowseIcon" id="DNw-Mh-nZ5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dQ1-gj-fih">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQ1-gj-fih">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1003,6 +1003,7 @@
         <!--Upload Item Form View Controller-->
         <scene sceneID="eGk-PZ-8xd">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uq6-bw-bp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="vv6-O7-CX8" customClass="UploadItemFormViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a6Y-1h-WA1"/>
@@ -1400,7 +1401,6 @@
                         <outlet property="uploadButton" destination="gta-a5-Hza" id="xnA-NL-XW3"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uq6-bw-bp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2440.8000000000002" y="-872.11394302848578"/>
         </scene>
@@ -1569,7 +1569,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="pIp-dV-5Wz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="SellIcon" selectedImage="SellIcon" id="PCz-Z6-xQE"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BKR-FV-t1O">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKR-FV-t1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1684,7 +1684,7 @@
             <objects>
                 <viewController id="9fv-Sw-R17" customClass="SellingCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="AR0-4K-ISK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="336"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="BqI-7N-Rll" customClass="QuiltView" customModule="QuiltView"/>
@@ -1844,7 +1844,7 @@
             <objects>
                 <viewController id="cLw-gN-Vbq" customClass="FavoritesCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="54x-4q-UYy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="336"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="s1O-kE-un5" customClass="QuiltView" customModule="QuiltView"/>
@@ -1925,12 +1925,6 @@
                                     <segue destination="9fv-Sw-R17" kind="embed" identifier="toSelling" id="zHW-XZ-tjJ"/>
                                 </connections>
                             </containerView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzC-0V-5rh" userLabel="Favorites Container View">
-                                <rect key="frame" x="0.0" y="283" width="375" height="384"/>
-                                <connections>
-                                    <segue destination="cLw-gN-Vbq" kind="embed" identifier="toFavorites" id="gFJ-Ib-shz"/>
-                                </connections>
-                            </containerView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxD-1I-vXP">
                                 <rect key="frame" x="149" y="138" width="78" height="75"/>
                                 <constraints>
@@ -1983,6 +1977,12 @@
                                     <action selector="sellingOrFavoritesToggle:" destination="j6E-2S-Byx" eventType="valueChanged" id="HKf-QQ-i6R"/>
                                 </connections>
                             </segmentedControl>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzC-0V-5rh" userLabel="Favorites Container View">
+                                <rect key="frame" x="0.0" y="283" width="375" height="384"/>
+                                <connections>
+                                    <segue destination="cLw-gN-Vbq" kind="embed" identifier="toFavorites" id="gFJ-Ib-shz"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2110,7 +2110,7 @@
             <objects>
                 <navigationController storyboardIdentifier="GroupVC" automaticallyAdjustsScrollViewInsets="NO" id="EWA-PA-DL2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PKg-es-4M8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PKg-es-4M8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2332,8 +2332,8 @@
         <image name="userChatIcon" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="BWZ-ea-6a7"/>
+        <segue reference="Cbb-yr-Evc"/>
         <segue reference="bRa-Be-ak4"/>
-        <segue reference="zHW-XZ-tjJ"/>
-        <segue reference="gFJ-Ib-shz"/>
     </inferredMetricsTieBreakers>
 </document>

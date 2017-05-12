@@ -33,12 +33,11 @@ class TwoUserChatViewController: UIViewController {
     var otherUser: User?
 
     var hideButton: Bool = true
-    
-    var chatVC:ActualTwoUserChatViewController?=nil
-    
+
+    var chatVC: ActualTwoUserChatViewController?
+
     var pulley: FirstContainerViewController?
 
-    
     func viewDismissed() {
         chatVC?.viewDismissed()
     }
@@ -54,8 +53,8 @@ class TwoUserChatViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="toContainedChat"{
             if let vc = segue.destination as? ActualTwoUserChatViewController {
-                self.chatVC=vc
-                vc.pulley=pulley
+                self.chatVC = vc
+                vc.pulley = pulley
                 vc.senderId = currentUser.uid
                 vc.senderDisplayName = currentUser.displayName
                 let LIUID: String = (loggedInUser?.uid)!
@@ -79,5 +78,3 @@ class TwoUserChatViewController: UIViewController {
  }
 
 }
-
-

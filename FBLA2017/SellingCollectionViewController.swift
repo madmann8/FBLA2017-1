@@ -16,9 +16,6 @@ final class SellingCollectionViewController: ImageCollectionViewController {
 
     var shouldRefresh = false
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -27,10 +24,11 @@ final class SellingCollectionViewController: ImageCollectionViewController {
             refresh()
         }
         shouldRefresh = true
+        
 
     }
-    
-    override func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int{
+
+    override func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
         return 0
     }
     override func loadCoverImages() {
@@ -59,10 +57,10 @@ final class SellingCollectionViewController: ImageCollectionViewController {
                                 }
                                 i += 1
                                 if i == snapshots.count {
-                                    self.originalImages=self.coverImages
+                                    self.originalImages = self.coverImages
                                     self.activityIndicator?.stopAnimating()
                                     self.refresher.endRefreshing()
-                                    self.loadingImages=false
+                                    self.loadingImages = false
                                     self.filterItems(category: ("Any"))
                                 }
                             }
@@ -73,7 +71,7 @@ final class SellingCollectionViewController: ImageCollectionViewController {
                 if snapshots.count == 0 {
                     self.activityIndicator?.stopAnimating()
                     self.refresher.endRefreshing()
-                    self.loadingImages=false
+                    self.loadingImages = false
                     self.collectionView?.reloadData()
                 }
 

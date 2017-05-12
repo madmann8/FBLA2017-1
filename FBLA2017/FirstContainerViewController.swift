@@ -23,12 +23,11 @@ class FirstContainerViewController: PulleyViewController {
 
     @IBOutlet weak var primaryView: UIView!
     @IBOutlet weak var secondaryView: UIView!
-    
-    var viewToDismiss:ChatContainerViewController?=nil
-    
-    var itemChatDelegate:PulleyDelegate?=nil
-    var sellerChatDelegate:PulleyDelegate?=nil
 
+    var viewToDismiss: ChatContainerViewController?
+
+    var itemChatDelegate: PulleyDelegate?
+    var sellerChatDelegate: PulleyDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +63,7 @@ class FirstContainerViewController: PulleyViewController {
         }
         if segue.identifier=="containerToChat"{
             if let vc: ChatContainerViewController = segue.destination as? ChatContainerViewController {
-                vc.pulley=self
+                vc.pulley = self
                 viewToDismiss = vc
                 vc.keyString = self.item?.keyString
                 vc.otherUser = self.item?.user
@@ -78,8 +77,6 @@ class FirstContainerViewController: PulleyViewController {
 }
 
 }
-
-
 
 extension FirstContainerViewController:PulleyDrawerViewControllerDelegate {
     func partialRevealDrawerHeight() -> CGFloat {
@@ -96,7 +93,7 @@ extension FirstContainerViewController:PulleyDrawerViewControllerDelegate {
         return [.open, .closed
         ]
     }
-    
+
     func drawerPositionDidChange(drawer: PulleyViewController) {
         itemChatDelegate?.drawerPositionDidChange!(drawer: drawer)
         sellerChatDelegate?.drawerPositionDidChange!(drawer: drawer)

@@ -32,21 +32,21 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
 
     var loggedInUser: User?
     var otherUser: User?
-    
-    var textViewToDismiss:UITextView?=nil
+
+    var textViewToDismiss: UITextView?
 
     var messageRef: FIRDatabaseReference?
     var channelRef: FIRDatabaseReference?
     private var newMessageRefHandle: FIRDatabaseHandle?
-    
-    var pulley:FirstContainerViewController?=nil {
+
+    var pulley: FirstContainerViewController?=nil {
         didSet {
             pulley?.sellerChatDelegate = self
         }
     }
-    func viewDismissed(){
+    func viewDismissed() {
         self.textViewToDismiss?.resignFirstResponder()
-        
+
     }
 
     lazy var userIsTypingRef: FIRDatabaseReference =
@@ -214,7 +214,7 @@ extension ActualTwoUserChatViewController {
         super.textViewDidChange(textView)
         isTyping = textView.text != ""
     }
-    
+
     override func textViewDidBeginEditing(_ textView: UITextView) {
         self.textViewToDismiss = textView
     }
@@ -335,11 +335,10 @@ extension ActualTwoUserChatViewController:ImagePickerDelegate {
 
 extension ActualTwoUserChatViewController:PulleyDelegate {
     func drawerPositionDidChange(drawer: PulleyViewController) {
-        if drawer.drawerPosition != .open{
-            self.inputToolbar?.isHidden=true
-        }
-        else {
-            self.inputToolbar?.isHidden=false
+        if drawer.drawerPosition != .open {
+            self.inputToolbar?.isHidden = true
+        } else {
+            self.inputToolbar?.isHidden = false
 
         }
     }

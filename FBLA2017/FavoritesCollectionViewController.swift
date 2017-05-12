@@ -15,12 +15,23 @@ final class FavoritesCollectionViewController: ImageCollectionViewController {
       var user: User?
 
     var shouldRefresh = false
+    
+    var frameToLoad:CGRect?=nil
 
     override func viewDidLoad() {
+
+self.collectionView?.autoresizingMask = UIViewAutoresizing.flexibleHeight
+        self.view.frame=CGRect(x: 0, y: 0, width: (frameToLoad?.width)!, height: (frameToLoad?.height)!)
+
         super.viewDidLoad()
+
     }
 
+    
+    
+    
     override func viewDidAppear(_ animated: Bool) {
+
         super.viewDidAppear(animated)
         if shouldRefresh {
        self.refresher.beginRefreshing()
@@ -28,9 +39,10 @@ final class FavoritesCollectionViewController: ImageCollectionViewController {
         }
         shouldRefresh = true
 
+
     }
 
-    override func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int{
+    override func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
         return 0
     }
     override func loadCoverImages() {
@@ -59,10 +71,10 @@ final class FavoritesCollectionViewController: ImageCollectionViewController {
                                 }
                                 i += 1
                                 if i == snapshots.count {
-                                    self.originalImages=self.coverImages
+                                    self.originalImages = self.coverImages
                                     self.activityIndicator?.stopAnimating()
                                     self.refresher.endRefreshing()
-                                    self.loadingImages=false
+                                    self.loadingImages = false
                                     self.filterItems(category: ("Any"))
                                 }
                             }
@@ -73,7 +85,7 @@ final class FavoritesCollectionViewController: ImageCollectionViewController {
                 if snapshots.count == 0 {
                     self.activityIndicator?.stopAnimating()
                     self.refresher.endRefreshing()
-                    self.loadingImages=false
+                    self.loadingImages = false
                     self.collectionView?.reloadData()
                 }
 

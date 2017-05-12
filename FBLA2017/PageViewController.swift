@@ -16,8 +16,8 @@ class PageViewController: UIPageViewController {
     var currentPageIndex = 0
     var index = 0
 
-    var pageControl:UIPageControl?=nil
-    
+    var pageControl: UIPageControl?
+
     lazy var orderedViewControllers: [UIViewController] = []
 
     var nextItemDelegate: NextItemDelegate?
@@ -93,8 +93,8 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
         if completed && finished {
             if let currentVC = pageViewController.viewControllers?.last {
                 let pos = orderedViewControllers.index(of: currentVC)
-                pageControl?.currentPage=pos!
-                pageControl?.numberOfPages=orderedViewControllers.count
+                pageControl?.currentPage = pos!
+                pageControl?.numberOfPages = orderedViewControllers.count
             }
         }
     }
