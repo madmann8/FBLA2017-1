@@ -29,7 +29,6 @@ self.collectionView?.autoresizingMask = UIViewAutoresizing.flexibleHeight
 
     
     
-    
     override func viewDidAppear(_ animated: Bool) {
 
         super.viewDidAppear(animated)

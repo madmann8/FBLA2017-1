@@ -86,6 +86,11 @@ class ProfileViewController: UIViewController {
                 vc.frameToLoad = self.favoritesContainerView.frame
             
         }
+        if segue.identifier == "profileToSelling" {
+            let vc:SellingCollectionViewController = segue.destination as! SellingCollectionViewController
+            vc.frameToLoad = self.sellingContainerView.frame
+            
+        }
     }
 
 }

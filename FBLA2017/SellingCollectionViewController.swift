@@ -16,6 +16,16 @@ final class SellingCollectionViewController: ImageCollectionViewController {
 
     var shouldRefresh = false
 
+    var frameToLoad:CGRect?=nil
+
+    override func viewDidLoad() {
+        
+        self.collectionView?.autoresizingMask = UIViewAutoresizing.flexibleHeight
+        self.view.frame=CGRect(x: 0, y: 0, width: (frameToLoad?.width)!, height: (frameToLoad?.height)!)
+        
+        super.viewDidLoad()
+        
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -37,6 +47,7 @@ final class SellingCollectionViewController: ImageCollectionViewController {
         if let user = user, let uid = user.uid {
             ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid).child("coverImages")
         } else { ref = FIRDatabase.database().reference().child(currentGroup).child("users").child((currentUser.uid)!).child("coverImages")}
+      
         let storage = FIRStorage.storage()
         ref.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
