@@ -1,4 +1,4 @@
-# Yard Sale
+# Yard Sale — A chat based yard sale
 
 ![App logo](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/FBLA2017/Assets.xcassets/AppIcon.appiconset/AppIcon-60%403x.png?token=AbCv2DDxx9EAtd3663E-V4BUqiYtXN33ks5ZFgjFwA%3D%3D)
 
