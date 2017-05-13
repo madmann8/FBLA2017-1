@@ -146,7 +146,7 @@
 		48BF027D1EA38FFD0071467E /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		48BF027F1EA390410071467E /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		48C535CC1EA07941007062FE /* FirstContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstContainerViewController.swift; sourceTree = "<group>"; };
-		48CD95091EACEF110051C4EC /* ErrorGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorGenerator.swift; path = ../ErrorGenerator.swift; sourceTree = "<group>"; };
+		48CD95091EACEF110051C4EC /* ErrorGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorGenerator.swift; sourceTree = "<group>"; };
 		48D5F3FC1EA7170500FD0526 /* ChatContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContainerViewController.swift; sourceTree = "<group>"; };
 		48F7803B1EBEA38D006C6465 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		48F7803D1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeGroupPopoverViewController.swift; sourceTree = "<group>"; };
