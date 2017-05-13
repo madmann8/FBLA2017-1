@@ -6,7 +6,6 @@ target 'FBLA2017' do
   use_frameworks!
 pod "GSMessages"
 pod 'DropDown'
-pod 'ImagePicker'
 pod 'Presentr'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 pod ‘Format’
@@ -29,5 +28,6 @@ pod 'SwiftLint'
 pod 'PermissionScope'
 pod 'DZNEmptyDataSet'
 pod 'Instructions', :git => 'https://github.com/ephread/Instructions.git'
-
+pod 'ImagePicker', :git=> 'https://github.com/hyperoslo/ImagePicker.git'
+pod 'SCLAlertView'
 end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480FAE9E1EC7B57B0033E741 /* ResetPasswordPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480FAE9D1EC7B57B0033E741 /* ResetPasswordPopoverViewController.swift */; };
 		4815FF4F1E99549B0018FA30 /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815FF4E1E99549B0018FA30 /* ImageCollectionViewController.swift */; };
 		4819C1771EA2B015000853F7 /* EmailStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819C1761EA2B015000853F7 /* EmailStackViewController.swift */; };
 		4819C1791EA2C9A1000853F7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819C1781EA2C9A1000853F7 /* ProfileViewController.swift */; };
@@ -95,6 +96,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		480FAE9D1EC7B57B0033E741 /* ResetPasswordPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordPopoverViewController.swift; sourceTree = "<group>"; };
 		4815FF4E1E99549B0018FA30 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 		4819C1761EA2B015000853F7 /* EmailStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailStackViewController.swift; sourceTree = "<group>"; };
 		4819C1781EA2C9A1000853F7 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				4846C23E1EBF95940014BC19 /* WalkthroughMainViewController.swift */,
 				4846C23A1EBF958A0014BC19 /* WalkthroughPageViewController.swift */,
 				48F7803D1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift */,
+				480FAE9D1EC7B57B0033E741 /* ResetPasswordPopoverViewController.swift */,
 			);
 			name = Login/Walkthrough;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				48BF027E1EA38FFD0071467E /* UserModel.swift in Sources */,
 				48BF02801EA390410071467E /* CurrentUser.swift in Sources */,
 				48BD2F291E9FFAD400FDA557 /* ImageViewController.swift in Sources */,
+				480FAE9E1EC7B57B0033E741 /* ResetPasswordPopoverViewController.swift in Sources */,
 				4819C1791EA2C9A1000853F7 /* ProfileViewController.swift in Sources */,
 				48624F4F1EAABF60008CE0E0 /* ItemModel.swift in Sources */,
 				481D91FA1EC77850007DD39D /* ErrorGenerator.swift in Sources */,

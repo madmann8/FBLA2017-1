@@ -138,6 +138,6 @@ class GroupsTableViewController: UITableViewController {
             dynamicVC.delegate = self
             customPresentViewController(dynamicSizePresenter, viewController: dynamicVC, animated: true, completion: nil)
 
-               }
+        }
 
     }

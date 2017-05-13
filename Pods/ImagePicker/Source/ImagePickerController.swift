@@ -97,7 +97,11 @@ open class ImagePickerController: UIViewController {
     }
     super.init(nibName: nil, bundle: nil)
   }
-
+  
+  public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+  }
+  
   required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
@@ -383,14 +387,14 @@ extension ImagePickerController: CameraViewDelegate {
   func imageToLibrary() {
     guard let collectionSize = galleryView.collectionSize else { return }
 
-    galleryView.fetchPhotos {
+    galleryView.fetchPhotos() {
       guard let asset = self.galleryView.assets.first else { return }
       if self.configuration.allowMultiplePhotoSelection == false {
         self.stack.assets.removeAll()
       }
       self.stack.pushAsset(asset)
     }
-
+    
     galleryView.shouldTransform = true
     bottomContainer.pickerButton.isEnabled = true
 

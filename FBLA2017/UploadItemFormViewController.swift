@@ -82,34 +82,7 @@ class UploadItemFormViewController: UIViewController {
 }
 
 //MARK: - Functions for manging image picker
-extension UploadItemFormViewController:ImagePickerDelegate {
-    
-    @IBAction func addPhotoButtonPressed(_ sender: UIButton) {
-        if !hasSetupImagePicker {
-            var configuration = Configuration()
-            configuration.backgroundColor = UIColor.flatBlue
-            configuration.recordLocation = false
-            self.imagePickerController = ImagePickerController(configuration: configuration)
-            self.imagePickerController.delegate = self
-            self.imagePickerController.imageLimit = 1
-            hasSetupImagePicker = true
-        }
-        present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        //
-    }
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        self.images = images
-        //
-    }
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        
-    }
-}
+
 
 //MARK: - Functions for manging title text box picker
 extension UploadItemFormViewController:UITextFieldDelegate {
@@ -298,6 +271,9 @@ extension UploadItemFormViewController {
                     }
                     if i == trimedImages.count {
                         activityIndicator.stopAnimating()
+                        let alert = UIAlertController(title: "Item Uploaded", message: "Your item is now for sale! Refesh the browse page to check it out!", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
                         self.delegate?.reload()
                     }
                 }
@@ -391,8 +367,11 @@ class ImageCollectionViewCell: UICollectionViewCell, ImagePickerDelegate {
         var configuration = Configuration()
         configuration.backgroundColor = UIColor.flatBlue
         configuration.recordLocation = false
+        configuration.showsImageCountLabel = false
         let imagePickerController = ImagePickerController(configuration: configuration)
         imagePickerController.delegate = self
+        imagePickerController.imageLimit=1
+        
         
         parent?.present(imagePickerController, animated: true, completion: nil)
         

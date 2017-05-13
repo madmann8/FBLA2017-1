@@ -156,7 +156,7 @@
         <scene sceneID="ioN-8i-ABw">
             <objects>
                 <collectionViewController id="Hei-X5-zUt" customClass="ImageCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tlf-oa-1iS">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="tlf-oa-1iS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -489,7 +489,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBG-9f-Ioj">
-                                                <rect key="frame" x="51" y="15.5" width="52" height="19.5"/>
+                                                <rect key="frame" x="51" y="15" width="52" height="19.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="52" id="RS1-zY-PLQ"/>
                                                 </constraints>
@@ -567,6 +567,19 @@
                                     <action selector="submitButtonPressed" destination="BhZ-Ui-QSb" eventType="touchUpInside" id="CyY-bX-ide"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCb-hp-cFn">
+                                <rect key="frame" x="129" y="426" width="116" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="116" id="eqe-CX-AoY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" red="0.20190328359603882" green="0.28701490163803101" blue="0.36788973212242126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="updatePasswordButtonPressed" destination="BhZ-Ui-QSb" eventType="touchUpInside" id="udL-hi-iDX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -578,6 +591,7 @@
                             <constraint firstItem="s0V-xy-R7x" firstAttribute="top" secondItem="4R0-VA-98o" secondAttribute="bottom" constant="88" id="KEr-wj-8zo"/>
                             <constraint firstItem="4R0-VA-98o" firstAttribute="centerX" secondItem="GDy-WY-yhI" secondAttribute="centerX" id="KJk-xi-W2q"/>
                             <constraint firstItem="ddL-hu-L56" firstAttribute="top" secondItem="vdh-jw-GPw" secondAttribute="bottom" constant="8" symbolic="YES" id="Nll-r6-Y3z"/>
+                            <constraint firstItem="PCb-hp-cFn" firstAttribute="centerX" secondItem="s0V-xy-R7x" secondAttribute="centerX" id="SQ9-9d-a8t"/>
                             <constraint firstItem="ddL-hu-L56" firstAttribute="trailing" secondItem="ZX3-cL-UbP" secondAttribute="trailingMargin" id="V0j-Sy-CvU"/>
                             <constraint firstItem="4R0-VA-98o" firstAttribute="leading" secondItem="ZX3-cL-UbP" secondAttribute="leadingMargin" constant="48" id="W83-oR-92A"/>
                             <constraint firstItem="s0V-xy-R7x" firstAttribute="leading" secondItem="ddL-hu-L56" secondAttribute="leading" id="Z5G-da-oUb"/>
@@ -586,6 +600,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="vdh-jw-GPw" secondAttribute="trailing" constant="18" id="lNb-8A-vWh"/>
                             <constraint firstItem="vdh-jw-GPw" firstAttribute="leading" secondItem="ddL-hu-L56" secondAttribute="leading" id="nI4-ep-3u9"/>
                             <constraint firstAttribute="bottom" secondItem="4R0-VA-98o" secondAttribute="bottom" constant="249" id="q8A-F1-1Y3"/>
+                            <constraint firstItem="PCb-hp-cFn" firstAttribute="top" secondItem="4R0-VA-98o" secondAttribute="bottom" constant="8" symbolic="YES" id="thL-5W-Zyw"/>
                             <constraint firstItem="RVi-6g-yW0" firstAttribute="top" secondItem="s0V-xy-R7x" secondAttribute="bottom" constant="115" id="z5C-Yb-qJj"/>
                         </constraints>
                     </view>
@@ -598,7 +613,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqL-Pz-HZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2127" y="0.0"/>
+            <point key="canvasLocation" x="-2127.1999999999998" y="-0.44977511244377816"/>
         </scene>
         <!--Groups Table View Controller-->
         <scene sceneID="aaS-3g-nM7">
@@ -987,7 +1002,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrY-Gw-eKo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Browse" image="BrowseIcon" selectedImage="BrowseIcon" id="DNw-Mh-nZ5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQ1-gj-fih">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dQ1-gj-fih">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1574,7 +1589,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="pIp-dV-5Wz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="SellIcon" selectedImage="SellIcon" id="PCz-Z6-xQE"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKR-FV-t1O">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BKR-FV-t1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1682,7 +1697,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wP6-dO-0y3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2127" y="404"/>
+            <point key="canvasLocation" x="-2441" y="435"/>
         </scene>
         <!--Selling Collection View Controller-->
         <scene sceneID="rnt-xH-6I2">
@@ -2115,7 +2130,7 @@
             <objects>
                 <navigationController storyboardIdentifier="GroupVC" automaticallyAdjustsScrollViewInsets="NO" id="EWA-PA-DL2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PKg-es-4M8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PKg-es-4M8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2318,6 +2333,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9x-rs-nIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1377" y="-870"/>
+        </scene>
+        <!--Reset Password Popover View Controller-->
+        <scene sceneID="f2U-T1-AOD">
+            <objects>
+                <viewController storyboardIdentifier="ResetPW" id="e1M-qQ-dQy" customClass="ResetPasswordPopoverViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IrV-C5-M4X"/>
+                        <viewControllerLayoutGuide type="bottom" id="z8K-Z5-J0P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4lK-WM-2pP">
+                        <rect key="frame" x="0.0" y="0.0" width="230" height="120"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V2R-Eg-Y20">
+                                <rect key="frame" x="0.0" y="40" width="230" height="39"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" keyboardType="emailAddress"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVS-G8-jl1">
+                                <rect key="frame" x="0.0" y="84" width="111" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.93851584200000004" green="0.44182878730000003" blue="0.47600823640000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="e1M-qQ-dQy" eventType="touchUpInside" id="6lz-kz-dwT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzb-1m-jTu">
+                                <rect key="frame" x="126" y="87" width="104" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="oO5-Cd-8fd"/>
+                                    <constraint firstAttribute="width" constant="104" id="zQq-ry-SbB"/>
+                                </constraints>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" red="0.93851584200000004" green="0.44182878730000003" blue="0.47600823640000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="okButtonPressed:" destination="e1M-qQ-dQy" eventType="touchUpInside" id="X9C-NN-TUi"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLY-S5-x45">
+                                <rect key="frame" x="0.0" y="0.0" width="230" height="35"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="PLY-S5-x45" firstAttribute="top" secondItem="IrV-C5-M4X" secondAttribute="bottom" id="2F5-c0-VyY"/>
+                            <constraint firstItem="hzb-1m-jTu" firstAttribute="top" secondItem="V2R-Eg-Y20" secondAttribute="bottom" constant="8" symbolic="YES" id="4kG-iM-oR9"/>
+                            <constraint firstItem="CVS-G8-jl1" firstAttribute="bottom" secondItem="z8K-Z5-J0P" secondAttribute="top" id="DVv-QT-Qfn"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="hzb-1m-jTu" secondAttribute="bottom" constant="-1" id="FQJ-Bi-eOI"/>
+                            <constraint firstItem="V2R-Eg-Y20" firstAttribute="leading" secondItem="CVS-G8-jl1" secondAttribute="leading" id="PgM-Xs-AY3"/>
+                            <constraint firstItem="PLY-S5-x45" firstAttribute="leading" secondItem="V2R-Eg-Y20" secondAttribute="leading" id="TRZ-bs-p7D"/>
+                            <constraint firstItem="hzb-1m-jTu" firstAttribute="leading" secondItem="CVS-G8-jl1" secondAttribute="trailing" constant="15" id="V0J-kb-lVf"/>
+                            <constraint firstItem="V2R-Eg-Y20" firstAttribute="trailing" secondItem="hzb-1m-jTu" secondAttribute="trailing" id="jQJ-Xx-hpZ"/>
+                            <constraint firstItem="PLY-S5-x45" firstAttribute="leading" secondItem="4lK-WM-2pP" secondAttribute="leading" id="oyc-J4-YRT"/>
+                            <constraint firstAttribute="trailing" secondItem="PLY-S5-x45" secondAttribute="trailing" id="qoM-o0-e7K"/>
+                            <constraint firstItem="CVS-G8-jl1" firstAttribute="top" secondItem="V2R-Eg-Y20" secondAttribute="bottom" constant="5" id="tj8-LF-2jN"/>
+                            <constraint firstItem="V2R-Eg-Y20" firstAttribute="top" secondItem="PLY-S5-x45" secondAttribute="bottom" constant="5" id="uni-hu-hN7"/>
+                            <constraint firstItem="PLY-S5-x45" firstAttribute="trailing" secondItem="V2R-Eg-Y20" secondAttribute="trailing" id="zj1-H6-6nh"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="230" height="120"/>
+                    <connections>
+                        <outlet property="textBox" destination="V2R-Eg-Y20" id="VXF-66-LHP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ye0-MQ-uFA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1928" y="435"/>
         </scene>
     </scenes>
     <resources>

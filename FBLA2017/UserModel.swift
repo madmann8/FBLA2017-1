@@ -141,7 +141,6 @@ extension User {
                             self.downloadedFrom(link: imageURL)
                             
                                                    self.email = value?["email"] as? String ?? "❌"
-                            let name = FIRAuth.auth()?.currentUser?.displayName
                             if self.email == "❌"{
                                 ref.child("email").setValue(FIRAuth.auth()?.currentUser?.email)
                                 self.email = (FIRAuth.auth()?.currentUser?.email)!

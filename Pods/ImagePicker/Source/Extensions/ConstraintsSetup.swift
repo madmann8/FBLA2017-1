@@ -46,11 +46,11 @@ extension BottomContainerView {
 
     addConstraint(NSLayoutConstraint(item: doneButton, attribute: .centerX,
       relatedBy: .equal, toItem: self, attribute: .right,
-      multiplier: 1, constant: -(UIScreen.main.bounds.width - (ButtonPicker.Dimensions.buttonBorderSize + UIScreen.main.bounds.width) / 2) / 2))
+      multiplier: 1, constant: -(UIScreen.main.bounds.width - (ButtonPicker.Dimensions.buttonBorderSize + UIScreen.main.bounds.width)/2)/2))
 
     addConstraint(NSLayoutConstraint(item: stackView, attribute: .centerX,
       relatedBy: .equal, toItem: self, attribute: .left,
-      multiplier: 1, constant: UIScreen.main.bounds.width / 4 - ButtonPicker.Dimensions.buttonBorderSize / 3))
+      multiplier: 1, constant: UIScreen.main.bounds.width/4 - ButtonPicker.Dimensions.buttonBorderSize/3))
 
     addConstraint(NSLayoutConstraint(item: topSeparator, attribute: .height,
       relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,
