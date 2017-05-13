@@ -13,6 +13,7 @@
 		4819C1821EA2D40B000853F7 /* FavoritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819C1811EA2D40B000853F7 /* FavoritesCollectionViewController.swift */; };
 		4819C1841EA2D4D4000853F7 /* SellingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819C1831EA2D4D4000853F7 /* SellingCollectionViewController.swift */; };
 		481A8EE61EAEDBED004993B9 /* ActivityIndicatorLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A8EE51EAEDBED004993B9 /* ActivityIndicatorLoader.swift */; };
+		481D91FA1EC77850007DD39D /* ErrorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481D91F91EC77850007DD39D /* ErrorGenerator.swift */; };
 		481DD8CD1E98354E005765AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DD8CC1E98354E005765AF /* AppDelegate.swift */; };
 		481DD8D41E98354E005765AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D21E98354E005765AF /* Main.storyboard */; };
 		481DD8D61E98354E005765AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D51E98354E005765AF /* Assets.xcassets */; };
@@ -56,7 +57,6 @@
 		48BF027E1EA38FFD0071467E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BF027D1EA38FFD0071467E /* UserModel.swift */; };
 		48BF02801EA390410071467E /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BF027F1EA390410071467E /* CurrentUser.swift */; };
 		48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C535CC1EA07941007062FE /* FirstContainerViewController.swift */; };
-		48CD950A1EACEF110051C4EC /* ErrorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CD95091EACEF110051C4EC /* ErrorGenerator.swift */; };
 		48D5F3FD1EA7170500FD0526 /* ChatContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5F3FC1EA7170500FD0526 /* ChatContainerViewController.swift */; };
 		48F7803C1EBEA38D006C6465 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7803B1EBEA38D006C6465 /* GroupsTableViewController.swift */; };
 		48F7803E1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7803D1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift */; };
@@ -101,6 +101,7 @@
 		4819C1811EA2D40B000853F7 /* FavoritesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewController.swift; sourceTree = "<group>"; };
 		4819C1831EA2D4D4000853F7 /* SellingCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellingCollectionViewController.swift; sourceTree = "<group>"; };
 		481A8EE51EAEDBED004993B9 /* ActivityIndicatorLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorLoader.swift; sourceTree = "<group>"; };
+		481D91F91EC77850007DD39D /* ErrorGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorGenerator.swift; sourceTree = "<group>"; };
 		481DD8C91E98354E005765AF /* FBLA2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBLA2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		481DD8CC1E98354E005765AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		481DD8D31E98354E005765AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -146,7 +147,6 @@
 		48BF027D1EA38FFD0071467E /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		48BF027F1EA390410071467E /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		48C535CC1EA07941007062FE /* FirstContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstContainerViewController.swift; sourceTree = "<group>"; };
-		48CD95091EACEF110051C4EC /* ErrorGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorGenerator.swift; sourceTree = "<group>"; };
 		48D5F3FC1EA7170500FD0526 /* ChatContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContainerViewController.swift; sourceTree = "<group>"; };
 		48F7803B1EBEA38D006C6465 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		48F7803D1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeGroupPopoverViewController.swift; sourceTree = "<group>"; };
@@ -204,9 +204,9 @@
 			isa = PBXGroup;
 			children = (
 				481DD8CC1E98354E005765AF /* AppDelegate.swift */,
-				48CD95091EACEF110051C4EC /* ErrorGenerator.swift */,
 				481A8EE51EAEDBED004993B9 /* ActivityIndicatorLoader.swift */,
 				48BF027F1EA390410071467E /* CurrentUser.swift */,
+				481D91F91EC77850007DD39D /* ErrorGenerator.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -542,6 +542,7 @@
 				48BD2F291E9FFAD400FDA557 /* ImageViewController.swift in Sources */,
 				4819C1791EA2C9A1000853F7 /* ProfileViewController.swift in Sources */,
 				48624F4F1EAABF60008CE0E0 /* ItemModel.swift in Sources */,
+				481D91FA1EC77850007DD39D /* ErrorGenerator.swift in Sources */,
 				4846C23D1EBF958A0014BC19 /* WalkthroughSinglePageViewController.swift in Sources */,
 				48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */,
 				48F7803E1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift in Sources */,
@@ -565,7 +566,6 @@
 				48D5F3FD1EA7170500FD0526 /* ChatContainerViewController.swift in Sources */,
 				4819C1841EA2D4D4000853F7 /* SellingCollectionViewController.swift in Sources */,
 				4846C23F1EBF95940014BC19 /* WalkthroughMainViewController.swift in Sources */,
-				48CD950A1EACEF110051C4EC /* ErrorGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,6 @@ class ErrorGenerator {
         let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(okayAction)
         view.present(alertController, animated: true, completion: nil)
-
+        
     }
 }
