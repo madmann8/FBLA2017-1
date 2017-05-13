@@ -81,4 +81,3 @@
 8.  If the app is being run on a physical device, the app and developer profile must be approved in the settings menu of the device (Settings –> General –> Device Management)-->
 
 
-PUT SIGNING INFO HERE
