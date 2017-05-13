@@ -28,9 +28,15 @@
 ### GUI Screenshots
 [Download PDF](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/GUIScreenshots.pdf)
 
+### Tips for using Yard Sale
+* To purchase an item, reach out to the seller via "Seller". If you would like to just ask a question, ask the question in the "Item" chat
+* If you have successfully sold an item, select that item in the browse section (or in the "Selling" section of the profile section)
+* Tap the center of the screen while on an item (in the browse section) to go to the next item
+
+
 ## Installation
 ### Prerequisites
-* [Xcode 8.3](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)(latest, but it should work with 8.1+)
+* [Xcode 8.3] (https://itunes.apple.com/us/app/xcode/id497799835?mt=12)(latest, but it should work with 8.1+)
 * An internet connection
 * iPhone 7 or 7 plus simulators installed or a physical iPhone running iOS 10.0 +
 
