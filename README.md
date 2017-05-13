@@ -42,7 +42,7 @@
 * An internet connection
 * iPhone 7 or 7 plus simulators installed or a physical iPhone running iOS 10.0 +
 
-###Instructions for testing
+### Instructions for testing
 1. Open Xcode and select Source Control -> Checkout
 2. Under "Or enter a repository location:"  paste `https://github.com/lukejmann/FBLA2017.git` and select "Next".
 3. Select `master` branch and select "Next".
