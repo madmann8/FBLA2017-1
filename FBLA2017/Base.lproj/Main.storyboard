@@ -156,7 +156,7 @@
         <scene sceneID="ioN-8i-ABw">
             <objects>
                 <collectionViewController id="Hei-X5-zUt" customClass="ImageCollectionViewController" customModule="FBLA2017" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="tlf-oa-1iS">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tlf-oa-1iS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1002,7 +1002,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrY-Gw-eKo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Browse" image="BrowseIcon" selectedImage="BrowseIcon" id="DNw-Mh-nZ5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dQ1-gj-fih">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQ1-gj-fih">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1589,7 +1589,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="pIp-dV-5Wz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="SellIcon" selectedImage="SellIcon" id="PCz-Z6-xQE"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BKR-FV-t1O">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKR-FV-t1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2130,7 +2130,7 @@
             <objects>
                 <navigationController storyboardIdentifier="GroupVC" automaticallyAdjustsScrollViewInsets="NO" id="EWA-PA-DL2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PKg-es-4M8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PKg-es-4M8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
