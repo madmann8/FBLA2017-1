@@ -14,7 +14,7 @@ import UIKit
 
 protocol UserDelegate {
     func imageLoaded(image: UIImage, user: User, index: Int?)
-
+    
 }
 
 protocol ChatImageLoadedDelegate {
@@ -25,8 +25,10 @@ protocol ChatsTableCanReloadDelegate {
     func refreshChats()
 }
 
-class User: NSObject {
 
+//class to represnt a User in the app
+class User: NSObject {
+    
     var uid: String!
     var displayName: String!
     var email: String!
@@ -42,95 +44,78 @@ class User: NSObject {
     var chatsCount = 0
     var chatsCountIncrementer = 0
     var groupPath: String = "temp"
-
+    
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
-
+    
     var delegate: UserDelegate?
     var chatImageLoadedDelegate: ChatImageLoadedDelegate?
     var chatTableCanReloadDelegate: ChatsTableCanReloadDelegate?
     var hasLoadedDelegate: TableHasLoadedDelegate?
-
+    
     public func loadGroup() {
         if self.groupPath == "temp" {
             self.groupPath = UserDefaults.standard.string(forKey: "currentUserGroup") ?? "temp"
-
+            
             currentGroup = groupPath
-
-//            var ref: FIRDatabaseReference!
-//            ref = FIRDatabase.database().reference().child(currentGroup)
-//            let userID = FIRAuth.auth()?.currentUser?.uid
-//            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-//                // Get user value
-//                let value = snapshot.value as? NSDictionary
-//                self.groupPath = value?["groupPath"] as? String ?? ""
-//                currentGroup=self.groupPath
-//                
-//                // ...
-//            }) { (error) in
-//                print(error.localizedDescription)
-//            }
-
         } else {
-//            FIRDatabase.database().reference().child(currentGroup).child("users").child("groupPath").setValue(self.groupPath)
             UserDefaults.standard.set(self.groupPath, forKey: "currentUserGroup")
             currentGroup = self.groupPath
         }
-
+        
     }
-
+    
     public  func setupUser(id: String, isLoggedIn: Bool) {
-              if id != ""{
-        var shouldLoad = true
-
-        if (currentUser.uid) != nil && currentUser.uid == id {
-            shouldLoad = false
-        }
-        if shouldLoad {
-        self.geoCoder = CLGeocoder()
-        self.locationManager = CLLocationManager()
-
-        uid = id
-        if let display = FIRAuth.auth()?.currentUser?.displayName {
-            displayName = display
-        } else {
-            var ref: FIRDatabaseReference!
-            ref = FIRDatabase.database().reference().child(currentGroup)
-            let userID = FIRAuth.auth()?.currentUser?.uid
-            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                self.displayName = value?["displayName"] as? String ?? ""
-
-                // ...
-            }) { (error) in
-                print(error.localizedDescription)
+        if id != ""{
+            var shouldLoad = true
+            
+            if (currentUser.uid) != nil && currentUser.uid == id {
+                shouldLoad = false
             }
+            if shouldLoad {
+                self.geoCoder = CLGeocoder()
+                self.locationManager = CLLocationManager()
+                
+                uid = id
+                if let display = FIRAuth.auth()?.currentUser?.displayName {
+                    displayName = display
+                } else {
+                    var ref: FIRDatabaseReference!
+                    ref = FIRDatabase.database().reference().child(currentGroup)
+                    let userID = FIRAuth.auth()?.currentUser?.uid
+                    ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                        // Get user value
+                        let value = snapshot.value as? NSDictionary
+                        self.displayName = value?["displayName"] as? String ?? ""
+                        
+                    }) { (error) in
+                        print(error.localizedDescription)
+                    }
+                }
+                email = FIRAuth.auth()?.currentUser?.email
+                setCityLabel()
+                getProfilePic(isLoggedIn: isLoggedIn)
+                if isLoggedIn {
+                    getChatsCells(keyString: id)
+                }
+                
+            } else {
+                uid = currentUser.uid
+                displayName = currentUser.displayName
+                email = currentUser.email
+                city = currentUser.city
+                profileImage = currentUser.profileImage
+                sellingImagesPaths = currentUser.sellingImagesPaths
+                favoriteImagesPaths = currentUser.favoriteImagesPaths
+                itemChats = currentUser.itemChats
+                directChats = currentUser.directChats
+                cellIndex = currentUser.cellIndex
+                itemChar = currentUser.itemChar
+                geoCoder = currentUser.geoCoder
+                locationManager = currentUser.locationManager
+            }
+            
         }
-        email = FIRAuth.auth()?.currentUser?.email
-        setCityLabel()
-        getProfilePic(isLoggedIn: isLoggedIn)
-        if isLoggedIn {
-            getChatsCells(keyString: id)
-        }
-
-        } else {
-             uid = currentUser.uid
-             displayName = currentUser.displayName
-             email = currentUser.email
-             city = currentUser.city
-            profileImage = currentUser.profileImage
-             sellingImagesPaths = currentUser.sellingImagesPaths
-             favoriteImagesPaths = currentUser.favoriteImagesPaths
-             itemChats = currentUser.itemChats
-             directChats = currentUser.directChats
-             cellIndex = currentUser.cellIndex
-             itemChar = currentUser.itemChar
-             geoCoder = currentUser.geoCoder
-             locationManager = currentUser.locationManager
-        }
-
-    }
     }
 }
 
@@ -141,30 +126,27 @@ extension User {
             if let providerData = FIRAuth.auth()?.currentUser?.providerData {
                 for userInfo in providerData {
                     if userInfo.providerID=="password" {
-
+                        
                         var ref: FIRDatabaseReference!
                         ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
                         ref.observeSingleEvent(of: .value, with: { (snapshot) in
                             // Get user value
                             let value = snapshot.value as? NSDictionary
-
+                            
                             var imageURL = value?["imageURL"] as? String ?? "❌"
                             if imageURL == "❌"{
                                 ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
                                 imageURL="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
                             }
                             self.downloadedFrom(link: imageURL)
-
-                            //DO THIS
-
-                            //DO THIS
-
-                            self.email = value?["email"] as? String ?? "❌"
+                            
+                                                   self.email = value?["email"] as? String ?? "❌"
+                            let name = FIRAuth.auth()?.currentUser?.displayName
                             if self.email == "❌"{
                                 ref.child("email").setValue(FIRAuth.auth()?.currentUser?.email)
                                 self.email = (FIRAuth.auth()?.currentUser?.email)!
                             }
-
+                            
                             let imagePathsSnapshot = snapshot.childSnapshot(forPath: "coverImages")
                             if let coverArray = imagePathsSnapshot.value as? NSDictionary {
                                 if (coverArray.count) > 0 {
@@ -182,15 +164,15 @@ extension User {
                                     }
                                 }
                             }
-//                            self.displayName = value?["displayName"] as? String ?? "❌"
                             if self.displayName == "❌"{
                                 ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
                                 self.displayName = (FIRAuth.auth()?.currentUser?.displayName)!
                             }
+                            ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
                         }
-
+                            
                         )
-
+                        
                     } else {
                         var ref: FIRDatabaseReference!
                         ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
@@ -202,7 +184,8 @@ extension User {
                                 ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
                                 displayName = (FIRAuth.auth()?.currentUser?.displayName)!
                             }
-
+                            ref.child("displayName").setValue(FIRAuth.auth()?.currentUser?.displayName)
+                            
                             var imageURL: String = FIRAuth.auth()?.currentUser?.photoURL?.absoluteString ?? "❌"
                             if imageURL == "❌"{
                                 ref.child("imageURL").setValue("https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
@@ -212,14 +195,14 @@ extension User {
                                 if imageURL2 == "❌"{
                                     ref.child("imageURL").setValue(imageURL)
                                     self.downloadedFrom(link: imageURL)
-
+                                    
                                 } else {
-
+                                    
                                     self.downloadedFrom(link: imageURL2)
-
+                                    
                                 }
                             }
-
+                            
                             let imagePathsSnapshot = snapshot.childSnapshot(forPath: "coverImages")
                             let favoritesPathSnapshot = snapshot.childSnapshot(forPath: "likedCoverImages")
                             for dict in imagePathsSnapshot.children {
@@ -230,44 +213,44 @@ extension User {
                             }
                         })
                     }
-
+                    
                 }
             }
         } else {
-
+            
             var ref: FIRDatabaseReference!
             if let uid = uid {
                 if uid != ""{
-            ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid)
-            ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                self.displayName = value?["displayName"] as? String ?? "❌"
-                let imageURL = value?["imageURL"] as? String ?? "❌"
-                self.downloadedFrom(link: imageURL)
-                self.email = value?["email"] as? String ?? "❌"
-                let imagePathsSnapshot = snapshot.childSnapshot(forPath: "coverImages")
-                if let coverArray = imagePathsSnapshot.value as? NSDictionary {
-                    if (coverArray.count) > 0 {
-                        for kv in coverArray {
-                            let s = kv.value as! String
-                            self.sellingImagesPaths.append(s)
+                    ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid)
+                    ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                        let value = snapshot.value as? NSDictionary
+                        self.displayName = value?["displayName"] as? String ?? "❌"
+                        let imageURL = value?["imageURL"] as? String ?? "❌"
+                        self.downloadedFrom(link: imageURL)
+                        self.email = value?["email"] as? String ?? "❌"
+                        let imagePathsSnapshot = snapshot.childSnapshot(forPath: "coverImages")
+                        if let coverArray = imagePathsSnapshot.value as? NSDictionary {
+                            if (coverArray.count) > 0 {
+                                for kv in coverArray {
+                                    let s = kv.value as! String
+                                    self.sellingImagesPaths.append(s)
+                                }
+                            }
                         }
-                    }
-                }
-                if let favoritesArray = imagePathsSnapshot.value as? NSDictionary {
-                    if (favoritesArray.count) > 0 {
-                        for kv in favoritesArray {
-                            let s = kv.value as! String
-                            self.favoriteImagesPaths.append(s)
+                        if let favoritesArray = imagePathsSnapshot.value as? NSDictionary {
+                            if (favoritesArray.count) > 0 {
+                                for kv in favoritesArray {
+                                    let s = kv.value as! String
+                                    self.favoriteImagesPaths.append(s)
+                                }
+                            }
                         }
-                    }
-                }
-
-            })
-
+                        
+                    })
+                    
                 }
             }
-
+            
         }
     }
 }
@@ -275,20 +258,20 @@ extension User {
 //Location Stuff
 
 extension User:CLLocationManagerDelegate {
-
+    
     func setCityLabel() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             locationManager.startUpdatingLocation()
         }
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.first!
         geoCode(location: location)
     }
-
+    
     func geoCode(location: CLLocation!) {
         geoCoder.cancelGeocode()
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (data, _) -> Void in
@@ -309,32 +292,32 @@ extension User:CLLocationManagerDelegate {
                     let address="Unknown Location"
                     self.handleLocation(city: address, lat: "\(location.coordinate.latitude)", long: "\(location.coordinate.longitude)")
                 }
-
+                
             }
         })
-
+        
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Maps error: \(error.localizedDescription)")
-
+        
         return
-
+        
     }
-
+    
     func  handleLocation(city: String, lat: String?, long: String?) {
         var ref: FIRDatabaseReference!
         if currentGroup != "" {
-        ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
-        ref.observeSingleEvent(of: .value, with: { (_) in
-            // Get user value
-            self.city = city
-            ref.child("locationString").setValue(self.city)
-
-        })
+            ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
+            ref.observeSingleEvent(of: .value, with: { (_) in
+                // Get user value
+                self.city = city
+                ref.child("locationString").setValue(self.city)
+                
+            })
         }
     }
-
+    
     func changeProfilePicture(downloadURL: String) {
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(uid!)
@@ -351,9 +334,9 @@ extension User:UserDelegate {
         let i = 0
         let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child(keyString).child("directChats")
         let ref2 = FIRDatabase.database().reference().child(currentGroup).child("users").child(keyString).child("itemChats")
-
+        
         var hasLoadedFirst = false
-
+        
         ref2.observeSingleEvent(of: .value, with: { (snapshot) in
             for _ in snapshot.children {
                 self.chatsCount += 1
@@ -366,7 +349,7 @@ extension User:UserDelegate {
                 hasLoadedFirst = true
             }
         })
-
+        
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             for _ in snapshot.children {
                 self.chatsCount += 1
@@ -379,60 +362,60 @@ extension User:UserDelegate {
                 hasLoadedFirst = true
             }
         })
-
+        
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             if snapshot.children.allObjects is [FIRDataSnapshot] {
-
-            for child in snapshot.children {
-                let path: String = (child as AnyObject).key
-            var date: String=""
-            let tempRef = FIRDatabase.database().reference().child(currentGroup).child("chats").child(path)
-            tempRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                date = value?["chatLastDate"] as? String ?? ""
-                let user1 = value?["user1"] as? String ?? ""
-                let user2 = value?["user2"] as? String ?? ""
-                let cell = ChatsTableViewCell()
-                let tempUser = User()
-                tempUser.delegate = cell
-                tempUser.chatImageLoadedDelegate = self
-                tempUser.cellIndex = i
-
-                if user1 == currentUser.uid {
-                    tempUser.setupUser(id: user2, isLoggedIn: false)
-                } else {
-                    tempUser.setupUser(id: user1, isLoggedIn: false)
-                }
-                cell.user = tempUser
-                cell.isGlobal = false
-                cell.chatPath = path
-                cell.date = date
-
-                cell.name = tempUser.displayName
-                self.directChats.append(cell)
-                if doneLoading {
-                    self.hasLoadedDelegate?.hasLoaded()
-                } else {
-                    doneLoading = true
-
-                }
-//                i+=1
-
-            }) { (error) in
-                print(error.localizedDescription)
-                }
+                
+                for child in snapshot.children {
+                    let path: String = (child as AnyObject).key
+                    var date: String=""
+                    let tempRef = FIRDatabase.database().reference().child(currentGroup).child("chats").child(path)
+                    tempRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                        // Get user value
+                        let value = snapshot.value as? NSDictionary
+                        date = value?["chatLastDate"] as? String ?? ""
+                        let user1 = value?["user1"] as? String ?? ""
+                        let user2 = value?["user2"] as? String ?? ""
+                        let cell = ChatsTableViewCell()
+                        let tempUser = User()
+                        tempUser.delegate = cell
+                        tempUser.chatImageLoadedDelegate = self
+                        tempUser.cellIndex = i
+                        
+                        if user1 == currentUser.uid {
+                            tempUser.setupUser(id: user2, isLoggedIn: false)
+                        } else {
+                            tempUser.setupUser(id: user1, isLoggedIn: false)
+                        }
+                        cell.user = tempUser
+                        cell.isGlobal = false
+                        cell.chatPath = path
+                        cell.date = date
+                        
+                        cell.name = tempUser.displayName
+                        self.directChats.append(cell)
+                        if doneLoading {
+                            self.hasLoadedDelegate?.hasLoaded()
+                        } else {
+                            doneLoading = true
+                            
+                        }
+                        //                i+=1
+                        
+                    }) { (error) in
+                        print(error.localizedDescription)
+                    }
                 }}
-
+            
         }) { (error) in
             print(error.localizedDescription)
         }
-
+        
         ref2.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             if snapshot.children.allObjects is [FIRDataSnapshot] {
-
+                
                 for child in snapshot.children {
                     let path: String = (child as AnyObject).key
                     let tempRef = FIRDatabase.database().reference().child(currentGroup).child("items").child(path)
@@ -443,64 +426,64 @@ extension User:UserDelegate {
                         let name = value?["title"] as? String ?? ""
                         let imagePath = value?["coverImage"] as? String ?? ""
                         let cell = ChatsTableViewCell()
-
+                        
                         cell.coverImagePath = imagePath
                         cell.isGlobal = true
                         cell.date = date
                         cell.name = name
                         cell.itemPath = path
                         cell.chatImageLoadedDelegate = self
-
+                        
                         self.itemChats.append(cell)
                         if doneLoading {
                             self.hasLoadedDelegate?.hasLoaded()
                         } else {
                             doneLoading = true
-
+                            
                         }
-//                        i+=1
-
+                        //                        i+=1
+                        
                     }) { (error) in
                         print(error.localizedDescription)
                     }
                 }}
-
+            
         }) { (error) in
             print(error.localizedDescription)
         }
-
+        
     }
     func imageLoaded(image: UIImage, user: User, index: Int?) {
         directChats[index!].img = image
     }
-
+    
     func doneLoading() {
         //
     }
-
+    
 }
 
 extension User:ChatImageLoadedDelegate {
     func chatUserImageLoaded() {
-
-         chatsCountIncrementer += 1
+        
+        chatsCountIncrementer += 1
         if chatsCountIncrementer >= self.chatsCount {
             for cell in directChats {
                 cell.name = cell.user?.displayName
             }
-           self.chatTableCanReloadDelegate?.refreshChats()
-
+            self.chatTableCanReloadDelegate?.refreshChats()
+            
         }
-
-   //
+        
+        //
     }
     func resetLoadedCell() {
-         self.itemChats=[ChatsTableViewCell]()
+        self.itemChats=[ChatsTableViewCell]()
         self.directChats=[ChatsTableViewCell]()
         self.chatsCountIncrementer = 0
         self.chatsCount = 0
         getChatsCells(keyString: self.uid)
-
+        
     }
 }
 
@@ -515,12 +498,12 @@ extension User {
                 let image = UIImage(data: data)
                 else { return }
             DispatchQueue.main.sync {
-
+                
                 self.profileImage = image
                 self.delegate?.imageLoaded(image: image, user: self, index: self.cellIndex)
                 self.chatImageLoadedDelegate?.chatUserImageLoaded()
                 return
-
+                
             }
             }.resume()
     }

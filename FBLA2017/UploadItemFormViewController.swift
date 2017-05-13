@@ -136,7 +136,6 @@ extension UploadItemFormViewController:UITextViewDelegate {
             textView.text = nil
             textView.textColor = UIColor.black
         }
-        about = textView.text
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
@@ -144,6 +143,9 @@ extension UploadItemFormViewController:UITextViewDelegate {
             return false
         }
         return true
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        about = textView.text
     }
     
 }

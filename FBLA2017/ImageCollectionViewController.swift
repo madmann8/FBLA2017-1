@@ -42,6 +42,8 @@ class ImageCollectionViewController: UICollectionViewController {
     @IBOutlet weak var filterButton: UIButton!
     
     var originalImages = [UIImage?]()
+    var originalItemKeys=[String]()
+    var originalCoverImageKeys = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,8 +117,7 @@ class ImageCollectionViewController: UICollectionViewController {
     var currentVC: UIViewController?
     var firstDetailVC: UIViewController?
     
-    //MARK :- Set up filter view
-    
+    // MARK: - Filter items
     @IBAction func filterButtonPressed() {
         let popoverView = PickerDialog.getPicker()
         let pickerData = [
@@ -140,22 +141,30 @@ class ImageCollectionViewController: UICollectionViewController {
     }
     
     func filterItems(category: String) {
+        coverImages = originalImages
+        itemKeys = originalItemKeys
+        coverImageKeys = originalCoverImageKeys
         if category == "Any" || category == "Filter"{
-            coverImages = originalImages
             collectionView?.reloadData()
             return
         }
-        coverImages = originalImages
-        if !loadingImages {
+               if !loadingImages {
             var i = 0
             for cat in categories {
                 if cat != category {
+                    if i<coverImages.count {
                     coverImages[i]=nil
+                        coverImageKeys[i]="❌"
+                        itemKeys[i]="❌"
+                    }   
                 }
                 i += 1
             }
         }
         coverImages = coverImages.filter { $0 != nil }.map { $0! }
+        coverImageKeys = coverImageKeys.filter { $0 != "❌" }.map { $0 }
+        itemKeys = itemKeys.filter { $0 != "❌" }.map { $0 }
+
         collectionView?.reloadData()
     }
     
@@ -190,10 +199,13 @@ extension ImageCollectionViewController {
         
         cell.delegate = self
         
+        if indexPath.row < itemKeys.count {
+        
         cell.keyString = itemKeys[indexPath.row]
         
         cell.coverImageKeyString = coverImageKeys[indexPath.row]
         
+        }
         return cell
     }
     
@@ -264,6 +276,9 @@ extension ImageCollectionViewController {
                                 i += 1
                                 if i == snapshots.count {
                                     self.originalImages = self.coverImages
+                                    self.originalItemKeys = self.itemKeys
+                                    self.originalCoverImageKeys = self.coverImageKeys
+
                                     self.activityIndicator?.stopAnimating()
                                     self.refresher.endRefreshing()
                                     self.loadingImages = false

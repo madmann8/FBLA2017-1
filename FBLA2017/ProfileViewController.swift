@@ -74,7 +74,7 @@ class ProfileViewController: UIViewController {
         }
         UserDefaults.standard.removeObject(forKey: "currentUserGroup")
         currentUser = User()
-        currentGroup = ""
+        currentGroup = "temp"
 
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "Login") {
             UIApplication.shared.keyWindow?.rootViewController = viewController
@@ -103,7 +103,7 @@ extension ProfileViewController:CLLocationManagerDelegate {
     func setCityLabel() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
@@ -158,7 +158,7 @@ extension ProfileViewController:ImagePickerDelegate {
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {}
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
     profileImageView.image = images.first
-        let storageRef = FIRStorage.storage().reference().child(currentGroup)
+        let storageRef = FIRStorage.storage().reference()
         var data = NSData()
         data = UIImageJPEGRepresentation(profileImageView.image!, 0.5)! as NSData
         let filePath = "userImages/\(FIRAuth.auth()!.currentUser!.uid)/\("userPhoto")"

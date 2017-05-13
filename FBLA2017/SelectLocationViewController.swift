@@ -38,7 +38,7 @@ class SelectLocationViewController: UIViewController {
         super.viewDidLoad()
         setLocationButton.layer.cornerRadius = setLocationButton.frame.height / 2
         locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.delegate = self
         locationManager.requestLocation()
         geoCoder = CLGeocoder()

@@ -52,6 +52,11 @@ class EmailStackViewController: UIViewController {
                 if let error = error {
                     ErrorGenerator.presentError(view: self.largeVC!, type: "Sign Up", error: error)
                 } else {
+                    let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
+                    changeRequest?.displayName = self.nameTextView.text
+                    changeRequest?.commitChanges() { (error) in
+//                        ErrorGenerator.presentError(view: self.largeVC!, type: "Sign Up", error: error!)
+                    }
                     self.largeVC?.performSegue(withIdentifier: "loginToGroups", sender: nil)
                     }
 
