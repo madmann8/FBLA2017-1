@@ -1,4 +1,4 @@
-# Yard Sale — A chat based yard sale
+# Yard Sale - A chat based yard sale
 
 ![App logo](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/FBLA2017/Assets.xcassets/AppIcon.appiconset/AppIcon-60%403x.png?token=AbCv2DDxx9EAtd3663E-V4BUqiYtXN33ks5ZFgjFwA%3D%3D)
 
@@ -25,9 +25,12 @@
 * Google Firebase for authentication (passwords and sentive information can never be viewed)
 * Other libraries shown in Podfile and are all licensed under MIT license
 
+### GUI Screenshots
+[Download PDF](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/GUIScreenshots.pdf)
+
 ## Installation
 ### Prerequisites
-* [Xcode 8.3 ] (https://itunes.apple.com/us/app/xcode/id497799835?mt=12)(latest, but it should work with 8.1+)
+* [Xcode 8.3](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)(latest, but it should work with 8.1+)
 * An internet connection
 * iPhone 7 or 7 plus simulators installed or a physical iPhone running iOS 10.0 +
 
