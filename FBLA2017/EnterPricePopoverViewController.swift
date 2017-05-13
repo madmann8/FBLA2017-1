@@ -13,6 +13,8 @@ protocol EnterPriceDelegate {
     func retrievePrice(price: Int, string: String)
 }
 
+
+// This class is a View Controller for the enter price popover
 class EnterPricePopoverViewController: UIViewController {
 
     @IBOutlet weak var moneyTextBox: UITextView!
@@ -24,12 +26,6 @@ class EnterPricePopoverViewController: UIViewController {
         moneyTextBox.font = UIFont(name: "AvenirNext-Bold", size: 36)
 
         moneyTextBox.becomeFirstResponder()
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -40,15 +36,7 @@ class EnterPricePopoverViewController: UIViewController {
 
     var delegate: EnterPriceDelegate?
 
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         moneyTextBox.endEditing(true)
         dismiss(animated: true, completion: nil)
@@ -79,17 +67,20 @@ class EnterPricePopoverViewController: UIViewController {
 
 }
 
+
+//MARK: - TextView Delegate
 extension EnterPricePopoverViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if let amountString = textView.text?.currencyInputFormatting() {
             textView.text = amountString
         }
-            }
+       }
 }
 
 extension String {
+    
+//    from http://stackoverflow.com/questions/40316335/change-textfield-dynamically-and-label-to-currency/40903216#40903216
 
-    // formatting text for currency textField
     func currencyInputFormatting() -> String {
 
         var number: NSNumber!
@@ -101,14 +92,12 @@ extension String {
 
         var amountWithPrefix = self
 
-        // remove from String: "$", ".", ","
         let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
         amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
 
         let double = (amountWithPrefix as NSString).doubleValue
         number = NSNumber(value: (double / 100))
 
-        // if first number is 0 or all numbers were deleted
         guard number != 0 as NSNumber else {
             return ""
         }

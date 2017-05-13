@@ -14,6 +14,7 @@ final class FavoritesCollectionViewController: ImageCollectionViewController {
 
       var user: User?
 
+    //Used to prevent contradiciting refresh/load image calls
     var shouldRefresh = false
 
     var frameToLoad: CGRect?
@@ -38,9 +39,12 @@ self.collectionView?.autoresizingMask = UIViewAutoresizing.flexibleHeight
 
     }
 
+    //This is added in order to prevent Walkthrough View from existing on this subclass
     override func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
         return 0
     }
+
+    //Overrided inorder to change cover images source and disable filter feature of superclass
     override func loadCoverImages() {
 
         var ref: FIRDatabaseReference

@@ -8,9 +8,10 @@
 
 import UIKit
 import FirebaseAuth
-    import FirebaseDatabase
-    import ChameleonFramework
+import FirebaseDatabase
+import ChameleonFramework
 
+//class the represnt the embeded view in the LoginVIewController
 class EmailStackViewController: UIViewController {
 
     var largeVC: UIViewController?
@@ -30,13 +31,8 @@ class EmailStackViewController: UIViewController {
         setupBorder(tv: nameTextView!)
         setupBorder(tv: passwordTextView!)
 
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     @IBOutlet weak var emailTextView: UITextField!
     @IBOutlet weak var nameTextView: UITextField!
@@ -56,8 +52,6 @@ class EmailStackViewController: UIViewController {
                 if let error = error {
                     ErrorGenerator.presentError(view: self.largeVC!, type: "Sign Up", error: error)
                 } else {
-//                    let ref = FIRDatabase.database().reference().child(currentGroup).child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("displayName")
-//                    ref.setValue("\(self.nameTextView.text!)")
                     self.largeVC?.performSegue(withIdentifier: "loginToGroups", sender: nil)
                     }
 

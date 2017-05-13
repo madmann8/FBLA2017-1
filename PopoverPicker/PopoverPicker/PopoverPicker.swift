@@ -91,7 +91,6 @@ public class PickerDialog: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
 
             label.font = itemsFont
 
-
         label.textAlignment = .center
         label.numberOfLines = 2
         label.text = pickerData[row]["display"]

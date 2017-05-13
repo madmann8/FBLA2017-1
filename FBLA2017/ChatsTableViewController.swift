@@ -59,29 +59,21 @@ var refresher = UIRefreshControl()
         tableView?.emptyDataSetDelegate = self
         tableView?.tableFooterView = UIView()
         currentUser.hasLoadedDelegate = self
-//        refreshData()
-refresher.addTarget(self, action:#selector(refreshData), for: .valueChanged)
-//        refresher.beginRefreshing()
-// activityIndicator=ActivityIndicatorLoader.startActivityIndicator(view: self.view)
-//        refreshData()
-    self.tableView.addSubview(refresher)
+        refresher.addTarget(self, action:#selector(refreshData), for: .valueChanged)
+        self.tableView.addSubview(refresher)
         self.tableView.separatorStyle = .none
             }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         if (itemCells.count < 1 && directCells.count < 1) {
             return 0
         }
         if !(itemCells.count < 1 || directCells.count < 1) {
-return 2
+            return 2
         }
         return 1
     }
@@ -92,12 +84,9 @@ return 2
         header.backgroundColor = UIColor.flatNavyBlue
         header.textLabel?.textColor = UIColor.white
         header.textLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
-
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-
         if getSectionType(section: section) == .item {
             return itemCells.count
         }
@@ -185,6 +174,8 @@ enum SectionType {
     case item
 }
 
+
+//MARK - TableView to Item View
 extension ChatsTableViewController:ItemDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if readyToLoad {
@@ -232,6 +223,8 @@ extension ChatsTableViewController:ItemDelegate {
 
 }
 
+
+//MARK: - Refresh control
 extension ChatsTableViewController:ChatsTableViewLoadedDelgate, ChatsTableCanReloadDelegate {
     func cellLoaded() {
         cellsLoaded += 1
@@ -242,11 +235,7 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate, ChatsTableCanRel
 
     func doneLoading() {
         activityIndicator?.stopAnimating()
-//        refresher.removeFromSuperview()
         loadCells = true
-//        self.tableView.reloadData()
-//        viewDidLoad()
-//        self.viewWillAppear(true)
     }
 
     func refreshData() {
@@ -284,13 +273,14 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate, ChatsTableCanRel
         cellsToClear.removeAll()
         self.tableView.reloadData()
         readyToLoad = true
-self.activityIndicator?.stopAnimating()
+        self.activityIndicator?.stopAnimating()
         refresher.endRefreshing()
         self.viewWillAppear(true)
           }
 
     }
 
+//MARK - Empty table view
 extension ChatsTableViewController:DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         if !loading {

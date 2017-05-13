@@ -16,6 +16,7 @@ import ImagePicker
 import FirebaseAuth
 import Pulley
 
+//Class to manage global chat on an item which any user can join
 class ItemChatViewController: JSQMessagesViewController {
 
     var frame: CGRect?
@@ -160,7 +161,7 @@ class ItemChatViewController: JSQMessagesViewController {
     }
 }
 
-//Appearnces
+//MARK: - Appearnces
 extension ItemChatViewController {
 
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -207,7 +208,7 @@ extension ItemChatViewController {
     }
 }
 
-//IsTyping Stuff
+//MARK:- Typing Indicator
 extension ItemChatViewController {
     override func textViewDidChange(_ textView: UITextView) {
         super.textViewDidChange(textView)
@@ -230,7 +231,7 @@ extension ItemChatViewController {
     }
 }
 
-//Send Photos Stuff
+//MARK: - Photo sending
 extension ItemChatViewController:ImagePickerDelegate {
     func sendPhotoMessage() -> String? {
         let itemRef = messageRef?.childByAutoId()
@@ -330,6 +331,7 @@ extension ItemChatViewController:ImagePickerDelegate {
 
 }
 
+//MARK :- chat conatiner view adjustments
 extension ItemChatViewController:PulleyDelegate {
     func drawerPositionDidChange(drawer: PulleyViewController) {
         if drawer.drawerPosition != .open {

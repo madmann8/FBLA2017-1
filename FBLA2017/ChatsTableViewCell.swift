@@ -33,12 +33,9 @@ class ChatsTableViewCell: UITableViewCell {
     @IBOutlet weak var background: UIView!
 
     var hasLoaded = false
-
     var user: User?
-
     var delegate: TranferDelegate?
     var chatImageLoadedDelegate: ChatImageLoadedDelegate?
-
     var tableViewDelegate: ChatsTableViewLoadedDelgate?=nil {
         didSet {
             if self.img != nil {
@@ -49,7 +46,6 @@ class ChatsTableViewCell: UITableViewCell {
         }
         }
     }
-
     var isGlobal: Bool?
     var chatPath: String?
     var date: String?
@@ -75,6 +71,7 @@ class ChatsTableViewCell: UITableViewCell {
 
 }
 
+// MARK - Load image
 extension ChatsTableViewCell:UserDelegate, TranferDelegate {
     func tranferImage(image: UIImage) {
         if let mainIV = self.mainImageView {
@@ -110,9 +107,7 @@ extension ChatsTableViewCell:UserDelegate, TranferDelegate {
         let path = self.coverImagePath!
             let coverImagePath = storage.reference(forURL: path)
             coverImagePath.data(withMaxSize: 1 * 1_024 * 1_024) { data, error in
-                if error != nil {
-                    // Uh-oh, an error occurred!
-                } else {
+                if error != nil { } else {
                     let image = UIImage(data: data!)
                     self.delegate?.tranferImage(image: image!)
                     if let mainIV = self.mainImageView {
@@ -123,7 +118,8 @@ extension ChatsTableViewCell:UserDelegate, TranferDelegate {
                              self.chatImageLoadedDelegate?.chatUserImageLoaded()
 
                             self.hasLoaded = true
-                        }                    } else {
+                        }                    }
+                    else {
                         self.img = image
                         if !self.hasLoaded {
                             self.tableViewDelegate?.cellLoaded()
@@ -135,19 +131,15 @@ extension ChatsTableViewCell:UserDelegate, TranferDelegate {
 
                 }
             }
-
     }
 
 }
 
+//MARK: -Clear Cell
+//THis is used to make the views in these cells hidden as a workaround for the refresh
  extension ChatsTableViewCell: ClearCellDelegate {
     func clear() {
         removeFromSuperview()
-//        for view in self.subviews{
-//            view.isHidden=true
-//            removeFromSuperview()
-//        }
-
     }
     func unClear() {
         for view in self.subviews {

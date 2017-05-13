@@ -12,29 +12,28 @@ import FirebaseAuth
 import GoogleSignIn
 import ChameleonFramework
 
-//TODO: CANT LOGIN FROM GOOGLE THEN SIWCT TO EMAIL
-
+//View Controller for the login page
 class LoginViewController: UIViewController, GIDSignInUIDelegate {
-
+    
     var handle: FIRAuthStateDidChangeListenerHandle?
-
+    
     var stackVC: EmailStackViewController?
-
+    
     var hasLoaded = false
-
+    
     @IBOutlet weak var submitButton: UIButton!
-
+    
     var hasFailedLogin = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         submitButton.layer.cornerRadius = submitButton.frame.height / 2
         GIDSignIn.sharedInstance().uiDelegate = self
         signInButton.colorScheme = .dark
-
+        
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         if !hasLoaded {
             if UserDefaults.standard.bool(forKey: "hasLoadedWalkthrough") {
@@ -46,7 +45,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         }
         hasLoaded = true
     }
-
+    
     @IBAction func emailSwitchChanged(_ sender: UISegmentedControl) {
         stackVC?.updateVisible(signUp: sender.selectedSegmentIndex == 1)
         if submitButton.title(for: .normal)=="Sign Up"{
@@ -54,33 +53,33 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         } else {
             submitButton.setTitle("Sign Up", for: .normal)
         }
-
+        
     }
-
+    
     @IBAction func submitButtonPressed() {
         stackVC?.upload()
-
+        
     }
-
+    
     func loadViews() {
         handle = FIRAuth.auth()?.addStateDidChangeListener { (_, user) in
             if user != nil {
                 if !self.hasFailedLogin {
-
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
+                    
                     let viewController = storyboard.instantiateViewController(withIdentifier: "MainView")
                     UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
-
+                    
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
-
+                
             } else {
                 self.hasFailedLogin = true
             }
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="toEmailContainer"{
             let vc = segue.destination as! EmailStackViewController
@@ -89,11 +88,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         }
     }
     @IBAction func googleSignInButtonPressed() {
-
+        
     }
-
+    
     @IBOutlet weak var signInButton: GIDSignInButton!
-
+    
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         let loginManager = FBSDKLoginManager()
         loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (_, error) in
@@ -101,14 +100,14 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                 print("Failed to login: \(error.localizedDescription)")
                 return
             }
-
+            
             guard let accessToken = FBSDKAccessToken.current() else {
                 print("Failed to get access token")
                 return
             }
-
+            
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-
+            
             FIRAuth.auth()?.signIn(with: credential, completion: { (_, error) in
                 if let error = error {
                     print("Login error: \(error.localizedDescription)")
@@ -116,17 +115,17 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                     let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(okayAction)
                     self.present(alertController, animated: true, completion: nil)
-
+                    
                     return
                 }
-
+                
                 if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "GroupVC") {
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                     self.dismiss(animated: true, completion: nil)
                 }
-
+                
             })
         }
-
+        
     }
 }

@@ -16,6 +16,7 @@ import ImagePicker
 import FirebaseAuth
 import Pulley
 
+//Class to manage  chat between two users
 class ActualTwoUserChatViewController: JSQMessagesViewController {
 
     var frame: CGRect?
@@ -161,7 +162,7 @@ class ActualTwoUserChatViewController: JSQMessagesViewController {
     }
 }
 
-//Appearnces
+//MARK: - Appearnces
 extension ActualTwoUserChatViewController {
 
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -208,7 +209,7 @@ extension ActualTwoUserChatViewController {
     }
 }
 
-//IsTyping Stuff
+//MARK:- Typing Indicator
 extension ActualTwoUserChatViewController {
     override func textViewDidChange(_ textView: UITextView) {
         super.textViewDidChange(textView)
@@ -233,7 +234,7 @@ extension ActualTwoUserChatViewController {
     }
 }
 
-//Send Photos Stuff
+//MARK: - Photo sending
 extension ActualTwoUserChatViewController:ImagePickerDelegate {
     func sendPhotoMessage() -> String? {
         let itemRef = messageRef?.childByAutoId()
@@ -332,6 +333,7 @@ extension ActualTwoUserChatViewController:ImagePickerDelegate {
     }
 
 }
+//MARK :- chat conatiner view adjustments
 
 extension ActualTwoUserChatViewController:PulleyDelegate {
     func drawerPositionDidChange(drawer: PulleyViewController) {

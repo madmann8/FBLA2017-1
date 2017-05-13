@@ -11,6 +11,9 @@ import MapKit
 import CoreLocation
 import NVActivityIndicatorView
 
+
+//This class is used to pick a location for the Uplaod View Controller
+
 protocol SelectLocationProtocol {
     func recieveLocation(latitude: String, longitude: String, addressString: String)
 
@@ -40,13 +43,6 @@ class SelectLocationViewController: UIViewController {
         locationManager.requestLocation()
         geoCoder = CLGeocoder()
         self.mapView.delegate = self
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-        // Dispose of any resources that can be recreated.
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -55,6 +51,8 @@ class SelectLocationViewController: UIViewController {
 
 }
 
+
+//MARK: -  Location Manager Delegate
 extension SelectLocationViewController:CLLocationManagerDelegate {
     func geoCode(location: CLLocation!) {
 //        geoCoder.cancelGeocode()
@@ -103,6 +101,7 @@ extension SelectLocationViewController:CLLocationManagerDelegate {
     }
 }
 
+//MARK:- Map View Delegate
 extension SelectLocationViewController:MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -111,7 +110,6 @@ extension SelectLocationViewController:MKMapViewDelegate {
     }
 
     @IBAction func setLocationButtonPressed(_ sender: UIButton) {
-//        let location = CLLocation(latitude: mapView.centerCoordinate.latitude., longitude: mapView.centerCoordinate.longitude)
         let latitudeText: String = "\(mapView.centerCoordinate.latitude)"
         let longitudeText: String = "\(mapView.centerCoordinate.longitude)"
         self.delgate?.recieveLocation(latitude: latitudeText, longitude:longitudeText, addressString: self.address.text!)

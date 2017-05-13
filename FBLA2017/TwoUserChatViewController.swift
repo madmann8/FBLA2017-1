@@ -16,6 +16,7 @@ import ImagePicker
 import FirebaseAuth
 import Pulley
 
+// Class to conatain a chat (ActualTwoUserChat) between two users
 class TwoUserChatViewController: UIViewController {
 
     @IBOutlet weak var exitButton: UIButton!

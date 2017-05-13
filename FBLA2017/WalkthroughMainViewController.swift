@@ -12,6 +12,7 @@ protocol WalkthroughDismissedDelegate {
     func walkthroughDismissed()
 }
 
+//Class to control and contain the walkthrough pages
 class WalkthroughMainViewController: UIViewController, UIPageViewControllerDelegate, PageControlDelegate {
 
     @IBOutlet weak var doneButton: UIButton!
@@ -25,7 +26,6 @@ class WalkthroughMainViewController: UIViewController, UIPageViewControllerDeleg
         super.viewDidLoad()
         doneButton.layer.cornerRadius = doneButton.layer.frame.height / 2
 
-        // Do any additional setup after loading the view.
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

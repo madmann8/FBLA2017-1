@@ -11,41 +11,43 @@ import Pulley
 import FirebaseAuth
 import FirebaseDatabase
 
+
+//class to contain and switch between the global item chat and direct chat with the seller
 class ChatContainerViewController: UIViewController {
-
+    
     var keyString: String?
-
+    
     var frame: CGRect?
-
+    
     var loginInUser = currentUser
-
+    
     var otherUser: User?
-
+    
     @IBOutlet weak var chatSwitch: UISegmentedControl!
-
+    
     override func viewDidLoad() {
         chatSwitch.tintColor = UIColor.flatWatermelon
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         self.view.frame = self.frame!
-
+        
     }
-
+    
     var directChatView: TwoUserChatViewController?
-
+    
     var globalChatView: ItemChatViewController?
-
+    
     var pulley: FirstContainerViewController?
-
+    
     func viewDismissed() {
         directChatView?.viewDismissed()
         globalChatView?.viewDismissed()
     }
-
+    
     @IBOutlet weak var dmChatContainer: UIView!
     @IBOutlet weak var globalChat: UIView!
-
+    
     @IBAction func switchChanged(_ sender: UISegmentedControl) {
         viewDismissed()
         if sender.selectedSegmentIndex == 0 {
@@ -56,13 +58,13 @@ class ChatContainerViewController: UIViewController {
             dmChatContainer.isHidden = false
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="toDirectChat"{
             if let vc = segue.destination as? TwoUserChatViewController {
                 vc.pulley = pulley
                 self.directChatView = vc
-                               let LIUID: String = (loginInUser.uid)!
+                let LIUID: String = (loginInUser.uid)!
                 let otherUID: String = (otherUser?.uid)!
                 var chatPath: String=""
                 if LIUID.localizedStandardCompare(otherUID) == ComparisonResult.orderedAscending {
@@ -76,11 +78,11 @@ class ChatContainerViewController: UIViewController {
                 vc.userRef2 = ref2
                 vc.loggedInUser = loginInUser
                 vc.otherUser = otherUser
-
+                
                 vc.channelRef = FIRDatabase.database().reference().child(currentGroup).child("chats").child("\(chatPath)")
-
+                
                 vc.messageRef = vc.channelRef?.child("messages")
-
+                
             }
         }
         if segue.identifier=="toGlobalChat"{
@@ -92,7 +94,7 @@ class ChatContainerViewController: UIViewController {
                 vc.keyString = keyString
                 vc.senderId = currentUser.uid
                 vc.senderDisplayName = currentUser.displayName
-
+                
             }
         }
     }

@@ -4,7 +4,6 @@
 //
 //  Created by Luke Mann on 4/15/17.
 //  Copyright © 2017 Luke Mann. All rights reserved.
-//
 
 import UIKit
 import FirebaseAuth
@@ -12,6 +11,9 @@ import CoreLocation
 import ImagePicker
 import FirebaseStorage
 import Instructions
+
+// This is the View Controller for the current user profile view in the Profile Section of the app
+
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileImageView: UIImageView!
@@ -25,12 +27,14 @@ class ProfileViewController: UIViewController {
 
     let walkthroughController = CoachMarksController()
 
+    //Used to determine when to refresh views
     var readyToLoad = true
 
     @IBAction func imageButtonPressed(_ sender: UIButton) {
         changeProfilePicture()
     }
 
+    //Functino to switch between the selling and favorite container views
     @IBAction func sellingOrFavoritesToggle(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             sellingContainerView.isHidden = false
@@ -59,7 +63,6 @@ class ProfileViewController: UIViewController {
 
     func setNameLabel() {
         nameLabel.text = FIRAuth.auth()?.currentUser?.displayName
-
     }
 
     @IBAction func logoutButtonPressed(_ sender: Any) {
@@ -95,6 +98,7 @@ class ProfileViewController: UIViewController {
 
 }
 
+// MARK: - Get and update current user location
 extension ProfileViewController:CLLocationManagerDelegate {
     func setCityLabel() {
         if CLLocationManager.locationServicesEnabled() {
@@ -149,6 +153,7 @@ extension ProfileViewController:CLLocationManagerDelegate {
 
 }
 
+// MARK: - Change user profile image
 extension ProfileViewController:ImagePickerDelegate {
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {}
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
@@ -156,7 +161,6 @@ extension ProfileViewController:ImagePickerDelegate {
         let storageRef = FIRStorage.storage().reference().child(currentGroup)
         var data = NSData()
         data = UIImageJPEGRepresentation(profileImageView.image!, 0.5)! as NSData
-        // set upload path
         let filePath = "userImages/\(FIRAuth.auth()!.currentUser!.uid)/\("userPhoto")"
         let metaData = FIRStorageMetadata()
         metaData.contentType = "image/jpg"
@@ -184,7 +188,7 @@ extension ProfileViewController:ImagePickerDelegate {
         present(imagePickerController, animated: true, completion: nil)
 }
 }
-
+// MARK: - Walkthrough
 extension ProfileViewController: CoachMarksControllerDataSource, CoachMarksControllerDelegate {
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
         return 1
@@ -199,7 +203,6 @@ extension ProfileViewController: CoachMarksControllerDataSource, CoachMarksContr
         view.bodyView.hintLabel.text = "Tap here to change your Yard Sale profile image"
         view.bodyView.hintLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)!
         view.bodyView.nextLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 16)!
-        //        UIFont(name: "AvenirNext-Regular", size: 15)!
         view.bodyView.nextLabel.text = "Ok!"
 
         return (bodyView: view.bodyView, arrowView: view.arrowView)

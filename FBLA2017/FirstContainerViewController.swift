@@ -36,13 +36,10 @@ class FirstContainerViewController: PulleyViewController {
         if openWithChat {
             self.setDrawerPosition(position: .open)
         }
-//        user.setupUser(id: userID!, isLoggedIn: false)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,6 +75,7 @@ class FirstContainerViewController: PulleyViewController {
 
 }
 
+//MARK:- Pulley Controls
 extension FirstContainerViewController:PulleyDrawerViewControllerDelegate {
     func partialRevealDrawerHeight() -> CGFloat {
         //
@@ -103,6 +101,7 @@ extension FirstContainerViewController:PulleyDrawerViewControllerDelegate {
 
 }
 
+//MARK:- Next item controls
 extension FirstContainerViewController:NextItemDelegate, DismissDelgate, UserDelegate {
     func goToNextItem() {
         nextItemDelegate?.goToNextItem()

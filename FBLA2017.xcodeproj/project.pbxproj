@@ -16,7 +16,6 @@
 		481DD8CD1E98354E005765AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DD8CC1E98354E005765AF /* AppDelegate.swift */; };
 		481DD8D41E98354E005765AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D21E98354E005765AF /* Main.storyboard */; };
 		481DD8D61E98354E005765AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 481DD8D51E98354E005765AF /* Assets.xcassets */; };
-		4831098D1EA869B10069208C /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4831098C1EA869B10069208C /* ChatsViewController.swift */; };
 		483109901EA86A060069208C /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4831098F1EA86A060069208C /* ChatsTableViewController.swift */; };
 		483109921EA86E2E0069208C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 483109911EA86E2E0069208C /* GoogleService-Info.plist */; };
 		483109941EA86E8C0069208C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483109931EA86E8C0069208C /* PageViewController.swift */; };
@@ -96,7 +95,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		213BDF418F838ABBB1940790 /* Pods-FBLA2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLA2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FBLA2017/Pods-FBLA2017.debug.xcconfig"; sourceTree = "<group>"; };
 		4815FF4E1E99549B0018FA30 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 		4819C1761EA2B015000853F7 /* EmailStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailStackViewController.swift; sourceTree = "<group>"; };
 		4819C1781EA2C9A1000853F7 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 		481DD8D31E98354E005765AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		481DD8D51E98354E005765AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		481DD8DA1E98354E005765AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4831098C1EA869B10069208C /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		4831098F1EA86A060069208C /* ChatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsTableViewController.swift; sourceTree = "<group>"; };
 		483109911EA86E2E0069208C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		483109931EA86E8C0069208C /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +151,6 @@
 		48F7803B1EBEA38D006C6465 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		48F7803D1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeGroupPopoverViewController.swift; sourceTree = "<group>"; };
 		7301597ADAFE4597967BF48A /* Pods-FBLA2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLA2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FBLA2017/Pods-FBLA2017.debug.xcconfig"; sourceTree = "<group>"; };
-		CABC7F6A93BD9F8601AA0FEF /* Pods-FBLA2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLA2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-FBLA2017/Pods-FBLA2017.release.xcconfig"; sourceTree = "<group>"; };
 		E40F4BFEA70DF778ECC2C0DA /* Pods_FBLA2017.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FBLA2017.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECB9E8B2282AE1B4EC0484B /* Pods-FBLA2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLA2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-FBLA2017/Pods-FBLA2017.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -218,8 +214,6 @@
 		481210F11EC65FFF002A9D83 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				481DD8CA1E98354E005765AF /* Products */,
-				796A81E1C0759985372685B6 /* Pods */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -229,8 +223,9 @@
 			children = (
 				481DD8CB1E98354E005765AF /* FBLA2017 */,
 				B99B434F481C082D22349B7D /* Frameworks */,
+				796A81E1C0759985372685B6 /* Pods */,
+				481DD8CA1E98354E005765AF /* Products */,
 				481210F11EC65FFF002A9D83 /* Other */,
-				D82103686DC5BBBFC80422A4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -305,7 +300,6 @@
 				48C535CC1EA07941007062FE /* FirstContainerViewController.swift */,
 				483109931EA86E8C0069208C /* PageViewController.swift */,
 				486D222C1E9CA7C900EA2BDC /* PhotoCell.swift */,
-				485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */,
 				4815FF4E1E99549B0018FA30 /* ImageCollectionViewController.swift */,
 				4869245A1EA44C9000000052 /* OtherUserProfileViewController.swift */,
 			);
@@ -332,6 +326,7 @@
 			children = (
 				48AE1C731E99D1B8007B8AC6 /* UploadItemFormViewController.swift */,
 				486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */,
+				485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */,
 			);
 			name = Upload;
 			sourceTree = "<group>";
@@ -339,7 +334,6 @@
 		48E846E11EC6702400EA5E73 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
-				4831098C1EA869B10069208C /* ChatsViewController.swift */,
 				4831098F1EA86A060069208C /* ChatsTableViewController.swift */,
 				48BA58F51EA87E130099E932 /* ChatsTableViewCell.swift */,
 			);
@@ -374,15 +368,6 @@
 				E40F4BFEA70DF778ECC2C0DA /* Pods_FBLA2017.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D82103686DC5BBBFC80422A4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				213BDF418F838ABBB1940790 /* Pods-FBLA2017.debug.xcconfig */,
-				CABC7F6A93BD9F8601AA0FEF /* Pods-FBLA2017.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -558,7 +543,6 @@
 				4819C1791EA2C9A1000853F7 /* ProfileViewController.swift in Sources */,
 				48624F4F1EAABF60008CE0E0 /* ItemModel.swift in Sources */,
 				4846C23D1EBF958A0014BC19 /* WalkthroughSinglePageViewController.swift in Sources */,
-				4831098D1EA869B10069208C /* ChatsViewController.swift in Sources */,
 				48C535CD1EA07941007062FE /* FirstContainerViewController.swift in Sources */,
 				48F7803E1EBEBEB7006C6465 /* MakeGroupPopoverViewController.swift in Sources */,
 				48B07F0E1EA151FE0068709A /* LoginViewController.swift in Sources */,
@@ -727,10 +711,10 @@
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				GCC_WARN_MISSING_PARENTHESES = NO;
-				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_PEDANTIC = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNUSED_FUNCTION = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IBC_NOTICES = NO;
@@ -779,10 +763,10 @@
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				GCC_WARN_MISSING_PARENTHESES = NO;
-				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_PEDANTIC = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNUSED_FUNCTION = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IBC_NOTICES = NO;

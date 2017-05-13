@@ -8,6 +8,7 @@
 
 import UIKit
 
+// class to represnt a tableview cell
 class GroupsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var checkMark: UIImageView!

@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Class to manage the image pages an item view
 class ImageViewController: UIViewController {
 
     var image: UIImage?
