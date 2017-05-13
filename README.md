@@ -36,7 +36,7 @@
 
 ## Installation
 ### Prerequisites
-* [Xcode 8.3] (https://itunes.apple.com/us/app/xcode/id497799835?mt=12)(latest, but it should work with 8.1+)
+* [Xcode 8.3](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)(latest, but it should work with 8.1+)
 * An internet connection
 * iPhone 7 or 7 plus simulators installed or a physical iPhone running iOS 10.0 +
 
