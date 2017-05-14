@@ -145,10 +145,10 @@ class ItemChatViewController: JSQMessagesViewController {
         })
         updatedMessageRefHandle = messageRef?.observe(.childChanged, with: { (snapshot) in
             let key = snapshot.key
-            let messageData = snapshot.value as! Dictionary<String, String> // 1
+            let messageData = snapshot.value as! Dictionary<String, String>
 
-            if let photoURL = messageData["photoURL"] as String! { // 2
-                if let mediaItem = self.photoMessageMap[key] { // 3
+            if let photoURL = messageData["photoURL"] as String! {
+                if let mediaItem = self.photoMessageMap[key] {
                     self.fetchImageDataAtURL(photoURL, forMediaItem: mediaItem, clearsPhotoMessageMapOnSuccessForKey: key) // 4
                 }
             }
@@ -184,7 +184,7 @@ extension ItemChatViewController {
             return NSAttributedString(string: currentUser.displayName)
         } else {
             return NSAttributedString(string: message.senderDisplayName, attributes:
-                [NSFontAttributeName : UIFont(name: "AvenirNext-Regular", size: 12),
+                [NSFontAttributeName : Fonts.regular.get(size: 12),
                  NSForegroundColorAttributeName : UIColor.flatGrayDark])
         }
         
@@ -193,7 +193,7 @@ extension ItemChatViewController {
     
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAt indexPath: IndexPath!) -> CGFloat {
-        return 12
+        return 18
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
@@ -215,10 +215,8 @@ extension ItemChatViewController {
 
         if message.senderId == senderId {
             cell.textView?.textColor = UIColor.white
-//            cell.textView?.font = UIFont(name: "AvenirNext-Regular", size: 16)
         } else {
             cell.textView?.textColor = UIColor.black
-//            cell.textView?.font = UIFont(name: "AvenirNext-Regular", size: 16)
         }
         return cell
     }
@@ -255,6 +253,7 @@ extension ItemChatViewController:ImagePickerDelegate {
         let messageItem = [
             "photoURL": imageURLNotSetKey,
             "senderId": senderId!,
+            "senderName" : senderDisplayName
             ]
 
         itemRef?.setValue(messageItem)
@@ -266,7 +265,11 @@ extension ItemChatViewController:ImagePickerDelegate {
     }
 
     override func didPressAccessoryButton(_ sender: UIButton) {
-        let picker = ImagePickerController()
+        var config = Configuration()
+        config.backgroundColor = UIColor.flatBlue
+        config.recordLocation = false
+        config.showsImageCountLabel = false
+        let picker = ImagePickerController(configuration: config)
         picker.imageLimit = 1
         picker.delegate = self
 
@@ -291,7 +294,7 @@ extension ItemChatViewController:ImagePickerDelegate {
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
             // 6
-            storageRef.child(imagePath).put(imageData!, metadata: metadata) { (metadata, error) in
+            storageRef.child("chatImages").child(imagePath).put(imageData!, metadata: metadata) { (metadata, error) in
                 if let error = error {
                     print("Error uploading photo: \(error)")
                     return

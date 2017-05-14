@@ -246,8 +246,8 @@ extension InfoContainerViewController: CoachMarksControllerDataSource, CoachMark
         let view = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
         
         view.bodyView.hintLabel.text = "Tap this to view the seller's profile"
-        view.bodyView.hintLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)!
-        view.bodyView.nextLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 16)!
+        view.bodyView.hintLabel.font = Fonts.regular.get(size: 16)
+        view.bodyView.nextLabel.font = Fonts.regular.get(size: 16)
         view.bodyView.nextLabel.text = "Ok!"
         
         return (bodyView: view.bodyView, arrowView: view.arrowView)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48055CBA1EC8C0AE00328052 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055CB91EC8C0AE00328052 /* Fonts.swift */; };
 		480FAE9E1EC7B57B0033E741 /* ResetPasswordPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480FAE9D1EC7B57B0033E741 /* ResetPasswordPopoverViewController.swift */; };
 		4815FF4F1E99549B0018FA30 /* ItemsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815FF4E1E99549B0018FA30 /* ItemsCollectionView.swift */; };
 		4819C1771EA2B015000853F7 /* EmailLoginStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819C1761EA2B015000853F7 /* EmailLoginStackViewController.swift */; };
@@ -38,7 +39,7 @@
 		485A02201E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */; };
 		48624F4F1EAABF60008CE0E0 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48624F4E1EAABF60008CE0E0 /* ItemModel.swift */; };
 		4869245B1EA44C9000000052 /* OtherUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869245A1EA44C9000000052 /* OtherUserProfileViewController.swift */; };
-		4869245F1EA4561E00000052 /* TwoUserChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */; };
+		4869245F1EA4561E00000052 /* TwoUserChatContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869245E1EA4561E00000052 /* TwoUserChatContainerViewController.swift */; };
 		486BEB201EC8BA3800C38694 /* UploadImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486BEB1F1EC8BA3800C38694 /* UploadImageCollectionViewCell.swift */; };
 		486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */; };
 		486D222D1E9CA7C900EA2BDC /* ItemsCollectoinViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486D222C1E9CA7C900EA2BDC /* ItemsCollectoinViewCell.swift */; };
@@ -97,6 +98,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		48055CB91EC8C0AE00328052 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		480FAE9D1EC7B57B0033E741 /* ResetPasswordPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordPopoverViewController.swift; sourceTree = "<group>"; };
 		4815FF4E1E99549B0018FA30 /* ItemsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsCollectionView.swift; sourceTree = "<group>"; };
 		4819C1761EA2B015000853F7 /* EmailLoginStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginStackViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +131,7 @@
 		485A021E1E9B0FE4000AD7DD /* EnterPricePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPricePopoverViewController.swift; sourceTree = "<group>"; };
 		48624F4E1EAABF60008CE0E0 /* ItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		4869245A1EA44C9000000052 /* OtherUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileViewController.swift; sourceTree = "<group>"; };
-		4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoUserChatViewController.swift; sourceTree = "<group>"; };
+		4869245E1EA4561E00000052 /* TwoUserChatContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoUserChatContainerViewController.swift; sourceTree = "<group>"; };
 		486BEB1F1EC8BA3800C38694 /* UploadImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		486D22221E9C6A0100EA2BDC /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		486D222C1E9CA7C900EA2BDC /* ItemsCollectoinViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsCollectoinViewCell.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				481A8EE51EAEDBED004993B9 /* ActivityIndicatorLoader.swift */,
 				48BF027F1EA390410071467E /* CurrentUser.swift */,
 				481D91F91EC77850007DD39D /* ErrorGenerator.swift */,
+				48055CB91EC8C0AE00328052 /* Fonts.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -361,7 +364,7 @@
 		48E846E11EC6702400EA5E73 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
-				4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */,
+				4869245E1EA4561E00000052 /* TwoUserChatContainerViewController.swift */,
 				486DE4681EB1AF4200ACB06A /* ActualTwoUserChatViewController.swift */,
 				4831098F1EA86A060069208C /* ChatsTableViewController.swift */,
 				48BA58F51EA87E130099E932 /* ChatsTableViewCell.swift */,
@@ -582,7 +585,7 @@
 				483F1F8F1EA08210000C5788 /* ItemChatViewController.swift in Sources */,
 				4819C1821EA2D40B000853F7 /* FavoritesCollectionViewController.swift in Sources */,
 				481A8EE61EAEDBED004993B9 /* ActivityIndicatorLoader.swift in Sources */,
-				4869245F1EA4561E00000052 /* TwoUserChatViewController.swift in Sources */,
+				4869245F1EA4561E00000052 /* TwoUserChatContainerViewController.swift in Sources */,
 				486D22231E9C6A0100EA2BDC /* SelectLocationViewController.swift in Sources */,
 				4846C23C1EBF958A0014BC19 /* WalkthroughPageViewController.swift in Sources */,
 				4819C1771EA2B015000853F7 /* EmailLoginStackViewController.swift in Sources */,
@@ -597,6 +600,7 @@
 				48791EA61EBEA1A5004A7CF1 /* GroupsTableViewCell.swift in Sources */,
 				48D5F3FD1EA7170500FD0526 /* ChatContainerViewController.swift in Sources */,
 				4819C1841EA2D4D4000853F7 /* SellingCollectionViewController.swift in Sources */,
+				48055CBA1EC8C0AE00328052 /* Fonts.swift in Sources */,
 				4846C23F1EBF95940014BC19 /* WalkthroughContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

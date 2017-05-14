@@ -23,7 +23,7 @@ class EnterPricePopoverViewController: UIViewController {
         moneyTextBox.delegate = self
         moneyTextBox.textAlignment = .right
         moneyTextBox.adjustsFontForContentSizeCategory = true
-        moneyTextBox.font = UIFont(name: "AvenirNext-Bold", size: 36)
+        moneyTextBox.font = Fonts.bold.get(size: 36)
 
         moneyTextBox.becomeFirstResponder()
     }

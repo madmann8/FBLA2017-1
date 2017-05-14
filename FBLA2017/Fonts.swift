@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 
 enum Fonts: String {
-    case Regular = "Avenir"
-    case HeavyItalic = "AvenirNext-HeavyItalic"
-    func of(size: CGFloat) -> UIFont {
+    case regular = "Avenir"
+    case bold = "AvenirNext-DemiBold"
+    case medium = "AvenirNext-Medium"
+    func get(size: CGFloat) -> UIFont {
         return UIFont(name: self.rawValue, size: size)!
     }
 }

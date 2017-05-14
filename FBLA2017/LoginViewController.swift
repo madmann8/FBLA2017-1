@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        submitButton.setTitle("Sign Up", for: .normal)
         submitButton.layer.cornerRadius = submitButton.frame.height / 2
         GIDSignIn.sharedInstance().uiDelegate = self
         signInButton.colorScheme = .dark
@@ -36,18 +36,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func updatePasswordButtonPressed() {
-//        let config = SCLAlertView.SCLAppearance(
-//            kTitleFont: UIFont(name: "AvenirNext-Regular", size: 20)!,
-//            kTextFont: UIFont(name: "AvenirNext-Regular", size: 14)!,
-//            kButtonFont: UIFont(name: "AvenirNext-DemiBold", size: 14)!
-//        )
-//        let resetView = SCLAlertView()
-//        let textField = resetView.addTextField("Enter email")
-//        resetView.addButton("Reset") {
-//            FIRAuth.auth()?.sendPasswordReset(withEmail: textField.text!, completion: nil)
-//        }
-//        resetView.showEdit("Reset Password", subTitle: "An email will be sent with reset instructions")
-        let width = ModalSize.fluid(percentage: 0.7)
+               let width = ModalSize.fluid(percentage: 0.7)
         let height = ModalSize.fluid(percentage: 0.3)
         let center = ModalCenterPosition.center
         

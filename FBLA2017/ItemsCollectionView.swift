@@ -89,12 +89,12 @@ class ImageCollectionViewController: UICollectionViewController {
             UserDefaults.standard.set(true, forKey:  "hasAskedPermissions")
             let permissionView = PermissionScope()
             
-            permissionView.buttonFont = UIFont(name: "AvenirNext-DemiBold", size: 15)!
-            permissionView.labelFont = UIFont(name: "AvenirNext-Regular", size: 15)!
+            permissionView.buttonFont = Fonts.bold.get(size: 15)
+            permissionView.labelFont = Fonts.bold.get(size: 15)
             permissionView.headerLabel.text = "First, permissions"
             permissionView.bodyLabel.text = "Just tap a button below to get started"
-            permissionView.bodyLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)!
-            permissionView.headerLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 21)!
+            permissionView.bodyLabel.font = Fonts.regular.get(size: 16)
+            permissionView.headerLabel.font = Fonts.bold.get(size: 21)
             permissionView.permissionLabelColor = UIColor.flatNavyBlueDark
             permissionView.permissionButtonTextColor = UIColor.flatNavyBlueDark
             permissionView.permissionButtonBorderColor = UIColor.flatNavyBlueDark
@@ -481,25 +481,25 @@ extension ImageCollectionViewController:UploadFinishedDelegate {
 extension ImageCollectionViewController:DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         if !loadingImages {
-            return NSAttributedString(string: "Huh", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+            return NSAttributedString(string: "Huh", attributes: [NSFontAttributeName: Fonts.bold.get(size: 17) as Any])
         } else {
-            return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName: Fonts.bold.get(size: 17) as Any])
         }
     }
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         if !loadingImages {
             
-            return NSAttributedString(string: "It doesn't look like there are any items here", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-Regular", size: 17) as Any])
+            return NSAttributedString(string: "It doesn't look like there are any items here", attributes: [NSFontAttributeName: Fonts.regular.get(size: 17) as Any])
         } else {
-            return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName: Fonts.bold.get(size: 17) as Any])
         }
     }
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
         if !loadingImages {
-            return NSAttributedString(string: "Press Here To Refresh", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 25) as Any])
+            return NSAttributedString(string: "Press Here To Refresh", attributes: [NSFontAttributeName: Fonts.bold.get(size: 25) as Any])
         } else {
-            return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName: Fonts.bold.get(size: 17) as Any])
         }
         
     }
@@ -521,8 +521,8 @@ extension ImageCollectionViewController: CoachMarksControllerDataSource, CoachMa
         let view = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
         
         view.bodyView.hintLabel.text = "Tap this button to filter items"
-        view.bodyView.hintLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)!
-        view.bodyView.nextLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 16)!
+        view.bodyView.hintLabel.font = Fonts.bold.get(size: 16)
+        view.bodyView.nextLabel.font = Fonts.bold.get(size: 16)
         view.bodyView.nextLabel.text = "Ok!"
         
         return (bodyView: view.bodyView, arrowView: view.arrowView)

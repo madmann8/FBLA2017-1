@@ -83,7 +83,7 @@ var refresher = UIRefreshControl()
         header.backgroundView?.backgroundColor = UIColor.flatNavyBlue
         header.backgroundColor = UIColor.flatNavyBlue
         header.textLabel?.textColor = UIColor.white
-        header.textLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
+        header.textLabel?.font = Fonts.bold.get(size: 17)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -284,25 +284,25 @@ extension ChatsTableViewController:ChatsTableViewLoadedDelgate, ChatsTableCanRel
 extension ChatsTableViewController:DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         if !loading {
-            return NSAttributedString(string: "Huh", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+            return NSAttributedString(string: "Huh", attributes: [NSFontAttributeName: Fonts.bold.get(size: 17) as Any])
         } else {
-            return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName: Fonts.bold.get(size: 17) as Any])
         }
     }
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         if !loading {
 
-            return NSAttributedString(string: "It doesn't look like there are any chats here, either contribute to chats on items or start a chat with another user.", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-Regular", size: 17) as Any])
+            return NSAttributedString(string: "It doesn't look like there are any chats here, either contribute to chats on items or start a chat with another user.", attributes: [NSFontAttributeName: Fonts.regular.get(size: 17) as Any])
         } else {
-            return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName: Fonts.bold.get(size: 17) as Any])
         }
     }
 
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
         if !loading {
-            return NSAttributedString(string: "Press Here To Refresh", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 25) as Any])
+            return NSAttributedString(string: "Press Here To Refresh", attributes: [NSFontAttributeName: Fonts.bold.get(size: 25) as Any])
         } else {
-            return NSAttributedString(string: "", attributes: [NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17) as Any])
+            return NSAttributedString(string: "", attributes: [NSFontAttributeName: Fonts.bold.get(size: 17) as Any])
         }
 
     }
