@@ -271,7 +271,7 @@ extension UploadItemFormViewController {
                     }
                     if i == trimedImages.count {
                         activityIndicator.stopAnimating()
-                        let alert = UIAlertController(title: "Item Uploaded", message: "Your item is now for sale! Refesh the browse page to check it out!", preferredStyle: UIAlertControllerStyle.alert)
+                        let alert = UIAlertController(title: "Item Uploaded", message: "Your item is now for sale! Refresh the browse page to check it out!", preferredStyle: UIAlertControllerStyle.alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                         self.delegate?.reload()
@@ -313,101 +313,6 @@ extension UploadItemFormViewController:UICollectionViewDataSource, UICollectionV
 }
 
 // This is a cell for the Image Collection View
-class ImageCollectionViewCell: UICollectionViewCell, ImagePickerDelegate {
-    @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var button: UIButton!
-    var hasLoaded = false
-    var hideViews = false
-    var parent: UploadItemFormViewController?=nil {
-        didSet {
-            if hasLoaded {
-                var filledImages = 0
-                if let images: [UIImage?]=parent?.images {
-                    for i in 0..<images.count {
-                        if images[i] != nil {
-                            filledImages += 1
-                        }
-                    }
-                }
-                if (num!>filledImages + 1) {
-                    hideViews = true
-                    self.image.isHidden = true
-                    self.button.isHidden = false
-                }
-            } else {
-                hasLoaded = true
-            }
-            
-        }
-    }
-    var num: Int?=nil {
-        didSet {
-            if hasLoaded {
-                var filledImages = 0
-                if let images: [UIImage?]=parent?.images {
-                    for i in 0..<images.count {
-                        if images[i] != nil {
-                            filledImages += 1
-                        }
-                    }
-                }
-                if (num!>filledImages) {
-                    hideViews = true
-                    self.image.isHidden = true
-                    self.button.isHidden = true
-                }
-            } else {
-                hasLoaded = true
-            }
-            
-        }
-    }
-    @IBAction func addPhotoButtonPressed(_ sender: UIButton) {
-        
-        var configuration = Configuration()
-        configuration.backgroundColor = UIColor.flatBlue
-        configuration.recordLocation = false
-        configuration.showsImageCountLabel = false
-        let imagePickerController = ImagePickerController(configuration: configuration)
-        imagePickerController.delegate = self
-        imagePickerController.imageLimit=1
-        
-        
-        parent?.present(imagePickerController, animated: true, completion: nil)
-        
-    }
-    override func awakeFromNib() {
-        self.backgroundColor = UIColor.flatGray
-        self.layer.cornerRadius = 10
-        let frame = self.frame
-        self.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.width)
-        if hideViews {
-            self.image.isHidden = false
-            self.button.isHidden = false
-        }
-    }
-    
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        parent?.images[num!]=images[0]
-        self.image.image = images[0]
-        if num!<4 {
-            if let cell = parent?.imageCells[num!+1] {
-                cell.image.isHidden = false
-                cell.button.isHidden = false
-            }
-            
-        }
-        imagePicker.dismiss(animated: true, completion: nil)
-    }
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        imagePicker.dismiss(animated: true, completion: nil)
-    }
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        //
-    }
-    
-}
-
 
 // From http://stackoverflow.com/questions/34962103/how-to-set-uiimageview-with-rounded-corners-for-aspect-fit-mode
 extension UIImageView {
