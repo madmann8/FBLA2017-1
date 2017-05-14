@@ -34,7 +34,7 @@
 ### Services Used
 * Google OAuth for Google sign in
 * Facebook developer tools for Facebook login
-* Google Firebase for database
+* Google Firebase for database and storage
 * Google Firebase for authentication (passwords can never be viewed by developer)
 * Other libraries are shown in Podfile and are all licensed under MIT license
 * [Icon 8](https://icons8.com) for Tabbar Icons
