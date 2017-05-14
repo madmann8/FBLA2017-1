@@ -113,52 +113,21 @@ extension EmailStackViewController:UITextFieldDelegate {
         }
         return true
     }
-}
-
-
-class EmailAndNameDelegate: NSObject, UITextFieldDelegate {
-    
-    var hasClearedTextBox = false
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if !hasClearedTextBox {
-            textField.text = nil
-        }
-        textField.textColor = UIColor.black
-        return true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return false
-    }
-    
-    
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        //        if textField.textColor == UIColor(red: 0, green: 0, blue: 1 / 99_999, alpha: 1.0) {
-        //        }
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        hasClearedTextBox = true
-    }
-    
-}
 
-class PasswordDelegate: NSObject, UITextFieldDelegate {
-    var hasCleared = false
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if !hasCleared {
-            textField.text = nil
-            textField.isSecureTextEntry=true
+        //Is password textField
+        if textField.isSecureTextEntry == true {
+            textField.resignFirstResponder()
         }
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        hasCleared=true
+            //Is email textField
+        else if textField.keyboardType == .emailAddress {
+            passwordTextView.becomeFirstResponder()
+        }
+            //Is email textField
+        else {
+            emailTextView.becomeFirstResponder()
+        }
+        return true
     }
 }
 
