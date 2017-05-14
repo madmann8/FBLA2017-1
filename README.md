@@ -63,7 +63,7 @@
 2. Under "Or enter a repository location:"  paste `https://github.com/lukejmann/FBLA2017.git` and select "Next".
 3. Select `master` branch and select "Next".
 4. Select a location to store the project, select "Download", and wait for the project to download and open
-5. Go to the top left corner, select `FBLA2017` as the Scheme, select iPhone 7, iPhone 7 Plus, or an attached iPhone to run the app on,  and press the run button (play button)
+5. Go to the top left corner, select `FBLA2017` as the Scheme; select iPhone 7, iPhone 7 Plus, or an attached iPhone to run the app on; and press the run button (play button)
 ![Select Run](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/Screen%20Shot%202017-05-05%20at%203.38.44%20PM.png)
 6. If signing errors occur (this is expected), please see the Signing Errors section
 7. While running the app, you can set the location of the simulator by selecting the location button in the bottom bar. ![Select Locatoin](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/FullSizeRender.jpg)
