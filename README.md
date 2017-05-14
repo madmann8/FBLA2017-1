@@ -3,6 +3,19 @@
 ![App logo](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/FBLA2017/Assets.xcassets/AppIcon.appiconset/AppIcon-60%403x.png?token=AbCv2DDxx9EAtd3663E-V4BUqiYtXN33ks5ZFgjFwA%3D%3D)
 
 
+- [Yard Sale - A chat based yard sale](#yard-sale---a-chat-based-yard-sale)
+  * [About](#about)
+    + [Prompt](#prompt)
+    + [App Features](#app-features)
+    + [Services Used](#services-used)
+    + [GUI Screenshots](#gui-screenshots)
+    + [Tips for using Yard Sale](#tips-for-using-yard-sale)
+  * [Installation](#installation)
+    + [Prerequisites](#prerequisites)
+    + [Instructions for testing](#instructions-for-testing)
+    + [Signing Errors](#signing-errors)
+    + [Other Errors](#other-errors)
+
 ## About
 
 ### Prompt
@@ -16,7 +29,7 @@
 * A fully functional backend and authentication system
 * Join local groups or use the global group for targeted fund raising
 * A walkthrough for easy app usage
-* Informatino about the benifets of donating to FBLA
+* Information about the benifets of donating to FBLA
 
 ### Services Used
 * Google OAuth for Google sign in
@@ -47,7 +60,7 @@
 4. Select a location to store the project, select "Download", and wait for the project to download and open
 5. Go to the top left corner, select `FBLA2017` as the Scheme, chose a device to run the app on,  and press the run button (play button)
 ![Select Run](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/Screen%20Shot%202017-05-05%20at%203.38.44%20PM.png)
-6. If signing errors occur, please see the Signing Errors section     
+6. If signing errors occur (this is expected), please see the Signing Errors section
 7. While running the app, you can set the location of the simulator by selecting the location button in the bottom bar. ![Select Locatoin](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/FullSizeRender.jpg)
 
 ### Signing Errors
@@ -58,15 +71,19 @@ If a signing error occurs while compiling or running an app please do the follow
 3. Select the "General" tab and change the bundle identifier 
 4. Under Identitiy: Change the bundle ID, replacing com.namehere with any domain that you would like to use
 ![Select Run](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/Screen%20Shot%202017-05-13%20at%209.10.51%20AM.png)
-4. Under Signing: Change the team to the personal account
+5. If there are any issues at this point, please follow [these instructions](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/CreatingYourTeamProvisioningProfile/CreatingYourTeamProvisioningProfile.html)
+4. Under Signing: Change the team to a the newley created profile. 
 ![Select Run](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/Screen%20Shot%202017-05-13%20at%209.13.50%20AM.png)
 5. Run the app 
 6. If all fails, redo the Instructions for Testing and run on a simulator
 
-
-
-
-
+### Other Errors 
+| Issue | Solution |
+|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| When running on a physical device, the developer is not trusted.  | Go to Settings -> General -> Device-> And select trust for your developer profile |
+| App appears as a black screen | If running on a simulator, the simulator may be booting up, otherwise, try running the app again |
+| "The run destination is not valid" | Ensure that the app running on an iOS device or simulator that is iOS 10.2  |
+| I can't see the project navigator  | Go to View -> Navigators and select Project Navigator  |
 
 
 
