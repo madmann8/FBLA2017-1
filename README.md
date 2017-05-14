@@ -85,12 +85,14 @@ If a signing error occurs while compiling or running an app please do the follow
 ### Other Errors 
 | Issue | Solution |
 |-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+|After Checking Out the repository, Xcode does not load the project| This is an Xcode bug, delete the downloaded folder and restart the Intructions For Testing, this time changing the download directory location|
 | When running on a physical device, the developer is not trusted.  | On the iPhone, go to Settings -> General -> Device Management-> And select "Trust" for your developer profile |
 | App appears as a black screen | If running on a simulator, the simulator may be booting up, otherwise, try running the app again |
 | "The run destination is not valid" | Ensure that the app running on an iOS device or simulator that is iOS 10.2+  |
 | I can't see the project navigator  | In Xcode, go to View -> Navigators and select Project Navigator  
 | App views overlap | Try running an app on an iPhone 7 or 7 Plus (either actual device or simulator)
 | Location does not load in app |  While running the app, you can set the location of the simulator by selecting the location button in the bottom bar ![Select Location](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/FullSizeRender.jpg) |
+
 
 
 
