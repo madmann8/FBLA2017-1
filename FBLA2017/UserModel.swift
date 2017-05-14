@@ -84,7 +84,6 @@ class User: NSObject {
                     ref = FIRDatabase.database().reference().child(currentGroup)
                     let userID = FIRAuth.auth()?.currentUser?.uid
                     ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                        // Get user value
                         let value = snapshot.value as? NSDictionary
                         self.displayName = value?["displayName"] as? String ?? ""
                         
@@ -119,7 +118,7 @@ class User: NSObject {
     }
 }
 
-//Profile Picture Stuff
+//MARK: - Profile Picture
 extension User {
     func getProfilePic(isLoggedIn: Bool) {
         if (isLoggedIn) {
@@ -254,8 +253,7 @@ extension User {
     }
 }
 
-//Location Stuff
-
+//MARK: - User Location
 extension User:CLLocationManagerDelegate {
     
     func setCityLabel() {
@@ -326,7 +324,7 @@ extension User:CLLocationManagerDelegate {
     }
 }
 
-//Chat tableview stuff
+//MARK : - User Chats
 extension User:UserDelegate {
     func getChatsCells(keyString: String) {
         var doneLoading = false
@@ -412,7 +410,6 @@ extension User:UserDelegate {
         }
         
         ref2.observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
             if snapshot.children.allObjects is [FIRDataSnapshot] {
                 
                 for child in snapshot.children {
@@ -440,7 +437,6 @@ extension User:UserDelegate {
                             doneLoading = true
                             
                         }
-                        //                        i+=1
                         
                     }) { (error) in
                         print(error.localizedDescription)
@@ -462,9 +458,9 @@ extension User:UserDelegate {
     
 }
 
+//MARK:- Photo Loading Control
 extension User:ChatImageLoadedDelegate {
     func chatUserImageLoaded() {
-        
         chatsCountIncrementer += 1
         if chatsCountIncrementer >= self.chatsCount {
             for cell in directChats {
@@ -474,7 +470,6 @@ extension User:ChatImageLoadedDelegate {
             
         }
         
-        //
     }
     func resetLoadedCell() {
         self.itemChats=[ChatsTableViewCell]()

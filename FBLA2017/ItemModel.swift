@@ -14,6 +14,7 @@ protocol ItemDelegate {
 
 }
 
+// A class to represent an item
 class Item {
     var images: [UIImage]?
     var categorey: String?
@@ -27,7 +28,7 @@ class Item {
             self.dollarString=""
             let num: Double = Double(cents!) / 100.0
             let formatter = NumberFormatter()
-            formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
+            formatter.locale = Locale.current
             formatter.numberStyle = .currency
             if let formattedAmount = formatter.string(from: num as NSNumber) {
                 self.dollarString = "\(formattedAmount)"
@@ -46,7 +47,8 @@ class Item {
     var hasLiked: Bool = false
 
     var delegate: ItemDelegate?
-
+    
+    //MARK: -  Load item information
     func load(keyString: String) {
         if !deleted {
 
@@ -146,12 +148,13 @@ class Item {
     }
 }
 
+//MARK:- Category Delegate 
 protocol CategoryLoadedDelegate {
     func loaded(category: ItemCategory)
 }
 
+//This is used in the filter park of the Browse Section
 struct ItemCategory {
-
     var category: String?
     var index: Int?
 }
