@@ -23,20 +23,20 @@
 
 ### App Features
 * Easy login using Google, Facebook, or email.
-* Easily donate and sell items by providing item infomation including title, description,  condition, images, location, and prices. 
+* Easily donate and sell items by providing item information including title, description,  condition, images, location, and prices. 
 * Quickly browse items and view detailed information about those items. 
 * Contact users in a chat based interface as well as engage in global chats for items
 * A fully functional backend and authentication system
-* Join local groups or use the global group for targeted fund raising
+* Join local groups or use the global group for targeted fundraising
 * A walkthrough for easy app usage
-* Information about the benifets of donating to FBLA
+* Information about the benefits of donating to FBLA
 
 ### Services Used
 * Google OAuth for Google sign in
 * Facebook developer tools for Facebook login
 * Google Firebase for database
-* Google Firebase for authentication (passwords and sentive information can never be viewed)
-* Other libraries shown in Podfile and are all licensed under MIT license
+* Google Firebase for authentication (passwords and sensitive information can never be viewed)
+* Other libraries are shown in Podfile and are all licensed under MIT license
 
 ### GUI Screenshots
 [Download PDF](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/GUIScreenshots.pdf)
@@ -66,13 +66,13 @@
 ### Signing Errors
 If a signing error occurs while compiling or running an app please do the following:
 
-1. Go to Xcode -> Preferences, and select Accounts. Here, select the + button in the bottom left corner and sign into you're Apple Developer Account. If you do not have an Apple Developer Account, follow [these instuctions](https://9to5mac.com/2016/03/27/how-to-create-free-apple-developer-account-sideload-apps/) to make an account 
+1. Go to Xcode -> Preferences, and select Accounts. Here, select the + button in the bottom left corner and sign into your Apple Developer Account. If you do not have an Apple Developer Account, follow [these instuctions](https://9to5mac.com/2016/03/27/how-to-create-free-apple-developer-account-sideload-apps/) to make an account 
 2.  Select FBLA2017 (project file) in the Project Navigator (located on the left)
 3. Select the "General" tab and change the bundle identifier 
-4. Under Identitiy: Change the bundle ID, replacing com.namehere with any domain that you would like to use
+4. Under Identity: Change the bundle ID, replacing com.namehere with any unique domain that you would like to use
 ![Select Run](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/Screen%20Shot%202017-05-13%20at%209.10.51%20AM.png)
 5. If there are any issues at this point, please follow [these instructions](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/CreatingYourTeamProvisioningProfile/CreatingYourTeamProvisioningProfile.html)
-4. Under Signing: Change the team to a the newley created profile. 
+4. Under Signing: Change the team to the newly created profile. 
 ![Select Run](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/Screen%20Shot%202017-05-13%20at%209.13.50%20AM.png)
 5. Run the app 
 6. If all fails, redo the Instructions for Testing and run on a simulator
@@ -104,5 +104,3 @@ If a signing error occurs while compiling or running an app please do the follow
 <!---7. Go to the top left corner, select `FBLA2017` as the Scheme, chose a device to run the app on,  and press the run button (play button)
 ![Select Run](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/Screen%20Shot%202017-05-05%20at%203.38.44%20PM.png)
 8.  If the app is being run on a physical device, the app and developer profile must be approved in the settings menu of the device (Settings –> General –> Device Management)-->
-
-
