@@ -46,6 +46,7 @@
 ### Tips for using Yard Sale
 * If you would not like to make an account, a testing account has been created to highlight some features. The email is` test@lukejmann.com` and the password is `Test1234`
 * The Global group has been created with sample items, many of which highlight app features
+* If you would like to change groups, log out and sign back in
 * To purchase an item, reach out to the seller via the "Seller" chat. If you would like to just ask a question, ask the question in the "Item" or global chat
 * If you have successfully sold an item, select that item in the browse section (or in the "Selling" section of the profile view) and select "Mark as Sold" This will remove the item from sale
 * Tap the center of the screen while on an item (in the browse section) to go to the next item
