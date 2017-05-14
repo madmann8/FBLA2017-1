@@ -82,7 +82,6 @@ PODS:
   - Presentr (1.2.3)
   - Pulley (1.4)
   - QuiltView (0.1.4)
-  - SCLAlertView (0.7.0)
   - SwiftLint (0.18.1)
 
 DEPENDENCIES:
@@ -110,7 +109,6 @@ DEPENDENCIES:
   - Presentr
   - Pulley
   - QuiltView
-  - SCLAlertView
   - SwiftLint
 
 EXTERNAL SOURCES:
@@ -164,9 +162,8 @@ SPEC CHECKSUMS:
   Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
   Pulley: 3d47a5ca819b8f35a63e9a4811d35035d484d1d9
   QuiltView: 991e9710b432946b04bcd5721ee4b14175fa0292
-  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SwiftLint: b467d08f5b25dc3b3cfed243d8e1b74b91714c67
 
-PODFILE CHECKSUM: 61042069cd59044defc4aaa56a077c81d8497c6d
+PODFILE CHECKSUM: 766fa3de1b44d9bd0d00ecfc58f3db3023375f20
 
 COCOAPODS: 1.2.0

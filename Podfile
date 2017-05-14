@@ -29,5 +29,4 @@ pod 'PermissionScope'
 pod 'DZNEmptyDataSet'
 pod 'Instructions', :git => 'https://github.com/ephread/Instructions.git'
 pod 'ImagePicker', :git=> 'https://github.com/hyperoslo/ImagePicker.git'
-pod 'SCLAlertView'
 end

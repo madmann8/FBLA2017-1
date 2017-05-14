@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '337EB853A1E3E2210EE5F2A9DFB51EB0'
+               BlueprintIdentifier = 'F2F4DF1CEC5B1005A254A6C8CEE9A31B'
                BlueprintName = 'QuiltView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'QuiltView.framework'>
