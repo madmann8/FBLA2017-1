@@ -38,7 +38,7 @@
 * Google Firebase for authentication (passwords can never be viewed by developer)
 * Other libraries are shown in Podfile and are all licensed under MIT license
 * [Icon 8](https://icons8.com) for Tabbar Icons
-* [Popcorn Art](http://www.flaticon.com/authors/popcorns-arts?group_id=180&order_by=2) for app icon sign as well as walktrough images
+* [Popcorn Art](http://www.flaticon.com/authors/popcorns-arts?group_id=180&order_by=2) for app icon sign as well as walkthrough images
 
 ### GUI Screenshots
 [Download PDF](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/GUIScreenshots.pdf)
