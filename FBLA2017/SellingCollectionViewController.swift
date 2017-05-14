@@ -68,6 +68,8 @@ final class SellingCollectionViewController: ImageCollectionViewController {
                                 i += 1
                                 if i == snapshots.count {
                                     self.originalImages = self.coverImages
+                                    self.originalItemKeys = self.itemKeys
+                                    self.originalCoverImageKeys = self.coverImageKeys
                                     self.activityIndicator?.stopAnimating()
                                     self.refresher.endRefreshing()
                                     self.loadingImages = false
