@@ -292,9 +292,6 @@
 		48E846DE1EC6700200EA5E73 /* Browse */ = {
 			isa = PBXGroup;
 			children = (
-				4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */,
-				483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */,
-				486DE4681EB1AF4200ACB06A /* ActualTwoUserChatViewController.swift */,
 				48BD2F281E9FFAD400FDA557 /* ImageViewController.swift */,
 				48D5F3FC1EA7170500FD0526 /* ChatContainerViewController.swift */,
 				48BD2F2C1E9FFC7300FDA557 /* InfoContainerViewController.swift */,
@@ -337,8 +334,11 @@
 		48E846E11EC6702400EA5E73 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				4869245E1EA4561E00000052 /* TwoUserChatViewController.swift */,
+				486DE4681EB1AF4200ACB06A /* ActualTwoUserChatViewController.swift */,
 				4831098F1EA86A060069208C /* ChatsTableViewController.swift */,
 				48BA58F51EA87E130099E932 /* ChatsTableViewCell.swift */,
+				483F1F8E1EA08210000C5788 /* ItemChatViewController.swift */,
 			);
 			name = Chats;
 			sourceTree = "<group>";

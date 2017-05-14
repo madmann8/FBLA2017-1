@@ -29,7 +29,7 @@
 * A fully functional backend and authentication system
 * Join local groups or use the global group for targeted fundraising
 * A walkthrough for easy app usage
-* Information about the benifets of donating to FBLA
+* Information about the benefits of donating to FBLA
 
 ### Services Used
 * Google OAuth for Google sign in
@@ -69,10 +69,10 @@ If a signing error occurs while compiling or running an app please do the follow
 1. Go to Xcode -> Preferences, and select Accounts. Here, select the + button in the bottom left corner and sign into your Apple Developer Account. If you do not have an Apple Developer Account, follow [these instuctions](https://9to5mac.com/2016/03/27/how-to-create-free-apple-developer-account-sideload-apps/) to make an account 
 2.  Select FBLA2017 (project file) in the Project Navigator (located on the left)
 3. Select the "General" tab and change the bundle identifier 
-4. Under Identitiy: Change the bundle ID, replacing com.namehere with any domain that you would like to use
+4. Under Identity: Change the bundle ID, replacing com.namehere with any unique domain that you would like to use
 ![Select Run](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/Screen%20Shot%202017-05-13%20at%209.10.51%20AM.png)
 5. If there are any issues at this point, please follow [these instructions](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/CreatingYourTeamProvisioningProfile/CreatingYourTeamProvisioningProfile.html)
-4. Under Signing: Change the team to a the newley created profile. 
+4. Under Signing: Change the team to the newly created profile. 
 ![Select Run](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/Screen%20Shot%202017-05-13%20at%209.13.50%20AM.png)
 5. Run the app 
 6. If all fails, redo the Instructions for Testing and run on a simulator

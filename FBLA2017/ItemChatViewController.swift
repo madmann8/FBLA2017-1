@@ -26,7 +26,7 @@ class ItemChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference()
 
-    let imageURLNotSetKey = "NOTSET"
+    let imageURLNotSetKey = ""
 
     var chatRef: FIRDatabaseReference?
 
@@ -133,18 +133,14 @@ class ItemChatViewController: JSQMessagesViewController {
                 self.addMessage(withId: id, name: name, text: text)
                 self.finishReceivingMessage()
             } else if let id = messageData["senderId"] as String!,
-                let photoURL = messageData["photoURL"] as String! { // 1
-                // 2
+                let photoURL = messageData["photoURL"] as String!,
+            let name = messageData["senderName"] as String!{
                 if let mediaItem = JSQPhotoMediaItem(maskAsOutgoing: id == self.senderId) {
-                    // 3
-                    self.addPhotoMessage(withId: id, key: snapshot.key, mediaItem: mediaItem)
-                    // 4
+                    self.addPhotoMessage(withId: id, key: snapshot.key, name: name, mediaItem: mediaItem)
                     if photoURL.hasPrefix("gs://") {
                         self.fetchImageDataAtURL(photoURL, forMediaItem: mediaItem, clearsPhotoMessageMapOnSuccessForKey: nil)
                     }
                 }
-            } else {
-                print("Error! Could not decode message data😒" )
             }
         })
         updatedMessageRefHandle = messageRef?.observe(.childChanged, with: { (snapshot) in
@@ -152,7 +148,6 @@ class ItemChatViewController: JSQMessagesViewController {
             let messageData = snapshot.value as! Dictionary<String, String> // 1
 
             if let photoURL = messageData["photoURL"] as String! { // 2
-                // The photo has been updated.
                 if let mediaItem = self.photoMessageMap[key] { // 3
                     self.fetchImageDataAtURL(photoURL, forMediaItem: mediaItem, clearsPhotoMessageMapOnSuccessForKey: key) // 4
                 }
@@ -172,6 +167,7 @@ extension ItemChatViewController {
         return messages.count
     }
 
+    
     func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.flatNavyBlue)
@@ -182,11 +178,29 @@ extension ItemChatViewController {
         return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.flatWatermelon)
     }
 
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.item]
+        if message.senderId == senderId {
+            return NSAttributedString(string: currentUser.displayName)
+        } else {
+            return NSAttributedString(string: message.senderDisplayName, attributes:
+                [NSFontAttributeName : UIFont(name: "AvenirNext-Regular", size: 12),
+                 NSForegroundColorAttributeName : UIColor.flatGrayDark])
+        }
+        
+    }
+    
+    
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAt indexPath: IndexPath!) -> CGFloat {
+        return 12
+    }
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let message = messages[indexPath.item] // 1
-        if message.senderId == senderId { // 2
+        let message = messages[indexPath.item]
+        if message.senderId == senderId {
             return outgoingBubbleImageView
-        } else { // 3
+        } else {
             return incomingBubbleImageView
         }
     }
@@ -201,8 +215,10 @@ extension ItemChatViewController {
 
         if message.senderId == senderId {
             cell.textView?.textColor = UIColor.white
+//            cell.textView?.font = UIFont(name: "AvenirNext-Regular", size: 16)
         } else {
             cell.textView?.textColor = UIColor.black
+//            cell.textView?.font = UIFont(name: "AvenirNext-Regular", size: 16)
         }
         return cell
     }
@@ -290,7 +306,7 @@ extension ItemChatViewController:ImagePickerDelegate {
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {    imagePicker.dismiss(animated: true, completion:nil)
     }
 
-    func addPhotoMessage(withId id: String, key: String, mediaItem: JSQPhotoMediaItem) {
+    func addPhotoMessage(withId id: String, key: String, name: String, mediaItem: JSQPhotoMediaItem) {
         if let message = JSQMessage(senderId: id, displayName: "", media: mediaItem) {
             messages.append(message)
 

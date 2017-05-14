@@ -21,9 +21,9 @@ class EmailStackViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.flatWatermelon
-        nameTextView.delegate = self
-        emailTextView.delegate = self
-        passwordTextView.delegate = self
+        nameTextView.delegate = EmailAndNameDelegate()
+        emailTextView.delegate = EmailAndNameDelegate()
+        passwordTextView.delegate = PasswordDelegate()
         nameTextView.textColor = UIColor(red: 0, green: 0, blue: 1 / 99_999, alpha: 1.0)
         emailTextView.textColor = UIColor(red: 0, green: 0, blue: 1 / 99_999, alpha: 1.0)
         passwordTextView.textColor = UIColor(red: 0, green: 0, blue: 1 / 99_999, alpha: 1.0)
@@ -31,6 +31,11 @@ class EmailStackViewController: UIViewController {
         setupBorder(tv: nameTextView!)
         setupBorder(tv: passwordTextView!)
 
+    }
+    
+    func setupBorder(tv: UITextField) {
+        tv.layer.borderColor = UIColor.flatGrayDark.cgColor
+        tv.layer.borderWidth = 0.5
     }
 
 
@@ -88,19 +93,65 @@ class EmailStackViewController: UIViewController {
 
 }
 
-    extension EmailStackViewController:UITextFieldDelegate {
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            self.view.endEditing(true)
-            return false
-        }
-        func setupBorder(tv: UITextField) {
-            tv.layer.borderColor = UIColor.flatGrayDark.cgColor
-            tv.layer.borderWidth = 0.5
-        }
-        func textFieldDidBeginEditing(_ textField: UITextField) {
-            if textField.textColor == UIColor(red: 0, green: 0, blue: 1 / 99_999, alpha: 1.0) {
+
+class EmailAndNameDelegate: NSObject, UITextFieldDelegate {
+    
+    var hasClearedTextBox = false
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.textColor == UIColor(red: 0, green: 0, blue: 1 / 99_999, alpha: 1.0) {
+            if !hasClearedTextBox {
                 textField.text = nil
-                textField.textColor = UIColor.black
             }
+            textField.textColor = UIColor.black
         }
     }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        hasClearedTextBox = true
+    }
+    
+}
+
+class PasswordDelegate: NSObject, UITextFieldDelegate {
+    var hasCleared = false {
+        didSet {
+            //
+        }
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if !hasCleared {
+            textField.text = nil
+            textField.isSecureTextEntry=true
+        }
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        hasCleared=true
+    }
+}
+
+
+//MARK: - Custom TextField
+//This is a custom class used to add padding to UITextField
+// Instpired by http://stackoverflow.com/questions/25367502/create-space-at-the-beginning-of-a-uitextfield
+class PaddedTextField:UITextField {
+    
+        let padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5);
+        
+        override func textRect(forBounds bounds: CGRect) -> CGRect {
+            return UIEdgeInsetsInsetRect(bounds, padding)
+        }
+        
+        override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+            return UIEdgeInsetsInsetRect(bounds, padding)
+        }
+        
+        override func editingRect(forBounds bounds: CGRect) -> CGRect {
+            return UIEdgeInsetsInsetRect(bounds, padding)
+        }
+    
+}
