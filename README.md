@@ -85,7 +85,7 @@ If a signing error occurs while compiling or running an app please do the follow
 ### Other Errors 
 | Issue | Solution |
 |-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| When running on a physical device, the developer is not trusted.  | Go to Settings -> General -> Device-> And select trust for your developer profile |
+| When running on a physical device, the developer is not trusted.  | Go to Settings -> General -> Device Management-> And select trust for your developer profile |
 | App appears as a black screen | If running on a simulator, the simulator may be booting up, otherwise, try running the app again |
 | "The run destination is not valid" | Ensure that the app running on an iOS device or simulator that is iOS 10.2  |
 | I can't see the project navigator  | Go to View -> Navigators and select Project Navigator  | 
