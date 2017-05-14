@@ -57,6 +57,7 @@ class UploadItemFormViewController: UIViewController {
     var selectedCell: Int = 0
     
     override func viewDidLoad() {
+        conditionLabel.textColor = UIColor.lightGray
         self.navigationController?.isNavigationBarHidden = true
         descriptionTextView.delegate = self
         descriptionTextView.contentInset = UIEdgeInsets(top: -4, left: -3, bottom: 0, right: 0)
@@ -79,9 +80,8 @@ class UploadItemFormViewController: UIViewController {
         
     }
     
-}
 
-//MARK: - Functions for manging image picker
+}
 
 
 //MARK: - Functions for manging title text box picker
@@ -150,9 +150,12 @@ extension UploadItemFormViewController:EnterPriceDelegate {
     
 }
 
-//MARK: - Functins for manging price picker
+//MARK: - Functins for manging condition slider
 extension UploadItemFormViewController {
     @IBAction func conditionSliderDidChange(_ sender: UISlider) {
+        if conditionLabel.text == "0" {
+        conditionLabel.textColor = UIColor.black
+        }
         let step: Float = 1
         let roundedValue = round(sender.value / step) * step
         sender.value = roundedValue
@@ -308,11 +311,47 @@ extension UploadItemFormViewController:UICollectionViewDataSource, UICollectionV
         selectedCell += 1
         self.imageCells.append(cell)
         return cell
+    }
+}
+//MARK: - Reset
+extension UploadItemFormViewController {
+    @IBAction func resetButtonPressed() {
+        titleTextField.text = "Title"
+        descriptionTextView.text = "Description"
+        conditionSlider.setValue(0, animated: true)
+        conditionLabel.text = "0"
+        conditionLabel.textColor = UIColor.lightGray
+        locationButton.setTitle("Select Location", for: .normal)
+        categoryButton.setTitle("Select Category", for: .normal)
+        priceButton.setTitle("$0.00", for: .normal)
+        titleTextField.textColor = UIColor.lightGray
+        descriptionTextView.textColor = UIColor.lightGray
+        conditionLabel.textColor = UIColor.lightGray
+        locationButton.setTitleColor(UIColor.lightGray, for: .normal)
+        categoryButton.setTitleColor(UIColor.lightGray, for: .normal)
+        priceButton.setTitleColor(UIColor.lightGray, for: .normal)
+        priceButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.images = [UIImage?](repeatElement(nil, count: 5))
+        
+        for i in 0..<imageCells.count {
+            let cell = imageCells[i]
+            if i == 0 {
+                cell.hideViews = false
+                cell.image.isHidden = false
+                cell.button.isHidden = false
+                cell.image.image = #imageLiteral(resourceName: "AddPhoto")
+            }
+            else {
+                cell.hideViews = true
+                cell.image.isHidden = true
+                cell.button.isHidden = true
+                cell.image.image = #imageLiteral(resourceName: "AddPhoto")
+            }
+        }
         
     }
 }
 
-// This is a cell for the Image Collection View
 
 // From http://stackoverflow.com/questions/34962103/how-to-set-uiimageview-with-rounded-corners-for-aspect-fit-mode
 extension UIImageView {
@@ -338,6 +377,7 @@ extension UIImageView {
         }
     }
 }
+
 
 
 //Extension to compress images before upload

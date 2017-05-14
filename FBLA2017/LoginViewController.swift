@@ -22,6 +22,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     var hasLoaded = false
     
+    
     @IBOutlet weak var submitButton: UIButton!
     
     var hasFailedLogin = false
@@ -29,6 +30,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.setTitle("Sign Up", for: .normal)
+        submitButton.titleLabel?.font = Fonts.bold.get(size: 18)
+        submitButton.setTitleColor(UIColor.white, for: .normal)
         submitButton.layer.cornerRadius = submitButton.frame.height / 2
         GIDSignIn.sharedInstance().uiDelegate = self
         signInButton.colorScheme = .dark
@@ -62,7 +65,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBAction func emailSwitchChanged(_ sender: UISegmentedControl) {
         stackVC?.updateVisible(signUp: sender.selectedSegmentIndex == 1)
-        if submitButton.title(for: .normal)=="Sign Up"{
+        if submitButton.titleLabel?.text=="Sign Up"{
             submitButton.setTitle("Log In", for: .normal)
         } else {
             submitButton.setTitle("Sign Up", for: .normal)

@@ -87,6 +87,7 @@ public class ImageCollectionViewCell: UICollectionViewCell, ImagePickerDelegate 
     
     //MARK: - ImagePicker Delegate
     public func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        if num! <  (parent?.images.count)!{
         parent?.images[num!]=images[0]
         self.image.image = images[0]
         if num!<4 {
@@ -95,7 +96,7 @@ public class ImageCollectionViewCell: UICollectionViewCell, ImagePickerDelegate 
                 cell.button.isHidden = false
             }
             
-        }
+            }}
         imagePicker.dismiss(animated: true, completion: nil)
     }
     public func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
