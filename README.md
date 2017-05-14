@@ -37,14 +37,19 @@
 * Google Firebase for database
 * Google Firebase for authentication (passwords and sensitive information can never be viewed)
 * Other libraries are shown in Podfile and are all licensed under MIT license
+* [Icon 8](https://icons8.com) for Tabbar Icons
+* [Popcorn Art](http://www.flaticon.com/authors/popcorns-arts?group_id=180&order_by=2) for app sign as well as walktrough images
 
 ### GUI Screenshots
 [Download PDF](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/GUIScreenshots.pdf)
 
 ### Tips for using Yard Sale
+* If you would not like to make an account, a testing account has been created to highlight some features. The email is` test@lukejmann.com` and the password is `Test1234`
+* The Global group has been created with sample items
 * To purchase an item, reach out to the seller via "Seller". If you would like to just ask a question, ask the question in the "Item" chat
 * If you have successfully sold an item, select that item in the browse section (or in the "Selling" section of the profile section)
 * Tap the center of the screen while on an item (in the browse section) to go to the next item
+
 
 
 ## Installation
@@ -58,7 +63,7 @@
 2. Under "Or enter a repository location:"  paste `https://github.com/lukejmann/FBLA2017.git` and select "Next".
 3. Select `master` branch and select "Next".
 4. Select a location to store the project, select "Download", and wait for the project to download and open
-5. Go to the top left corner, select `FBLA2017` as the Scheme, chose a device to run the app on,  and press the run button (play button)
+5. Go to the top left corner, select `FBLA2017` as the Scheme, select iPhone 7, iPhone 7 Plus, or an attached iPhone to run the app on,  and press the run button (play button)
 ![Select Run](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/Screen%20Shot%202017-05-05%20at%203.38.44%20PM.png)
 6. If signing errors occur (this is expected), please see the Signing Errors section
 7. While running the app, you can set the location of the simulator by selecting the location button in the bottom bar. ![Select Locatoin](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/FullSizeRender.jpg)
@@ -83,7 +88,8 @@ If a signing error occurs while compiling or running an app please do the follow
 | When running on a physical device, the developer is not trusted.  | Go to Settings -> General -> Device-> And select trust for your developer profile |
 | App appears as a black screen | If running on a simulator, the simulator may be booting up, otherwise, try running the app again |
 | "The run destination is not valid" | Ensure that the app running on an iOS device or simulator that is iOS 10.2  |
-| I can't see the project navigator  | Go to View -> Navigators and select Project Navigator  |
+| I can't see the project navigator  | Go to View -> Navigators and select Project Navigator  | 
+| Location does not load in app |  While running the app, you can set the location of the simulator by selecting the location button in the bottom bar. ![Select Locatoin](https://raw.githubusercontent.com/lukejmann/FBLA2017/master/Photoshop/FullSizeRender.jpg) |
 
 
 
